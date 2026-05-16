@@ -1,0 +1,185 @@
+%journal-section {
+  padding: $space-9 $space-5;
+}
+
+%journal-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+// ----- Hero -----
+
+.journal-hero {
+  @extend %journal-section;
+  background: linear-gradient(180deg, $color-peach 0%, $color-blush 100%);
+  padding-top: $space-8;
+}
+
+.journal-hero__inner {
+  @extend %journal-inner;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: $space-8;
+  align-items: center;
+}
+
+.journal-hero__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin-bottom: $space-3;
+}
+
+.journal-hero__title {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-3xl;
+  line-height: $lh-tight;
+  margin-bottom: $space-5;
+}
+
+.journal-hero__lede {
+  font-size: $fs-lg;
+  line-height: $lh-snug;
+  margin-bottom: $space-4;
+}
+
+.journal-hero p {
+  font-size: $fs-md;
+  margin-bottom: $space-4;
+}
+
+.journal-hero__media img {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 16px 36px rgba($color-ink, 0.2);
+}
+
+@media (max-width: $bp-md) {
+  .journal-hero__inner { grid-template-columns: 1fr; gap: $space-6; }
+  .journal-hero__media { order: -1; }
+  .journal-hero__title { font-size: $fs-2xl; }
+}
+
+// ----- Inside grid -----
+
+.journal-inside {
+  @extend %journal-section;
+}
+
+.journal-inside__inner {
+  @extend %journal-inner;
+}
+
+.journal-inside h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-6;
+  text-align: center;
+}
+
+.journal-inside__grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-5;
+}
+
+.journal-inside__grid li {
+  background: $color-bg;
+  border: 1px solid rgba($color-ink, 0.08);
+  border-radius: 12px;
+  padding: $space-5;
+}
+
+.journal-inside__grid h3 {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-lg;
+  color: $color-accent;
+  margin-bottom: $space-2;
+}
+
+.journal-inside__grid p {
+  font-size: $fs-sm;
+  line-height: $lh-body;
+}
+
+@media (max-width: $bp-lg) {
+  .journal-inside__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: $bp-md) {
+  .journal-inside__grid { grid-template-columns: 1fr; }
+}
+
+// ----- Interior preview -----
+
+.journal-interior {
+  padding: $space-7 $space-5;
+  background: $color-blush;
+}
+
+.journal-interior__inner {
+  @extend %journal-inner;
+  max-width: 1200px;
+}
+
+.journal-interior img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 16px 36px rgba($color-ink, 0.18);
+}
+
+// ----- Why it works -----
+
+.journal-why {
+  @extend %journal-section;
+  text-align: center;
+}
+
+.journal-why__inner {
+  @extend %journal-inner;
+  max-width: 720px;
+}
+
+.journal-why h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-5;
+}
+
+.journal-why p {
+  font-size: $fs-md;
+  line-height: $lh-body;
+  margin-bottom: $space-4;
+}
+
+// ----- FAQ -----
+
+.journal-faq {
+  @extend %journal-section;
+  background: $color-peach;
+}
+
+.journal-faq__inner {
+  @extend %journal-inner;
+  max-width: 760px;
+}
+
+.journal-faq h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-6;
+  text-align: center;
+}

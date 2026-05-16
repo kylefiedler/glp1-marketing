@@ -51,3 +51,47 @@ a {
 a:hover {
   text-decoration: none;
 }
+
+details {
+  border-top: 1px solid rgba($color-ink, 0.12);
+  padding: $space-4 0;
+}
+
+details:last-of-type {
+  border-bottom: 1px solid rgba($color-ink, 0.12);
+}
+
+summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-md;
+  color: $color-ink;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::after {
+  content: "+";
+  font-family: $font-heading;
+  font-size: $fs-xl;
+  line-height: 1;
+  color: $color-accent;
+  transition: transform 200ms ease;
+}
+
+details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+details > p {
+  margin-top: $space-3;
+  color: rgba($color-ink, 0.85);
+}

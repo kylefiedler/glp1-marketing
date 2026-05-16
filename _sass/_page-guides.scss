@@ -1,0 +1,281 @@
+%guides-section {
+  padding: $space-9 $space-5;
+}
+
+%guides-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// ----- Hero -----
+
+.guides-hero {
+  @extend %guides-section;
+  background: linear-gradient(180deg, $color-blush 0%, $color-bg 100%);
+  padding-top: $space-8;
+  text-align: center;
+}
+
+.guides-hero__inner {
+  @extend %guides-inner;
+  max-width: 760px;
+}
+
+.guides-hero__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin-bottom: $space-4;
+}
+
+.guides-hero__title {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-3xl;
+  line-height: $lh-tight;
+  margin-bottom: $space-6;
+}
+
+// ----- Bundle -----
+
+.guides-bundle {
+  @extend %guides-section;
+}
+
+.guides-bundle__inner {
+  @extend %guides-inner;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-8;
+  align-items: center;
+}
+
+.guides-bundle__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin-bottom: $space-3;
+}
+
+.guides-bundle h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-3xl;
+  margin-bottom: $space-4;
+  color: $color-accent;
+}
+
+.guides-bundle__strike {
+  display: inline-block;
+  font-size: $fs-md;
+  color: rgba($color-ink, 0.55);
+  text-decoration: line-through;
+  margin-left: $space-3;
+  vertical-align: middle;
+}
+
+.guides-bundle p {
+  font-size: $fs-md;
+  line-height: $lh-body;
+  margin-bottom: $space-4;
+}
+
+.guides-bundle__mockup {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-3;
+  transform: rotate(-2deg);
+}
+
+.guides-bundle__mockup img {
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 6px 14px rgba($color-ink, 0.18);
+}
+
+@media (max-width: $bp-md) {
+  .guides-bundle__inner { grid-template-columns: 1fr; gap: $space-6; }
+  .guides-bundle__mockup { transform: none; }
+  .guides-bundle h2 { font-size: $fs-2xl; }
+}
+
+// ----- Included -----
+
+.guides-included {
+  @extend %guides-section;
+  background: $color-blush;
+}
+
+.guides-included__inner {
+  @extend %guides-inner;
+  max-width: 800px;
+}
+
+.guides-included h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-5;
+  text-align: center;
+}
+
+.guides-included ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: $space-4;
+}
+
+.guides-included li {
+  font-size: $fs-md;
+  line-height: $lh-body;
+  padding-left: $space-6;
+  position: relative;
+}
+
+.guides-included li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: $color-accent;
+  font-weight: 700;
+}
+
+// ----- Individual cards grid -----
+
+.guides-grid {
+  @extend %guides-section;
+}
+
+.guides-grid__inner {
+  @extend %guides-inner;
+}
+
+.guides-grid h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-6;
+  text-align: center;
+}
+
+.guides-grid__list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-5;
+}
+
+.guide-card {
+  background: $color-bg;
+  border: 1px solid rgba($color-ink, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-card__img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: $color-blush;
+}
+
+.guide-card__body {
+  padding: $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  flex: 1;
+}
+
+.guide-card__name {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-md;
+}
+
+.guide-card__price {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-lg;
+  color: $color-accent;
+}
+
+.guide-card__lede {
+  font-size: $fs-sm;
+  color: rgba($color-ink, 0.85);
+  margin-bottom: $space-3;
+  flex: 1;
+}
+
+@media (max-width: $bp-lg) {
+  .guides-grid__list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: $bp-md) {
+  .guides-grid__list { grid-template-columns: 1fr; }
+}
+
+// ----- Bundle CTA strip -----
+
+.guides-bundle-cta {
+  @extend %guides-section;
+  background: $color-peach;
+  text-align: center;
+}
+
+.guides-bundle-cta__inner {
+  @extend %guides-inner;
+  max-width: 720px;
+}
+
+.guides-bundle-cta h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-3xl;
+  margin-bottom: $space-3;
+}
+
+.guides-bundle-cta h2 span {
+  color: $color-accent;
+}
+
+.guides-bundle-cta__strike {
+  text-decoration: line-through;
+  color: rgba($color-ink, 0.65);
+  margin-bottom: $space-3;
+}
+
+.guides-bundle-cta p {
+  font-size: $fs-md;
+  margin-bottom: $space-4;
+}
+
+// ----- FAQ -----
+
+.guides-faq {
+  @extend %guides-section;
+}
+
+.guides-faq__inner {
+  @extend %guides-inner;
+  max-width: 760px;
+}
+
+.guides-faq h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-6;
+  text-align: center;
+}

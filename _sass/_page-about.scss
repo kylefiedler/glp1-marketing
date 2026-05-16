@@ -1,0 +1,130 @@
+.about-hero {
+  background: linear-gradient(180deg, $color-blush 0%, $color-bg 100%);
+  padding: $space-8 $space-5 $space-9;
+}
+
+.about-hero__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-8;
+  align-items: center;
+}
+
+.about-hero__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin-bottom: $space-4;
+}
+
+.about-hero__title {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-3xl;
+  line-height: $lh-tight;
+  margin-bottom: $space-5;
+}
+
+.about-hero__lede {
+  font-size: $fs-lg;
+  line-height: $lh-snug;
+  margin-bottom: $space-4;
+}
+
+.about-hero p {
+  font-size: $fs-md;
+  margin-bottom: $space-3;
+}
+
+.about-hero__media img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba($color-ink, 0.15);
+}
+
+@media (max-width: $bp-md) {
+  .about-hero__inner { grid-template-columns: 1fr; gap: $space-6; }
+  .about-hero__media { max-width: 360px; margin: 0 auto; order: -1; }
+  .about-hero__title { font-size: $fs-2xl; }
+}
+
+.about-story {
+  padding: $space-9 $space-5;
+}
+
+.about-story__inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.about-story__inner h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-6;
+  text-align: center;
+}
+
+.about-story__inner p {
+  font-size: $fs-md;
+  line-height: $lh-body;
+  margin-bottom: $space-4;
+}
+
+.about-story__figure {
+  margin: $space-7 0;
+}
+
+.about-story__figure img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba($color-ink, 0.15);
+}
+
+.about-story__signoff {
+  font-family: $font-display;
+  font-style: italic;
+  font-size: $fs-lg;
+  text-align: center;
+  margin-top: $space-7;
+}
+
+.about-bundle {
+  background: $color-blush;
+  padding: $space-9 $space-5;
+  text-align: center;
+}
+
+.about-bundle__inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.about-bundle h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-3xl;
+  margin-bottom: $space-3;
+}
+
+.about-bundle h2 span {
+  color: $color-accent;
+}
+
+.about-bundle__strike {
+  text-decoration: line-through;
+  color: rgba($color-ink, 0.65);
+  margin-bottom: $space-3;
+}
+
+.about-bundle p {
+  font-size: $fs-md;
+  margin-bottom: $space-4;
+}

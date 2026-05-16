@@ -1,0 +1,141 @@
+---
+layout: default
+title: GLP-1 Guides
+description: >-
+  Eight focused PDF guides for GLP-1 users - nutrition, supplements, workouts,
+  travel and weaning off. Buy individually from $2 or grab the Ultimate Bundle
+  for $35 (normally $135+).
+permalink: /guides/
+---
+{% include header.html %}
+
+<main class="guides">
+
+  <section class="guides-hero">
+    <div class="guides-hero__inner">
+      <p class="guides-hero__eyebrow">Your Complete GLP-1 Toolbox</p>
+      <h1 class="guides-hero__title">Build your foundation.<br>Save your muscle.<br>Learn to eat again.</h1>
+      <p><a class="btn btn--primary btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy The Ultimate Guide Bundle</a></p>
+    </div>
+  </section>
+
+  <section class="guides-bundle">
+    <div class="guides-bundle__inner">
+      <div class="guides-bundle__copy">
+        <p class="guides-bundle__eyebrow">The Ultimate That GLP-1 Girl Bundle</p>
+        <h2>$35 <span class="guides-bundle__strike">$135+ value</span></h2>
+        <p>You need a strategy that actually fits your GLP-1 life. This is that strategy. Inside this bundle, you&rsquo;ll get every guide you need to feel confident, consistent, and completely in control, no matter what phase of your journey you&rsquo;re in.</p>
+        <p>Everything you need to succeed on (and off) GLP-1s in one powerful package.</p>
+        <p><a class="btn btn--primary btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy The Ultimate Guide Bundle</a></p>
+      </div>
+      <div class="guides-bundle__mockup" aria-hidden="true">
+        {%- assign covers = "guide-supplement|guide-meal-template|guide-travel|guide-wean-off|guide-workout|guide-grocery|guide-beginner|guide-protein" | split: "|" -%}
+        {%- for cover in covers -%}
+          <img src="{{ '/assets/images/home/' | append: cover | append: '.png' | relative_url }}" alt="" width="400" height="520" loading="lazy">
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  <section class="guides-included">
+    <div class="guides-included__inner">
+      <h2>What&rsquo;s included</h2>
+      <ul>
+        <li><strong>Beginner GLP-1 Survival Kit ($27 value):</strong> Start strong with education, side effect support, and step-by-step guidance to build fat-loss habits before stalls or setbacks hit.</li>
+        <li><strong>Grocery &amp; Food Guide ($17 value):</strong> High-protein staples, smart swaps, and low-volume meal ideas, perfect for low appetite days and simplified shopping.</li>
+        <li><strong>Workout Starter Pack ($27 value):</strong> Strength-based fitness plans that preserve your muscle and metabolism, with at-home and gym options designed for real energy levels on GLP-1s.</li>
+        <li><strong>Travel Survival Kit ($17 value):</strong> Stay consistent on the go with packing tips, travel-safe snacks, airport &amp; restaurant orders, and ways to move your body without the drama.</li>
+        <li><strong>Wean-Off Survival Kit ($27 value):</strong> Your step-by-step transition plan for coming off meds without regaining weight or losing momentum.</li>
+        <li><strong>Mini Supplement Guide ($9 value):</strong> No more guesswork. Support digestion, energy, and recovery with the most useful GLP-1-friendly supplements.</li>
+        <li><strong>7-Day Meal Template ($9 value):</strong> Easy, flexible meals for every part of your week &mdash; even if your appetite disappears or your schedule is chaos.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="guides-grid">
+    <div class="guides-grid__inner">
+      <h2>Buy individually</h2>
+      <ul class="guides-grid__list">
+        {%- assign products =
+          "guide-beginner|Beginner GLP-1 Survival Kit|$9|This is the playbook you wish came with your prescription.|Beginner-GLP-1-Survival-Kit||" |
+          append: "guide-grocery|Food & Grocery Guide|$6|If you don't know what to eat, start here.|obqmks||" |
+          append: "guide-workout|Workout Starter Pack|$9|This isn't about shrinking. It's about building strength you'll keep.|twfnd||" |
+          append: "guide-travel|Travel Survival Kit|$6|Travel doesn't have to derail your progress.|fgsiwc||" |
+          append: "guide-wean-off|Wean Off GLP-1 Survival Kit|$9|The shot might end, but your results don't have to.|phprv||" |
+          append: "guide-supplement|Mini Supplement Guide|$2|Cut through supplement noise.|owuwre||" |
+          append: "guide-meal-template|7-Day Meal Template|$2|A full week of done-for-you meals.|rziler"
+          | split: "||" -%}
+        {%- for product_str in products -%}
+          {%- assign p = product_str | split: "|" -%}
+          <li class="guide-card">
+            <img class="guide-card__img" src="{{ '/assets/images/home/' | append: p[0] | append: '.png' | relative_url }}" alt="" width="400" height="520" loading="lazy">
+            <div class="guide-card__body">
+              <h3 class="guide-card__name">That GLP-1 Girl {{ p[1] }}</h3>
+              <p class="guide-card__price">{{ p[2] }}</p>
+              <p class="guide-card__lede">{{ p[3] }}</p>
+              <p><a class="btn btn--primary" href="https://thatglp1girl.gumroad.com/l/{{ p[4] }}" target="_blank" rel="noopener">Buy now</a></p>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+
+  <section class="guides-bundle-cta">
+    <div class="guides-bundle-cta__inner">
+      <h2>Get all of the Guides for <span>$35</span></h2>
+      <p class="guides-bundle-cta__strike">Normally $135+ if purchased separately.</p>
+      <p>No fluff. No overwhelm. Just everything you need to succeed.</p>
+      <p><a class="btn btn--primary btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy The Ultimate Bundle</a></p>
+    </div>
+  </section>
+
+  <section class="guides-faq">
+    <div class="guides-faq__inner">
+      <h2>Frequently Asked Questions</h2>
+
+      <details>
+        <summary>What format are the guides?</summary>
+        <p>All guides are downloadable PDFs. You&rsquo;ll get instant access after purchase via email and can save them to your phone, tablet, or computer. Read them offline anytime.</p>
+      </details>
+
+      <details>
+        <summary>Do I need to be on a GLP-1 medication to use these?</summary>
+        <p>Most guides work whether you&rsquo;re on Ozempic, Wegovy, Mounjaro, Zepbound, or planning to start. The Beginner Kit is perfect for people just starting, and the Wean-Off Kit is specifically for those transitioning off medication.</p>
+      </details>
+
+      <details>
+        <summary>Are these guides evidence-based?</summary>
+        <p>Yes. Every guide is created by Jessica, an Ivy League-educated registered nurse with Obesity Medicine certification, certified personal trainer credentials, and 155 pounds of personal weight loss experience. All recommendations are backed by clinical research and real-world application.</p>
+      </details>
+
+      <details>
+        <summary>How is this different from free information online?</summary>
+        <p>Free content gives you pieces. These guides give you complete systems: step-by-step plans, meal templates, workout calendars, and troubleshooting for the specific challenges GLP-1 users face. No guessing, no piecing together random Instagram posts.</p>
+      </details>
+
+      <details>
+        <summary>Can I share these with friends or family?</summary>
+        <p>These guides are for personal use only. If you&rsquo;d like to gift a guide to someone, you can purchase additional copies at checkout or send them the link to buy their own.</p>
+      </details>
+
+      <details>
+        <summary>Do you offer refunds?</summary>
+        <p>All sales are final. These are digital products delivered instantly, so we cannot offer refunds. However, if you have questions about which guide is right for you before purchasing, feel free to reach out via the contact form.</p>
+      </details>
+
+      <details>
+        <summary>I already bought one guide. Can I upgrade to the bundle?</summary>
+        <p>Yes! Email us at Hello@ThatGLP1Girl.com with your purchase receipt and we&rsquo;ll send you a discount code for the difference so you can grab the bundle.</p>
+      </details>
+
+      <details>
+        <summary>I&rsquo;m overwhelmed. Where should I start?</summary>
+        <p>If you&rsquo;re NEW to GLP-1s &rarr; Start with the Beginner Kit. If you&rsquo;re STRUGGLING with food choices &rarr; Grab the Food &amp; Grocery Guide. If you need MOVEMENT structure &rarr; Get the Workout Starter Pack. If you want EVERYTHING &rarr; The Ultimate Bundle saves you $58 and covers your entire journey.</p>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+{% include footer.html %}

@@ -1,0 +1,378 @@
+// Shared layout helpers for coaching sections
+%coaching-section {
+  padding: $space-9 $space-5;
+}
+
+%coaching-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+// ----- Hero -----
+
+.coaching-hero {
+  @extend %coaching-section;
+  background: linear-gradient(180deg, $color-blush 0%, $color-bg 100%);
+  padding-top: $space-8;
+}
+
+.coaching-hero__inner {
+  @extend %coaching-inner;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: $space-8;
+  align-items: center;
+}
+
+.coaching-hero__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin-bottom: $space-4;
+}
+
+.coaching-hero__title {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-3xl;
+  line-height: $lh-tight;
+  margin-bottom: $space-5;
+}
+
+.coaching-hero__lede {
+  font-size: $fs-lg;
+  line-height: $lh-snug;
+  margin-bottom: $space-6;
+}
+
+.coaching-hero__media img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba($color-ink, 0.15);
+}
+
+@media (max-width: $bp-md) {
+  .coaching-hero__inner { grid-template-columns: 1fr; gap: $space-6; }
+  .coaching-hero__media { max-width: 360px; margin: 0 auto; order: -1; }
+  .coaching-hero__title { font-size: $fs-2xl; }
+}
+
+// ----- Truth -----
+
+.coaching-truth {
+  @extend %coaching-section;
+  text-align: center;
+}
+
+.coaching-truth__inner {
+  @extend %coaching-inner;
+  max-width: 720px;
+}
+
+.coaching-truth h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-5;
+}
+
+.coaching-truth p {
+  font-size: $fs-md;
+  line-height: $lh-body;
+  margin-bottom: $space-4;
+}
+
+// ----- Features grid -----
+
+.coaching-features {
+  @extend %coaching-section;
+  background: $color-blush;
+}
+
+.coaching-features__inner {
+  @extend %coaching-inner;
+}
+
+.coaching-features h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-6;
+  text-align: center;
+}
+
+.coaching-features__grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-5;
+}
+
+.coaching-features__grid li {
+  background: $color-bg;
+  border-radius: 12px;
+  padding: $space-6;
+}
+
+.coaching-features__grid h3 {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-lg;
+  margin-bottom: $space-3;
+  color: $color-accent;
+}
+
+.coaching-features__grid p {
+  font-size: $fs-sm;
+  line-height: $lh-body;
+}
+
+@media (max-width: $bp-md) {
+  .coaching-features__grid { grid-template-columns: 1fr; }
+}
+
+// ----- Fit list -----
+
+.coaching-fit {
+  @extend %coaching-section;
+}
+
+.coaching-fit__inner {
+  @extend %coaching-inner;
+  max-width: 720px;
+}
+
+.coaching-fit h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-5;
+  text-align: center;
+}
+
+.coaching-fit ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: $space-3;
+}
+
+.coaching-fit li {
+  position: relative;
+  padding-left: $space-6;
+  font-size: $fs-md;
+  line-height: $lh-snug;
+}
+
+.coaching-fit li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: $color-accent;
+  font-weight: 700;
+}
+
+// ----- Credentials -----
+
+.coaching-credentials {
+  @extend %coaching-section;
+  background: $color-peach;
+}
+
+.coaching-credentials__inner {
+  @extend %coaching-inner;
+  max-width: 760px;
+}
+
+.coaching-credentials h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-4;
+  text-align: center;
+}
+
+.coaching-credentials h3 {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-lg;
+  margin: $space-6 0 $space-3;
+  color: $color-ink;
+}
+
+.coaching-credentials p {
+  font-size: $fs-md;
+  line-height: $lh-body;
+  margin-bottom: $space-3;
+}
+
+.coaching-credentials ul {
+  padding-left: $space-5;
+  margin-bottom: $space-3;
+}
+
+.coaching-credentials li {
+  font-size: $fs-sm;
+  margin-bottom: $space-2;
+}
+
+// ----- Program details -----
+
+.coaching-program {
+  @extend %coaching-section;
+}
+
+.coaching-program__inner {
+  @extend %coaching-inner;
+}
+
+.coaching-program h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-6;
+  text-align: center;
+}
+
+.coaching-program__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-6;
+  margin-bottom: $space-5;
+}
+
+.coaching-program__cols h3 {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-lg;
+  margin-bottom: $space-3;
+}
+
+.coaching-program__cols ul {
+  padding-left: $space-5;
+}
+
+.coaching-program__cols li {
+  font-size: $fs-sm;
+  margin-bottom: $space-2;
+}
+
+.coaching-program__duration {
+  text-align: center;
+  font-size: $fs-md;
+}
+
+@media (max-width: $bp-md) {
+  .coaching-program__cols { grid-template-columns: 1fr; }
+}
+
+// ----- Price -----
+
+.coaching-price {
+  @extend %coaching-section;
+  background: $color-accent;
+  color: $color-bg;
+  text-align: center;
+}
+
+.coaching-price__inner {
+  @extend %coaching-inner;
+  max-width: 640px;
+}
+
+.coaching-price__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: $space-3;
+  opacity: 0.85;
+}
+
+.coaching-price__amount {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-4xl;
+  line-height: 1;
+  margin-bottom: $space-4;
+}
+
+.coaching-price__amount span {
+  font-size: $fs-lg;
+  opacity: 0.85;
+}
+
+.coaching-price p:not(.coaching-price__eyebrow):not(.coaching-price__amount) {
+  font-size: $fs-md;
+  margin-bottom: $space-5;
+}
+
+.coaching-price .btn--primary {
+  background: $color-bg;
+  color: $color-accent;
+}
+
+.coaching-price .btn--primary:hover {
+  filter: none;
+  background: $color-blush;
+}
+
+// ----- Apply form -----
+
+.coaching-apply {
+  @extend %coaching-section;
+}
+
+.coaching-apply__inner {
+  @extend %coaching-inner;
+  max-width: 720px;
+  text-align: center;
+}
+
+.coaching-apply h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-4;
+}
+
+.coaching-apply > .coaching-apply__inner > p {
+  font-size: $fs-md;
+  margin-bottom: $space-6;
+}
+
+.coaching-apply .contact-form {
+  padding: 0;
+}
+
+.coaching-apply .contact-form__heading {
+  text-align: left;
+}
+
+// ----- FAQ -----
+
+.coaching-faq {
+  @extend %coaching-section;
+  background: $color-blush;
+}
+
+.coaching-faq__inner {
+  @extend %coaching-inner;
+  max-width: 760px;
+}
+
+.coaching-faq h2 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-6;
+  text-align: center;
+}
