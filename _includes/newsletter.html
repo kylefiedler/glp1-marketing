@@ -1,0 +1,42 @@
+{%- comment -%}
+  Newsletter signup (EmailOctopus).
+
+  TODO(ticket-#6): Replace `data-emailoctopus-form-action` with the real
+  form-action URL from EmailOctopus Dashboard -> your form -> embed code,
+  then verify end-to-end during the pre-launch ticket.
+
+  Params:
+    heading (string, optional) - section heading. Default: "Join the newsletter".
+    lead    (string, optional) - lead-magnet / blurb copy above the form.
+    button  (string, optional) - submit button label. Default: "Subscribe".
+{%- endcomment -%}
+
+{%- assign nl_heading = include.heading | default: "Join the newsletter" -%}
+{%- assign nl_button  = include.button  | default: "Subscribe" -%}
+
+<section class="newsletter">
+  <div class="newsletter__inner">
+    <h2 class="newsletter__heading">{{ nl_heading }}</h2>
+    {%- if include.lead -%}
+      <p class="newsletter__lead">{{ include.lead }}</p>
+    {%- endif -%}
+
+    <form
+      class="newsletter__form"
+      method="POST"
+      action="#TODO-emailoctopus-endpoint"
+      data-emailoctopus-form-action="#TODO-emailoctopus-endpoint">
+      <label class="newsletter__field">
+        <span class="visually-hidden">Email address</span>
+        <input
+          type="email"
+          name="field_0"
+          required
+          autocomplete="email"
+          placeholder="you@example.com">
+      </label>
+      <button type="submit" class="newsletter__submit">{{ nl_button }}</button>
+      <p class="newsletter__note">No spam. Unsubscribe anytime.</p>
+    </form>
+  </div>
+</section>

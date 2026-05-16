@@ -1,0 +1,28 @@
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="{{ '/' | relative_url }}">That GLP-1 Girl</a>
+
+    <input type="checkbox" id="site-nav-toggle" class="site-nav-toggle" aria-label="Open menu">
+    <label for="site-nav-toggle" class="site-nav-toggle-label" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        {%- assign nav_items = "/,Home|/guides,Shop the Guides|/about,About|/coaching,Coaching|/journal,Journal|/blog,Blog" | split: "|" -%}
+        {%- for item in nav_items -%}
+          {%- assign parts = item | split: "," -%}
+          {%- assign href = parts[0] -%}
+          {%- assign label = parts[1] -%}
+          {%- assign is_active = false -%}
+          {%- if href == "/" and page.url == "/" -%}
+            {%- assign is_active = true -%}
+          {%- elsif href != "/" and page.url contains href -%}
+            {%- assign is_active = true -%}
+          {%- endif -%}
+          <li><a href="{{ href | relative_url }}"{% if is_active %} class="is-active" aria-current="page"{% endif %}>{{ label }}</a></li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,110 @@
+.site-header {
+  border-bottom: 1px solid rgba($color-ink, 0.08);
+  background: $color-bg;
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-5;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: $space-4 $space-5;
+}
+
+.site-header__brand {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-lg;
+  color: $color-ink;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.site-nav {
+  ul {
+    display: flex;
+    gap: $space-6;
+    list-style: none;
+    padding: 0;
+  }
+
+  a {
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: $fs-sm;
+    color: $color-ink;
+    text-decoration: none;
+    padding: $space-2 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 120ms ease, color 120ms ease;
+  }
+
+  a:hover {
+    color: $color-accent;
+  }
+
+  a.is-active {
+    border-bottom-color: $color-accent;
+    color: $color-accent;
+  }
+}
+
+// Mobile toggle - CSS-only checkbox hack.
+.site-nav-toggle,
+.site-nav-toggle-label {
+  display: none;
+}
+
+@media (max-width: $bp-md) {
+  .site-header__inner {
+    flex-wrap: wrap;
+  }
+
+  .site-nav-toggle-label {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 22px;
+    cursor: pointer;
+
+    span {
+      display: block;
+      height: 3px;
+      background: $color-ink;
+      border-radius: 2px;
+      transition: transform 200ms ease, opacity 200ms ease;
+    }
+  }
+
+  .site-nav {
+    flex-basis: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 240ms ease;
+
+    ul {
+      flex-direction: column;
+      gap: $space-3;
+      padding: $space-4 0;
+    }
+  }
+
+  .site-nav-toggle:checked ~ .site-nav {
+    max-height: 480px;
+  }
+
+  .site-nav-toggle:checked ~ .site-nav-toggle-label span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .site-nav-toggle:checked ~ .site-nav-toggle-label span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-nav-toggle:checked ~ .site-nav-toggle-label span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
