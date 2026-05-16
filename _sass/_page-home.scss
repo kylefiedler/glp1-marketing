@@ -1,0 +1,376 @@
+// Buttons are home-page-scoped for now; promote to a shared partial when
+// other pages need them.
+.btn {
+  display: inline-block;
+  padding: $space-3 $space-6;
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: filter 120ms ease, background 120ms ease, color 120ms ease;
+}
+
+.btn--primary {
+  background: $color-accent;
+  color: $color-bg;
+}
+
+.btn--primary:hover {
+  filter: brightness(0.92);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: $color-ink;
+  border: 1.5px solid $color-ink;
+}
+
+.btn--ghost:hover {
+  background: $color-ink;
+  color: $color-bg;
+}
+
+.btn--lg {
+  padding: $space-4 $space-7;
+  font-size: $fs-md;
+}
+
+// ----- Layout helpers (home-only for now) -----
+
+%home-section {
+  padding: $space-9 $space-5;
+}
+
+%home-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// ----- Hero -----
+
+.home-hero {
+  @extend %home-section;
+  background: linear-gradient(180deg, $color-blush 0%, $color-bg 100%);
+  padding-top: $space-8;
+}
+
+.home-hero__inner {
+  @extend %home-inner;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: $space-8;
+  align-items: center;
+}
+
+.home-hero__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin-bottom: $space-5;
+}
+
+.home-hero__title {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-4xl;
+  line-height: $lh-tight;
+  color: $color-ink;
+  margin-bottom: $space-5;
+}
+
+.home-hero__lede {
+  font-size: $fs-lg;
+  line-height: $lh-snug;
+  color: $color-ink;
+  margin-bottom: $space-6;
+  max-width: 56ch;
+}
+
+.home-hero__media img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+  box-shadow: 0 12px 32px rgba($color-ink, 0.15);
+}
+
+@media (max-width: $bp-lg) {
+  .home-hero__title { font-size: $fs-3xl; }
+}
+
+@media (max-width: $bp-md) {
+  .home-hero__inner {
+    grid-template-columns: 1fr;
+    gap: $space-6;
+  }
+  .home-hero__media { order: -1; max-width: 360px; margin: 0 auto; }
+  .home-hero__title { font-size: $fs-2xl; }
+}
+
+// ----- About blurb -----
+
+.home-about {
+  @extend %home-section;
+  text-align: center;
+}
+
+.home-about__inner {
+  @extend %home-inner;
+  max-width: 720px;
+}
+
+.home-about__heading {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-5;
+}
+
+.home-about p {
+  font-size: $fs-md;
+  line-height: $lh-body;
+  margin-bottom: $space-4;
+}
+
+// ----- Bundle CTA -----
+
+.home-bundle {
+  @extend %home-section;
+  background: $color-blush;
+}
+
+.home-bundle__inner {
+  @extend %home-inner;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-8;
+  align-items: center;
+}
+
+.home-bundle__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin-bottom: $space-3;
+}
+
+.home-bundle__heading {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-3xl;
+  line-height: $lh-tight;
+  margin-bottom: $space-3;
+}
+
+.home-bundle__price {
+  color: $color-accent;
+}
+
+.home-bundle__strike {
+  font-size: $fs-md;
+  color: rgba($color-ink, 0.65);
+  text-decoration: line-through;
+  margin-bottom: $space-3;
+}
+
+.home-bundle__lede {
+  font-size: $fs-md;
+  margin-bottom: $space-6;
+}
+
+.home-bundle__mockup {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-3;
+  transform: rotate(-2deg);
+}
+
+.home-bundle__mockup img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 6px 14px rgba($color-ink, 0.18);
+  background: $color-bg;
+}
+
+@media (max-width: $bp-lg) {
+  .home-bundle__inner { gap: $space-6; }
+  .home-bundle__heading { font-size: $fs-2xl; }
+}
+
+@media (max-width: $bp-md) {
+  .home-bundle__inner { grid-template-columns: 1fr; }
+  .home-bundle__mockup { grid-template-columns: repeat(4, 1fr); transform: none; }
+}
+
+// ----- Services 3-col -----
+
+.home-services {
+  @extend %home-section;
+}
+
+.home-services__inner {
+  @extend %home-inner;
+}
+
+.home-services__grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-6;
+}
+
+.home-service {
+  background: $color-bg;
+  border: 1px solid rgba($color-ink, 0.08);
+  border-radius: 12px;
+  padding: $space-6;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.home-service__heading {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-xl;
+  color: $color-ink;
+}
+
+.home-service p:last-child {
+  margin-top: auto;
+}
+
+@media (max-width: $bp-lg) {
+  .home-services__grid { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
+}
+
+// ----- Testimonials -----
+
+.home-testimonials {
+  @extend %home-section;
+  background: $color-peach;
+}
+
+.home-testimonials__inner {
+  @extend %home-inner;
+}
+
+.home-testimonials__eyebrow {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  text-align: center;
+  margin-bottom: $space-7;
+  color: $color-ink;
+}
+
+.home-testimonials__grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-6;
+}
+
+.home-testimonial {
+  background: $color-bg;
+  border-radius: 12px;
+  padding: $space-6;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.home-testimonial blockquote {
+  font-size: $fs-sm;
+  line-height: $lh-body;
+  color: $color-ink;
+  margin: 0;
+}
+
+.home-testimonial__attr {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  color: $color-accent;
+  margin-top: auto;
+}
+
+@media (max-width: $bp-md) {
+  .home-testimonials__grid { grid-template-columns: 1fr; }
+}
+
+// ----- Guides + Journal banners -----
+
+.home-banners {
+  @extend %home-section;
+}
+
+.home-banners__inner {
+  @extend %home-inner;
+  display: grid;
+  gap: $space-7;
+}
+
+.home-banner {
+  display: grid;
+  grid-template-columns: 0.4fr 0.6fr;
+  gap: $space-7;
+  align-items: center;
+  background: $color-blush;
+  border-radius: 16px;
+  padding: $space-7;
+}
+
+.home-banner--reverse {
+  background: $color-peach;
+}
+
+.home-banner--reverse .home-banner__img { order: 2; }
+
+.home-banner__img {
+  width: 100%;
+  height: auto;
+  max-width: 280px;
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba($color-ink, 0.18);
+  justify-self: center;
+}
+
+.home-banner__heading {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-2xl;
+  margin-bottom: $space-3;
+}
+
+.home-banner p {
+  font-size: $fs-md;
+  margin-bottom: $space-5;
+}
+
+@media (max-width: $bp-md) {
+  .home-banner,
+  .home-banner--reverse {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .home-banner--reverse .home-banner__img { order: 0; }
+}
+
+// ----- Newsletter embed wrapper (the EO script injects its own form) -----
+
+.newsletter__embed {
+  max-width: 480px;
+  margin: $space-5 auto 0;
+}

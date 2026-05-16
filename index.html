@@ -1,10 +1,132 @@
 ---
 layout: default
-title: Site is being migrated
+title: GLP-1 Weight Loss Coaching & Support
+description: >-
+  Nurse-led, evidence-based GLP-1 coaching, journal and guides from Jessica -
+  Ivy League RN, Obesity Medicine certified, and 155 lbs down herself.
+permalink: /
 ---
-<main style="min-height:80vh;display:grid;place-items:center;text-align:center;padding:2rem">
-  <div>
-    <h1>That GLP-1 Girl</h1>
-    <p>Site is being migrated. Back soon.</p>
-  </div>
+{% include header.html %}
+
+<main class="home">
+
+  <section class="home-hero">
+    <div class="home-hero__inner">
+      <div class="home-hero__copy">
+        <p class="home-hero__eyebrow">Ivy League RN &nbsp;|&nbsp; Obesity Medicine Certified &nbsp;|&nbsp; Certified Personal Trainer</p>
+        <h1 class="home-hero__title">Evidence-Based Weight Loss Support<br>Designed for GLP-1 Success</h1>
+        <p class="home-hero__lede">I Lost 155 Pounds on GLP-1&mdash;And Kept It Off. Now I help you do the same, without the guesswork, side effects, or fear of regaining.</p>
+        <p class="home-hero__cta">
+          <a class="btn btn--primary" href="{{ '/about' | relative_url }}">More about me</a>
+        </p>
+      </div>
+      <div class="home-hero__media">
+        <img src="{{ '/assets/images/home/hero.jpg' | relative_url }}" alt="Jessica, GLP-1 weight loss coach and registered nurse" loading="eager" width="800" height="1000">
+      </div>
+    </div>
+  </section>
+
+  <section class="home-about">
+    <div class="home-about__inner">
+      <h2 class="home-about__heading">Here&rsquo;s what it means to me</h2>
+      <p>I&rsquo;m an Ivy League educated registered nurse, a certified personal trainer, a certified nutrition coach, and am currently completing my Obesity Medicine certification with the Obesity Medicine Association. But more importantly? I&rsquo;ve lost 155 pounds myself&mdash;and kept it off.</p>
+      <p>The word <em>coach</em> can mean anything these days. Let&rsquo;s be honest, it doesn&rsquo;t always inspire confidence.</p>
+    </div>
+  </section>
+
+  <section class="home-bundle">
+    <div class="home-bundle__inner">
+      <div class="home-bundle__copy">
+        <p class="home-bundle__eyebrow">The Ultimate Bundle</p>
+        <h2 class="home-bundle__heading">Get all of the Guides<br>for <span class="home-bundle__price">$35</span></h2>
+        <p class="home-bundle__strike">Normally $135+ if purchased separately.</p>
+        <p class="home-bundle__lede">No fluff. No overwhelm. Just everything you need to succeed.</p>
+        <p class="home-bundle__cta">
+          <a class="btn btn--primary btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy The Ultimate Bundle</a>
+        </p>
+      </div>
+      <div class="home-bundle__mockup" aria-hidden="true">
+        {%- assign bundle_covers = "guide-supplement.png|guide-meal-template.png|guide-travel.png|guide-wean-off.png|guide-workout.png|guide-grocery.png|guide-beginner.png|guide-protein.png" | split: "|" -%}
+        {%- for cover in bundle_covers -%}
+          <img src="{{ '/assets/images/home/' | append: cover | relative_url }}" alt="" loading="lazy" width="400" height="520">
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  <section class="home-services">
+    <div class="home-services__inner">
+      <ul class="home-services__grid">
+        <li class="home-service">
+          <h3 class="home-service__heading">Personalized Coaching</h3>
+          <p>Unlock your optimal well-being with expert guidance from our coaching service. Tailored advice, customized plans, and ongoing support for a healthier, happier you.</p>
+          <p><a class="btn btn--ghost" href="{{ '/coaching' | relative_url }}">Learn more</a></p>
+        </li>
+        <li class="home-service">
+          <h3 class="home-service__heading">Yearlong Journal</h3>
+          <p>Not just a tracker. A transformation companion. Track meals, mood, medication and movement in one place built for the GLP-1 journey.</p>
+          <p><a class="btn btn--ghost" href="{{ '/journal' | relative_url }}">Learn more</a></p>
+        </li>
+        <li class="home-service">
+          <h3 class="home-service__heading">GLP-1 Guides</h3>
+          <p>Eight focused guides covering nutrition, supplements, workouts, travel, and weaning off &mdash; written by a nurse who&rsquo;s been there.</p>
+          <p><a class="btn btn--ghost" href="{{ '/guides' | relative_url }}">Learn more</a></p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="home-testimonials">
+    <div class="home-testimonials__inner">
+      <p class="home-testimonials__eyebrow">Client Reviews</p>
+      <ul class="home-testimonials__grid">
+        <li class="home-testimonial">
+          <blockquote>I&rsquo;d been on Wegovy for 8 months and lost 47 pounds, but my insurance was stopping coverage. I was PANICKING. Every time I thought about eating without the medication, I pictured myself back at Taco Bell drive-thru ordering three Crunchwrap Supremes like I used to. Jess&rsquo;s guide taught me the &lsquo;hunger scale&rsquo; technique and how to build actually satisfying meals with 30g of protein. It&rsquo;s been 5 months off Wegovy and I&rsquo;ve only gained back 3 pounds (which I expected). I&rsquo;m not white knuckling it anymore.</blockquote>
+          <p class="home-testimonial__attr">Megan R.</p>
+        </li>
+        <li class="home-testimonial">
+          <blockquote>Jess isn&rsquo;t just knowledgeable, she actually gets it. She&rsquo;s been through it herself, which makes all the difference. I&rsquo;ve worked with other coaches, but none had the medical background and the lived experience like this. It&rsquo;s the first time I&rsquo;ve felt truly supported.</blockquote>
+          <p class="home-testimonial__attr">Alyssa G.</p>
+        </li>
+        <li class="home-testimonial">
+          <blockquote>I was doing an hour of cardio every morning and eating 1,200 calories on Ozempic. I lost 52 pounds in 6 months but I looked&hellip; saggy. My arms had loose skin, I couldn&rsquo;t open a pickle jar, and I was exhausted by 2pm every day. Jess told me I was undereating by like 600 calories and that I needed to LIFT, not just run. I was terrified to eat more and stop cardio, but I trusted her. Within 3 weeks of eating 1,800 calories and lifting 4x a week, my energy came back. Now I&rsquo;m 47, I deadlift 185 pounds, and my arms actually have SHAPE. The scale went up 8 pounds but I&rsquo;m wearing the same size jeans. Turns out muscle weighs more than fat! Who knew?</blockquote>
+          <p class="home-testimonial__attr">Claire T.</p>
+        </li>
+        <li class="home-testimonial">
+          <blockquote>I&rsquo;ve binged since I was 14. Like, eat-until-I&rsquo;m-physically-sick binged. Mounjaro killed my appetite so I stopped binging for 7 months, but I knew the second I went off it, I&rsquo;d spiral again. I was right. Two weeks after stopping, I binged on an entire Costco sheet cake in one sitting. I felt SO ashamed. Jess taught me to track my emotions BEFORE I ate, not just what I ate. It sounds too simple to work, but when I started writing &lsquo;I&rsquo;m anxious about money&rsquo; or &lsquo;I&rsquo;m lonely,&rsquo; I could SEE the pattern. I&rsquo;ve had 3 months binge-free now. Three months. That&rsquo;s the longest streak since I was a kid.</blockquote>
+          <p class="home-testimonial__attr">Danielle M.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  {% include newsletter.html
+    heading="Join my mailing list for a FREE GUIDE: 150g Protein Daily Made Easy"
+    lead="Learn the exact strategy I used to preserve muscle during my 155-lb weight loss. Real meals, zero fluff, designed specifically for GLP-1 users."
+    note="By submitting your email, you acknowledge you're joining my email crew - but you can hop off the list anytime, no questions asked!" %}
+
+  <section class="home-banners">
+    <div class="home-banners__inner">
+      <article class="home-banner">
+        <img class="home-banner__img" src="{{ '/assets/images/home/guide-beginner.png' | relative_url }}" alt="" loading="lazy" width="400" height="520">
+        <div class="home-banner__copy">
+          <h2 class="home-banner__heading">That GLP-1 Girl Guides</h2>
+          <p>Everything you need to tackle your GLP-1 journey.</p>
+          <p><a class="btn btn--primary" href="{{ '/guides' | relative_url }}">See the guides</a></p>
+        </div>
+      </article>
+
+      <article class="home-banner home-banner--reverse">
+        <img class="home-banner__img" src="{{ '/assets/images/home/journal-cover.png' | relative_url }}" alt="" loading="lazy" width="400" height="520">
+        <div class="home-banner__copy">
+          <h2 class="home-banner__heading">That GLP-1 Girl Yearlong Journal</h2>
+          <p>Not just a tracker. A transformation companion.</p>
+          <p><a class="btn btn--primary" href="{{ '/journal' | relative_url }}">Learn more</a></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
 </main>
+
+{% include footer.html %}

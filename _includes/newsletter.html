@@ -1,18 +1,20 @@
 {%- comment -%}
   Newsletter signup (EmailOctopus).
 
-  TODO(ticket-#6): Replace `data-emailoctopus-form-action` with the real
-  form-action URL from EmailOctopus Dashboard -> your form -> embed code,
-  then verify end-to-end during the pre-launch ticket.
+  The actual form HTML is injected by EmailOctopus's embed script at the
+  position of the <script> tag below. Form-level styling (colors, button
+  copy, fields) is configured in the EmailOctopus dashboard, not here.
+
+  Form UUID lifted from the live site's home + footer newsletter slots.
 
   Params:
     heading (string, optional) - section heading. Default: "Join the newsletter".
-    lead    (string, optional) - lead-magnet / blurb copy above the form.
-    button  (string, optional) - submit button label. Default: "Subscribe".
+    lead    (string, optional) - blurb above the form.
+    note    (string, optional) - small print below the form.
 {%- endcomment -%}
 
 {%- assign nl_heading = include.heading | default: "Join the newsletter" -%}
-{%- assign nl_button  = include.button  | default: "Subscribe" -%}
+{%- assign nl_form_id = "94634042-e774-11f0-8715-19e8bfe62148" -%}
 
 <section class="newsletter">
   <div class="newsletter__inner">
@@ -21,22 +23,12 @@
       <p class="newsletter__lead">{{ include.lead }}</p>
     {%- endif -%}
 
-    <form
-      class="newsletter__form"
-      method="POST"
-      action="#TODO-emailoctopus-endpoint"
-      data-emailoctopus-form-action="#TODO-emailoctopus-endpoint">
-      <label class="newsletter__field">
-        <span class="visually-hidden">Email address</span>
-        <input
-          type="email"
-          name="field_0"
-          required
-          autocomplete="email"
-          placeholder="you@example.com">
-      </label>
-      <button type="submit" class="newsletter__submit">{{ nl_button }}</button>
-      <p class="newsletter__note">No spam. Unsubscribe anytime.</p>
-    </form>
+    <div class="newsletter__embed">
+      <script async src="https://eocampaign1.com/form/{{ nl_form_id }}.js" data-form="{{ nl_form_id }}"></script>
+    </div>
+
+    {%- if include.note -%}
+      <p class="newsletter__note">{{ include.note }}</p>
+    {%- endif -%}
   </div>
 </section>
