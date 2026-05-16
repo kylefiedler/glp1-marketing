@@ -1,0 +1,26 @@
+title: That GLP-1 Girl
+description: >-
+  Psychiatric nurse Jessica lost 155 lbs and helps others navigate GLP-1
+  medications like Ozempic, Wegovy, Mounjaro & Zepbound. Evidence-based
+  tips, real talk, and sustainable strategies for your weight loss journey.
+url: https://thatglp1girl.com
+baseurl: ""
+
+encoding: utf-8
+
+# No theme - styles are built from scratch in _sass/ and assets/css/main.scss.
+# The empty value overrides the github-pages default theme (jekyll-theme-primer).
+theme:
+
+permalink: /:year/:month/:day/:title/
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .bundle

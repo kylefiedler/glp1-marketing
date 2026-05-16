@@ -1,0 +1,53 @@
+body {
+  font-family: $font-body;
+  font-size: $fs-sm;
+  line-height: $lh-body;
+  color: $color-ink;
+  background-color: $color-bg;
+}
+
+h1 {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: $fs-3xl;
+  line-height: $lh-tight;
+  color: $color-ink;
+}
+
+h2 {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-2xl;
+  line-height: $lh-snug;
+  color: $color-ink;
+}
+
+h3 {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-xl;
+  line-height: $lh-snug;
+  color: $color-ink;
+}
+
+h4 {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-lg;
+  line-height: $lh-snug;
+  color: $color-ink;
+}
+
+p {
+  font-size: $fs-sm;
+}
+
+a {
+  color: $color-accent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration: none;
+}
