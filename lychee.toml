@@ -1,0 +1,30 @@
+# Lychee config for link-checking the built site.
+#
+# Usage:
+#   bundle exec jekyll build
+#   lychee --config lychee.toml _site/
+#
+# Excludes document false-positives and known TODOs. Keep this list short and
+# justified - every entry is a link the build accepts as "broken on purpose."
+
+# Treat _site/ as the document root so root-relative links resolve.
+root_dir = "/Users/kylefiedler/Development/glp1-marketing/_site"
+
+max_concurrency = 6
+timeout = 20
+accept = [200, 999]
+
+exclude = [
+  # ----- Bot-blocked but works in browsers (403 false positives) -----
+  '^https://www\.traderjoes\.com',
+  '^https://www\.mayoclinic\.org',
+
+  # ----- Known TODO until ticket #6 wires the real endpoint -----
+  '^https://formspree\.io/f/TODO',
+
+  # ----- Self-canonical on /404.html intentionally points at itself -----
+  '^https://thatglp1girl\.com/404\.html$',
+
+  # ----- Mailtos -----
+  '^mailto:',
+]

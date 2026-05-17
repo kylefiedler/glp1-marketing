@@ -6,6 +6,19 @@ description: >-
 url: https://thatglp1girl.com
 baseurl: ""
 
+author:
+  name: Jessica Rockowitz
+  twitter: jessicarockowitz
+twitter:
+  username: jessicarockowitz
+  card: summary_large_image
+social:
+  name: Jessica Rockowitz
+  links:
+    - https://www.instagram.com/jessicarockowitz/
+    - https://www.tiktok.com/@jessicarockowitz
+    - https://pin.it/6vBQYvXpE
+
 encoding: utf-8
 
 # No theme - styles are built from scratch in _sass/ and assets/css/main.scss.
@@ -22,5 +35,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - LAUNCH.md
+  - lychee.toml
   - vendor
   - .bundle
