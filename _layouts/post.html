@@ -1,0 +1,50 @@
+---
+layout: default
+---
+{% include header.html %}
+
+<article class="post">
+  <header class="post-header">
+    <div class="post-header__inner">
+      <p class="post-header__meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+        {% if page.author %}<span class="post-header__author"> &middot; by {{ page.author }}</span>{% endif %}
+      </p>
+      <h1 class="post-header__title">{{ page.title }}</h1>
+    </div>
+    {% if page.image %}
+      <div class="post-header__hero">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" loading="eager">
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="post-body">
+    <div class="post-body__inner">
+      {{ content }}
+    </div>
+  </div>
+
+  <aside class="post-more">
+    <div class="post-more__inner">
+      <h2>Keep reading</h2>
+      <ul>
+        {%- assign related = site.posts | where_exp: "p", "p.url != page.url" | sample: 3 -%}
+        {%- for p in related -%}
+          <li>
+            <a href="{{ p.url | relative_url }}">
+              {% if p.image %}<img src="{{ p.image | relative_url }}" alt="" loading="lazy">{% endif %}
+              <span>{{ p.title }}</span>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </aside>
+</article>
+
+{% include newsletter.html
+  heading="Join my mailing list for a FREE GUIDE: 150g Protein Daily Made Easy"
+  lead="Learn the exact strategy I used to preserve muscle during my 155-lb weight loss." %}
+
+{% include footer.html %}

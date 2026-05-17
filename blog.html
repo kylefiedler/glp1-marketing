@@ -1,0 +1,48 @@
+---
+layout: default
+title: The Blog
+description: >-
+  Evidence-based GLP-1 articles from Jessica Rockowitz, RN - protein,
+  workouts, snacks, and what nobody tells you before starting.
+permalink: /blog/
+---
+{% include header.html %}
+
+<main class="blog-index">
+
+  <header class="blog-index__hero">
+    <div class="blog-index__hero-inner">
+      <h1>The Blog</h1>
+      <p>Real talk on protein, muscle, training, and the parts of GLP-1 nobody warns you about.</p>
+    </div>
+  </header>
+
+  <section class="blog-index__list">
+    <div class="blog-index__list-inner">
+      <ul>
+        {%- for post in site.posts -%}
+          <li class="blog-card">
+            <a class="blog-card__link" href="{{ post.url | relative_url }}">
+              {% if post.image %}
+                <img class="blog-card__img" src="{{ post.image | relative_url }}" alt="{{ post.image_alt | default: post.title }}" loading="lazy">
+              {% endif %}
+              <div class="blog-card__body">
+                <p class="blog-card__meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time></p>
+                <h2 class="blog-card__title">{{ post.title }}</h2>
+                <p class="blog-card__excerpt">{{ post.description | default: post.excerpt | strip_html | truncate: 180 }}</p>
+                <p class="blog-card__cta">Read more &rarr;</p>
+              </div>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+{% include newsletter.html
+  heading="Join my mailing list for a FREE GUIDE: 150g Protein Daily Made Easy"
+  lead="Learn the exact strategy I used to preserve muscle during my 155-lb weight loss." %}
+
+{% include footer.html %}
