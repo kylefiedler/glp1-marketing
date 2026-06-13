@@ -1,5 +1,5 @@
 .site-header {
-  border-bottom: 1px solid rgba($color-ink, 0.08);
+  position: relative;
   background: $color-bg;
 }
 
@@ -8,9 +8,9 @@
   align-items: center;
   justify-content: space-between;
   gap: $space-5;
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: $space-4 $space-5;
+  padding: $space-5 $space-6;
 }
 
 .site-header__brand {
@@ -22,89 +22,207 @@
   letter-spacing: 0.01em;
 }
 
-.site-nav {
+// Hidden checkbox drives overlay open/close.
+.site-nav-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.site-nav-toggle-label {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  padding: 4px 0;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: $color-ink;
+    border-radius: 2px;
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+}
+
+// Overlay - hidden by default, revealed when checkbox is checked.
+.site-nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: $color-bg;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 240ms ease, visibility 240ms ease;
+}
+
+.site-nav-toggle:checked ~ .site-nav-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.site-nav-toggle:checked ~ .site-header__inner .site-nav-toggle-label {
+  visibility: hidden;
+}
+
+.site-nav-overlay__media {
+  position: relative;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+}
+
+.site-nav-overlay__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $space-7 $space-8;
+  gap: $space-5;
+}
+
+.site-nav-overlay__close {
+  position: absolute;
+  top: $space-6;
+  right: $space-6;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $color-ink;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.site-nav-overlay__primary {
   ul {
-    display: flex;
-    gap: $space-6;
     list-style: none;
     padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  a {
+    font-family: $font-display;
+    font-weight: 500;
+    font-size: clamp($fs-3xl, 6vw, 80px);
+    line-height: 1.05;
+    color: $color-ink;
+    text-decoration: none;
+    transition: color 120ms ease;
+  }
+
+  a:hover,
+  a.is-active {
+    color: $color-accent;
+  }
+}
+
+.site-nav-overlay__secondary {
+  margin-top: $space-5;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
   }
 
   a {
     font-family: $font-heading;
     font-weight: 600;
     font-size: $fs-sm;
-    color: $color-ink;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba($color-ink, 0.7);
     text-decoration: none;
-    padding: $space-2 0;
-    border-bottom: 2px solid transparent;
-    transition: border-color 120ms ease, color 120ms ease;
+    transition: color 120ms ease;
+  }
+
+  a:hover,
+  a.is-active {
+    color: $color-accent;
+  }
+}
+
+.site-nav-overlay__social {
+  position: absolute;
+  bottom: $space-6;
+  right: $space-6;
+  display: flex;
+  gap: $space-4;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: $color-ink;
+    transition: color 120ms ease;
   }
 
   a:hover {
     color: $color-accent;
   }
 
-  a.is-active {
-    border-bottom-color: $color-accent;
-    color: $color-accent;
+  svg {
+    width: 22px;
+    height: 22px;
   }
-}
-
-// Mobile toggle - CSS-only checkbox hack.
-.site-nav-toggle,
-.site-nav-toggle-label {
-  display: none;
 }
 
 @media (max-width: $bp-md) {
   .site-header__inner {
-    flex-wrap: wrap;
+    padding: $space-4 $space-5;
   }
 
-  .site-nav-toggle-label {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 22px;
-    cursor: pointer;
-
-    span {
-      display: block;
-      height: 3px;
-      background: $color-ink;
-      border-radius: 2px;
-      transition: transform 200ms ease, opacity 200ms ease;
-    }
+  .site-nav-overlay {
+    grid-template-columns: 1fr;
+    grid-template-rows: 35vh 1fr;
   }
 
-  .site-nav {
-    flex-basis: 100%;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 240ms ease;
-
-    ul {
-      flex-direction: column;
-      gap: $space-3;
-      padding: $space-4 0;
-    }
+  .site-nav-overlay__panel {
+    padding: $space-6 $space-5;
+    justify-content: flex-start;
+    padding-top: $space-7;
   }
 
-  .site-nav-toggle:checked ~ .site-nav {
-    max-height: 480px;
+  .site-nav-overlay__primary a {
+    font-size: clamp(40px, 12vw, 64px);
   }
 
-  .site-nav-toggle:checked ~ .site-nav-toggle-label span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+  .site-nav-overlay__close {
+    top: $space-4;
+    right: $space-4;
   }
 
-  .site-nav-toggle:checked ~ .site-nav-toggle-label span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .site-nav-toggle:checked ~ .site-nav-toggle-label span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+  .site-nav-overlay__social {
+    bottom: $space-5;
+    right: $space-5;
   }
 }

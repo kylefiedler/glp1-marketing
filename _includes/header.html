@@ -1,28 +1,80 @@
 <header class="site-header">
+  <input type="checkbox" id="site-nav-toggle" class="site-nav-toggle" aria-label="Open menu">
   <div class="site-header__inner">
     <a class="site-header__brand" href="{{ '/' | relative_url }}">That GLP-1 Girl</a>
 
-    <input type="checkbox" id="site-nav-toggle" class="site-nav-toggle" aria-label="Open menu">
-    <label for="site-nav-toggle" class="site-nav-toggle-label" aria-hidden="true">
-      <span></span><span></span><span></span>
+    <label for="site-nav-toggle" class="site-nav-toggle-label" aria-label="Open menu">
+      <span></span><span></span>
     </label>
+  </div>
 
-    <nav class="site-nav" aria-label="Primary">
-      <ul>
-        {%- assign nav_items = "/,Home|/guides,Shop the Guides|/about,About|/coaching,Coaching|/journal,Journal|/blog,Blog" | split: "|" -%}
-        {%- for item in nav_items -%}
-          {%- assign parts = item | split: "," -%}
-          {%- assign href = parts[0] -%}
-          {%- assign label = parts[1] -%}
-          {%- assign is_active = false -%}
-          {%- if href == "/" and page.url == "/" -%}
-            {%- assign is_active = true -%}
-          {%- elsif href != "/" and page.url contains href -%}
-            {%- assign is_active = true -%}
-          {%- endif -%}
-          <li><a href="{{ href | relative_url }}"{% if is_active %} class="is-active" aria-current="page"{% endif %}>{{ label }}</a></li>
-        {%- endfor -%}
+  <div class="site-nav-overlay" aria-hidden="true">
+    <div class="site-nav-overlay__media">
+      <img src="{{ '/assets/images/about/portrait.jpg' | relative_url }}" alt="">
+    </div>
+
+    <div class="site-nav-overlay__panel">
+      <label for="site-nav-toggle" class="site-nav-overlay__close" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </label>
+
+      <nav class="site-nav-overlay__primary" aria-label="Primary">
+        <ul>
+          {%- assign primary_items = "/guides,Guides|/journal,Journal|/coaching,Coaching|/about,About" | split: "|" -%}
+          {%- for item in primary_items -%}
+            {%- assign parts = item | split: "," -%}
+            {%- assign href = parts[0] -%}
+            {%- assign label = parts[1] -%}
+            {%- assign is_active = false -%}
+            {%- if page.url contains href -%}{%- assign is_active = true -%}{%- endif -%}
+            <li><a href="{{ href | relative_url }}"{% if is_active %} class="is-active" aria-current="page"{% endif %}>{{ label }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+
+      <nav class="site-nav-overlay__secondary" aria-label="Secondary">
+        <ul>
+          {%- assign secondary_items = "/,Home|/blog,Blog" | split: "|" -%}
+          {%- for item in secondary_items -%}
+            {%- assign parts = item | split: "," -%}
+            {%- assign href = parts[0] -%}
+            {%- assign label = parts[1] -%}
+            {%- assign is_active = false -%}
+            {%- if href == "/" and page.url == "/" -%}
+              {%- assign is_active = true -%}
+            {%- elsif href != "/" and page.url contains href -%}
+              {%- assign is_active = true -%}
+            {%- endif -%}
+            <li><a href="{{ href | relative_url }}"{% if is_active %} class="is-active" aria-current="page"{% endif %}>{{ label }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+
+      <ul class="site-nav-overlay__social" aria-label="Social">
+        <li>
+          <a href="https://www.tiktok.com/@jessicarockowitz" rel="me noopener" target="_blank" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M16.5 3c.3 1.6 1.2 3 2.6 3.9.8.5 1.7.8 2.6.8v3.2c-1.7 0-3.3-.5-4.7-1.4v6.6c0 3.4-2.8 6.2-6.2 6.2S4.6 19.5 4.6 16.1c0-3.4 2.8-6.2 6.2-6.2.4 0 .7 0 1.1.1v3.3c-.3-.1-.7-.2-1.1-.2-1.6 0-2.9 1.3-2.9 2.9s1.3 2.9 2.9 2.9 2.9-1.3 2.9-2.9V3h2.8z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://pin.it/6vBQYvXpE" rel="me noopener" target="_blank" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12c0 4.2 2.6 7.8 6.3 9.3-.1-.8-.2-2 0-2.8.2-.8 1.3-5.1 1.3-5.1s-.3-.6-.3-1.6c0-1.5.9-2.6 2-2.6.9 0 1.4.7 1.4 1.5 0 .9-.6 2.3-.9 3.6-.3 1.1.5 2 1.6 2 2 0 3.4-2.5 3.4-5.5 0-2.3-1.5-4-4.4-4-3.2 0-5.2 2.4-5.2 5.1 0 .9.3 1.6.7 2.1.2.2.2.3.1.5-.1.2-.2.8-.3 1.1-.1.3-.3.4-.6.3-1.7-.7-2.5-2.6-2.5-4.7 0-3.5 2.9-7.6 8.8-7.6 4.7 0 7.8 3.4 7.8 7.1 0 4.8-2.7 8.5-6.6 8.5-1.3 0-2.6-.7-3-1.5l-.8 3.2c-.3 1.1-1.1 2.5-1.6 3.3 1.2.4 2.4.6 3.7.6 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/jessicarockowitz/" rel="me noopener" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.9-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 2.2c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.3-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.1.4-.3 1-.3 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.3 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.1 1 .3 2.1.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.3.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.1-.4.3-1 .3-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.3-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.1-1-.3-2.1-.3C15.5 4.4 15.1 4.4 12 4.4zm0 3.7c2.2 0 3.9 1.8 3.9 3.9S14.2 16 12 16s-3.9-1.8-3.9-3.9S9.8 8.1 12 8.1zm0 6.5c1.4 0 2.6-1.2 2.6-2.6S13.4 9.4 12 9.4s-2.6 1.2-2.6 2.6 1.2 2.6 2.6 2.6zm5-6.7c0 .5-.4.9-.9.9s-.9-.4-.9-.9.4-.9.9-.9.9.4.9.9z"/>
+            </svg>
+          </a>
+        </li>
       </ul>
-    </nav>
+    </div>
   </div>
 </header>
