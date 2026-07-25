@@ -12,38 +12,95 @@ permalink: /
 <main class="home">
 
   <section class="home-hero">
+    <span class="home-hero__decor home-hero__decor--asterisk" aria-hidden="true">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#FEBBB4">
+          <rect x="88" y="10" width="24" height="180" rx="12"/>
+          <rect x="10" y="88" width="180" height="24" rx="12"/>
+          <rect x="88" y="10" width="24" height="180" rx="12" transform="rotate(45 100 100)"/>
+          <rect x="88" y="10" width="24" height="180" rx="12" transform="rotate(-45 100 100)"/>
+        </g>
+      </svg>
+    </span>
+    <span class="home-hero__decor home-hero__decor--squiggle" aria-hidden="true">
+      <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <path d="M10 110 Q 40 10, 70 70 T 130 70 T 190 70" stroke="#EF2475" stroke-width="14" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="home-hero__decor home-hero__decor--star" aria-hidden="true">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#EF2475">
+          {% for i in (0..11) %}
+            <ellipse cx="60" cy="14" rx="8" ry="22" transform="rotate({{ i | times: 30 }} 60 60)"/>
+          {% endfor %}
+          <circle cx="60" cy="60" r="16" fill="#FEBBB4"/>
+        </g>
+      </svg>
+    </span>
+
     <div class="home-hero__inner">
-      <div class="home-hero__copy">
-        <p class="home-hero__eyebrow">Ivy League RN &nbsp;|&nbsp; Obesity Medicine Certified &nbsp;|&nbsp; Certified Personal Trainer</p>
-        <h1 class="home-hero__title">Evidence-Based Weight Loss Support<br>Designed for GLP-1 Success</h1>
-        <p class="home-hero__lede">I Lost 155 Pounds on GLP-1&mdash;And Kept It Off. Now I help you do the same, without the guesswork, side effects, or fear of regaining.</p>
-        <p class="home-hero__cta">
-          <a class="btn btn--primary" href="{{ '/about' | relative_url }}">More about me</a>
-        </p>
-      </div>
-      <div class="home-hero__media">
-        <img src="{{ '/assets/images/home/hero.jpg' | relative_url }}" alt="Jessica, GLP-1 weight loss coach and registered nurse" loading="eager" width="800" height="1000">
-      </div>
+      <h1 class="home-hero__title">Evidence-Based Weight Loss Support Designed for GLP-1 Success</h1>
+      <p class="home-hero__eyebrow">Ivy League RN &nbsp;|&nbsp; Obesity Medicine Certified &nbsp;|&nbsp; Certified Personal Trainer</p>
+      <p class="home-hero__cta">
+        <a class="btn btn--outline" href="{{ '/guides' | relative_url }}">Shop the guides</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="home-stat">
+    <div class="home-stat__inner">
+      <h2 class="home-stat__heading">I Lost 155 Pounds on GLP-1&mdash;And Kept It Off.</h2>
+      <p class="home-stat__lede">Now I help you do the same, without the guesswork, side effects, or fear of regaining.</p>
+      <span class="home-stat__arrow" aria-hidden="true">
+        <svg viewBox="0 0 40 80" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#EF2475" stroke-width="3" stroke-linecap="round">
+          <path d="M20 4 L20 70"/>
+          <path d="M8 58 L20 72 L32 58"/>
+        </svg>
+      </span>
+    </div>
+    <div class="home-stat__wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 80 C 240 0, 480 0, 720 40 C 960 80, 1200 80, 1440 20 L1440 80 Z" fill="#FDEADE"/>
+      </svg>
     </div>
   </section>
 
   <section class="home-about">
     <div class="home-about__inner">
-      <h2 class="home-about__heading">Here&rsquo;s what it means to me</h2>
-      <p>I&rsquo;m an Ivy League educated registered nurse, a certified personal trainer, a certified nutrition coach, and am currently completing my Obesity Medicine certification with the Obesity Medicine Association. But more importantly? I&rsquo;ve lost 155 pounds myself&mdash;and kept it off.</p>
-      <p>The word <em>coach</em> can mean anything these days. Let&rsquo;s be honest, it doesn&rsquo;t always inspire confidence.</p>
+      <div class="home-about__copy">
+        <h2 class="home-about__heading">The word <em>coach</em> can mean anything these days.</h2>
+        <span class="home-about__underline" aria-hidden="true">
+          <svg viewBox="0 0 400 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path d="M4 14 C 50 2, 90 22, 140 12 C 200 0, 260 22, 320 12 C 360 6, 380 18, 396 10" stroke="#EF2475" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <p class="home-about__eyebrow">Let&rsquo;s be honest, it doesn&rsquo;t always inspire confidence.</p>
+        <p>Here&rsquo;s what it means to me: I&rsquo;m an Ivy League educated registered nurse, a certified personal trainer, a certified nutrition coach, and am currently completing my Obesity Medicine certification with the Obesity Medicine Association.</p>
+        <p>But more importantly? I&rsquo;ve lost 155 pounds myself&mdash;and kept it off.</p>
+        <p class="home-about__cta">
+          <a class="btn btn--primary" href="{{ '/about' | relative_url }}">More about me</a>
+        </p>
+      </div>
+      <div class="home-about__media">
+        <img src="{{ '/assets/images/home/hero.jpg' | relative_url }}" alt="Jessica, GLP-1 weight loss coach and registered nurse" loading="lazy" width="800" height="1000">
+      </div>
     </div>
   </section>
 
   <section class="home-bundle">
+    <div class="home-bundle__wave home-bundle__wave--top" aria-hidden="true">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 60 L1440 60 L1440 25 C 1200 60, 960 0, 720 30 C 480 60, 240 0, 0 30 Z" fill="#EF2475"/>
+      </svg>
+    </div>
+
     <div class="home-bundle__inner">
       <div class="home-bundle__copy">
-        <p class="home-bundle__eyebrow">The Ultimate Bundle</p>
         <h2 class="home-bundle__heading">Get all of the Guides<br>for <span class="home-bundle__price">$35</span></h2>
         <p class="home-bundle__strike">Normally $135+ if purchased separately.</p>
         <p class="home-bundle__lede">No fluff. No overwhelm. Just everything you need to succeed.</p>
         <p class="home-bundle__cta">
-          <a class="btn btn--primary btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy The Ultimate Bundle</a>
+          <a class="btn btn--outline-light btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy the ultimate bundle</a>
         </p>
       </div>
       <div class="home-bundle__mockup" aria-hidden="true">
@@ -53,80 +110,133 @@ permalink: /
         {%- endfor -%}
       </div>
     </div>
+
+    <div class="home-bundle__wave home-bundle__wave--bottom" aria-hidden="true">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0 L1440 0 L1440 35 C 1200 0, 960 60, 720 30 C 480 0, 240 60, 0 30 Z" fill="#EF2475"/>
+      </svg>
+    </div>
   </section>
 
   <section class="home-services">
     <div class="home-services__inner">
       <ul class="home-services__grid">
-        <li class="home-service">
-          <h3 class="home-service__heading">Personalized Coaching</h3>
-          <p>Unlock your optimal well-being with expert guidance from our coaching service. Tailored advice, customized plans, and ongoing support for a healthier, happier you.</p>
-          <p><a class="btn btn--ghost" href="{{ '/coaching' | relative_url }}">Learn more</a></p>
-        </li>
-        <li class="home-service">
-          <h3 class="home-service__heading">Yearlong Journal</h3>
-          <p>Not just a tracker. A transformation companion. Track meals, mood, medication and movement in one place built for the GLP-1 journey.</p>
-          <p><a class="btn btn--ghost" href="{{ '/journal' | relative_url }}">Learn more</a></p>
-        </li>
-        <li class="home-service">
-          <h3 class="home-service__heading">GLP-1 Guides</h3>
-          <p>Eight focused guides covering nutrition, supplements, workouts, travel, and weaning off &mdash; written by a nurse who&rsquo;s been there.</p>
-          <p><a class="btn btn--ghost" href="{{ '/guides' | relative_url }}">Learn more</a></p>
-        </li>
+        {%- assign services = "GLP-1 Guides|Eight focused guides covering nutrition, supplements, workouts, travel, and weaning off &mdash; written by a nurse who&rsquo;s been there.|/guides||Yearlong Journal|Not just a tracker. A transformation companion. Track meals, mood, medication and movement in one place built for the GLP-1 journey.|/journal||Personalized Coaching|Unlock your optimal well-being with expert guidance from our coaching service. Tailored advice, customized plans, and ongoing support for a healthier, happier you.|/coaching" | split: "||" -%}
+        {%- for service in services -%}
+          {%- assign parts = service | split: "|" -%}
+          <li class="home-service">
+            <span class="home-service__icon" aria-hidden="true">
+              <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                <g fill="#EF2475">
+                  <ellipse cx="40" cy="16" rx="14" ry="18"/>
+                  <ellipse cx="64" cy="40" rx="18" ry="14"/>
+                  <ellipse cx="40" cy="64" rx="14" ry="18"/>
+                  <ellipse cx="16" cy="40" rx="18" ry="14"/>
+                  <circle cx="40" cy="40" r="9" fill="#FDEADE"/>
+                </g>
+              </svg>
+            </span>
+            <h3 class="home-service__heading">{{ parts[0] }}</h3>
+            <p>{{ parts[1] }}</p>
+            <p class="home-service__cta"><a class="btn btn--primary" href="{{ parts[2] | relative_url }}">Learn more</a></p>
+          </li>
+        {%- endfor -%}
       </ul>
     </div>
   </section>
 
   <section class="home-testimonials">
     <div class="home-testimonials__inner">
-      <p class="home-testimonials__eyebrow">Client Reviews</p>
       <ul class="home-testimonials__grid">
         <li class="home-testimonial">
-          <blockquote>I&rsquo;d been on Wegovy for 8 months and lost 47 pounds, but my insurance was stopping coverage. I was PANICKING. Every time I thought about eating without the medication, I pictured myself back at Taco Bell drive-thru ordering three Crunchwrap Supremes like I used to. Jess&rsquo;s guide taught me the &lsquo;hunger scale&rsquo; technique and how to build actually satisfying meals with 30g of protein. It&rsquo;s been 5 months off Wegovy and I&rsquo;ve only gained back 3 pounds (which I expected). I&rsquo;m not white knuckling it anymore.</blockquote>
           <p class="home-testimonial__attr">Megan R.</p>
+          <blockquote>I&rsquo;d been on Wegovy for 8 months and lost 47 pounds, but my insurance was stopping coverage. I was PANICKING. Every time I thought about eating without the medication, I pictured myself back at Taco Bell drive-thru ordering three Crunchwrap Supremes like I used to. Jess&rsquo;s guide taught me the &lsquo;hunger scale&rsquo; technique and how to build actually satisfying meals with 30g of protein. It&rsquo;s been 5 months off Wegovy and I&rsquo;ve only gained back 3 pounds (which I expected). I&rsquo;m not white knuckling it anymore.</blockquote>
         </li>
         <li class="home-testimonial">
-          <blockquote>Jess isn&rsquo;t just knowledgeable, she actually gets it. She&rsquo;s been through it herself, which makes all the difference. I&rsquo;ve worked with other coaches, but none had the medical background and the lived experience like this. It&rsquo;s the first time I&rsquo;ve felt truly supported.</blockquote>
           <p class="home-testimonial__attr">Alyssa G.</p>
+          <blockquote>Jess isn&rsquo;t just knowledgeable, she actually gets it. She&rsquo;s been through it herself, which makes all the difference. I&rsquo;ve worked with other coaches, but none had the medical background and the lived experience like this. It&rsquo;s the first time I&rsquo;ve felt truly supported.</blockquote>
         </li>
         <li class="home-testimonial">
-          <blockquote>I was doing an hour of cardio every morning and eating 1,200 calories on Ozempic. I lost 52 pounds in 6 months but I looked&hellip; saggy. My arms had loose skin, I couldn&rsquo;t open a pickle jar, and I was exhausted by 2pm every day. Jess told me I was undereating by like 600 calories and that I needed to LIFT, not just run. I was terrified to eat more and stop cardio, but I trusted her. Within 3 weeks of eating 1,800 calories and lifting 4x a week, my energy came back. Now I&rsquo;m 47, I deadlift 185 pounds, and my arms actually have SHAPE. The scale went up 8 pounds but I&rsquo;m wearing the same size jeans. Turns out muscle weighs more than fat! Who knew?</blockquote>
           <p class="home-testimonial__attr">Claire T.</p>
+          <blockquote>I was doing an hour of cardio every morning and eating 1,200 calories on Ozempic. I lost 52 pounds in 6 months but I looked&hellip; saggy. My arms had loose skin, I couldn&rsquo;t open a pickle jar, and I was exhausted by 2pm every day. Jess told me I was undereating by like 600 calories and that I needed to LIFT, not just run. I was terrified to eat more and stop cardio, but I trusted her. Within 3 weeks of eating 1,800 calories and lifting 4x a week, my energy came back. Now I&rsquo;m 47, I deadlift 185 pounds, and my arms actually have SHAPE. The scale went up 8 pounds but I&rsquo;m wearing the same size jeans. Turns out muscle weighs more than fat! Who knew?</blockquote>
         </li>
         <li class="home-testimonial">
-          <blockquote>I&rsquo;ve binged since I was 14. Like, eat-until-I&rsquo;m-physically-sick binged. Mounjaro killed my appetite so I stopped binging for 7 months, but I knew the second I went off it, I&rsquo;d spiral again. I was right. Two weeks after stopping, I binged on an entire Costco sheet cake in one sitting. I felt SO ashamed. Jess taught me to track my emotions BEFORE I ate, not just what I ate. It sounds too simple to work, but when I started writing &lsquo;I&rsquo;m anxious about money&rsquo; or &lsquo;I&rsquo;m lonely,&rsquo; I could SEE the pattern. I&rsquo;ve had 3 months binge-free now. Three months. That&rsquo;s the longest streak since I was a kid.</blockquote>
           <p class="home-testimonial__attr">Danielle M.</p>
+          <blockquote>I&rsquo;ve binged since I was 14. Like, eat-until-I&rsquo;m-physically-sick binged. Mounjaro killed my appetite so I stopped binging for 7 months, but I knew the second I went off it, I&rsquo;d spiral again. I was right. Two weeks after stopping, I binged on an entire Costco sheet cake in one sitting. I felt SO ashamed. Jess taught me to track my emotions BEFORE I ate, not just what I ate. It sounds too simple to work, but when I started writing &lsquo;I&rsquo;m anxious about money&rsquo; or &lsquo;I&rsquo;m lonely,&rsquo; I could SEE the pattern. I&rsquo;ve had 3 months binge-free now. Three months. That&rsquo;s the longest streak since I was a kid.</blockquote>
         </li>
       </ul>
+      <p class="home-testimonials__wordmark" aria-hidden="true">Client Reviews</p>
     </div>
+  </section>
+
+  <section class="home-banners">
+    <article class="home-banner home-banner--guides">
+      <div class="home-banner__wave home-banner__wave--top" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 60 L1440 60 L1440 25 C 1200 60, 960 0, 720 30 C 480 60, 240 0, 0 30 Z" fill="#FEBBB4"/>
+        </svg>
+      </div>
+      <div class="home-banner__inner">
+        <div class="home-banner__media">
+          <img src="{{ '/assets/images/home/guide-beginner.png' | relative_url }}" alt="" loading="lazy" width="400" height="520" class="home-banner__cover home-banner__cover--back">
+          <img src="{{ '/assets/images/home/guide-workout.png' | relative_url }}" alt="" loading="lazy" width="400" height="520" class="home-banner__cover home-banner__cover--front">
+        </div>
+        <div class="home-banner__copy">
+          <h2 class="home-banner__heading">That GLP-1 Girl Guides</h2>
+          <p>Everything you need to tackle your GLP-1 journey.</p>
+          <p><a class="btn btn--outline" href="{{ '/guides' | relative_url }}">See the guides</a></p>
+        </div>
+        <span class="home-banner__decor home-banner__decor--squiggle" aria-hidden="true">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path d="M10 110 Q 40 10, 70 70 T 130 70 T 190 70" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </div>
+      <div class="home-banner__wave home-banner__wave--bottom" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0 L1440 0 L1440 35 C 1200 0, 960 60, 720 30 C 480 0, 240 60, 0 30 Z" fill="#FEBBB4"/>
+        </svg>
+      </div>
+    </article>
+
+    <article class="home-banner home-banner--journal">
+      <div class="home-banner__wave home-banner__wave--top" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 60 L1440 60 L1440 25 C 1200 60, 960 0, 720 30 C 480 60, 240 0, 0 30 Z" fill="#EF2475"/>
+        </svg>
+      </div>
+      <div class="home-banner__inner">
+        <span class="home-banner__decor home-banner__decor--star" aria-hidden="true">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#FFFFFF">
+              {% for i in (0..11) %}
+                <ellipse cx="60" cy="14" rx="8" ry="22" transform="rotate({{ i | times: 30 }} 60 60)"/>
+              {% endfor %}
+              <circle cx="60" cy="60" r="16" fill="#EF2475"/>
+            </g>
+          </svg>
+        </span>
+        <div class="home-banner__copy">
+          <h2 class="home-banner__heading">That GLP-1 Girl Yearlong Journal</h2>
+          <p>Not just a tracker. A transformation companion.</p>
+          <p><a class="btn btn--outline-light" href="{{ '/journal' | relative_url }}">Learn more</a></p>
+        </div>
+        <div class="home-banner__media home-banner__media--journal">
+          <img src="{{ '/assets/images/home/journal-cover.png' | relative_url }}" alt="" loading="lazy" width="400" height="520" class="home-banner__cover">
+        </div>
+      </div>
+      <div class="home-banner__wave home-banner__wave--bottom" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0 L1440 0 L1440 35 C 1200 0, 960 60, 720 30 C 480 0, 240 60, 0 30 Z" fill="#EF2475"/>
+        </svg>
+      </div>
+    </article>
   </section>
 
   {% include newsletter.html
     heading="Join my mailing list for a FREE GUIDE: 150g Protein Daily Made Easy"
     lead="Learn the exact strategy I used to preserve muscle during my 155-lb weight loss. Real meals, zero fluff, designed specifically for GLP-1 users."
     note="By submitting your email, you acknowledge you're joining my email crew - but you can hop off the list anytime, no questions asked!" %}
-
-  <section class="home-banners">
-    <div class="home-banners__inner">
-      <article class="home-banner">
-        <img class="home-banner__img" src="{{ '/assets/images/home/guide-beginner.png' | relative_url }}" alt="" loading="lazy" width="400" height="520">
-        <div class="home-banner__copy">
-          <h2 class="home-banner__heading">That GLP-1 Girl Guides</h2>
-          <p>Everything you need to tackle your GLP-1 journey.</p>
-          <p><a class="btn btn--primary" href="{{ '/guides' | relative_url }}">See the guides</a></p>
-        </div>
-      </article>
-
-      <article class="home-banner home-banner--reverse">
-        <img class="home-banner__img" src="{{ '/assets/images/home/journal-cover.png' | relative_url }}" alt="" loading="lazy" width="400" height="520">
-        <div class="home-banner__copy">
-          <h2 class="home-banner__heading">That GLP-1 Girl Yearlong Journal</h2>
-          <p>Not just a tracker. A transformation companion.</p>
-          <p><a class="btn btn--primary" href="{{ '/journal' | relative_url }}">Learn more</a></p>
-        </div>
-      </article>
-    </div>
-  </section>
 
 </main>
 
