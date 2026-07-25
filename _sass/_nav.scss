@@ -3,6 +3,23 @@
   background: $color-bg;
 }
 
+// On pages whose first section is a colored hero (currently just the home
+// page), overlay the header on top of that hero with light-on-color text.
+body:has(.home-hero) .site-header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  background: transparent;
+  z-index: 10;
+}
+
+body:has(.home-hero) .site-header__brand {
+  color: $color-bg;
+}
+
+body:has(.home-hero) .site-nav-toggle-label span {
+  background: $color-bg;
+}
+
 .site-header__inner {
   display: flex;
   align-items: center;

@@ -45,6 +45,14 @@
 }
 .btn--outline-light:hover { background: $color-bg; color: $color-accent; }
 
+// Solid white pill with pink text (used in hero on hot-pink bg)
+.btn--white {
+  background: $color-bg;
+  color: $color-accent;
+  border-color: $color-bg;
+}
+.btn--white:hover { filter: brightness(0.94); }
+
 .btn--lg {
   padding: $space-4 $space-7;
   font-size: $fs-md;
@@ -65,8 +73,9 @@
 
 .home-hero {
   position: relative;
-  background: $color-bg;
-  padding: $space-9 $space-5 $space-9;
+  background: $color-accent;
+  color: $color-bg;
+  padding: calc(#{$space-9} + 48px) $space-5 calc(#{$space-9} + 40px);
   text-align: center;
 }
 
@@ -83,9 +92,9 @@
   font-size: 56px;
   line-height: 1.1;
   letter-spacing: -0.01em;
-  color: $color-ink;
+  color: $color-bg;
   margin: 0 auto $space-5;
-  max-width: 18ch;
+  max-width: 22ch;
 }
 
 .home-hero__eyebrow {
@@ -94,7 +103,7 @@
   font-size: $fs-sm;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: $color-accent;
+  color: $color-bg;
   margin: 0 auto $space-6;
   max-width: 60ch;
 }
@@ -109,36 +118,29 @@
 }
 
 .home-hero__decor--asterisk {
-  left: 4%;
-  top: 38%;
+  left: 8%;
+  top: 48%;
   width: 200px;
-  opacity: 0.85;
 }
 
+// The squiggle straddles the seam between the pink hero and peach stat section.
 .home-hero__decor--squiggle {
-  right: 12%;
-  top: 30%;
-  width: 200px;
-}
-
-.home-hero__decor--star {
-  right: 6%;
-  top: 50%;
-  width: 110px;
+  right: 18%;
+  bottom: -55px;
+  width: 220px;
+  z-index: 4;
 }
 
 @media (max-width: $bp-lg) {
   .home-hero__title { font-size: 44px; }
-  .home-hero__decor--asterisk { width: 130px; left: 2%; }
-  .home-hero__decor--squiggle { width: 140px; right: 4%; }
-  .home-hero__decor--star { width: 80px; right: 2%; top: 60%; }
+  .home-hero__decor--asterisk { width: 140px; left: 3%; }
+  .home-hero__decor--squiggle { width: 160px; right: 14%; bottom: -40px; }
 }
 
 @media (max-width: $bp-md) {
   .home-hero__title { font-size: 32px; }
-  .home-hero__decor--asterisk { width: 80px; opacity: 0.7; }
+  .home-hero__decor--asterisk { width: 90px; opacity: 0.8; top: 8%; }
   .home-hero__decor--squiggle { display: none; }
-  .home-hero__decor--star { width: 60px; opacity: 0.7; }
 }
 
 // ===== 155 lb stat banner =====
@@ -148,6 +150,27 @@
   background: $color-peach;
   padding: $space-9 $space-5 calc(#{$space-9} + 40px);
   text-align: center;
+}
+
+.home-stat__decor {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+}
+
+// Starburst straddles hero/stat seam on the right, next to the squiggle.
+.home-stat__decor--star {
+  right: 6%;
+  top: -90px;
+  width: 170px;
+}
+
+@media (max-width: $bp-lg) {
+  .home-stat__decor--star { width: 120px; right: 3%; top: -60px; }
+}
+
+@media (max-width: $bp-md) {
+  .home-stat__decor--star { width: 80px; right: 2%; top: -40px; }
 }
 
 .home-stat__inner {
