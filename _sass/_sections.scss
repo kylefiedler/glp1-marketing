@@ -1,0 +1,100 @@
+// Shared page sections — dropped into every marketing page via
+// {% include section-<name>.html %}.
+//
+// Currently:
+//   .banner (--guides / --journal) — bottom-of-page CTAs
+
+// ----- Banners (guides + journal) -----
+
+.banner {
+  position: relative;
+  margin: $space-8 0;
+  padding: $space-9 0;
+
+  &--guides  { background: $color-peach; }
+  &--journal { background: $color-accent; color: $color-bg; }
+}
+
+.banner__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  line-height: 0;
+  z-index: 3;
+  pointer-events: none;
+
+  svg { width: 100%; height: 100%; display: block; }
+
+  &--top    { top: -59px; }
+  &--bottom { bottom: -59px; }
+}
+
+.banner__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-8;
+  align-items: center;
+  padding: 0 $space-5;
+}
+
+.banner__heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0 0 $space-3;
+}
+
+.banner p {
+  font-family: $font-body;
+  font-size: $fs-md;
+  line-height: $lh-snug;
+  margin: 0 0 $space-5;
+}
+
+.banner__media {
+  position: relative;
+  min-height: 320px;
+}
+
+.banner__cover {
+  width: 70%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba($color-black, 0.2);
+}
+
+.banner__cover--back  { position: absolute; top: 0;    left: 5%;  transform: rotate(-8deg); }
+.banner__cover--front { position: absolute; top: 30px; left: 30%; transform: rotate(5deg); }
+
+.banner__media--journal { display: flex; justify-content: center; }
+.banner__media--journal .banner__cover { transform: rotate(6deg); width: 60%; }
+
+.banner__decor {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+}
+.banner__decor--squiggle { width: 160px; right: 8%; bottom: 8%; opacity: 0.85; }
+.banner__decor--star     { width: 96px;  left: -2%; top: -8%; }
+
+.banner--journal .banner__copy { padding-left: 110px; }
+
+@media (max-width: $bp-lg) {
+  .banner__heading { font-size: 32px; }
+}
+
+@media (max-width: $bp-md) {
+  .banner__inner { grid-template-columns: 1fr; text-align: center; }
+  .banner__media { min-height: 280px; }
+  .banner__cover--back  { left: 15%; }
+  .banner__cover--front { left: 35%; }
+  .banner__decor { display: none; }
+  .banner--journal .banner__copy { padding-left: 0; }
+}

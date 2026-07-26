@@ -31,13 +31,24 @@ body:has(.home-hero) .site-nav-toggle-label span {
 }
 
 .site-header__brand {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-lg;
+  display: inline-flex;
+  align-items: center;
   color: $color-ink;
   text-decoration: none;
-  letter-spacing: 0.01em;
 }
+
+.site-header__logo {
+  display: block;
+  height: 56px;
+  width: auto;
+}
+
+// Show the dark logo by default (over white bg); swap to the white logo on
+// pages whose first section is a colored hero.
+.site-header__logo--light { display: none; }
+
+body:has(.home-hero) .site-header__logo--dark  { display: none; }
+body:has(.home-hero) .site-header__logo--light { display: block; }
 
 // Hidden checkbox drives overlay open/close.
 .site-nav-toggle {

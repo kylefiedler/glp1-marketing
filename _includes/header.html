@@ -1,7 +1,10 @@
 <header class="site-header">
   <input type="checkbox" id="site-nav-toggle" class="site-nav-toggle" aria-label="Open menu">
   <div class="site-header__inner">
-    <a class="site-header__brand" href="{{ '/' | relative_url }}">That GLP-1 Girl</a>
+    <a class="site-header__brand" href="{{ '/' | relative_url }}" aria-label="That GLP-1 Girl — home">
+      <img class="site-header__logo site-header__logo--dark" src="{{ '/assets/images/site/logo-dark.svg' | relative_url }}" alt="" width="70" height="63">
+      <img class="site-header__logo site-header__logo--light" src="{{ '/assets/images/site/logo-white.svg' | relative_url }}" alt="" width="44" height="40">
+    </a>
 
     <label for="site-nav-toggle" class="site-nav-toggle-label" aria-label="Open menu">
       <span></span><span></span>

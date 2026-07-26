@@ -169,69 +169,8 @@ permalink: /
     </div>
   </section>
 
-  <section class="home-banners">
-    <article class="home-banner home-banner--guides">
-      <div class="home-banner__wave home-banner__wave--top" aria-hidden="true">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 60 L1440 60 L1440 25 C 1200 60, 960 0, 720 30 C 480 60, 240 0, 0 30 Z" fill="#FEBBB4"/>
-        </svg>
-      </div>
-      <div class="home-banner__inner">
-        <div class="home-banner__media">
-          <img src="{{ '/assets/images/home/guide-beginner.png' | relative_url }}" alt="" loading="lazy" width="400" height="520" class="home-banner__cover home-banner__cover--back">
-          <img src="{{ '/assets/images/home/guide-workout.png' | relative_url }}" alt="" loading="lazy" width="400" height="520" class="home-banner__cover home-banner__cover--front">
-        </div>
-        <div class="home-banner__copy">
-          <h2 class="home-banner__heading">That GLP-1 Girl Guides</h2>
-          <p>Everything you need to tackle your GLP-1 journey.</p>
-          <p><a class="btn btn--outline" href="{{ '/guides' | relative_url }}">See the guides</a></p>
-        </div>
-        <span class="home-banner__decor home-banner__decor--squiggle" aria-hidden="true">
-          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" fill="none">
-            <path d="M10 110 Q 40 10, 70 70 T 130 70 T 190 70" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
-          </svg>
-        </span>
-      </div>
-      <div class="home-banner__wave home-banner__wave--bottom" aria-hidden="true">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0 L1440 0 L1440 35 C 1200 0, 960 60, 720 30 C 480 0, 240 60, 0 30 Z" fill="#FEBBB4"/>
-        </svg>
-      </div>
-    </article>
-
-    <article class="home-banner home-banner--journal">
-      <div class="home-banner__wave home-banner__wave--top" aria-hidden="true">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 60 L1440 60 L1440 25 C 1200 60, 960 0, 720 30 C 480 60, 240 0, 0 30 Z" fill="#EF2475"/>
-        </svg>
-      </div>
-      <div class="home-banner__inner">
-        <span class="home-banner__decor home-banner__decor--star" aria-hidden="true">
-          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <g fill="#FFFFFF">
-              {% for i in (0..11) %}
-                <ellipse cx="60" cy="14" rx="8" ry="22" transform="rotate({{ i | times: 30 }} 60 60)"/>
-              {% endfor %}
-              <circle cx="60" cy="60" r="16" fill="#EF2475"/>
-            </g>
-          </svg>
-        </span>
-        <div class="home-banner__copy">
-          <h2 class="home-banner__heading">That GLP-1 Girl Yearlong Journal</h2>
-          <p>Not just a tracker. A transformation companion.</p>
-          <p><a class="btn btn--outline-light" href="{{ '/journal' | relative_url }}">Learn more</a></p>
-        </div>
-        <div class="home-banner__media home-banner__media--journal">
-          <img src="{{ '/assets/images/home/journal-cover.png' | relative_url }}" alt="" loading="lazy" width="400" height="520" class="home-banner__cover">
-        </div>
-      </div>
-      <div class="home-banner__wave home-banner__wave--bottom" aria-hidden="true">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0 L1440 0 L1440 35 C 1200 0, 960 60, 720 30 C 480 0, 240 60, 0 30 Z" fill="#EF2475"/>
-        </svg>
-      </div>
-    </article>
-  </section>
+  {% include section-guides-banner.html %}
+  {% include section-journal-banner.html %}
 
   {% include newsletter.html
     heading="Join my mailing list for a FREE GUIDE: 150g Protein Daily Made Easy"
