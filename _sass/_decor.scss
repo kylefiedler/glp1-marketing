@@ -1,0 +1,36 @@
+// Decorative SVG shapes — used across all pages.
+//
+// Usage:
+//   <span class="decor decor--asterisk-8pt" aria-hidden="true">
+//     {% include decor/asterisk-8pt.svg %}
+//   </span>
+//
+// The SVGs use `fill="currentColor"`, so `color:` on the wrapper span sets
+// the shape's color. `width` on the wrapper controls the size (SVG scales via
+// intrinsic aspect-ratio from its viewBox).
+
+.decor {
+  display: block;
+  line-height: 0;
+  pointer-events: none;
+
+  > svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+// Default sizes chosen from the live site's rendered sizes at 1440px.
+// Override per-usage where a section needs a different size.
+
+.decor--asterisk-8pt   { width: 152px; color: $color-peach; }
+.decor--asterisk-5pt   { width: 75px;  color: $color-peach; }
+.decor--starburst      { width: 170px; color: $color-accent; }
+.decor--flower         { width: 200px; color: $color-accent; }
+.decor--squiggle       { width: 236px; color: $color-bg; }
+.decor--squiggle-vert  { width: 37px;  color: $color-accent; }
+.decor--wave-wide      { width: 100%;  color: $color-peach; }
+.decor--wave-thin      { width: 100%;  color: $color-peach; }
+.decor--wave-med       { width: 100%;  color: $color-peach; }
+.decor--icon-menu      { width: 32px;  color: $color-ink; }
