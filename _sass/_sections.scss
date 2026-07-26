@@ -98,3 +98,108 @@
   .banner__decor { display: none; }
   .banner--journal .banner__copy { padding-left: 0; }
 }
+
+// ----- Connect (social + contact form) -----
+
+.connect {
+  background: $color-peach;
+  padding: $space-9 $space-5;
+  position: relative;
+}
+
+.connect__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-8;
+  align-items: start;
+}
+
+.connect__side {
+  min-width: 0;
+}
+
+.connect__heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+  margin: 0 0 $space-5;
+}
+
+.connect__social {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: $space-4;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: $color-accent;
+    color: $color-bg;
+    transition: filter 120ms ease;
+  }
+  a:hover { filter: brightness(0.92); }
+
+  svg { width: 20px; height: 20px; }
+}
+
+.connect__form {
+  display: grid;
+  gap: $space-3;
+}
+
+.connect__field input,
+.connect__field textarea {
+  width: 100%;
+  padding: $space-3 $space-4;
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.06em;
+  color: $color-ink;
+  background: $color-bg;
+  border: 0;
+  border-radius: 999px;
+  resize: none;
+
+  &::placeholder {
+    color: rgba($color-ink, 0.6);
+    text-transform: uppercase;
+  }
+
+  &:focus {
+    outline: 2px solid $color-accent;
+    outline-offset: 1px;
+  }
+}
+
+.connect__field textarea {
+  border-radius: 24px;
+  min-height: 120px;
+  font-family: $font-body;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.connect__submit {
+  justify-self: end;
+  margin-top: $space-3;
+  min-width: 200px;
+  border: 0;
+}
+
+@media (max-width: $bp-md) {
+  .connect__inner { grid-template-columns: 1fr; gap: $space-6; }
+  .connect__heading { font-size: 28px; }
+  .connect__submit { justify-self: stretch; }
+}

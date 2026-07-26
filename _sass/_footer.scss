@@ -1,42 +1,113 @@
 .site-footer {
   background: $color-blush;
-  margin-top: $space-9;
+  padding: $space-8 $space-5 $space-6;
 }
 
 .site-footer__inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: $space-7 $space-5;
   display: grid;
-  gap: $space-5;
-  text-align: center;
+  grid-template-columns: auto 1fr auto;
+  gap: $space-7;
+  align-items: start;
 }
 
-.site-footer__nav ul,
-.site-footer__social {
+.site-footer__links {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  gap: $space-7;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  a {
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: $fs-sm;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $color-ink;
+    text-decoration: none;
+    transition: color 120ms ease;
+  }
+
+  a:hover { color: $color-accent; }
+}
+
+.site-footer__newsletter {
+  max-width: 460px;
+}
+
+.site-footer__nl-lead {
+  font-family: $font-body;
+  font-size: $fs-sm;
+  line-height: $lh-body;
+  color: $color-ink;
+  margin: 0 0 $space-3;
+
+  em { font-style: italic; }
+}
+
+.site-footer__brand img {
+  width: 90px;
+  height: auto;
+  display: block;
+}
+
+.site-footer__meta {
+  max-width: 1280px;
+  margin: $space-6 auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: $space-5;
+}
+
+.site-footer__social {
   list-style: none;
   padding: 0;
-}
+  margin: 0;
+  display: flex;
+  gap: $space-4;
 
-.site-footer__nav a,
-.site-footer__social a {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
-  color: $color-ink;
-  text-decoration: none;
-}
-
-.site-footer__nav a:hover,
-.site-footer__social a:hover {
-  color: $color-accent;
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: $color-ink;
+    transition: color 120ms ease;
+  }
+  a:hover { color: $color-accent; }
+  svg { width: 20px; height: 20px; }
 }
 
 .site-footer__copy {
   font-size: $fs-xs;
   color: rgba($color-ink, 0.7);
+  margin: 0;
+}
+
+@media (max-width: $bp-lg) {
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    gap: $space-6;
+    text-align: center;
+  }
+  .site-footer__links {
+    justify-content: center;
+    gap: $space-6;
+  }
+  .site-footer__newsletter { margin: 0 auto; }
+  .site-footer__brand img { margin: 0 auto; }
+  .site-footer__meta {
+    flex-direction: column;
+    gap: $space-4;
+  }
 }
