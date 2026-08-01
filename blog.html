@@ -4,23 +4,31 @@ title: The Blog
 description: >-
   Evidence-based GLP-1 articles from Jessica Rockowitz, RN - protein,
   workouts, snacks, and what nobody tells you before starting.
-image: /assets/images/home/hero.jpg
+image: /assets/images/home/fh3a7768.jpg
 permalink: /blog/
 ---
 {% include header.html %}
 
 <main class="blog-index">
 
-  <header class="blog-index__hero">
-    <div class="blog-index__hero-inner">
-      <h1>The Blog</h1>
-      <p>Real talk on protein, muscle, training, and the parts of GLP-1 nobody warns you about.</p>
-    </div>
-  </header>
+  <section class="blog-index__hero home-hero">
+    <span class="decor decor--asterisk-8pt home-hero__decor home-hero__decor--asterisk" aria-hidden="true">
+      {% include decor/asterisk-8pt.svg %}
+    </span>
+    <span class="decor decor--squiggle home-hero__decor home-hero__decor--squiggle" aria-hidden="true">
+      {% include decor/squiggle.svg %}
+    </span>
 
-  <section class="blog-index__list">
-    <div class="blog-index__list-inner">
-      <ul>
+    <div class="home-hero__inner">
+      <p class="blog-index__eyebrow">Journal &middot; Notes &middot; Real Talk</p>
+      <h1 class="home-hero__title">The Blog</h1>
+      <p class="blog-index__lede">Real talk on protein, muscle, training, and the parts of GLP-1 nobody warns you about.</p>
+    </div>
+  </section>
+
+  <section class="blog-index__body">
+    <div class="blog-index__body-inner">
+      <ul class="blog-index__list">
         {%- for post in site.posts -%}
           <li class="blog-card">
             <a class="blog-card__link" href="{{ post.url | relative_url }}">
@@ -37,13 +45,21 @@ permalink: /blog/
           </li>
         {%- endfor -%}
       </ul>
+
+      <aside class="blog-index__sidebar">
+        <img class="blog-index__sidebar-img" src="{{ '/assets/images/home/dsc_5355-edit.jpg' | relative_url }}" alt="Jessica" width="400" height="500" loading="lazy">
+        <p class="blog-index__sidebar-eyebrow">Hi, I&rsquo;m Jessica&hellip;</p>
+        <h2 class="blog-index__sidebar-heading">That GLP-1 Girl</h2>
+        <p>I&rsquo;m an Ivy League educated and Obesity Medicine certified registered nurse, certified personal trainer, and weight loss specialist who lost 155 lbs and stayed lean &mdash; even after GLP-1s.</p>
+        <p><a class="btn btn--outline" href="{{ '/about' | relative_url }}">More about me</a></p>
+      </aside>
     </div>
   </section>
 
-</main>
+  {% include section-guides-banner.html %}
+  {% include section-journal-banner.html %}
+  {% include section-connect.html %}
 
-{% include newsletter.html
-  heading="Join my mailing list for a FREE GUIDE: 150g Protein Daily Made Easy"
-  lead="Learn the exact strategy I used to preserve muscle during my 155-lb weight loss." %}
+</main>
 
 {% include footer.html %}
