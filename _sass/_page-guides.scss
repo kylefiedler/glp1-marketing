@@ -1,54 +1,35 @@
-%guides-section {
-  padding: $space-9 $space-5;
-}
+// Guides page — shares the .home-hero hot-pink pattern via a joint class
+// on .guides-hero. Rest is guides-specific.
 
 %guides-inner {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-// ----- Hero -----
-
-.guides-hero {
-  @extend %guides-section;
-  background: linear-gradient(180deg, $color-blush 0%, $color-bg 100%);
-  padding-top: $space-8;
-  text-align: center;
-}
-
-.guides-hero__inner {
-  @extend %guides-inner;
-  max-width: 760px;
-}
+// ===== Hero-specific overrides =====
 
 .guides-hero__eyebrow {
   font-family: $font-heading;
   font-weight: 600;
   font-size: $fs-sm;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: $color-accent;
-  margin-bottom: $space-4;
+  color: $color-bg;
+  margin: 0 auto $space-4;
+  opacity: 0.9;
 }
 
-.guides-hero__title {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-3xl;
-  line-height: $lh-tight;
-  margin-bottom: $space-6;
-}
-
-// ----- Bundle -----
+// ===== Bundle (2-col: copy + scattered mockup) =====
 
 .guides-bundle {
-  @extend %guides-section;
+  background: $color-blush;
+  padding: $space-9 $space-5;
 }
 
 .guides-bundle__inner {
   @extend %guides-inner;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.95fr 1.05fr;
   gap: $space-8;
   align-items: center;
 }
@@ -57,137 +38,203 @@
   font-family: $font-heading;
   font-weight: 600;
   font-size: $fs-sm;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: $color-accent;
-  margin-bottom: $space-3;
+  margin: 0 0 $space-3;
 }
 
-.guides-bundle h2 {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-3xl;
-  margin-bottom: $space-4;
-  color: $color-accent;
+.guides-bundle__heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+  margin: 0 0 $space-4;
 }
 
 .guides-bundle__strike {
   display: inline-block;
+  font-family: $font-body;
+  font-weight: 400;
   font-size: $fs-md;
-  color: rgba($color-ink, 0.55);
+  color: rgba($color-ink, 0.6);
   text-decoration: line-through;
   margin-left: $space-3;
   vertical-align: middle;
 }
 
-.guides-bundle p {
+.guides-bundle__copy p {
+  font-family: $font-body;
   font-size: $fs-md;
   line-height: $lh-body;
-  margin-bottom: $space-4;
+  color: $color-ink;
+  margin: 0 0 $space-4;
+
+  strong { font-weight: 700; }
 }
 
 .guides-bundle__mockup {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: $space-3;
-  transform: rotate(-2deg);
+  transform: rotate(-3deg);
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 8px 20px rgba($color-black, 0.15);
+    background: $color-bg;
+  }
+  img:nth-child(odd)  { transform: translateY(8px) rotate(-2deg); }
+  img:nth-child(even) { transform: translateY(-8px) rotate(2deg); }
 }
 
-.guides-bundle__mockup img {
-  width: 100%;
-  border-radius: 6px;
-  box-shadow: 0 6px 14px rgba($color-ink, 0.18);
+@media (max-width: $bp-lg) {
+  .guides-bundle__inner   { grid-template-columns: 1fr; gap: $space-6; }
+  .guides-bundle__heading { font-size: 44px; }
+  .guides-bundle__mockup  { transform: none; }
 }
-
 @media (max-width: $bp-md) {
-  .guides-bundle__inner { grid-template-columns: 1fr; gap: $space-6; }
-  .guides-bundle__mockup { transform: none; }
-  .guides-bundle h2 { font-size: $fs-2xl; }
+  .guides-bundle__heading { font-size: 34px; }
 }
 
-// ----- Included -----
+// ===== What's included =====
 
 .guides-included {
-  @extend %guides-section;
-  background: $color-blush;
+  background: $color-bg;
+  padding: $space-9 $space-5;
 }
 
 .guides-included__inner {
   @extend %guides-inner;
-  max-width: 800px;
+  max-width: 900px;
 }
 
-.guides-included h2 {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-2xl;
-  margin-bottom: $space-5;
+.guides-included__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin: 0 0 $space-3;
   text-align: center;
 }
 
-.guides-included ul {
+.guides-included__heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+  text-align: center;
+  margin: 0 0 $space-7;
+}
+
+.guides-included__list {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: grid;
   gap: $space-4;
+
+  li {
+    background: $color-blush;
+    border-radius: 16px;
+    padding: $space-5 $space-6;
+    font-family: $font-body;
+    font-size: $fs-md;
+    line-height: $lh-body;
+    color: $color-ink;
+  }
+
+  strong {
+    font-family: $font-heading;
+    font-weight: 700;
+    font-size: 20px;
+    color: $color-ink;
+  }
+
+  span {
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: $fs-xs;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $color-accent;
+    margin-left: $space-2;
+  }
 }
 
-.guides-included li {
-  font-size: $fs-md;
-  line-height: $lh-body;
-  padding-left: $space-6;
-  position: relative;
+@media (max-width: $bp-md) {
+  .guides-included__heading  { font-size: 26px; }
+  .guides-included__list li  { padding: $space-4; }
+  .guides-included__list strong { font-size: 17px; }
 }
 
-.guides-included li::before {
-  content: "\2713";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: $color-accent;
-  font-weight: 700;
-}
-
-// ----- Individual cards grid -----
+// ===== Individual guides grid =====
 
 .guides-grid {
-  @extend %guides-section;
+  background: $color-blush;
+  padding: $space-9 $space-5;
 }
 
 .guides-grid__inner {
   @extend %guides-inner;
+  max-width: 1200px;
 }
 
-.guides-grid h2 {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-2xl;
-  margin-bottom: $space-6;
+.guides-grid__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin: 0 0 $space-3;
   text-align: center;
+}
+
+.guides-grid__heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+  text-align: center;
+  margin: 0 0 $space-7;
 }
 
 .guides-grid__list {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: $space-5;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-6;
 }
 
 .guide-card {
   background: $color-bg;
-  border: 1px solid rgba($color-ink, 0.08);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 6px 16px rgba($color-ink, 0.08);
 }
 
 .guide-card__img {
   width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
+  height: 320px;
+  object-fit: contain;
   background: $color-blush;
+  padding: $space-5;
+  display: block;
 }
 
 .guide-card__body {
@@ -196,86 +243,63 @@
   flex-direction: column;
   gap: $space-2;
   flex: 1;
+
+  p:last-child { margin-top: auto; }
 }
 
 .guide-card__name {
   font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-md;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  color: $color-ink;
+  margin: 0;
 }
 
 .guide-card__price {
-  font-family: $font-display;
-  font-weight: 500;
+  font-family: $font-heading;
+  font-weight: 700;
   font-size: $fs-lg;
   color: $color-accent;
+  margin: 0;
 }
 
 .guide-card__lede {
+  font-family: $font-body;
   font-size: $fs-sm;
+  line-height: $lh-body;
   color: rgba($color-ink, 0.85);
-  margin-bottom: $space-3;
+  margin: 0 0 $space-4;
   flex: 1;
 }
 
-@media (max-width: $bp-lg) {
-  .guides-grid__list { grid-template-columns: repeat(2, 1fr); }
-}
-
+@media (max-width: $bp-lg) { .guides-grid__list { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: $bp-md) {
   .guides-grid__list { grid-template-columns: 1fr; }
+  .guides-grid__heading { font-size: 26px; }
 }
 
-// ----- Bundle CTA strip -----
-
-.guides-bundle-cta {
-  @extend %guides-section;
-  background: $color-peach;
-  text-align: center;
-}
-
-.guides-bundle-cta__inner {
-  @extend %guides-inner;
-  max-width: 720px;
-}
-
-.guides-bundle-cta h2 {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-3xl;
-  margin-bottom: $space-3;
-}
-
-.guides-bundle-cta h2 span {
-  color: $color-accent;
-}
-
-.guides-bundle-cta__strike {
-  text-decoration: line-through;
-  color: rgba($color-ink, 0.65);
-  margin-bottom: $space-3;
-}
-
-.guides-bundle-cta p {
-  font-size: $fs-md;
-  margin-bottom: $space-4;
-}
-
-// ----- FAQ -----
+// ===== FAQ =====
 
 .guides-faq {
-  @extend %guides-section;
+  background: $color-bg;
+  padding: $space-9 $space-5;
 }
 
 .guides-faq__inner {
   @extend %guides-inner;
-  max-width: 760px;
+  max-width: 780px;
 }
 
-.guides-faq h2 {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-2xl;
-  margin-bottom: $space-6;
+.guides-faq__heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+  margin: 0 0 $space-6;
   text-align: center;
 }
+
+@media (max-width: $bp-md) { .guides-faq__heading { font-size: 26px; } }

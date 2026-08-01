@@ -1,185 +1,267 @@
-%journal-section {
-  padding: $space-9 $space-5;
-}
+// Journal page — shares the .home-hero hot-pink pattern.
 
 %journal-inner {
   max-width: 1100px;
   margin: 0 auto;
 }
 
-// ----- Hero -----
-
-.journal-hero {
-  @extend %journal-section;
-  background: linear-gradient(180deg, $color-peach 0%, $color-blush 100%);
-  padding-top: $space-8;
-}
-
-.journal-hero__inner {
-  @extend %journal-inner;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: $space-8;
-  align-items: center;
-}
-
 .journal-hero__eyebrow {
   font-family: $font-heading;
   font-weight: 600;
   font-size: $fs-sm;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-bg;
+  margin: 0 auto $space-4;
+  opacity: 0.9;
+}
+
+// ===== Product (2-col: copy + cover) =====
+
+.journal-product {
+  background: $color-blush;
+  padding: $space-9 $space-5;
+}
+
+.journal-product__inner {
+  @extend %journal-inner;
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: $space-8;
+  align-items: center;
+}
+
+.journal-product__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: $color-accent;
-  margin-bottom: $space-3;
+  margin: 0 0 $space-3;
 }
 
-.journal-hero__title {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-3xl;
-  line-height: $lh-tight;
-  margin-bottom: $space-5;
+.journal-product__heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+  margin: 0 0 $space-5;
 }
 
-.journal-hero__lede {
-  font-size: $fs-lg;
-  line-height: $lh-snug;
-  margin-bottom: $space-4;
-}
-
-.journal-hero p {
+.journal-product__copy p {
+  font-family: $font-body;
   font-size: $fs-md;
-  margin-bottom: $space-4;
+  line-height: $lh-body;
+  color: $color-ink;
+  margin: 0 0 $space-4;
 }
 
-.journal-hero__media img {
-  width: 100%;
-  max-width: 420px;
-  margin: 0 auto;
-  display: block;
-  border-radius: 8px;
-  box-shadow: 0 16px 36px rgba($color-ink, 0.2);
+.journal-product__media {
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    border-radius: 12px;
+    transform: rotate(4deg);
+    box-shadow: 0 16px 40px rgba($color-ink, 0.2);
+  }
 }
 
-@media (max-width: $bp-md) {
-  .journal-hero__inner { grid-template-columns: 1fr; gap: $space-6; }
-  .journal-hero__media { order: -1; }
-  .journal-hero__title { font-size: $fs-2xl; }
+@media (max-width: $bp-lg) {
+  .journal-product__inner   { grid-template-columns: 1fr; gap: $space-6; }
+  .journal-product__heading { font-size: 32px; }
+  .journal-product__media   { order: -1; }
+  .journal-product__media img { max-width: 300px; transform: none; }
 }
+@media (max-width: $bp-md) { .journal-product__heading { font-size: 26px; } }
 
-// ----- Inside grid -----
+// ===== What's inside =====
 
 .journal-inside {
-  @extend %journal-section;
+  background: $color-bg;
+  padding: $space-9 $space-5;
+  text-align: center;
 }
 
 .journal-inside__inner {
   @extend %journal-inner;
+  max-width: 1100px;
 }
 
-.journal-inside h2 {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-2xl;
-  margin-bottom: $space-6;
-  text-align: center;
+.journal-inside__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin: 0 0 $space-3;
+}
+
+.journal-inside__heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+  margin: 0 0 $space-7;
 }
 
 .journal-inside__grid {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: $space-5;
+  gap: $space-7;
+  text-align: center;
+
+  > li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  h3 {
+    font-family: $font-heading;
+    font-weight: 700;
+    font-size: 22px;
+    color: $color-ink;
+    margin: 0;
+  }
+
+  p {
+    font-family: $font-body;
+    font-size: $fs-sm;
+    line-height: $lh-body;
+    color: $color-ink;
+    margin: 0;
+    max-width: 34ch;
+  }
 }
 
-.journal-inside__grid li {
-  background: $color-bg;
-  border: 1px solid rgba($color-ink, 0.08);
-  border-radius: 12px;
-  padding: $space-5;
-}
-
-.journal-inside__grid h3 {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-lg;
+.journal-inside__icon {
+  width: 48px;
   color: $color-accent;
-  margin-bottom: $space-2;
 }
 
-.journal-inside__grid p {
-  font-size: $fs-sm;
-  line-height: $lh-body;
-}
-
-@media (max-width: $bp-lg) {
-  .journal-inside__grid { grid-template-columns: repeat(2, 1fr); }
-}
-
+@media (max-width: $bp-lg) { .journal-inside__grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: $bp-md) {
-  .journal-inside__grid { grid-template-columns: 1fr; }
+  .journal-inside__grid    { grid-template-columns: 1fr; }
+  .journal-inside__heading { font-size: 26px; }
 }
 
-// ----- Interior preview -----
+// ===== Interior spread =====
 
 .journal-interior {
-  padding: $space-7 $space-5;
-  background: $color-blush;
+  background: $color-bg;
+  padding: 0 $space-5 $space-9;
 }
 
 .journal-interior__inner {
   @extend %journal-inner;
-  max-width: 1200px;
+  max-width: 900px;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba($color-ink, 0.15);
+    display: block;
+  }
 }
 
-.journal-interior img {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 16px 36px rgba($color-ink, 0.18);
-}
-
-// ----- Why it works -----
+// ===== Why it works (hot pink) =====
 
 .journal-why {
-  @extend %journal-section;
+  position: relative;
+  background: $color-accent;
+  color: $color-bg;
+  padding: calc(#{$space-9} + 40px) $space-5;
   text-align: center;
 }
 
+.journal-why__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  line-height: 0;
+  z-index: 3;
+  pointer-events: none;
+  svg { width: 100%; height: 100%; display: block; }
+}
+.journal-why__wave.home-bundle__wave--top    { top: -59px; }
+.journal-why__wave.home-bundle__wave--bottom { bottom: -59px; }
+
 .journal-why__inner {
   @extend %journal-inner;
-  max-width: 720px;
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
 }
 
-.journal-why h2 {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-2xl;
-  margin-bottom: $space-5;
+.journal-why__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba($color-bg, 0.9);
+  margin: 0 0 $space-4;
+}
+
+.journal-why__heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: $color-bg;
+  margin: 0 0 $space-6;
 }
 
 .journal-why p {
+  font-family: $font-body;
   font-size: $fs-md;
   line-height: $lh-body;
-  margin-bottom: $space-4;
+  color: $color-bg;
+  margin: 0 auto $space-4;
+  max-width: 60ch;
 }
 
-// ----- FAQ -----
+@media (max-width: $bp-lg) { .journal-why__heading { font-size: 32px; } }
+@media (max-width: $bp-md) { .journal-why__heading { font-size: 26px; } }
+
+// ===== FAQ =====
 
 .journal-faq {
-  @extend %journal-section;
-  background: $color-peach;
+  background: $color-blush;
+  padding: $space-9 $space-5;
 }
 
 .journal-faq__inner {
   @extend %journal-inner;
-  max-width: 760px;
+  max-width: 780px;
 }
 
-.journal-faq h2 {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-2xl;
-  margin-bottom: $space-6;
+.journal-faq__heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+  margin: 0 0 $space-6;
   text-align: center;
 }
+
+@media (max-width: $bp-md) { .journal-faq__heading { font-size: 26px; } }
