@@ -1,61 +1,116 @@
-.about-hero {
-  background: linear-gradient(180deg, $color-blush 0%, $color-bg 100%);
-  padding: $space-8 $space-5 $space-9;
+// About page — shares the .home-hero hot-pink pattern via a joint class
+// on .about-hero. This file holds about-specific sections only.
+
+%about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.about-hero__inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: $space-8;
-  align-items: center;
-}
+// ===== Hero-specific overrides =====
 
 .about-hero__eyebrow {
   font-family: $font-heading;
   font-weight: 600;
   font-size: $fs-sm;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: $color-accent;
-  margin-bottom: $space-4;
-}
-
-.about-hero__title {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-3xl;
-  line-height: $lh-tight;
-  margin-bottom: $space-5;
+  color: $color-bg;
+  margin: 0 auto $space-4;
+  opacity: 0.9;
 }
 
 .about-hero__lede {
-  font-size: $fs-lg;
-  line-height: $lh-snug;
-  margin-bottom: $space-4;
-}
-
-.about-hero p {
+  font-family: $font-body;
   font-size: $fs-md;
-  margin-bottom: $space-3;
+  line-height: $lh-snug;
+  color: $color-bg;
+  margin: 0 auto;
+  max-width: 56ch;
 }
 
-.about-hero__media img {
+// ===== Intro (2-col: copy + photo) =====
+
+.about-intro {
+  background: $color-blush;
+  padding: $space-9 $space-5;
+}
+
+.about-intro__inner {
+  @extend %about-inner;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: $space-8;
+  align-items: center;
+}
+
+.about-intro__copy p {
+  font-family: $font-body;
+  font-size: $fs-md;
+  line-height: $lh-body;
+  color: $color-ink;
+  margin: 0;
+}
+
+.about-intro__media img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: auto;
+  border-radius: 24px;
   object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 12px 32px rgba($color-ink, 0.15);
+  aspect-ratio: 4 / 5;
+  box-shadow: 0 12px 28px rgba($color-ink, 0.15);
 }
 
-@media (max-width: $bp-md) {
-  .about-hero__inner { grid-template-columns: 1fr; gap: $space-6; }
-  .about-hero__media { max-width: 360px; margin: 0 auto; order: -1; }
-  .about-hero__title { font-size: $fs-2xl; }
+@media (max-width: $bp-lg) {
+  .about-intro__inner { grid-template-columns: 1fr; gap: $space-6; }
+  .about-intro__media { max-width: 480px; margin: 0 auto; order: -1; }
 }
+
+// ===== Statement =====
+
+.about-statement {
+  background: $color-blush;
+  padding: 0 $space-5 $space-9;
+  text-align: center;
+}
+
+.about-statement__inner {
+  @extend %about-inner;
+  max-width: 820px;
+}
+
+.about-statement__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin: 0 0 $space-4;
+}
+
+.about-statement__heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+  margin: 0 0 $space-5;
+}
+
+.about-statement__underline {
+  width: 60px;
+  margin: 0 auto;
+  color: $color-accent;
+}
+
+@media (max-width: $bp-lg) { .about-statement__heading { font-size: 32px; } }
+@media (max-width: $bp-md) { .about-statement__heading { font-size: 26px; } }
+
+// ===== Story (long-form narrative) =====
 
 .about-story {
+  background: $color-bg;
   padding: $space-9 $space-5;
 }
 
@@ -64,67 +119,120 @@
   margin: 0 auto;
 }
 
-.about-story__inner h2 {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-2xl;
-  margin-bottom: $space-6;
+.about-story__heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+  margin: 0 0 $space-6;
   text-align: center;
 }
 
-.about-story__inner p {
+.about-story p {
+  font-family: $font-body;
   font-size: $fs-md;
   line-height: $lh-body;
-  margin-bottom: $space-4;
+  color: $color-ink;
+  margin: 0 0 $space-5;
+
+  em { font-style: italic; }
+  strong { font-weight: 700; }
+}
+
+.about-story__pullquote {
+  font-family: $font-heading;
+  font-weight: 700 !important;
+  font-size: 28px !important;
+  line-height: 1.2 !important;
+  color: $color-accent !important;
+  text-align: center;
+  padding: $space-6 0 !important;
+  margin: $space-3 0 !important;
 }
 
 .about-story__figure {
   margin: $space-7 0;
-}
 
-.about-story__figure img {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba($color-ink, 0.15);
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    display: block;
+    box-shadow: 0 12px 28px rgba($color-ink, 0.15);
+  }
 }
 
 .about-story__signoff {
-  font-family: $font-display;
-  font-style: italic;
-  font-size: $fs-lg;
+  font-family: $font-heading;
+  font-weight: 700 !important;
+  font-size: $fs-lg !important;
+  color: $color-accent !important;
   text-align: center;
-  margin-top: $space-7;
+  margin-top: $space-7 !important;
 }
+
+@media (max-width: $bp-md) {
+  .about-story__heading   { font-size: 26px; }
+  .about-story__pullquote { font-size: 22px !important; }
+}
+
+// ===== Bundle (hot-pink full-bleed matching home-bundle pattern) =====
 
 .about-bundle {
-  background: $color-blush;
-  padding: $space-9 $space-5;
+  position: relative;
+  background: $color-accent;
+  color: $color-bg;
+  padding: calc(#{$space-9} + 40px) $space-5;
   text-align: center;
 }
 
+.about-bundle__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  line-height: 0;
+  z-index: 3;
+  pointer-events: none;
+  svg { width: 100%; height: 100%; display: block; }
+}
+.about-bundle__wave.home-bundle__wave--top    { top: -59px; }
+.about-bundle__wave.home-bundle__wave--bottom { bottom: -59px; }
+
 .about-bundle__inner {
+  @extend %about-inner;
+  position: relative;
+  z-index: 2;
   max-width: 720px;
-  margin: 0 auto;
 }
 
-.about-bundle h2 {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-3xl;
-  margin-bottom: $space-3;
+.about-bundle__heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: $color-bg;
+  margin: 0 0 $space-4;
 }
 
-.about-bundle h2 span {
-  color: $color-accent;
-}
+.about-bundle__price { color: $color-bg; }
 
 .about-bundle__strike {
-  text-decoration: line-through;
-  color: rgba($color-ink, 0.65);
-  margin-bottom: $space-3;
+  font-family: $font-body;
+  font-size: $fs-md;
+  color: rgba($color-bg, 0.85);
+  margin: 0 0 $space-3;
 }
 
-.about-bundle p {
+.about-bundle__lede {
+  font-family: $font-body;
   font-size: $fs-md;
-  margin-bottom: $space-4;
+  margin: 0 0 $space-6;
+  color: rgba($color-bg, 0.95);
 }
+
+@media (max-width: $bp-lg) { .about-bundle__heading { font-size: 38px; } }
+@media (max-width: $bp-md) { .about-bundle__heading { font-size: 30px; } }
