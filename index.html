@@ -4,7 +4,7 @@ title: GLP-1 Weight Loss Coaching & Support
 description: >-
   Nurse-led, evidence-based GLP-1 coaching, journal and guides from Jessica -
   Ivy League RN, Obesity Medicine certified, and 155 lbs down herself.
-image: /assets/images/home/hero.jpg
+image: /assets/images/home/fh3a7768.jpg
 permalink: /
 ---
 {% include header.html %}
@@ -12,19 +12,11 @@ permalink: /
 <main class="home">
 
   <section class="home-hero">
-    <span class="home-hero__decor home-hero__decor--asterisk" aria-hidden="true">
-      <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
-        <g fill="#FEBBB4">
-          {% for i in (0..2) %}
-            <rect x="98" y="20" width="44" height="200" rx="22" transform="rotate({{ i | times: 60 }} 120 120)"/>
-          {% endfor %}
-        </g>
-      </svg>
+    <span class="decor decor--asterisk-8pt home-hero__decor home-hero__decor--asterisk" aria-hidden="true">
+      {% include decor/asterisk-8pt.svg %}
     </span>
-    <span class="home-hero__decor home-hero__decor--squiggle" aria-hidden="true">
-      <svg viewBox="0 0 240 150" xmlns="http://www.w3.org/2000/svg" fill="none">
-        <path d="M20 130 Q 70 15 120 130 Q 170 15 220 130" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+    <span class="decor decor--squiggle home-hero__decor home-hero__decor--squiggle" aria-hidden="true">
+      {% include decor/squiggle.svg %}
     </span>
 
     <div class="home-hero__inner">
@@ -37,15 +29,8 @@ permalink: /
   </section>
 
   <section class="home-stat">
-    <span class="home-stat__decor home-stat__decor--star" aria-hidden="true">
-      <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
-        <g fill="#EF2475">
-          {% for i in (0..19) %}
-            <ellipse cx="80" cy="24" rx="6" ry="30" transform="rotate({{ i | times: 18 }} 80 80)"/>
-          {% endfor %}
-          <circle cx="80" cy="80" r="22" fill="#EF2475"/>
-        </g>
-      </svg>
+    <span class="decor decor--starburst home-stat__decor home-stat__decor--star" aria-hidden="true">
+      {% include decor/starburst.svg %}
     </span>
 
     <div class="home-stat__inner">
@@ -82,7 +67,7 @@ permalink: /
         </p>
       </div>
       <div class="home-about__media">
-        <img src="{{ '/assets/images/home/hero.jpg' | relative_url }}" alt="Jessica, GLP-1 weight loss coach and registered nurse" loading="lazy" width="800" height="1000">
+        <img src="{{ '/assets/images/home/fh3a7768.jpg' | relative_url }}" alt="Jessica, GLP-1 weight loss coach and registered nurse" loading="lazy" width="800" height="1000">
       </div>
     </div>
   </section>
@@ -104,7 +89,7 @@ permalink: /
         </p>
       </div>
       <div class="home-bundle__mockup" aria-hidden="true">
-        {%- assign bundle_covers = "guide-supplement.png|guide-meal-template.png|guide-travel.png|guide-wean-off.png|guide-workout.png|guide-grocery.png|guide-beginner.png|guide-protein.png" | split: "|" -%}
+        {%- assign bundle_covers = "supplement_guide_cover.png|meal_template_cover.png|travel_survival_kit_cover.png|wean_off_glp-1_cover.png|workout_starter_cover.png|grocery_guide_cover.png|beginner_kit_cover.png|protien-cover.png" | split: "|" -%}
         {%- for cover in bundle_covers -%}
           <img src="{{ '/assets/images/home/' | append: cover | relative_url }}" alt="" loading="lazy" width="400" height="520">
         {%- endfor -%}
@@ -125,16 +110,8 @@ permalink: /
         {%- for service in services -%}
           {%- assign parts = service | split: "|" -%}
           <li class="home-service">
-            <span class="home-service__icon" aria-hidden="true">
-              <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-                <g fill="#EF2475">
-                  <ellipse cx="40" cy="16" rx="14" ry="18"/>
-                  <ellipse cx="64" cy="40" rx="18" ry="14"/>
-                  <ellipse cx="40" cy="64" rx="14" ry="18"/>
-                  <ellipse cx="16" cy="40" rx="18" ry="14"/>
-                  <circle cx="40" cy="40" r="9" fill="#FDEADE"/>
-                </g>
-              </svg>
+            <span class="decor decor--flower home-service__icon" aria-hidden="true">
+              {% include decor/flower.svg %}
             </span>
             <h3 class="home-service__heading">{{ parts[0] }}</h3>
             <p>{{ parts[1] }}</p>
