@@ -92,8 +92,8 @@
 }
 
 .blog-card__title {
-  font-family: $font-heading;
-  font-weight: 700;
+  font-family: $font-display;
+  font-weight: 500;
   font-size: 24px;
   line-height: 1.2;
   color: $color-ink;
@@ -109,8 +109,8 @@
 }
 
 .blog-card__cta {
-  font-family: $font-heading;
-  font-weight: 700;
+  font-family: $font-display;
+  font-weight: 500;
   font-size: $fs-sm;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -151,8 +151,8 @@
 }
 
 .blog-index__sidebar-heading {
-  font-family: $font-heading;
-  font-weight: 700;
+  font-family: $font-display;
+  font-weight: 500;
   font-size: 26px;
   line-height: 1.15;
   color: $color-ink;
