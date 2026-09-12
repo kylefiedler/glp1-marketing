@@ -66,21 +66,32 @@
 // The squiggle straddles the seam between the pink hero and peach stat section.
 .home-hero__decor--squiggle {
   right: 18%;
-  bottom: -55px;
-  width: 220px;
+  bottom: -95px;
+  width: 280px;
   z-index: 4;
+  animation: decor-spin 20s linear infinite;
 }
 
 @media (max-width: $bp-lg) {
   .home-hero__title { font-size: 44px; }
   .home-hero__decor--asterisk { width: 140px; left: 3%; }
-  .home-hero__decor--squiggle { width: 160px; right: 14%; bottom: -40px; }
+  .home-hero__decor--squiggle { width: 200px; right: 12%; bottom: -65px; }
 }
 
 @media (max-width: $bp-md) {
   .home-hero__title { font-size: 32px; }
   .home-hero__decor--asterisk { width: 90px; opacity: 0.8; top: 8%; }
   .home-hero__decor--squiggle { display: none; }
+}
+
+@keyframes decor-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero__decor--squiggle,
+  .home-stat__decor--star { animation: none; }
 }
 
 // ===== 155 lb stat banner =====
@@ -98,19 +109,20 @@
   pointer-events: none;
 }
 
-// Starburst straddles hero/stat seam on the right, next to the squiggle.
+// Starburst straddles hero/stat seam on the right, overlapping the squiggle.
 .home-stat__decor--star {
-  right: 6%;
-  top: -90px;
-  width: 170px;
+  right: 10%;
+  top: -80px;
+  width: 220px;
+  animation: decor-spin 24s linear infinite reverse;
 }
 
 @media (max-width: $bp-lg) {
-  .home-stat__decor--star { width: 120px; right: 3%; top: -60px; }
+  .home-stat__decor--star { width: 160px; right: 6%; top: -55px; }
 }
 
 @media (max-width: $bp-md) {
-  .home-stat__decor--star { width: 80px; right: 2%; top: -40px; }
+  .home-stat__decor--star { width: 100px; right: 3%; top: -35px; }
 }
 
 .home-stat__inner {
