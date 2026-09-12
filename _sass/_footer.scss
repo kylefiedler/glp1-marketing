@@ -79,13 +79,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    color: $color-ink;
-    transition: color 120ms ease;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: $color-accent;
+    color: $color-bg;
+    transition: filter 120ms ease;
   }
-  a:hover { color: $color-accent; }
-  svg { width: 20px; height: 20px; }
+  a:hover { filter: brightness(0.92); }
+  svg { width: 22px; height: 22px; }
 }
 
 .site-footer__copy {
