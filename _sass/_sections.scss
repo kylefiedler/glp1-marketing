@@ -36,6 +36,8 @@
   margin: 0 0 $space-3;
 }
 
+.banner--journal .banner__heading { color: $color-bg; }
+
 .banner p {
   font-family: $font-body;
   font-size: $fs-md;
