@@ -8,26 +8,11 @@
 
 .banner {
   position: relative;
-  margin: $space-8 0;
   padding: $space-9 0;
+  overflow: hidden;
 
   &--guides  { background: $color-peach; }
   &--journal { background: $color-accent; color: $color-bg; }
-}
-
-.banner__wave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 60px;
-  line-height: 0;
-  z-index: 3;
-  pointer-events: none;
-
-  svg { width: 100%; height: 100%; display: block; }
-
-  &--top    { top: -59px; }
-  &--bottom { bottom: -59px; }
 }
 
 .banner__inner {
