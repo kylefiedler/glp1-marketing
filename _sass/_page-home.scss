@@ -61,6 +61,7 @@
   left: 8%;
   top: 48%;
   width: 200px;
+  animation: decor-spin 28s linear infinite;
 }
 
 // The squiggle straddles the seam between the pink hero and peach stat section.
@@ -89,6 +90,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .home-hero__decor--asterisk,
   .home-stat__decor--star { animation: none; }
 }
 
