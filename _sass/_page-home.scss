@@ -69,7 +69,6 @@
   bottom: -95px;
   width: 280px;
   z-index: 4;
-  animation: decor-spin 20s linear infinite;
 }
 
 @media (max-width: $bp-lg) {
@@ -90,7 +89,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-hero__decor--squiggle,
   .home-stat__decor--star { animation: none; }
 }
 
