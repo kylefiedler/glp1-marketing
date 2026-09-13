@@ -218,13 +218,10 @@
   margin: 0 0 $space-4;
 }
 
-.about-bundle__price { color: $color-bg; }
-
-.about-bundle__strike {
-  font-family: $font-body;
-  font-size: $fs-md;
-  color: rgba($color-bg, 0.85);
-  margin: 0 0 $space-3;
+// Starburst price badge (.price-bubble, _sections.scss), centered above
+// the heading.
+.about-bundle__price {
+  margin: 0 auto $space-5;
 }
 
 .about-bundle__lede {
