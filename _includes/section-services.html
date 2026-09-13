@@ -1,0 +1,35 @@
+{%- comment -%}
+  Services cards — flower icon (with the live white centre dot), name, a
+  one-line pitch and a "learn more" button.
+
+  Live runs this three-up on home (`services`) and two-up on coaching
+  (`services-1`, under a "Not ready for 1:1 coaching yet?" title), so the
+  grid auto-fits to however many items it is handed.
+
+  Params:
+    items   (required) — "Name|Copy|/href||Name|Copy|/href"
+    heading (optional) — title above the cards
+    class   (optional) — extra modifier(s), e.g. "services--left"
+{%- endcomment -%}
+
+<section class="services{% if include.class %} {{ include.class }}{% endif %}">
+  <div class="services__inner">
+    {%- if include.heading %}
+    <h2 class="services__heading">{{ include.heading }}</h2>
+    {%- endif %}
+    <ul class="services__grid">
+      {%- assign service_items = include.items | split: "||" -%}
+      {%- for service in service_items -%}
+        {%- assign parts = service | split: "|" -%}
+        <li class="service">
+          <span class="decor decor--flower service__icon" aria-hidden="true">
+            {% include decor/flower.svg %}
+          </span>
+          <h3 class="service__heading">{{ parts[0] }}</h3>
+          <p class="service__copy">{{ parts[1] }}</p>
+          <p class="service__cta"><a class="btn btn--primary" href="{{ parts[2] | relative_url }}">Learn more</a></p>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>

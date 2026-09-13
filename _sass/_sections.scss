@@ -8,6 +8,7 @@
 //   .price-bubble  — starburst badge with a price, via _includes/price-bubble.html
 //   .bundle-cta    — flat hot-pink "$35 bundle" reminder banner, via _includes/section-bundle-cta.html
 //   .testimonials  — client reviews grid + wordmark, via _includes/section-testimonials.html
+//   .services      — offer cards (flower icon + pitch), via _includes/section-services.html
 
 // ----- Banners (guides + journal) -----
 
@@ -538,4 +539,103 @@
     line-height: 0.9;
     white-space: normal;
   }
+}
+
+// ----- Services (product/offer cards) -----
+// Markup via _includes/section-services.html. Live runs the same card —
+// pink flower icon with a white centre dot, Unbounded name, Lato pitch,
+// "learn more" — three-up on home and two-up on coaching under a title.
+// The grid auto-fits, so the caller only supplies items.
+
+.services {
+  background: $color-blush;
+  padding: $space-9 $space-5;
+}
+
+.services__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services__heading {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 54px;
+  line-height: 1.1;
+  letter-spacing: 0;
+  color: $color-ink;
+  margin: 0 0 $space-8;
+}
+
+.services__grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $space-8;
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: $space-3;
+}
+
+// Coaching aligns the cards (and title) left; home centres them.
+.services--left .service { align-items: flex-start; text-align: left; }
+
+.service__icon {
+  position: relative;
+  width: 78px;
+  color: $color-accent;
+  margin-bottom: $space-2;
+
+  // The live icon is a pink flower with a white dot punched out of the middle.
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20px;
+    height: 19px;
+    transform: translate(-50%, -50%);
+    background: $color-bg;
+    border-radius: 50%;
+  }
+}
+
+.service__heading {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 1.2;
+  color: $color-ink;
+  margin: 0;
+}
+
+.service__copy {
+  font-family: $font-body;
+  font-size: $fs-sm;
+  line-height: $lh-body;
+  color: $color-ink;
+  margin: 0;
+  max-width: 40ch;
+}
+
+.service__cta { margin-top: $space-4; }
+
+@media (max-width: $bp-lg) {
+  .services__heading { font-size: 38px; }
+  .service__heading  { font-size: 30px; }
+}
+
+@media (max-width: $bp-md) {
+  .services__grid    { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
+  .services__heading { font-size: 36px; text-align: center; }
+  .service__heading  { font-size: 20px; }
+  .service__copy     { font-size: $fs-xs; }
+  .services--left .service { align-items: center; text-align: center; }
 }

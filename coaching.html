@@ -20,77 +20,93 @@ permalink: /coaching/
     </span>
 
     <div class="home-hero__inner">
-      <h1 class="home-hero__title">1:1 GLP-1 Coaching with Jessica</h1>
-      <p class="home-hero__eyebrow">Personalized &nbsp;|&nbsp; Nurse-Led &nbsp;|&nbsp; Evidence-Based</p>
-      <p class="coaching-hero__lede">I lost 155 pounds. Now I help GLP-1 users do the same&mdash;without losing muscle, their minds, or their results.</p>
+      <p class="home-hero__eyebrow coaching-hero__eyebrow">1:1 GLP-1 Coaching with Jessica</p>
+      <h1 class="home-hero__title coaching-hero__title">I lost 155 pounds. Now I help GLP-1 users do the same&mdash;without losing muscle, their minds, or their results.</h1>
       <p class="home-hero__cta">
         <a class="btn btn--white" href="#apply">Get started</a>
       </p>
     </div>
+
+    <div class="coaching-hero__media" aria-hidden="true">
+      <img class="coaching-hero__photo coaching-hero__photo--left" src="{{ '/assets/images/coaching/pexels-anna-shvets-6593598.jpg' | relative_url }}" alt="" width="378" height="386" loading="lazy">
+      <img class="coaching-hero__photo coaching-hero__photo--right" src="{{ '/assets/images/coaching/screenshot_2026-01-04_at_7_04_57_pm.png' | relative_url }}" alt="" width="590" height="597" loading="lazy">
+    </div>
+
+    <span class="decor decor--starburst coaching-hero__badge" aria-hidden="true">
+      {% include decor/starburst.svg %}
+    </span>
   </section>
 
   <section class="coaching-truth">
+    <div class="coaching-seam" aria-hidden="true">{% include decor/wave-med.svg %}</div>
+
     <div class="coaching-truth__inner">
-      <p class="coaching-truth__eyebrow">Here&rsquo;s the truth about GLP-1s that nobody&rsquo;s talking about:</p>
-      <p class="coaching-truth__lede">The medication works. But what happens when your appetite comes back? When you taper off? When you&rsquo;re 6 months in and the scale isn&rsquo;t moving like it used to?</p>
-      <h2 class="coaching-truth__heading">Most people don&rsquo;t have a plan for that.</h2>
-      <span class="decor decor--squiggle-vert coaching-truth__underline" aria-hidden="true">
-        {% include decor/squiggle-vert.svg %}
-      </span>
-      <p>They&rsquo;re eating whatever fits their tiny appetite. They&rsquo;re not tracking protein. They&rsquo;re losing muscle along with fat. And they&rsquo;re terrified of what happens when the medication stops working.</p>
-      <p>I&rsquo;ve been there. I know what it&rsquo;s like to lose massive weight and wonder if you can actually keep it going, and keep it off.</p>
-      <p class="coaching-truth__punch"><strong>That&rsquo;s exactly why I created this.</strong></p>
-      <p class="coaching-truth__cta">
-        <a class="btn btn--primary" href="#apply">Get started</a>
-      </p>
+      <div class="coaching-truth__copy">
+        <h2 class="coaching-truth__heading">Here&rsquo;s the truth about GLP-1s that nobody&rsquo;s talking about:</h2>
+        <span class="decor decor--wave-thin coaching-truth__rule" aria-hidden="true">
+          {% include decor/wave-thin.svg %}
+        </span>
+        <p>The medication works. But what happens when your appetite comes back? When you taper off? When you&rsquo;re 6 months in and the scale isn&rsquo;t moving like it used to?</p>
+        <p class="coaching-truth__punch">Most people don&rsquo;t have a plan for that.</p>
+        <p>They&rsquo;re eating whatever fits their tiny appetite. They&rsquo;re not tracking protein. They&rsquo;re losing muscle along with fat. And they&rsquo;re terrified of what happens when the medication stops working.</p>
+        <p>I&rsquo;ve been there. I know what it&rsquo;s like to lose massive weight and wonder if you can actually keep it going, and keep it off.</p>
+        <p class="coaching-truth__punch">That&rsquo;s exactly why I created this.</p>
+        <p class="coaching-truth__cta">
+          <a class="btn btn--primary" href="#apply">Get started</a>
+        </p>
+      </div>
+
+      <div class="coaching-truth__media">
+        <img src="{{ '/assets/images/coaching/screenshot_2026-01-04_at_7_05_07_pm.png' | relative_url }}" alt="" width="544" height="496" loading="lazy">
+        <span class="decor decor--squiggle coaching-truth__squiggle" aria-hidden="true">
+          {% include decor/squiggle.svg %}
+        </span>
+      </div>
     </div>
   </section>
 
   <section class="coaching-features">
+    <span class="decor decor--starburst coaching-features__star" aria-hidden="true">
+      {% include decor/starburst.svg %}
+    </span>
+
     <div class="coaching-features__inner">
-      <p class="coaching-features__eyebrow">More than just coaching</p>
-      <h2 class="coaching-features__heading">A complete roadmap for protecting your progress.</h2>
+      <h2 class="coaching-features__heading">More than just coaching, this is a complete roadmap for protecting your progress.</h2>
+
       <ul class="coaching-features__grid">
-        <li>
-          <span class="decor decor--flower coaching-features__icon" aria-hidden="true">
-            {% include decor/flower.svg %}
-          </span>
+        <li class="coaching-feature">
           <h3>Custom Macro Plan</h3>
-          <p class="coaching-features__sub">Tailored to your current appetite, lifestyle, and body composition goals.</p>
+          <p class="coaching-feature__sub">tailored to your current appetite, lifestyle, and body composition goals</p>
           <ul>
             <li>Personalized protein targets to preserve muscle while dropping fat</li>
             <li>Flexible meal frameworks that work even when you can only eat small amounts</li>
             <li>Adjustments as your appetite and body change throughout treatment</li>
           </ul>
         </li>
-        <li>
-          <span class="decor decor--flower coaching-features__icon" aria-hidden="true">
-            {% include decor/flower.svg %}
-          </span>
+        <li class="coaching-feature">
           <h3>Weekly 1:1 Strategy Sessions</h3>
-          <p class="coaching-features__sub">30 minutes via video.</p>
+          <p class="coaching-feature__sub">(30 minutes via video)</p>
           <ul>
             <li>Real-time problem solving for plateaus, side effects, and challenges</li>
             <li>Accountability that&rsquo;s supportive, not judgmental</li>
             <li>Tweaks to your plan based on what&rsquo;s actually working for YOUR body</li>
           </ul>
         </li>
-        <li>
-          <span class="decor decor--flower coaching-features__icon" aria-hidden="true">
-            {% include decor/flower.svg %}
-          </span>
+
+        <li class="coaching-features__rule" aria-hidden="true">
+          <span class="decor decor--wave-thin">{% include decor/wave-thin.svg %}</span>
+        </li>
+
+        <li class="coaching-feature">
           <h3>Unlimited Messaging Support</h3>
-          <p class="coaching-features__sub">Weekdays.</p>
+          <p class="coaching-feature__sub">(weekdays)</p>
           <ul>
             <li>Quick answers when you&rsquo;re stuck at the grocery store or meal planning</li>
             <li>Reality checks when you&rsquo;re spiraling about the scale</li>
             <li>Celebrations when you hit new PRs or non-scale wins</li>
           </ul>
         </li>
-        <li>
-          <span class="decor decor--flower coaching-features__icon" aria-hidden="true">
-            {% include decor/flower.svg %}
-          </span>
+        <li class="coaching-feature">
           <h3>GLP-1-Specific Protocols</h3>
           <ul>
             <li>Managing nausea, constipation, and appetite suppression</li>
@@ -99,22 +115,20 @@ permalink: /coaching/
             <li>Transitioning off or tapering down medication safely</li>
           </ul>
         </li>
-        <li>
-          <span class="decor decor--flower coaching-features__icon" aria-hidden="true">
-            {% include decor/flower.svg %}
-          </span>
-          <h3>Training Guidance</h3>
-          <p class="coaching-features__sub">Based on your experience level.</p>
+
+        <li class="coaching-features__rule" aria-hidden="true">
+          <span class="decor decor--wave-thin">{% include decor/wave-thin.svg %}</span>
+        </li>
+
+        <li class="coaching-feature">
+          <h3>Training Guidance Based on Your Experience Level</h3>
           <ul>
             <li>Beginner? I&rsquo;ll teach you the basics without overwhelming you</li>
             <li>Already lifting? We&rsquo;ll optimize for muscle retention and progressive overload</li>
             <li>Workout plans designed around your schedule, recovery, and goals</li>
           </ul>
         </li>
-        <li>
-          <span class="decor decor--flower coaching-features__icon" aria-hidden="true">
-            {% include decor/flower.svg %}
-          </span>
+        <li class="coaching-feature">
           <h3>Mindset &amp; Behavior Coaching</h3>
           <ul>
             <li>Breaking the &ldquo;I&rsquo;m cheating&rdquo; guilt around using medication</li>
@@ -123,64 +137,109 @@ permalink: /coaching/
           </ul>
         </li>
       </ul>
+
+      <div class="coaching-features__media" aria-hidden="true">
+        <img src="{{ '/assets/images/coaching/screenshot_2025-12-15_at_5_59_27_pm.png' | relative_url }}" alt="" width="465" height="356" loading="lazy">
+        <img src="{{ '/assets/images/coaching/derick-mckinney-_qqvti5edc-unsplash.jpg' | relative_url }}" alt="" width="585" height="472" loading="lazy">
+      </div>
     </div>
   </section>
 
   <section class="coaching-fit">
+    <div class="coaching-seam" aria-hidden="true">{% include decor/wave-med.svg %}</div>
+    <span class="decor decor--asterisk-8pt coaching-fit__asterisk" aria-hidden="true">
+      {% include decor/asterisk-8pt.svg %}
+    </span>
+
     <div class="coaching-fit__inner">
-      <h2 class="coaching-fit__heading">This is for you if:</h2>
-      <ul class="coaching-fit__list">
-        <li>You&rsquo;re on a GLP-1 (Ozempic, Wegovy, Mounjaro, Zepbound) and serious about doing this right</li>
-        <li>You&rsquo;re tired of generic advice that doesn&rsquo;t account for GLP-1 side effects or appetite changes</li>
-        <li>You want to lose fat WITHOUT losing muscle, strength, or your damn mind</li>
-        <li>You&rsquo;re afraid of regaining weight when you stop the medication&mdash;and you want a plan to prevent that</li>
-        <li>You&rsquo;re ready to invest in yourself and commit to the process, not just look for a quick fix</li>
-        <li>You want someone in your corner who&rsquo;s actually been there and gets it</li>
-      </ul>
+      <div class="coaching-fit__media">
+        <img src="{{ '/assets/images/coaching/gabrielle-henderson-m4lve6jr26e-unsplash.jpg' | relative_url }}" alt="" width="509" height="601" loading="lazy">
+      </div>
+
+      <div class="coaching-fit__copy">
+        <h2 class="coaching-fit__heading">This is for you if:</h2>
+        <ul class="coaching-fit__list">
+          {%- assign fit_items = "You&rsquo;re on a GLP-1 (Ozempic, Wegovy, Mounjaro, Zepbound) and serious about doing this right|You&rsquo;re tired of generic advice that doesn&rsquo;t account for GLP-1 side effects or appetite changes|You want to lose fat WITHOUT losing muscle, strength, or your damn mind|You&rsquo;re afraid of regaining weight when you stop the medication&mdash;and you want a plan to prevent that|You&rsquo;re ready to invest in yourself and commit to the process, not just look for a quick fix|You want someone in your corner who&rsquo;s actually been there and gets it" | split: "|" -%}
+          {%- for item in fit_items -%}
+            <li>
+              <span class="decor decor--flower coaching-fit__bullet" aria-hidden="true">
+                {% include decor/flower.svg %}
+              </span>
+              <span>{{ item }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
     </div>
   </section>
 
   <section class="coaching-about">
     <div class="coaching-about__inner">
-      <div class="coaching-about__media">
-        <img src="{{ '/assets/images/coaching/fh3a7878.jpg' | relative_url }}" alt="Jessica" width="800" height="1000" loading="lazy">
-      </div>
-      <div class="coaching-about__copy">
+      <header class="coaching-about__header">
         <p class="coaching-about__eyebrow">Why me?</p>
         <h2 class="coaching-about__heading">I&rsquo;m not just a coach. I&rsquo;m someone who&rsquo;s walked every step of this journey.</h2>
+      </header>
 
-        <h3>My Clinical Background:</h3>
-        <ul>
-          <li>Nursing Degree from the University of Pennsylvania</li>
-          <li>Currently pursuing my Psychiatric Mental Health Nurse Practitioner degree at Vanderbilt University</li>
-          <li>Certified Personal Trainer</li>
-          <li>Obesity Medicine Certified</li>
-          <li>Extensive experience with complex trauma, substance use, and behavioral change</li>
-          <li>Deep understanding of the psychological AND physiological aspects of weight loss</li>
-        </ul>
+      <div class="coaching-about__row">
+        <div class="coaching-about__copy">
+          <span class="decor decor--wave-thin coaching-about__rule" aria-hidden="true">
+            {% include decor/wave-thin.svg %}
+          </span>
+          <p>My Transformation: I lost 155 pounds and completely rebuilt my relationship with food, fitness, and my body. I know what it&rsquo;s like to carry extra weight, to feel stuck, and to finally find something that works&mdash;and then do the hard work of making it sustainable.</p>
+          <p>I work out 6&ndash;7 days a week and eat 130g+ of protein daily. I didn&rsquo;t just lose weight; I built strength, muscle, and a life I&rsquo;m proud of.</p>
 
-        <h3>My Transformation:</h3>
-        <p>I lost 155 pounds and completely rebuilt my relationship with food, fitness, and my body. I work out 6&ndash;7 days a week and eat 130g+ of protein daily. I didn&rsquo;t just lose weight; I built strength, muscle, and a life I&rsquo;m proud of.</p>
+          <h3>My Clinical Background:</h3>
+          <ul>
+            <li>Nursing Degree from the University of Pennsylvania, currently working in community mental health</li>
+            <li>Currently pursuing my Psychiatric Mental Health Nurse Practitioner degree at Vanderbilt University</li>
+            <li>Certified Personal Trainer</li>
+            <li>Obesity Medicine Certified</li>
+            <li>Extensive experience working with complex trauma, substance use, and behavioral change</li>
+            <li>Deep understanding of the psychological AND physiological aspects of weight loss</li>
+          </ul>
+        </div>
 
-        <h3>What makes my approach different:</h3>
-        <p>I understand the <em>why</em> behind behavior change. I&rsquo;ve worked with patients through the hardest life circumstances&mdash;poverty, trauma, addiction, mental illness. I know how to meet people where they are and help them build sustainable change, even when everything feels impossible. And I&rsquo;ve done it myself. I&rsquo;m not coaching from theory. I&rsquo;m coaching from lived experience + clinical expertise.</p>
+        <div class="coaching-about__media">
+          <img src="{{ '/assets/images/coaching/fh3a7768.jpg' | relative_url }}" alt="Jessica" width="497" height="626" loading="lazy">
+        </div>
+      </div>
+
+      <div class="coaching-about__row coaching-about__row--flip">
+        <div class="coaching-about__media">
+          <img src="{{ '/assets/images/coaching/screenshot_2026-01-04_at_7_05_07_pm.png' | relative_url }}" alt="" width="541" height="489" loading="lazy">
+        </div>
+
+        <div class="coaching-about__copy">
+          <span class="decor decor--wave-thin coaching-about__rule" aria-hidden="true">
+            {% include decor/wave-thin.svg %}
+          </span>
+          <h3>What makes my approach different:</h3>
+          <p>I understand the <em>why</em> behind behavior change. I&rsquo;ve worked with patients struggling with the hardest life circumstances&mdash;poverty, trauma, addiction, mental illness. I know how to meet people where they are and help them build sustainable change, even when everything feels impossible.</p>
+          <p>And I&rsquo;ve done it myself. I&rsquo;m not coaching from theory. I&rsquo;m coaching from lived experience + clinical expertise.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="coaching-program">
-    <div class="coaching-program__wave home-bundle__wave--top" aria-hidden="true">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 60 L1440 60 L1440 25 C 1200 60, 960 0, 720 30 C 480 60, 240 0, 0 30 Z" fill="#EF2475"/>
-      </svg>
-    </div>
+    <div class="coaching-seam" aria-hidden="true">{% include decor/wave-med.svg %}</div>
+    <span class="decor decor--asterisk-8pt coaching-program__asterisk" aria-hidden="true">
+      {% include decor/asterisk-8pt.svg %}
+    </span>
+
     <div class="coaching-program__inner">
       <h2 class="coaching-program__heading">Program Details</h2>
+
+      <p class="coaching-program__duration">
+        <span class="coaching-program__label">Duration:</span>
+        Month-to-month commitment (minimum 3 months recommended for real results)
+      </p>
+
       <div class="coaching-program__cols">
         <div>
           <h3>Weekly Schedule:</h3>
           <ul>
-            <li>One 30-minute 1:1 video session (at a consistent time that works for you)</li>
+            <li>One 30-minute 1:1 video session (scheduled at a consistent time that works for you)</li>
             <li>Unlimited weekday messaging support via your preferred platform</li>
             <li>Weekly macro/training adjustments as needed</li>
           </ul>
@@ -188,16 +247,18 @@ permalink: /coaching/
         <div>
           <h3>Between Sessions:</h3>
           <ul>
-            <li>Track your food, workouts, and progress using tools we&rsquo;ll set up together</li>
+            <li>You&rsquo;ll track your food, workouts, and progress using tools we&rsquo;ll set up together</li>
             <li>I&rsquo;ll review your logs and send feedback/adjustments</li>
             <li>You&rsquo;ll have access to me for questions, troubleshooting, and support</li>
           </ul>
         </div>
-        <div>
-          <h3>Duration:</h3>
-          <p>Month-to-month commitment (minimum 3 months recommended for real results).</p>
-        </div>
-        <div>
+      </div>
+
+      <div class="coaching-program__outcome">
+        <div class="coaching-program__outcome-copy">
+          <span class="decor decor--wave-thin coaching-program__rule" aria-hidden="true">
+            {% include decor/wave-thin.svg %}
+          </span>
           <h3>What You&rsquo;ll Walk Away With:</h3>
           <ul>
             <li>A personalized nutrition strategy you can sustain</li>
@@ -205,41 +266,87 @@ permalink: /coaching/
             <li>Confidence in the gym and in the kitchen</li>
             <li>A plan for maintaining your results long-term</li>
           </ul>
+          <p class="coaching-program__cta"><a class="btn btn--primary" href="#apply">Get started</a></p>
+        </div>
+
+        <div class="coaching-program__media">
+          <img src="{{ '/assets/images/coaching/screenshot_2025-12-28_at_6_31_58_pm.png' | relative_url }}" alt="" width="591" height="546" loading="lazy">
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="coaching-program__price">
-        <p class="coaching-program__eyebrow">Investment</p>
-        <p class="coaching-program__amount">$497<span>/month</span></p>
-        <p>This includes everything above: weekly sessions, unlimited messaging, custom plans, and ongoing adjustments.</p>
-        <p><a class="btn btn--white btn--lg" href="#apply">Get started</a></p>
-      </div>
+  <section class="coaching-investment">
+    <span class="decor decor--starburst coaching-investment__star" aria-hidden="true">
+      {% include decor/starburst.svg %}
+    </span>
+
+    <div class="coaching-investment__inner">
+      <h2 class="coaching-investment__heading">Investment: $497/month</h2>
+      <p class="coaching-investment__note">This includes everything listed above: weekly sessions, unlimited messaging, custom plans, and ongoing adjustments.</p>
     </div>
-    <div class="coaching-program__wave home-bundle__wave--bottom" aria-hidden="true">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0 L1440 0 L1440 35 C 1200 0, 960 60, 720 30 C 480 0, 240 60, 0 30 Z" fill="#EF2475"/>
-      </svg>
-    </div>
+
+    <div class="coaching-investment__wave" aria-hidden="true">{% include decor/wave-wide.svg %}</div>
   </section>
 
   <section class="coaching-be-real">
     <div class="coaching-be-real__inner">
-      <p class="coaching-be-real__eyebrow">Let&rsquo;s be real for a second.</p>
-      <h2 class="coaching-be-real__heading">You&rsquo;ve got momentum. Let me help you turn it into a lifestyle.</h2>
-      <p>You&rsquo;ve already made a huge decision by starting a GLP-1. You&rsquo;re investing money every month in medication. You&rsquo;re dealing with side effects. You&rsquo;re showing up.</p>
-      <p class="coaching-be-real__punch"><strong>Don&rsquo;t waste that effort by winging the rest.</strong></p>
-      <p>You deserve a plan that&rsquo;s designed for YOUR body, YOUR goals, and YOUR timeline. You deserve support from someone who understands exactly what you&rsquo;re going through&mdash;because they&rsquo;ve lived it too.</p>
-      <p>This is your chance to do this right: protect your muscle, build sustainable habits, and set yourself up for long-term success&mdash;whether you stay on medication forever or taper off next year.</p>
+      <div class="coaching-be-real__media">
+        <img src="{{ '/assets/images/coaching/fh3a7878.jpg' | relative_url }}" alt="Jessica" width="598" height="724" loading="lazy">
+      </div>
+
+      <div class="coaching-be-real__copy">
+        <h2 class="coaching-be-real__heading">Let&rsquo;s be real for a second.</h2>
+        <p>You&rsquo;ve already made a huge decision by starting a GLP-1. You&rsquo;re investing money every month in medication. You&rsquo;re dealing with side effects. You&rsquo;re showing up.</p>
+        <p class="coaching-be-real__punch">Don&rsquo;t waste that effort by winging the rest.</p>
+        <p>You deserve a plan that&rsquo;s designed for YOUR body, YOUR goals, and YOUR timeline. You deserve support from someone who understands exactly what you&rsquo;re going through because they&rsquo;ve lived it too.</p>
+        <p>This is your chance to do this right: to protect your muscle, build sustainable habits, and set yourself up for long-term success, whether you stay on medication forever or taper off next year.</p>
+        <p class="coaching-be-real__punch">You&rsquo;ve got momentum. Let me help you turn it into a lifestyle.</p>
+      </div>
     </div>
   </section>
 
   <section id="apply" class="coaching-apply">
+    <span class="decor decor--squiggle-vert coaching-apply__squiggle" aria-hidden="true">
+      {% include decor/squiggle-vert.svg %}
+    </span>
+
     <div class="coaching-apply__inner">
-      <p class="coaching-apply__eyebrow">Ready to start?</p>
-      <h2 class="coaching-apply__heading">Fill out the form below.</h2>
-      <p>I&rsquo;ll be in touch within 24 hours to schedule a free 15-minute discovery call. We&rsquo;ll talk about your goals, where you&rsquo;re struggling, and whether this program is the right fit for you.</p>
+      <div class="coaching-apply__copy">
+        <h2 class="coaching-apply__heading">Ready to start?</h2>
+        <p>Fill out the form below and I&rsquo;ll be in touch within 24 hours to schedule a free 15-minute discovery call. We&rsquo;ll talk about your goals, where you&rsquo;re struggling, and whether this program is the right fit for you.</p>
+      </div>
+
+      {%- comment -%} TODO(ticket-#6): swap "TODO" for the real Formspree endpoint. {%- endcomment -%}
+      <form class="coaching-apply__form" method="POST" action="TODO">
+        <label class="coaching-apply__field">
+          <span class="visually-hidden">Name</span>
+          <input type="text" name="name" placeholder="Name" required autocomplete="name">
+        </label>
+        <label class="coaching-apply__field">
+          <span class="visually-hidden">Email</span>
+          <input type="email" name="email" placeholder="Email" required autocomplete="email">
+        </label>
+        <label class="coaching-apply__field">
+          <span class="visually-hidden">Phone (Optional)</span>
+          <input type="tel" name="phone" placeholder="Phone (Optional)" autocomplete="tel">
+        </label>
+        <label class="coaching-apply__field">
+          <span class="visually-hidden">Current GLP-1 med &amp; dose</span>
+          <input type="text" name="medication" placeholder="Current GLP-1 med &amp; dose">
+        </label>
+        <label class="coaching-apply__field">
+          <span class="visually-hidden">What&rsquo;s your biggest challenge right now with your GLP-1 journey?</span>
+          <textarea name="challenge" rows="5" placeholder="What&rsquo;s your biggest challenge right now with your GLP-1 journey?" required></textarea>
+        </label>
+        <label class="coaching-apply__field">
+          <span class="visually-hidden">What are you hoping to achieve in the next 3&ndash;6 months?</span>
+          <textarea name="goals" rows="5" placeholder="What are you hoping to achieve in the next 3-6 months?" required></textarea>
+        </label>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+        <button type="submit" class="btn btn--primary coaching-apply__submit">Submit</button>
+      </form>
     </div>
-    {% include section-connect.html %}
   </section>
 
   <section class="coaching-faq">
@@ -257,8 +364,14 @@ permalink: /coaching/
     </div>
   </section>
 
+  {% include section-services.html
+     heading="Not ready for 1:1 coaching yet?"
+     class="services--left"
+     items="GLP-1 Guides|Everything you need to understand your medication, manage side effects, and start building healthy habits.|/guides||Yearlong Journal|Track your progress, symptoms, meals, and mindset throughout your entire GLP-1 journey.|/journal" %}
+
   {% include section-guides-banner.html %}
   {% include section-journal-banner.html %}
+  {% include section-connect.html %}
 
 </main>
 

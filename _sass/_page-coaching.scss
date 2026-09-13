@@ -1,199 +1,382 @@
-// Shared layout helpers for coaching sections
+// Coaching page — mirrors the live thatglp1girl.com/coaching block order:
+//   hero (pink) → the-truth (blush) → more-than (white) → for-you (blush)
+//   → about (white) → program-details (blush) → investment (pink)
+//   → be-real (blush) → form (peach) → faq (white) → services (blush)
+//   → guides-banner → journal-banner → connect
+//
+// Live type roles, straight from the Showit base styles:
+//   title      Unbounded 500 / 63px / lh 1.1  ($font-display)
+//   heading    Unbounded 500 / 38px / lh 1.2  ($font-display)
+//   subheading Comfortaa 600 / 18px / uppercase / 0.1em  ($font-heading)
+//   paragraph  Lato 400 / 16px / lh 1.6  ($font-body)
+
 %coaching-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-// ===== Hero (extends the same hot-pink home-hero pattern) =====
-// coaching.html applies both `.coaching-hero` and `.home-hero` so the
-// header overlay + hot-pink hero styles from _page-home.scss apply.
-// This block only holds coaching-specific overrides.
-
-.coaching-hero__lede {
-  font-family: $font-body;
+// Live's uppercase Comfortaa "subheading" — the workhorse label used for
+// eyebrows, feature names and the punchy one-liners between paragraphs.
+%coaching-subheading {
+  font-family: $font-heading;
+  font-weight: 600;
   font-size: $fs-md;
-  line-height: $lh-snug;
-  color: $color-bg;
-  margin: 0 auto $space-6;
-  max-width: 52ch;
+  line-height: 1.8;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-ink;
+
+  @media (max-width: $bp-md) { font-size: 12px; }
 }
 
-// ===== Truth =====
+// Live boxes the wave-thin rules taller than the shape but leaves the SVG's
+// aspect intact (the graphic letterboxes inside), so size on width alone.
+@mixin wave-rule($w) {
+  display: block;
+  // min() so the rule never widens its grid column on narrow viewports.
+  width: min(#{$w}, 100%);
+
+  > svg { width: 100%; height: auto; }
+}
+
+// Scalloped blush seam (wave-med) that the-truth, for-you and program-details
+// each hang over the section above them. Flat-edged banners stay flat; this
+// motif is only for these three section tops, as on live.
+.coaching-seam {
+  position: absolute;
+  left: -30%;
+  width: 160%;
+  top: 0;
+  transform: translateY(-68%);
+  line-height: 0;
+  color: $color-blush;
+  z-index: 3;
+  pointer-events: none;
+
+  svg { width: 100%; height: auto; display: block; }
+}
+
+// ===== Hero (extends the hot-pink home-hero pattern) =====
+// coaching.html applies both `.coaching-hero` and `.home-hero` so the header
+// overlay + hot-pink hero styles from _page-home.scss apply. This block only
+// holds coaching-specific overrides.
+
+.coaching-hero {
+  padding-bottom: 0;
+}
+
+// Live's hero eyebrow is the 18px subheading, not the 16px home one.
+.coaching-hero__eyebrow { font-size: $fs-md; }
+
+.coaching-hero__title {
+  font-size: 57px;
+  max-width: 20ch;
+}
+
+.coaching-hero__media {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: $space-7 auto 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: $space-5;
+  padding: 0 $space-5;
+}
+
+.coaching-hero__photo {
+  border-radius: 10px;
+  object-fit: cover;
+  height: auto;
+}
+
+.coaching-hero__photo--left  { width: 32%; aspect-ratio: 378 / 386; margin-bottom: 30px; }
+.coaching-hero__photo--right { width: 50%; aspect-ratio: 590 / 597; }
+
+// Peach badge straddling the hero's bottom edge; the starburst is the
+// counterclockwise spinner (the asterisk is the clockwise one).
+.coaching-hero__badge {
+  position: absolute;
+  left: 50%;
+  bottom: -70px;
+  width: 200px;
+  margin-left: -100px;
+  color: $color-peach;
+  z-index: 4;
+  animation: decor-spin-ccw 24s linear infinite;
+}
+
+@keyframes decor-spin-ccw {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coaching-hero__badge { animation: none; }
+}
+
+@media (max-width: $bp-lg) {
+  .coaching-hero__title { font-size: 42px; }
+  .coaching-hero__badge { width: 140px; margin-left: -70px; bottom: -50px; }
+}
+
+@media (max-width: $bp-md) {
+  .coaching-hero__eyebrow { font-size: 12px; }
+  .coaching-hero__title   { font-size: 24px; }
+
+  // The coaching hero leads with the small eyebrow, so pull the shared hero
+  // asterisk up and in so it stops crossing that line.
+  .coaching-hero .home-hero__decor--asterisk { width: 72px; top: 24px; left: -4%; }
+  .coaching-hero__media   { flex-direction: column; align-items: center; gap: $space-4; }
+  .coaching-hero__photo--left,
+  .coaching-hero__photo--right { width: 78%; margin-bottom: 0; }
+  .coaching-hero__badge   { display: none; }
+}
+
+// ===== The truth =====
 
 .coaching-truth {
-  @extend %coaching-inner;
-  background: $color-peach;
-  padding: $space-9 $space-5;
-  text-align: center;
+  position: relative;
+  overflow-x: clip; // the oversized seam runs past both edges
+  background: $color-blush;
+  padding: calc(#{$space-9} + 24px) $space-5 $space-9;
 }
 
 .coaching-truth__inner {
-  max-width: 780px;
-  margin: 0 auto;
-}
-
-.coaching-truth__eyebrow {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: $color-ink;
-  margin: 0 0 $space-4;
-}
-
-.coaching-truth__lede {
-  font-family: $font-body;
-  font-size: $fs-lg;
-  line-height: $lh-snug;
-  color: $color-ink;
-  margin: 0 0 $space-6;
+  @extend %coaching-inner;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-8;
+  align-items: start;
 }
 
 .coaching-truth__heading {
   font-family: $font-display;
   font-weight: 500;
-  font-size: 44px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: 0;
   color: $color-ink;
-  margin: 0 0 $space-3;
+  margin: 0 0 $space-4;
 }
 
-.coaching-truth__underline {
-  width: 60px;
-  margin: 0 auto $space-5;
-  color: $color-accent;
+.coaching-truth__rule {
+  @include wave-rule(391px);
+  color: $color-peach;
+  margin: 0 0 $space-6;
 }
 
 .coaching-truth p {
   font-family: $font-body;
-  font-size: $fs-md;
+  font-size: $fs-sm;
   line-height: $lh-body;
   color: $color-ink;
-  margin: 0 auto $space-4;
-  max-width: 60ch;
+  margin: 0 0 $space-5;
 }
 
-.coaching-truth__punch { font-size: $fs-lg !important; }
+// "MOST PEOPLE DON'T HAVE A PLAN FOR THAT." / "THAT'S EXACTLY WHY I CREATED
+// THIS." are uppercase Comfortaa labels on live, not display headings.
+.coaching-truth p.coaching-truth__punch {
+  @extend %coaching-subheading;
+  margin: 0 0 $space-5;
+}
 
-.coaching-truth__cta { margin-top: $space-6; }
+.coaching-truth__cta { margin: $space-6 0 0 !important; }
 
-@media (max-width: $bp-lg) { .coaching-truth__heading { font-size: 36px; } }
-@media (max-width: $bp-md) { .coaching-truth__heading { font-size: 28px; } }
+.coaching-truth__media {
+  position: relative;
 
-// ===== Features (6 cards) =====
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 544 / 496;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}
+
+// White "M" squiggle standing against the photo's left edge, low down.
+// Never rotated — only the asterisk and starburst spin.
+.coaching-truth__squiggle {
+  position: absolute;
+  left: -80px;
+  top: 62%;
+  width: 210px;
+  color: $color-bg;
+  z-index: 2;
+}
+
+@media (max-width: $bp-lg) {
+  .coaching-truth__heading { font-size: 30px; }
+}
+
+@media (max-width: $bp-md) {
+  .coaching-truth__inner   { grid-template-columns: 1fr; gap: $space-7; }
+  .coaching-truth__heading { font-size: 20px; }
+
+  .coaching-truth__squiggle { left: -10px; top: -20px; width: 105px; }
+}
+
+// ===== More than just coaching (6 features) =====
 
 .coaching-features {
-  background: $color-blush;
+  position: relative;
+  background: $color-bg;
   padding: $space-9 $space-5;
-  text-align: center;
+  overflow: hidden;
+}
+
+.coaching-features__star {
+  position: absolute;
+  left: 5%;
+  top: -30px;
+  width: 153px;
+  color: $color-peach;
+  z-index: 1;
+  animation: decor-spin-ccw 24s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coaching-features__star { animation: none; }
 }
 
 .coaching-features__inner {
   @extend %coaching-inner;
-}
-
-.coaching-features__eyebrow {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: $color-accent;
-  margin: 0 0 $space-3;
+  position: relative;
+  z-index: 2;
 }
 
 .coaching-features__heading {
   font-family: $font-display;
   font-weight: 500;
-  font-size: 40px;
+  font-size: 38px;
   line-height: 1.1;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   color: $color-ink;
-  margin: 0 auto $space-7;
-  max-width: 22ch;
+  margin: 0 0 $space-8;
+  max-width: 742px;
+  padding-left: 113px; // clears the starburst in the top-left corner
 }
 
 .coaching-features__grid {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 $space-8;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: $space-7;
-  text-align: left;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-6 $space-8;
+}
 
-  > li {
-    display: flex;
-    flex-direction: column;
-    gap: $space-3;
-  }
+// Blush wave-thin rule between feature rows (spans both columns on live).
+.coaching-features__rule {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin: $space-3 0;
 
+  .decor { @include wave-rule(391px); color: $color-blush; }
+}
+
+.coaching-feature {
   h3 {
-    font-family: $font-display;
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 1.2;
-    color: $color-ink;
-    margin: 0;
+    @extend %coaching-subheading;
+    margin: 0 0 $space-2;
   }
 
   ul {
-    padding-left: $space-4;
+    padding-left: $space-5;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: $space-2;
     color: $color-ink;
     font-family: $font-body;
     font-size: $fs-sm;
     line-height: $lh-body;
+
+    li { margin-bottom: $space-2; }
   }
-
-  p { margin: 0; }
 }
 
-.coaching-features__icon {
-  width: 40px;
-  color: $color-accent;
-}
-
-.coaching-features__sub {
+.coaching-feature__sub {
   font-family: $font-body;
-  font-style: italic;
   font-size: $fs-sm;
-  color: rgba($color-ink, 0.75);
+  line-height: $lh-body;
+  color: $color-ink;
+  margin: 0 0 $space-3;
+}
+
+.coaching-features__media {
+  display: grid;
+  grid-template-columns: 465fr 585fr;
+  gap: $space-5;
+  align-items: end;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  img:first-child { aspect-ratio: 465 / 356; }
+  img:last-child  { aspect-ratio: 585 / 472; }
 }
 
 @media (max-width: $bp-lg) {
-  .coaching-features__grid { grid-template-columns: repeat(2, 1fr); }
-  .coaching-features__heading { font-size: 32px; }
-}
-@media (max-width: $bp-md) {
-  .coaching-features__grid { grid-template-columns: 1fr; }
-  .coaching-features__heading { font-size: 26px; }
+  .coaching-features__heading { font-size: 30px; }
+  .coaching-features__star    { width: 110px; left: 2%; }
+  .coaching-features__heading { padding-left: 80px; }
 }
 
-// ===== Fit =====
+@media (max-width: $bp-md) {
+  .coaching-features__grid    { grid-template-columns: 1fr; }
+  .coaching-features__heading { font-size: 29px; }
+  .coaching-features__media   { grid-template-columns: 1fr; }
+  .coaching-features__star    { width: 90px; opacity: 0.8; }
+  .coaching-features__heading { padding-left: 0; padding-top: $space-7; }
+}
+
+// ===== This is for you if =====
 
 .coaching-fit {
+  position: relative;
+  overflow-x: clip;
   background: $color-blush;
-  padding: 0 $space-5 $space-9;
-  text-align: center;
+  padding: calc(#{$space-9} + 24px) $space-5 $space-9;
+}
+
+.coaching-fit__asterisk {
+  position: absolute;
+  left: 10%;
+  top: 16px;
+  width: 226px;
+  color: $color-peach;
+  z-index: 4; // live stacks it over the photo, not behind it
+  animation: decor-spin 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coaching-fit__asterisk { animation: none; }
 }
 
 .coaching-fit__inner {
   @extend %coaching-inner;
-  max-width: 800px;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 0.46fr 0.54fr;
+  gap: $space-8;
+  align-items: center;
+}
+
+.coaching-fit__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 509 / 601;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .coaching-fit__heading {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 1.1;
-  color: $color-ink;
+  @extend %coaching-subheading;
   margin: 0 0 $space-5;
 }
 
@@ -202,33 +385,29 @@
   padding: 0;
   margin: 0;
   display: grid;
-  gap: $space-3;
-  text-align: left;
+  gap: $space-4;
 }
 
 .coaching-fit__list li {
+  display: grid;
+  grid-template-columns: 25px 1fr;
+  gap: $space-4;
+  align-items: start;
   font-family: $font-body;
-  font-size: $fs-md;
+  font-size: $fs-sm;
   line-height: $lh-body;
   color: $color-ink;
-  padding: $space-3 $space-4 $space-3 $space-6;
-  background: $color-bg;
-  border-radius: 999px;
-  position: relative;
 }
 
-.coaching-fit__list li::before {
-  content: "✿";
+.coaching-fit__bullet {
+  width: 25px;
   color: $color-accent;
-  position: absolute;
-  left: $space-4;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: $fs-md;
+  margin-top: 2px;
 }
 
 @media (max-width: $bp-md) {
-  .coaching-fit__list li { padding: $space-3 $space-4 $space-3 $space-6; font-size: $fs-sm; }
+  .coaching-fit__inner    { grid-template-columns: 1fr; gap: $space-6; }
+  .coaching-fit__asterisk { width: 64px; left: 0; top: -22px; }
 }
 
 // ===== About / Why me =====
@@ -240,60 +419,54 @@
 
 .coaching-about__inner {
   @extend %coaching-inner;
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: $space-8;
-  align-items: start;
 }
 
-.coaching-about__media img {
-  width: 100%;
-  height: auto;
-  border-radius: 24px;
-  object-fit: cover;
-  aspect-ratio: 4 / 5;
-  box-shadow: 0 12px 28px rgba($color-ink, 0.15);
-  position: sticky;
-  top: $space-6;
-}
+.coaching-about__header { margin-bottom: $space-8; }
 
 .coaching-about__eyebrow {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: $color-accent;
-  margin: 0 0 $space-3;
+  @extend %coaching-subheading;
+  margin: 0 0 $space-2;
 }
 
 .coaching-about__heading {
   font-family: $font-display;
   font-weight: 500;
-  font-size: 36px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: 0;
   color: $color-ink;
-  margin: 0 0 $space-6;
+  margin: 0;
+  max-width: 902px;
+}
+
+.coaching-about__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-8;
+  align-items: start;
+  margin-bottom: $space-8;
+
+  &:last-child { margin-bottom: 0; }
+}
+
+.coaching-about__rule {
+  @include wave-rule(391px);
+  color: $color-accent;
+  margin: 0 0 $space-5;
 }
 
 .coaching-about__copy {
   h3 {
-    font-family: $font-display;
-    font-weight: 500;
-    font-size: 20px;
-    color: $color-accent;
+    @extend %coaching-subheading;
     margin: $space-6 0 $space-3;
   }
-
-  h3:first-of-type { margin-top: 0; }
 
   ul {
     padding-left: $space-5;
     margin: 0;
     color: $color-ink;
     font-family: $font-body;
-    font-size: $fs-md;
+    font-size: $fs-sm;
     line-height: $lh-body;
 
     li { margin-bottom: $space-2; }
@@ -301,7 +474,7 @@
 
   p {
     font-family: $font-body;
-    font-size: $fs-md;
+    font-size: $fs-sm;
     line-height: $lh-body;
     color: $color-ink;
     margin: 0 0 $space-4;
@@ -310,33 +483,48 @@
   em { font-style: italic; }
 }
 
+.coaching-about__media img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.coaching-about__row .coaching-about__media img { aspect-ratio: 497 / 626; }
+.coaching-about__row--flip .coaching-about__media img { aspect-ratio: 541 / 489; }
+
 @media (max-width: $bp-lg) {
-  .coaching-about__inner { grid-template-columns: 1fr; gap: $space-6; }
-  .coaching-about__media img { position: static; max-width: 480px; margin: 0 auto; }
-  .coaching-about__heading { font-size: 28px; }
+  .coaching-about__heading { font-size: 30px; }
+}
+
+@media (max-width: $bp-md) {
+  .coaching-about__row     { grid-template-columns: 1fr; gap: $space-6; }
+  .coaching-about__row--flip .coaching-about__media { order: -1; }
+  .coaching-about__heading { font-size: 20px; }
 }
 
 // ===== Program details =====
 
 .coaching-program {
   position: relative;
-  background: $color-accent;
-  color: $color-bg;
-  padding: calc(#{$space-9} + 40px) $space-5;
+  overflow-x: clip;
+  background: $color-blush;
+  padding: calc(#{$space-9} + 24px) $space-5 $space-9;
 }
 
-.coaching-program__wave {
+.coaching-program__asterisk {
   position: absolute;
-  left: 0;
-  right: 0;
-  height: 60px;
-  line-height: 0;
-  z-index: 3;
-  pointer-events: none;
-  svg { width: 100%; height: 100%; display: block; }
+  left: 5%;
+  top: -18px;
+  width: 189px;
+  color: $color-peach;
+  z-index: 1;
+  animation: decor-spin 28s linear infinite;
 }
-.coaching-program__wave.home-bundle__wave--top    { top: -59px; }
-.coaching-program__wave.home-bundle__wave--bottom { bottom: -59px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .coaching-program__asterisk { animation: none; }
+}
 
 .coaching-program__inner {
   @extend %coaching-inner;
@@ -347,12 +535,24 @@
 .coaching-program__heading {
   font-family: $font-display;
   font-weight: 500;
-  font-size: 48px;
+  font-size: 63px;
   line-height: 1.1;
-  letter-spacing: -0.01em;
-  color: $color-bg;
-  margin: 0 0 $space-7;
-  text-align: center;
+  letter-spacing: 0;
+  color: $color-ink;
+  margin: 0 0 $space-4;
+}
+
+.coaching-program__duration {
+  font-family: $font-body;
+  font-size: $fs-sm;
+  line-height: $lh-body;
+  color: $color-ink;
+  margin: 0 0 $space-8;
+}
+
+.coaching-program__label {
+  @extend %coaching-subheading;
+  margin-right: $space-3;
 }
 
 .coaching-program__cols {
@@ -362,200 +562,371 @@
   margin-bottom: $space-8;
 
   h3 {
-    font-family: $font-display;
-    font-weight: 500;
-    font-size: 22px;
-    color: $color-bg;
+    @extend %coaching-subheading;
     margin: 0 0 $space-3;
   }
 
   ul {
     padding-left: $space-5;
     margin: 0;
-    color: $color-bg;
+    color: $color-ink;
     font-family: $font-body;
-    font-size: $fs-md;
+    font-size: $fs-sm;
     line-height: $lh-body;
 
     li { margin-bottom: $space-2; }
   }
+}
 
-  p {
-    color: $color-bg;
+.coaching-program__outcome {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-8;
+  align-items: center;
+
+  h3 {
+    @extend %coaching-subheading;
+    margin: 0 0 $space-3;
+  }
+
+  ul {
+    padding-left: $space-5;
+    margin: 0 0 $space-6;
+    color: $color-ink;
     font-family: $font-body;
-    font-size: $fs-md;
+    font-size: $fs-sm;
     line-height: $lh-body;
-    margin: 0;
+
+    li { margin-bottom: $space-2; }
   }
 }
 
-.coaching-program__price {
-  text-align: center;
-  border-top: 1px solid rgba($color-bg, 0.35);
-  padding-top: $space-7;
-
-  p {
-    color: $color-bg;
-    font-family: $font-body;
-    font-size: $fs-md;
-    line-height: $lh-body;
-    margin: 0 auto $space-4;
-    max-width: 52ch;
-  }
+.coaching-program__rule {
+  @include wave-rule(518px);
+  color: $color-accent;
+  margin: 0 0 $space-5;
 }
 
-.coaching-program__eyebrow {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba($color-bg, 0.9);
-  margin: 0 0 $space-3 !important;
-}
+.coaching-program__cta { margin: 0; }
 
-.coaching-program__amount {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: 72px;
-  line-height: 1;
-  color: $color-bg;
-  margin: 0 0 $space-4 !important;
-
-  span {
-    font-family: $font-body;
-    font-weight: 400;
-    font-size: $fs-lg;
-    color: rgba($color-bg, 0.9);
-    margin-left: $space-2;
-  }
+.coaching-program__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 591 / 546;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 @media (max-width: $bp-lg) {
-  .coaching-program__heading { font-size: 36px; }
-  .coaching-program__amount  { font-size: 56px; }
+  .coaching-program__heading { font-size: 44px; }
+  .coaching-program__asterisk { width: 120px; }
 }
+
 @media (max-width: $bp-md) {
-  .coaching-program__cols   { grid-template-columns: 1fr; }
-  .coaching-program__heading { font-size: 28px; }
-  .coaching-program__amount  { font-size: 44px; }
+  .coaching-program__heading  { font-size: 36px; }
+  .coaching-program__cols     { grid-template-columns: 1fr; }
+  .coaching-program__outcome  { grid-template-columns: 1fr; gap: $space-6; }
+  .coaching-program__asterisk { width: 64px; left: 0; top: 36px; }
+}
+
+// ===== Investment (pink band) =====
+
+.coaching-investment {
+  position: relative;
+  background: $color-accent;
+  padding: $space-8 $space-5;
+  // Live puts this band on z-index 2 so its pink wave spills over be-real.
+  z-index: 2;
+}
+
+.coaching-investment__inner {
+  @extend %coaching-inner;
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+
+.coaching-investment__heading {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: $color-bg;
+  margin: 0 0 $space-4;
+}
+
+.coaching-investment__note {
+  @extend %coaching-subheading;
+  color: $color-bg;
+  margin: 0 auto;
+  max-width: 682px;
+}
+
+.coaching-investment__star {
+  position: absolute;
+  left: 23%;
+  top: 78%; // hangs off the band's bottom edge, clear of the copy
+  width: 224px;
+  color: $color-peach;
+  z-index: 2;
+  animation: decor-spin-ccw 24s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coaching-investment__star { animation: none; }
+}
+
+// Wide pink wave bleeding out of the band's bottom edge into be-real.
+.coaching-investment__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -37%;
+  line-height: 0;
+  color: $color-accent;
+  z-index: 1;
+  pointer-events: none;
+
+  svg { width: 100%; height: auto; display: block; }
+}
+
+@media (max-width: $bp-lg) {
+  .coaching-investment__heading { font-size: 30px; }
+  .coaching-investment__star    { width: 140px; }
+}
+
+@media (max-width: $bp-md) {
+  .coaching-investment__heading { font-size: 20px; }
+
+  .coaching-investment__star    { width: 83px; left: auto; right: 4%; top: -30px; }
+  .coaching-investment__wave    { bottom: -30%; }
 }
 
 // ===== Be real =====
 
 .coaching-be-real {
+  position: relative;
   background: $color-blush;
   padding: $space-9 $space-5;
-  text-align: center;
+  overflow: hidden;
 }
 
 .coaching-be-real__inner {
   @extend %coaching-inner;
-  max-width: 780px;
+  display: grid;
+  grid-template-columns: 0.42fr 0.58fr;
+  gap: $space-8;
+  align-items: center;
 }
 
-.coaching-be-real__eyebrow {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: $color-accent;
-  margin: 0 0 $space-4;
+// Live lets the portrait bleed off the left edge of the canvas.
+.coaching-be-real__media {
+  margin-left: -#{$space-9};
+
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 598 / 724;
+    object-fit: cover;
+    border-radius: 10px;
+  }
 }
 
 .coaching-be-real__heading {
   font-family: $font-display;
   font-weight: 500;
-  font-size: 40px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: 0;
   color: $color-ink;
-  margin: 0 0 $space-6;
+  margin: 0 0 $space-5;
 }
 
 .coaching-be-real p {
   font-family: $font-body;
-  font-size: $fs-md;
+  font-size: $fs-sm;
   line-height: $lh-body;
   color: $color-ink;
-  margin: 0 auto $space-4;
-  max-width: 60ch;
+  margin: 0 0 $space-5;
 }
 
-.coaching-be-real__punch { font-size: $fs-lg !important; }
+.coaching-be-real p.coaching-be-real__punch {
+  @extend %coaching-subheading;
+  line-height: 1.6;
+  margin: 0 0 $space-5;
+}
 
-@media (max-width: $bp-lg) { .coaching-be-real__heading { font-size: 32px; } }
-@media (max-width: $bp-md) { .coaching-be-real__heading { font-size: 26px; } }
+@media (max-width: $bp-lg) {
+  .coaching-be-real__heading { font-size: 30px; }
+  .coaching-be-real__media   { margin-left: -#{$space-6}; }
+}
 
-// ===== Apply =====
+@media (max-width: $bp-md) {
+  .coaching-be-real__inner   { grid-template-columns: 1fr; gap: $space-6; }
+  .coaching-be-real__media   { margin-left: 0; }
+  .coaching-be-real__heading { font-size: 20px; }
+
+}
+
+// ===== Apply (peach application form) =====
 
 .coaching-apply {
+  position: relative;
   background: $color-peach;
-  padding: $space-9 $space-5 0;
-  text-align: center;
+  padding: $space-9 $space-5;
+  overflow: hidden;
+}
 
-  // Nested connect section drops its own padding-top since we already have it.
-  .connect { padding-top: $space-7; background: $color-peach; }
+// Blush vertical squiggle standing behind the form, floor to ceiling.
+.coaching-apply__squiggle {
+  position: absolute;
+  left: 42%;
+  top: 0;
+  bottom: 0;
+  width: auto;
+  color: $color-blush;
+  z-index: 0;
+
+  > svg { height: 100%; width: auto; }
 }
 
 .coaching-apply__inner {
   @extend %coaching-inner;
-  max-width: 780px;
-}
-
-.coaching-apply__eyebrow {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: $color-accent;
-  margin: 0 0 $space-3;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 0.45fr 0.55fr;
+  gap: $space-8;
+  align-items: start;
 }
 
 .coaching-apply__heading {
   font-family: $font-display;
   font-weight: 500;
-  font-size: 40px;
+  font-size: 63px;
   line-height: 1.1;
-  letter-spacing: -0.01em;
-  color: $color-ink;
-  margin: 0 0 $space-4;
+  letter-spacing: 0;
+  color: $color-accent;
+  margin: 0 0 $space-6;
 }
 
-.coaching-apply p {
+.coaching-apply__copy p {
   font-family: $font-body;
-  font-size: $fs-md;
+  font-size: $fs-sm;
   line-height: $lh-body;
   color: $color-ink;
-  max-width: 56ch;
-  margin: 0 auto;
+  margin: 0;
 }
 
-@media (max-width: $bp-md) { .coaching-apply__heading { font-size: 28px; } }
+.coaching-apply__form {
+  display: grid;
+  gap: $space-4;
+}
+
+.coaching-apply__field input,
+.coaching-apply__field textarea {
+  width: 100%;
+  padding: $space-3 $space-4;
+  font-family: $font-body;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: $color-ink;
+  background: $color-bg;
+  border: 0;
+  border-radius: 22px;
+  resize: none;
+
+  &::placeholder { color: rgba($color-ink, 0.6); }
+
+  &:focus {
+    outline: 2px solid $color-accent;
+    outline-offset: 1px;
+  }
+}
+
+.coaching-apply__field textarea {
+  border-radius: 10px;
+  min-height: 158px;
+}
+
+.coaching-apply__submit {
+  justify-self: end;
+  min-width: 200px;
+  border: 0;
+}
+
+@media (max-width: $bp-lg) {
+  .coaching-apply__heading  { font-size: 44px; }
+  .coaching-apply__squiggle { left: 30%; width: 200px; }
+}
+
+@media (max-width: $bp-md) {
+  .coaching-apply__inner    { grid-template-columns: 1fr; gap: $space-6; }
+  .coaching-apply__heading  { font-size: 36px; }
+  .coaching-apply__squiggle { left: 31%; }
+  .coaching-apply__submit   { justify-self: stretch; }
+}
 
 // ===== FAQ =====
 
 .coaching-faq {
-  background: $color-blush;
+  background: $color-bg;
   padding: $space-9 $space-5;
 }
 
 .coaching-faq__inner {
   @extend %coaching-inner;
-  max-width: 780px;
 }
 
+// Live sets the FAQ title in peach at the full title size.
 .coaching-faq__heading {
   font-family: $font-display;
   font-weight: 500;
-  font-size: 36px;
+  font-size: 63px;
   line-height: 1.1;
-  letter-spacing: -0.01em;
-  color: $color-ink;
-  margin: 0 0 $space-6;
+  letter-spacing: 0;
+  color: $color-peach;
+  margin: 0 0 $space-7;
   text-align: center;
 }
 
-@media (max-width: $bp-md) { .coaching-faq__heading { font-size: 26px; } }
+// Questions are the 38px Unbounded heading on live, not the global
+// Comfortaa summary style.
+.coaching-faq summary {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 1.2;
+  align-items: flex-start;
+}
+
+@media (max-width: $bp-lg) {
+  .coaching-faq__heading { font-size: 44px; }
+  .coaching-faq summary  { font-size: 28px; }
+}
+
+@media (max-width: $bp-md) {
+  .coaching-faq__heading { font-size: 36px; }
+  .coaching-faq summary  { font-size: 20px; }
+}
+
+// ===== Mobile body copy =====
+// Live drops the paragraph role from 16px to 14px below its 768px break.
+
+@media (max-width: $bp-md) {
+  .coaching-truth p,
+  .coaching-feature ul,
+  .coaching-feature__sub,
+  .coaching-fit__list li,
+  .coaching-about__copy p,
+  .coaching-about__copy ul,
+  .coaching-program__duration,
+  .coaching-program__cols ul,
+  .coaching-program__outcome ul,
+  .coaching-be-real p,
+  .coaching-apply__copy p { font-size: $fs-xs; }
+
+  // The seam has to be much wider than the viewport to keep live's scallop size.
+  .coaching-seam { left: -130%; width: 360%; }
+}
