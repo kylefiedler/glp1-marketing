@@ -19,19 +19,70 @@
   opacity: 0.9;
 }
 
-// ===== Bundle (2-col: copy + scattered mockup) =====
+// ===== Bundle (fanned covers up top + copy w/ price badge) =====
 
 .guides-bundle {
+  position: relative;
   background: $color-blush;
-  padding: $space-9 $space-5;
+  padding: 190px $space-5 $space-9;
+}
+
+// Covers fan out across the seam between the pink hero and this section.
+.guides-bundle__mockup {
+  position: absolute;
+  top: -130px;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+
+  img {
+    flex: 0 0 auto;
+    width: 130px;
+    height: auto;
+    margin-left: -34px;
+    border-radius: 6px;
+    box-shadow: 0 10px 24px rgba($color-black, 0.18);
+    background: $color-bg;
+  }
+  img:first-child { margin-left: 0; }
+
+  img:nth-child(1) { transform: rotate(-18deg) translateY(22px); z-index: 1; }
+  img:nth-child(2) { transform: rotate(-13deg) translateY(10px); z-index: 2; }
+  img:nth-child(3) { transform: rotate(-7deg)  translateY(2px);  z-index: 3; }
+  img:nth-child(4) { transform: rotate(-2deg)  translateY(-4px); z-index: 4; }
+  img:nth-child(5) { transform: rotate(3deg)   translateY(-4px); z-index: 4; }
+  img:nth-child(6) { transform: rotate(8deg)   translateY(2px);  z-index: 3; }
+  img:nth-child(7) { transform: rotate(13deg)  translateY(10px); z-index: 2; }
+  img:nth-child(8) { transform: rotate(18deg)  translateY(22px); z-index: 1; }
 }
 
 .guides-bundle__inner {
   @extend %guides-inner;
-  display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: $space-8;
-  align-items: center;
+  position: relative;
+}
+
+.guides-bundle__copy {
+  max-width: 820px;
+  padding-right: 220px;
+}
+
+.guides-bundle__heading {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+  margin: 0 0 $space-4;
+}
+
+.guides-bundle__squiggle {
+  width: 220px;
+  color: $color-peach;
+  margin: 0 0 $space-6;
 }
 
 .guides-bundle__eyebrow {
@@ -40,65 +91,75 @@
   font-size: $fs-sm;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: $color-accent;
-  margin: 0 0 $space-3;
-}
-
-.guides-bundle__heading {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: 60px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
   color: $color-ink;
-  margin: 0 0 $space-4;
+  margin: 0 0 $space-6;
 }
 
-.guides-bundle__strike {
-  display: inline-block;
-  font-family: $font-body;
-  font-weight: 400;
-  font-size: $fs-md;
-  color: rgba($color-ink, 0.6);
-  text-decoration: line-through;
-  margin-left: $space-3;
-  vertical-align: middle;
-}
-
-.guides-bundle__copy p {
-  font-family: $font-body;
-  font-size: $fs-md;
-  line-height: $lh-body;
-  color: $color-ink;
-  margin: 0 0 $space-4;
-
-  strong { font-weight: 700; }
-}
-
-.guides-bundle__mockup {
+.guides-bundle__cols {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: $space-3;
-  transform: rotate(-3deg);
+  grid-template-columns: 1fr 1fr;
+  gap: $space-6;
+  margin: 0 0 $space-6;
 
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    box-shadow: 0 8px 20px rgba($color-black, 0.15);
-    background: $color-bg;
+  p {
+    font-family: $font-body;
+    font-size: $fs-sm;
+    line-height: $lh-body;
+    color: $color-ink;
+    margin: 0;
   }
-  img:nth-child(odd)  { transform: translateY(8px) rotate(-2deg); }
-  img:nth-child(even) { transform: translateY(-8px) rotate(2deg); }
+}
+
+// Starburst price badge, straddling the copy column's top-right corner.
+.guides-bundle__price {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 180px;
+}
+
+.guides-bundle__price-shape { width: 100%; }
+
+.guides-bundle__price-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.15;
+  color: $color-bg;
+  text-align: center;
+
+  small {
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: $fs-xs;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
 }
 
 @media (max-width: $bp-lg) {
-  .guides-bundle__inner   { grid-template-columns: 1fr; gap: $space-6; }
-  .guides-bundle__heading { font-size: 44px; }
-  .guides-bundle__mockup  { transform: none; }
+  .guides-bundle          { padding-top: 150px; }
+  .guides-bundle__mockup  { top: -100px; }
+  .guides-bundle__mockup img { width: 96px; margin-left: -26px; }
+  .guides-bundle__copy    { max-width: none; padding-right: 160px; }
+  .guides-bundle__heading { font-size: 34px; }
+  .guides-bundle__price   { width: 140px; }
+  .guides-bundle__price-text { font-size: 24px; }
 }
 @media (max-width: $bp-md) {
-  .guides-bundle__heading { font-size: 34px; }
+  .guides-bundle          { padding-top: 110px; }
+  .guides-bundle__mockup  { top: -70px; }
+  .guides-bundle__mockup img { width: 64px; margin-left: -18px; }
+  .guides-bundle__copy    { padding-right: 0; }
+  .guides-bundle__cols    { grid-template-columns: 1fr; gap: $space-4; }
+  .guides-bundle__price   { position: relative; top: auto; right: auto; margin: 0 0 $space-6; }
 }
 
 // ===== What's included =====
@@ -176,19 +237,20 @@
   .guides-included__list strong { font-size: 17px; }
 }
 
-// ===== Individual guides grid =====
+// ===== Individual guides — one full-width row per book =====
 
-.guides-grid {
+.guides-list {
   background: $color-blush;
-  padding: $space-9 $space-5;
+  padding: $space-9 0;
 }
 
-.guides-grid__inner {
+.guides-list__inner {
   @extend %guides-inner;
   max-width: 1200px;
+  padding: 0 $space-5;
 }
 
-.guides-grid__eyebrow {
+.guides-list__eyebrow {
   font-family: $font-heading;
   font-weight: 600;
   font-size: $fs-sm;
@@ -199,7 +261,7 @@
   text-align: center;
 }
 
-.guides-grid__heading {
+.guides-list__heading {
   font-family: $font-display;
   font-weight: 500;
   font-size: 36px;
@@ -210,73 +272,101 @@
   margin: 0 0 $space-7;
 }
 
-.guides-grid__list {
+.guides-list__rows {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.guide-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: $space-6;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: $space-8;
+  align-items: center;
+  padding: $space-7 $space-5;
+  border-radius: 24px;
+
+  &:nth-child(odd) { background: $color-bg; }
 }
 
-.guide-card {
-  background: $color-bg;
-  border-radius: 16px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 6px 16px rgba($color-ink, 0.08);
+.guide-row__media { order: 2; }
+.guide-row__body  { order: 1; }
+
+.guide-row--reverse {
+  grid-template-columns: 0.85fr 1.15fr;
+
+  .guide-row__media { order: 1; }
+  .guide-row__body  { order: 2; }
 }
 
-.guide-card__img {
+.guide-row__media {
+  position: relative;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.guide-row__img {
   width: 100%;
-  height: 320px;
-  object-fit: contain;
-  background: $color-blush;
-  padding: $space-5;
+  height: auto;
   display: block;
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba($color-ink, 0.15);
 }
 
-.guide-card__body {
-  padding: $space-5;
+.guide-row__price {
+  position: absolute;
+  bottom: -28px;
+  right: -28px;
+  display: block;
+  width: 88px;
+}
+
+.guide-row__price-shape { width: 100%; }
+
+.guide-row__price-text {
+  position: absolute;
+  inset: 0;
   display: flex;
-  flex-direction: column;
-  gap: $space-2;
-  flex: 1;
-
-  p:last-child { margin-top: auto; }
+  align-items: center;
+  justify-content: center;
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: $fs-lg;
+  color: $color-bg;
 }
 
-.guide-card__name {
+.guide-row__name {
   font-family: $font-display;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 28px;
   line-height: 1.2;
   color: $color-ink;
-  margin: 0;
+  margin: 0 0 $space-3;
 }
 
-.guide-card__price {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: $fs-lg;
-  color: $color-accent;
-  margin: 0;
-}
-
-.guide-card__lede {
+.guide-row__lede {
   font-family: $font-body;
-  font-size: $fs-sm;
+  font-size: $fs-md;
   line-height: $lh-body;
   color: rgba($color-ink, 0.85);
-  margin: 0 0 $space-4;
-  flex: 1;
+  margin: 0 0 $space-5;
 }
 
-@media (max-width: $bp-lg) { .guides-grid__list { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: $bp-lg) {
+  .guide-row,
+  .guide-row--reverse {
+    grid-template-columns: 1fr;
+    gap: $space-5;
+    padding: $space-6 $space-4;
+    text-align: center;
+  }
+  .guide-row__media,
+  .guide-row__body { order: initial; }
+  .guide-row__lede { margin-left: auto; margin-right: auto; }
+}
 @media (max-width: $bp-md) {
-  .guides-grid__list { grid-template-columns: 1fr; }
-  .guides-grid__heading { font-size: 26px; }
+  .guides-list__heading { font-size: 26px; }
+  .guide-row__name { font-size: 22px; }
 }
 
 // ===== FAQ =====

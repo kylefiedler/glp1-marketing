@@ -30,20 +30,31 @@ permalink: /guides/
   </section>
 
   <section class="guides-bundle">
+    <div class="guides-bundle__mockup" aria-hidden="true">
+      {%- assign bundle_covers = "supplement_guide_cover.png|meal_template_cover.png|travel_survival_kit_cover.png|wean_off_glp-1_cover.png|workout_starter_cover.png|grocery_guide_cover.png|beginner_kit_cover.png|protien-cover.png" | split: "|" -%}
+      {%- for cover in bundle_covers -%}
+        <img src="{{ '/assets/images/home/' | append: cover | relative_url }}" alt="" loading="lazy" width="400" height="520">
+      {%- endfor -%}
+    </div>
+
     <div class="guides-bundle__inner">
       <div class="guides-bundle__copy">
-        <p class="guides-bundle__eyebrow">The Ultimate Bundle</p>
-        <h2 class="guides-bundle__heading">$35 <span class="guides-bundle__strike">$135+ value</span></h2>
-        <p>You need a strategy that actually fits your GLP-1 life. This is that strategy. Inside this bundle, you&rsquo;ll get every guide you need to feel confident, consistent, and completely in control&mdash;no matter what phase of your journey you&rsquo;re in.</p>
-        <p><strong>Everything you need to succeed on (and off) GLP-1s in one powerful package.</strong></p>
+        <h2 class="guides-bundle__heading">The Ultimate That GLP-1 Girl Bundle</h2>
+        <span class="decor decor--squiggle guides-bundle__squiggle" aria-hidden="true">
+          {% include decor/squiggle.svg %}
+        </span>
+        <p class="guides-bundle__eyebrow">Everything you need to succeed on (and off) GLP-1s in one powerful package.</p>
+        <div class="guides-bundle__cols">
+          <p>You started this journey because you wanted something to finally work. But now you&rsquo;re here, trying to manage side effects, low appetite, social pressure, workouts that don&rsquo;t feel right, and the constant fear of gaining it all back when the meds stop. You don&rsquo;t need more guesswork.</p>
+          <p>You need a strategy that actually fits your GLP-1 life. This is that strategy. Inside this bundle, you&rsquo;ll get every guide you need to feel confident, consistent, and completely in control, no matter what phase of your journey you&rsquo;re in.</p>
+        </div>
         <p><a class="btn btn--primary btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy the ultimate bundle</a></p>
       </div>
-      <div class="guides-bundle__mockup" aria-hidden="true">
-        {%- assign bundle_covers = "supplement_guide_cover.png|meal_template_cover.png|travel_survival_kit_cover.png|wean_off_glp-1_cover.png|workout_starter_cover.png|grocery_guide_cover.png|beginner_kit_cover.png|protien-cover.png" | split: "|" -%}
-        {%- for cover in bundle_covers -%}
-          <img src="{{ '/assets/images/home/' | append: cover | relative_url }}" alt="" loading="lazy" width="400" height="520">
-        {%- endfor -%}
-      </div>
+
+      <span class="guides-bundle__price" aria-hidden="true">
+        <span class="decor decor--starburst guides-bundle__price-shape">{% include decor/starburst.svg %}</span>
+        <span class="guides-bundle__price-text">$35<small>$135+ value</small></span>
+      </span>
     </div>
   </section>
 
@@ -63,11 +74,11 @@ permalink: /guides/
     </div>
   </section>
 
-  <section class="guides-grid">
-    <div class="guides-grid__inner">
-      <p class="guides-grid__eyebrow">Prefer to grab one at a time?</p>
-      <h2 class="guides-grid__heading">Buy individually</h2>
-      <ul class="guides-grid__list">
+  <section class="guides-list">
+    <div class="guides-list__inner">
+      <p class="guides-list__eyebrow">Prefer to grab one at a time?</p>
+      <h2 class="guides-list__heading">Buy individually</h2>
+      <ul class="guides-list__rows">
         {%- assign products =
           "beginner_kit_cover.png|Beginner GLP-1 Survival Kit|$9|This is the playbook you wish came with your prescription.|Beginner-GLP-1-Survival-Kit||" |
           append: "grocery_guide_cover.png|Food & Grocery Guide|$6|If you don't know what to eat, start here.|obqmks||" |
@@ -79,12 +90,18 @@ permalink: /guides/
           | split: "||" -%}
         {%- for product_str in products -%}
           {%- assign p = product_str | split: "|" -%}
-          <li class="guide-card">
-            <img class="guide-card__img" src="{{ '/assets/images/home/' | append: p[0] | relative_url }}" alt="" width="400" height="520" loading="lazy">
-            <div class="guide-card__body">
-              <h3 class="guide-card__name">{{ p[1] }}</h3>
-              <p class="guide-card__price">{{ p[2] }}</p>
-              <p class="guide-card__lede">{{ p[3] }}</p>
+          {%- assign is_reversed = forloop.index0 | modulo: 2 -%}
+          <li class="guide-row{% if is_reversed == 1 %} guide-row--reverse{% endif %}">
+            <div class="guide-row__media">
+              <img class="guide-row__img" src="{{ '/assets/images/home/' | append: p[0] | relative_url }}" alt="" width="400" height="520" loading="lazy">
+              <span class="guide-row__price" aria-hidden="true">
+                <span class="decor decor--starburst guide-row__price-shape">{% include decor/starburst.svg %}</span>
+                <span class="guide-row__price-text">{{ p[2] }}</span>
+              </span>
+            </div>
+            <div class="guide-row__body">
+              <h3 class="guide-row__name">{{ p[1] }}</h3>
+              <p class="guide-row__lede">{{ p[3] }}</p>
               {%- if p[4] -%}
                 <p><a class="btn btn--primary" href="https://thatglp1girl.gumroad.com/l/{{ p[4] }}" target="_blank" rel="noopener">Buy now</a></p>
               {%- endif -%}
