@@ -3,6 +3,8 @@
 //
 // Currently:
 //   .banner (--guides / --journal) — bottom-of-page CTAs
+//   .cover-fan     — cascade of product covers, fanned like a hand of cards
+//   .price-bubble  — starburst badge with a price, via _includes/price-bubble.html
 
 // ----- Banners (guides + journal) -----
 
@@ -189,4 +191,89 @@
   .connect__inner { grid-template-columns: 1fr; gap: $space-6; }
   .connect__heading { font-size: 28px; }
   .connect__submit { justify-self: stretch; }
+}
+
+// ----- Cover fan (product covers cascading like a hand of cards) -----
+// Callers position/size the wrapper; add `--compact` when the fan sits
+// inside a column instead of spanning full-bleed.
+
+.cover-fan {
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+
+  img {
+    flex: 0 0 auto;
+    width: 130px;
+    height: auto;
+    margin-left: -34px;
+    border-radius: 6px;
+    box-shadow: 0 10px 24px rgba($color-black, 0.18);
+    background: $color-bg;
+  }
+  img:first-child { margin-left: 0; }
+
+  img:nth-child(1) { transform: rotate(-18deg) translateY(22px); z-index: 1; }
+  img:nth-child(2) { transform: rotate(-13deg) translateY(10px); z-index: 2; }
+  img:nth-child(3) { transform: rotate(-7deg)  translateY(2px);  z-index: 3; }
+  img:nth-child(4) { transform: rotate(-2deg)  translateY(-4px); z-index: 4; }
+  img:nth-child(5) { transform: rotate(3deg)   translateY(-4px); z-index: 4; }
+  img:nth-child(6) { transform: rotate(8deg)   translateY(2px);  z-index: 3; }
+  img:nth-child(7) { transform: rotate(13deg)  translateY(10px); z-index: 2; }
+  img:nth-child(8) { transform: rotate(18deg)  translateY(22px); z-index: 1; }
+}
+
+.cover-fan--compact img { width: 90px; margin-left: -28px; }
+
+@media (max-width: $bp-lg) {
+  .cover-fan img { width: 96px; margin-left: -26px; }
+  .cover-fan--compact img { width: 76px; margin-left: -22px; }
+}
+@media (max-width: $bp-md) {
+  .cover-fan img { width: 64px; margin-left: -18px; }
+}
+
+// ----- Price bubble (starburst badge with a floating price) -----
+// Markup via _includes/price-bubble.html. The outer element carries
+// .decor.decor--starburst (for color/sizing) plus a `--lg`/`--sm` size
+// modifier; callers add a positioning class of their own for placement.
+
+.price-bubble { display: block; position: relative; }
+
+.price-bubble--lg { width: 180px; }
+.price-bubble--sm { width: 88px; }
+
+.price-bubble__shape { width: 100%; display: block; }
+
+.price-bubble__text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: $font-display;
+  font-weight: 700;
+  color: $color-bg;
+  line-height: 1.15;
+
+  small {
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: $fs-xs;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+}
+
+.price-bubble--lg .price-bubble__text { font-size: 32px; }
+.price-bubble--sm .price-bubble__text { font-size: $fs-lg; }
+
+@media (max-width: $bp-lg) {
+  .price-bubble--lg { width: 140px; }
+  .price-bubble--lg .price-bubble__text { font-size: 24px; }
+}
+@media (max-width: $bp-md) {
+  .price-bubble--lg { width: 120px; }
 }

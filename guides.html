@@ -30,7 +30,7 @@ permalink: /guides/
   </section>
 
   <section class="guides-bundle">
-    <div class="guides-bundle__mockup" aria-hidden="true">
+    <div class="guides-bundle__mockup cover-fan" aria-hidden="true">
       {%- assign bundle_covers = "supplement_guide_cover.png|meal_template_cover.png|travel_survival_kit_cover.png|wean_off_glp-1_cover.png|workout_starter_cover.png|grocery_guide_cover.png|beginner_kit_cover.png|protien-cover.png" | split: "|" -%}
       {%- for cover in bundle_covers -%}
         <img src="{{ '/assets/images/home/' | append: cover | relative_url }}" alt="" loading="lazy" width="400" height="520">
@@ -51,10 +51,7 @@ permalink: /guides/
         <p><a class="btn btn--primary btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy the ultimate bundle</a></p>
       </div>
 
-      <span class="guides-bundle__price" aria-hidden="true">
-        <span class="decor decor--starburst guides-bundle__price-shape">{% include decor/starburst.svg %}</span>
-        <span class="guides-bundle__price-text">$35<small>$135+ value</small></span>
-      </span>
+      {% include price-bubble.html price="$35" sub="$135+ value" size="lg" class="guides-bundle__price" %}
     </div>
   </section>
 
@@ -91,13 +88,11 @@ permalink: /guides/
         {%- for product_str in products -%}
           {%- assign p = product_str | split: "|" -%}
           {%- assign is_reversed = forloop.index0 | modulo: 2 -%}
+          {%- assign row_price = p[2] -%}
           <li class="guide-row{% if is_reversed == 1 %} guide-row--reverse{% endif %}">
             <div class="guide-row__media">
               <img class="guide-row__img" src="{{ '/assets/images/home/' | append: p[0] | relative_url }}" alt="" width="400" height="520" loading="lazy">
-              <span class="guide-row__price" aria-hidden="true">
-                <span class="decor decor--starburst guide-row__price-shape">{% include decor/starburst.svg %}</span>
-                <span class="guide-row__price-text">{{ p[2] }}</span>
-              </span>
+              {% include price-bubble.html price=row_price size="sm" class="guide-row__price" %}
             </div>
             <div class="guide-row__body">
               <h3 class="guide-row__name">{{ p[1] }}</h3>

@@ -28,35 +28,13 @@
 }
 
 // Covers fan out across the seam between the pink hero and this section.
+// Fan visuals (.cover-fan) live in _sections.scss; this just places it.
 .guides-bundle__mockup {
   position: absolute;
   top: -130px;
   left: 0;
   right: 0;
   z-index: 3;
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-
-  img {
-    flex: 0 0 auto;
-    width: 130px;
-    height: auto;
-    margin-left: -34px;
-    border-radius: 6px;
-    box-shadow: 0 10px 24px rgba($color-black, 0.18);
-    background: $color-bg;
-  }
-  img:first-child { margin-left: 0; }
-
-  img:nth-child(1) { transform: rotate(-18deg) translateY(22px); z-index: 1; }
-  img:nth-child(2) { transform: rotate(-13deg) translateY(10px); z-index: 2; }
-  img:nth-child(3) { transform: rotate(-7deg)  translateY(2px);  z-index: 3; }
-  img:nth-child(4) { transform: rotate(-2deg)  translateY(-4px); z-index: 4; }
-  img:nth-child(5) { transform: rotate(3deg)   translateY(-4px); z-index: 4; }
-  img:nth-child(6) { transform: rotate(8deg)   translateY(2px);  z-index: 3; }
-  img:nth-child(7) { transform: rotate(13deg)  translateY(10px); z-index: 2; }
-  img:nth-child(8) { transform: rotate(18deg)  translateY(22px); z-index: 1; }
 }
 
 .guides-bundle__inner {
@@ -110,53 +88,23 @@
   }
 }
 
-// Starburst price badge, straddling the copy column's top-right corner.
+// Starburst price badge (.price-bubble, _sections.scss), straddling the
+// copy column's top-right corner.
 .guides-bundle__price {
   position: absolute;
   top: 0;
   right: 0;
-  display: block;
-  width: 180px;
-}
-
-.guides-bundle__price-shape { width: 100%; }
-
-.guides-bundle__price-text {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 1.15;
-  color: $color-bg;
-  text-align: center;
-
-  small {
-    font-family: $font-heading;
-    font-weight: 600;
-    font-size: $fs-xs;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-  }
 }
 
 @media (max-width: $bp-lg) {
   .guides-bundle          { padding-top: 150px; }
   .guides-bundle__mockup  { top: -100px; }
-  .guides-bundle__mockup img { width: 96px; margin-left: -26px; }
   .guides-bundle__copy    { max-width: none; padding-right: 160px; }
   .guides-bundle__heading { font-size: 34px; }
-  .guides-bundle__price   { width: 140px; }
-  .guides-bundle__price-text { font-size: 24px; }
 }
 @media (max-width: $bp-md) {
   .guides-bundle          { padding-top: 110px; }
   .guides-bundle__mockup  { top: -70px; }
-  .guides-bundle__mockup img { width: 64px; margin-left: -18px; }
   .guides-bundle__copy    { padding-right: 0; }
   .guides-bundle__cols    { grid-template-columns: 1fr; gap: $space-4; }
   .guides-bundle__price   { position: relative; top: auto; right: auto; margin: 0 0 $space-6; }
@@ -313,26 +261,11 @@
   box-shadow: 0 10px 24px rgba($color-ink, 0.15);
 }
 
+// Starburst price badge (.price-bubble, _sections.scss).
 .guide-row__price {
   position: absolute;
   bottom: -28px;
   right: -28px;
-  display: block;
-  width: 88px;
-}
-
-.guide-row__price-shape { width: 100%; }
-
-.guide-row__price-text {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: $fs-lg;
-  color: $color-bg;
 }
 
 .guide-row__name {

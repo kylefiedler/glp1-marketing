@@ -1,0 +1,11 @@
+<!--
+  Starburst price badge. Params:
+    price (required) — e.g. "$35", "$6"
+    sub   (optional) — small caps line under the price, e.g. "$135+ value"
+    size  (optional) — "lg" (default) or "sm"
+    class (optional) — extra class(es) for positioning the badge in context
+-->
+<span class="price-bubble price-bubble--{{ include.size | default: "lg" }}{% if include.class %} {{ include.class }}{% endif %}" aria-hidden="true">
+  <span class="decor decor--starburst price-bubble__shape">{% include decor/starburst.svg %}</span>
+  <span class="price-bubble__text">{{ include.price }}{% if include.sub %}<small>{{ include.sub }}</small>{% endif %}</span>
+</span>
