@@ -238,7 +238,7 @@
 // .decor.decor--starburst (for color/sizing) plus a `--lg`/`--sm` size
 // modifier; callers add a positioning class of their own for placement.
 
-.price-bubble { display: block; position: relative; }
+.price-bubble { display: block; position: relative; z-index: 5; }
 
 .price-bubble--lg { width: 180px; }
 .price-bubble--sm { width: 88px; }
@@ -276,4 +276,11 @@
 }
 @media (max-width: $bp-md) {
   .price-bubble--lg { width: 120px; }
+}
+
+// Inverse coloring for bubbles placed on a hot-pink background, where the
+// default pink starburst would blend into the section behind it.
+.price-bubble--inverse {
+  .price-bubble__shape { color: $color-bg; }
+  .price-bubble__text  { color: $color-accent; }
 }

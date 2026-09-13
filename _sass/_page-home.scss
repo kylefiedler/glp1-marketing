@@ -299,17 +299,6 @@
   margin: 0 0 $space-4;
 }
 
-.home-bundle__price {
-  color: $color-bg;
-}
-
-.home-bundle__strike {
-  font-family: $font-body;
-  font-size: $fs-md;
-  color: rgba($color-bg, 0.85);
-  margin: 0 0 $space-3;
-}
-
 .home-bundle__lede {
   font-family: $font-body;
   font-size: $fs-md;
@@ -317,23 +306,19 @@
   color: rgba($color-bg, 0.95);
 }
 
+// Cascade visuals (.cover-fan) live in _sections.scss; this just gives the
+// fan a positioning context for the price bubble anchored to its corner.
 .home-bundle__mockup {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: $space-3;
-  transform: rotate(-3deg);
+  position: relative;
 }
 
-.home-bundle__mockup img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  box-shadow: 0 8px 20px rgba($color-black, 0.2);
-  background: $color-bg;
+// Starburst price badge (.price-bubble, _sections.scss), anchored to the
+// bottom-right corner of the cover fan.
+.home-bundle__price {
+  position: absolute;
+  bottom: -20px;
+  right: 16px;
 }
-
-.home-bundle__mockup img:nth-child(odd) { transform: translateY(8px) rotate(-2deg); }
-.home-bundle__mockup img:nth-child(even) { transform: translateY(-8px) rotate(2deg); }
 
 @media (max-width: $bp-lg) {
   .home-bundle__heading { font-size: 38px; }
@@ -343,7 +328,7 @@
 @media (max-width: $bp-md) {
   .home-bundle__inner { grid-template-columns: 1fr; }
   .home-bundle__heading { font-size: 30px; }
-  .home-bundle__mockup { transform: none; }
+  .home-bundle__price { bottom: -12px; right: 8px; }
 }
 
 // ===== Services =====

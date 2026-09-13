@@ -81,18 +81,20 @@ permalink: /
 
     <div class="home-bundle__inner">
       <div class="home-bundle__copy">
-        <h2 class="home-bundle__heading">Get all of the Guides<br>for <span class="home-bundle__price">$35</span></h2>
-        <p class="home-bundle__strike">Normally $135+ if purchased separately.</p>
+        <h2 class="home-bundle__heading">Get all of the Guides</h2>
         <p class="home-bundle__lede">No fluff. No overwhelm. Just everything you need to succeed.</p>
         <p class="home-bundle__cta">
           <a class="btn btn--outline-light btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy the ultimate bundle</a>
         </p>
       </div>
       <div class="home-bundle__mockup" aria-hidden="true">
-        {%- assign bundle_covers = "supplement_guide_cover.png|meal_template_cover.png|travel_survival_kit_cover.png|wean_off_glp-1_cover.png|workout_starter_cover.png|grocery_guide_cover.png|beginner_kit_cover.png|protien-cover.png" | split: "|" -%}
-        {%- for cover in bundle_covers -%}
-          <img src="{{ '/assets/images/home/' | append: cover | relative_url }}" alt="" loading="lazy" width="400" height="520">
-        {%- endfor -%}
+        <div class="cover-fan cover-fan--compact">
+          {%- assign bundle_covers = "supplement_guide_cover.png|meal_template_cover.png|travel_survival_kit_cover.png|wean_off_glp-1_cover.png|workout_starter_cover.png|grocery_guide_cover.png|beginner_kit_cover.png|protien-cover.png" | split: "|" -%}
+          {%- for cover in bundle_covers -%}
+            <img src="{{ '/assets/images/home/' | append: cover | relative_url }}" alt="" loading="lazy" width="400" height="520">
+          {%- endfor -%}
+        </div>
+        {% include price-bubble.html price="$35" sub="$135+ value" size="lg" inverse=true class="home-bundle__price" %}
       </div>
     </div>
 
