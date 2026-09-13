@@ -110,7 +110,7 @@
   .guides-bundle__price   { position: relative; top: auto; right: auto; margin: 0 0 $space-6; }
 }
 
-// ===== What's included =====
+// ===== What's included / Why it works (2-col) =====
 
 .guides-included {
   background: $color-bg;
@@ -119,76 +119,86 @@
 
 .guides-included__inner {
   @extend %guides-inner;
-  max-width: 900px;
-}
-
-.guides-included__eyebrow {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: $color-accent;
-  margin: 0 0 $space-3;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-8;
+  align-items: start;
 }
 
 .guides-included__heading {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: $color-ink;
-  text-align: center;
-  margin: 0 0 $space-7;
+  margin: 0 0 $space-5;
 }
 
 .guides-included__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  list-style: disc;
+  padding-left: $space-5;
+  margin: 0 0 $space-6;
   display: grid;
   gap: $space-4;
 
   li {
-    background: $color-blush;
-    border-radius: 16px;
-    padding: $space-5 $space-6;
     font-family: $font-body;
-    font-size: $fs-md;
+    font-size: $fs-sm;
     line-height: $lh-body;
     color: $color-ink;
   }
 
-  strong {
-    font-family: $font-display;
-    font-weight: 500;
-    font-size: 20px;
-    color: $color-ink;
-  }
-
-  span {
-    font-family: $font-heading;
-    font-weight: 600;
-    font-size: $fs-xs;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: $color-accent;
-    margin-left: $space-2;
-  }
+  strong { font-weight: 700; }
 }
 
+.guides-included__bonus-label {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: $fs-md;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: $color-ink;
+  margin: 0 0 $space-4;
+}
+
+.guides-included__col--why {
+  position: relative;
+}
+
+// Decorative flower peeking out from behind the photo's bottom-left corner.
+.guides-included__decor {
+  position: absolute;
+  left: -56px;
+  bottom: -40px;
+  width: 260px;
+  color: $color-blush;
+  z-index: 1;
+}
+
+.guides-included__photo {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  margin: $space-6 0 0 $space-6;
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba($color-ink, 0.15);
+}
+
+@media (max-width: $bp-lg) {
+  .guides-included__inner { grid-template-columns: 1fr; gap: $space-7; }
+  .guides-included__photo { margin-left: auto; margin-right: auto; }
+}
 @media (max-width: $bp-md) {
-  .guides-included__heading  { font-size: 26px; }
-  .guides-included__list li  { padding: $space-4; }
-  .guides-included__list strong { font-size: 17px; }
+  .guides-included__heading { font-size: 18px; }
 }
 
 // ===== Individual guides — one full-width row per book =====
 
 .guides-list {
-  background: $color-blush;
+  background: $color-bg;
   padding: $space-9 0;
 }
 
@@ -233,8 +243,7 @@
   align-items: center;
   padding: $space-7 $space-5;
   border-radius: 24px;
-
-  &:nth-child(odd) { background: $color-bg; }
+  background: $color-mist;
 }
 
 .guide-row__media { order: 2; }
@@ -242,6 +251,7 @@
 
 .guide-row--reverse {
   grid-template-columns: 0.85fr 1.15fr;
+  background: $color-bg;
 
   .guide-row__media { order: 1; }
   .guide-row__body  { order: 2; }
@@ -300,6 +310,52 @@
 @media (max-width: $bp-md) {
   .guides-list__heading { font-size: 26px; }
   .guide-row__name { font-size: 22px; }
+}
+
+// ===== Mini bonus pair (the two $2 add-ons share one compact row) =====
+
+.guide-mini-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-8;
+  padding: $space-7 $space-5;
+  background: $color-bg;
+  border-radius: 24px;
+  text-align: center;
+}
+
+.guide-mini__media {
+  position: relative;
+  max-width: 200px;
+  margin: 0 auto $space-5;
+}
+
+.guide-mini__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba($color-ink, 0.15);
+}
+
+// Starburst price badge (.price-bubble, _sections.scss).
+.guide-mini__price {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+}
+
+.guide-mini__name {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  color: $color-ink;
+  margin: 0 0 $space-4;
+}
+
+@media (max-width: $bp-md) {
+  .guide-mini-pair { grid-template-columns: 1fr; gap: $space-6; padding: $space-6 $space-4; }
 }
 
 // ===== FAQ =====

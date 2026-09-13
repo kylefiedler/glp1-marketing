@@ -4,7 +4,9 @@
 // Currently:
 //   .banner (--guides / --journal) — bottom-of-page CTAs
 //   .cover-fan     — cascade of product covers, fanned like a hand of cards
+//   .cover-scatter — loose rotated grid of covers, via _includes/section-bundle-cta.html
 //   .price-bubble  — starburst badge with a price, via _includes/price-bubble.html
+//   .bundle-cta    — flat hot-pink "$35 bundle" reminder banner, via _includes/section-bundle-cta.html
 
 // ----- Banners (guides + journal) -----
 
@@ -283,4 +285,85 @@
 .price-bubble--inverse {
   .price-bubble__shape { color: $color-bg; }
   .price-bubble__text  { color: $color-accent; }
+}
+
+// ----- Cover scatter (loose rotated grid of covers) -----
+// The plainer, pre-cascade mockup treatment still used by the live site's
+// quick bundle-reminder banners (see .bundle-cta below).
+
+.cover-scatter {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-3;
+  transform: rotate(-3deg);
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 8px 20px rgba($color-black, 0.2);
+    background: $color-bg;
+  }
+  img:nth-child(odd)  { transform: translateY(8px) rotate(-2deg); }
+  img:nth-child(even) { transform: translateY(-8px) rotate(2deg); }
+}
+
+@media (max-width: $bp-md) {
+  .cover-scatter { transform: none; }
+}
+
+// ----- Bundle CTA (flat "$35 bundle" reminder banner) -----
+// Markup via _includes/section-bundle-cta.html. Distinct from the fuller
+// .guides-bundle showcase — this is the shorter reminder version repeated
+// wherever the live site nudges toward the bundle a second time.
+
+.bundle-cta {
+  position: relative;
+  background: $color-accent;
+  color: $color-bg;
+  padding: $space-9 $space-5;
+}
+
+.bundle-cta__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: $space-8;
+  align-items: center;
+}
+
+.bundle-cta__heading {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 52px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: $color-bg;
+  margin: 0 0 $space-4;
+}
+
+.bundle-cta__price { color: $color-bg; }
+
+.bundle-cta__strike {
+  font-family: $font-body;
+  font-size: $fs-md;
+  color: rgba($color-bg, 0.85);
+  margin: 0 0 $space-3;
+}
+
+.bundle-cta__lede {
+  font-family: $font-body;
+  font-size: $fs-md;
+  margin: 0 0 $space-6;
+  color: rgba($color-bg, 0.95);
+}
+
+@media (max-width: $bp-lg) {
+  .bundle-cta__heading { font-size: 38px; }
+  .bundle-cta__inner { gap: $space-6; }
+}
+@media (max-width: $bp-md) {
+  .bundle-cta__inner { grid-template-columns: 1fr; }
+  .bundle-cta__heading { font-size: 30px; }
 }

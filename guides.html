@@ -57,19 +57,39 @@ permalink: /guides/
 
   <section class="guides-included">
     <div class="guides-included__inner">
-      <p class="guides-included__eyebrow">What&rsquo;s included</p>
-      <h2 class="guides-included__heading">Every tool you need. Nothing you don&rsquo;t.</h2>
-      <ul class="guides-included__list">
-        <li><strong>Beginner GLP-1 Survival Kit</strong> <span>$27 value</span><br>Start strong with education, side effect support, and step-by-step guidance to build fat-loss habits before stalls or setbacks hit.</li>
-        <li><strong>Grocery &amp; Food Guide</strong> <span>$17 value</span><br>High-protein staples, smart swaps, and low-volume meal ideas &mdash; perfect for low-appetite days and simplified shopping.</li>
-        <li><strong>Workout Starter Pack</strong> <span>$27 value</span><br>Strength-based fitness plans that preserve your muscle and metabolism, with at-home and gym options designed for real energy levels on GLP-1s.</li>
-        <li><strong>Travel Survival Kit</strong> <span>$17 value</span><br>Stay consistent on the go with packing tips, travel-safe snacks, airport &amp; restaurant orders, and ways to move your body without the drama.</li>
-        <li><strong>Wean-Off Survival Kit</strong> <span>$27 value</span><br>Your step-by-step transition plan for coming off meds without regaining weight or losing momentum.</li>
-        <li><strong>Mini Supplement Guide</strong> <span>$9 value &middot; bonus</span><br>No more guesswork. Support digestion, energy, and recovery with the most useful GLP-1-friendly supplements.</li>
-        <li><strong>7-Day Meal Template</strong> <span>$9 value &middot; bonus</span><br>Easy, flexible meals for every part of your week &mdash; even if your appetite disappears or your schedule is chaos.</li>
-      </ul>
+      <div class="guides-included__col">
+        <h2 class="guides-included__heading">What&rsquo;s included</h2>
+        <ul class="guides-included__list">
+          <li><strong>Beginner GLP-1 Survival Kit</strong> ($27 value): Start strong with education, side effect support, and step-by-step guidance to build fat-loss habits before stalls or setbacks hit.</li>
+          <li><strong>Grocery &amp; Food Guide</strong> ($17 value): High-protein staples, smart swaps, and low-volume meal ideas, perfect for low appetite days and simplified shopping.</li>
+          <li><strong>Workout Starter Pack</strong> ($27 value): Strength-based fitness plans that preserve your muscle and metabolism, with at-home and gym options designed for real energy levels on GLP-1s.</li>
+          <li><strong>Travel Survival Kit</strong> ($17 value): Stay consistent on the go with packing tips, travel-safe snacks, airport &amp; restaurant orders, and ways to move your body without the drama.</li>
+          <li><strong>Wean-Off Survival Kit</strong> ($27 value): Your step-by-step transition plan for coming off meds without regaining weight or losing momentum. Protect your results. Keep your routine.</li>
+        </ul>
+        <p class="guides-included__bonus-label">Plus, Two Free Bonuses:</p>
+        <ul class="guides-included__list">
+          <li><strong>Mini Supplement Guide</strong> ($9 value): No more guesswork. Support digestion, energy, and recovery with the most useful GLP-1-friendly supplements.</li>
+          <li><strong>7-Day Meal Template</strong> ($9 value): Easy, flexible meals for every part of your week &mdash; even if your appetite disappears or your schedule is chaos.</li>
+        </ul>
+      </div>
+      <div class="guides-included__col guides-included__col--why">
+        <h2 class="guides-included__heading">Why it works</h2>
+        <ul class="guides-included__list">
+          <li>It&rsquo;s created by an Ivy League educated registered nurse, certified personal trainer, and weight loss expert who&rsquo;s not just educated but has personally walked the GLP-1 journey.</li>
+          <li>It&rsquo;s built for real life with solutions that actually work when your appetite disappears, your energy tanks, or your routine falls apart.</li>
+          <li>It gives you a step-by-step strategy for every phase: from your first dose, to your first vacation, to your last injection.</li>
+          <li>It&rsquo;s not just about losing weight, but about protecting your metabolism, building sustainable habits, and feeling strong in your own skin.</li>
+          <li>It replaces overwhelm with structure, clarity, and confidence so you don&rsquo;t spend another month guessing, stalling, or spiraling.</li>
+        </ul>
+        <span class="decor decor--flower guides-included__decor" aria-hidden="true">
+          {% include decor/flower.svg %}
+        </span>
+        <img class="guides-included__photo" src="{{ '/assets/images/guides/screenshot_2025-12-15_at_5_58_40_pm.png' | relative_url }}" alt="" width="800" height="1072" loading="lazy">
+      </div>
     </div>
   </section>
+
+  {% include section-bundle-cta.html %}
 
   <section class="guides-list">
     <div class="guides-list__inner">
@@ -83,35 +103,52 @@ permalink: /guides/
           append: "travel_survival_kit_cover.png|Travel Survival Kit|$6|Travel doesn't have to derail your progress.|fgsiwc||" |
           append: "wean_off_glp-1_cover.png|Wean Off GLP-1 Survival Kit|$9|The shot might end, but your results don't have to.|phprv||" |
           append: "supplement_guide_cover.png|Mini Supplement Guide|$2|Cut through supplement noise.|owuwre||" |
-          append: "meal_template_cover.png|7-Day Meal Template|$2|A full week of done-for-you meals."
+          append: "meal_template_cover.png|7-Day Meal Template|$2|A full week of done-for-you meals.|rziler"
           | split: "||" -%}
         {%- for product_str in products -%}
           {%- assign p = product_str | split: "|" -%}
-          {%- assign is_reversed = forloop.index0 | modulo: 2 -%}
           {%- assign row_price = p[2] -%}
-          <li class="guide-row{% if is_reversed == 1 %} guide-row--reverse{% endif %}">
-            <div class="guide-row__media">
-              <img class="guide-row__img" src="{{ '/assets/images/home/' | append: p[0] | relative_url }}" alt="" width="400" height="520" loading="lazy">
-              {% include price-bubble.html price=row_price size="sm" class="guide-row__price" %}
-            </div>
-            <div class="guide-row__body">
-              <h3 class="guide-row__name">{{ p[1] }}</h3>
-              <p class="guide-row__lede">{{ p[3] }}</p>
-              {%- if p[4] -%}
-                <p><a class="btn btn--primary" href="https://thatglp1girl.gumroad.com/l/{{ p[4] }}" target="_blank" rel="noopener">Buy now</a></p>
-              {%- endif -%}
-            </div>
-          </li>
+          {%- if forloop.index0 < 5 -%}
+            {%- assign is_reversed = forloop.index0 | modulo: 2 -%}
+            <li class="guide-row{% if is_reversed == 1 %} guide-row--reverse{% endif %}">
+              <div class="guide-row__media">
+                <img class="guide-row__img" src="{{ '/assets/images/home/' | append: p[0] | relative_url }}" alt="" width="400" height="520" loading="lazy">
+                {% include price-bubble.html price=row_price size="sm" class="guide-row__price" %}
+              </div>
+              <div class="guide-row__body">
+                <h3 class="guide-row__name">{{ p[1] }}</h3>
+                <p class="guide-row__lede">{{ p[3] }}</p>
+                {%- if p[4] -%}
+                  <p><a class="btn btn--primary" href="https://thatglp1girl.gumroad.com/l/{{ p[4] }}" target="_blank" rel="noopener">Buy now</a></p>
+                {%- endif -%}
+              </div>
+            </li>
+          {%- else -%}
+            {%- if forloop.index0 == 5 -%}<li class="guide-mini-pair">{%- endif -%}
+              <div class="guide-mini">
+                <div class="guide-mini__media">
+                  <img class="guide-mini__img" src="{{ '/assets/images/home/' | append: p[0] | relative_url }}" alt="" width="400" height="520" loading="lazy">
+                  {% include price-bubble.html price=row_price size="sm" class="guide-mini__price" %}
+                </div>
+                <h3 class="guide-mini__name">{{ p[1] }}</h3>
+                {%- if p[4] -%}
+                  <p><a class="btn btn--primary" href="https://thatglp1girl.gumroad.com/l/{{ p[4] }}" target="_blank" rel="noopener">Buy now</a></p>
+                {%- endif -%}
+              </div>
+            {%- if forloop.last -%}</li>{%- endif -%}
+          {%- endif -%}
         {%- endfor -%}
       </ul>
     </div>
   </section>
 
+  {% include section-bundle-cta.html %}
+
   <section class="guides-faq">
     <div class="guides-faq__inner">
       <h2 class="guides-faq__heading">Frequently Asked Questions</h2>
 
-      {%- assign faqs = "What format are the guides?|All guides are downloadable PDFs. You&rsquo;ll get instant access after purchase via email and can save them to your phone, tablet, or computer. Read them offline anytime.||Do I need to be on a GLP-1 medication to use these?|Most guides work whether you&rsquo;re on Ozempic, Wegovy, Mounjaro, Zepbound, or planning to start. The Beginner Kit is perfect for people just starting, and the Wean-Off Kit is specifically for those transitioning off medication.||I&rsquo;m already a few months into my GLP-1 journey. Will these still help?|Absolutely. The Beginner Kit covers months 1&ndash;6+ and addresses plateaus, side effects, and maintenance strategies. The other guides (Food, Workout, Travel, Wean-Off) are valuable at any stage of your journey.||Are these guides evidence-based?|Yes. Every guide is created by Jessica, an Ivy League-educated registered nurse with Obesity Medicine certification, certified personal trainer credentials, and 155 pounds of personal weight loss experience.||How is this different from free information online?|Free content gives you pieces. These guides give you complete systems: step-by-step plans, meal templates, workout calendars, and troubleshooting for the specific challenges GLP-1 users face. No guessing, no piecing together random Instagram posts.||Can I share these with friends or family?|These guides are for personal use only. If you&rsquo;d like to gift a guide to someone, you can purchase additional copies at checkout or send them the link to buy their own.||Do you offer refunds?|All sales are final. These are digital products delivered instantly, so we cannot offer refunds. However, if you have questions about which guide is right for you before purchasing, feel free to reach out via the contact form.||I already bought one guide. Can I upgrade to the bundle?|Yes! Email us at Hello@ThatGLP1Girl.com with your purchase receipt and we&rsquo;ll send you a discount code for the difference so you can grab the bundle.||How quickly will I receive the guides after purchase?|Instantly. You&rsquo;ll get an email with download links within minutes of purchase. Check your spam folder if you don&rsquo;t see it right away.||I&rsquo;m overwhelmed. Where should I start?|If you&rsquo;re NEW to GLP-1s &rarr; Start with the Beginner Kit. If you&rsquo;re STRUGGLING with food choices &rarr; Grab the Food &amp; Grocery Guide. If you need MOVEMENT structure &rarr; Get the Workout Starter Pack. If you want EVERYTHING &rarr; The Ultimate Bundle saves you $58 and covers your entire journey." | split: "||" -%}
+      {%- assign faqs = "What format are the guides?|All guides are downloadable PDFs. You&rsquo;ll get instant access after purchase via email and can save them to your phone, tablet, or computer. Read them offline anytime.||Do I need to be on a GLP-1 medication to use these?|Most guides work whether you&rsquo;re on Ozempic, Wegovy, Mounjaro, Zepbound, or planning to start. The Beginner Kit is perfect for people just starting, and the Wean-Off Kit is specifically for those transitioning off medication. If you&rsquo;re maintaining results post-GLP-1, the guides still apply.||I&rsquo;m already a few months into my GLP-1 journey. Will these still help?|Absolutely. The Beginner Kit covers months 1&ndash;6+ and addresses plateaus, side effects, and maintenance strategies. The other guides (Food, Workout, Travel, Wean-Off) are valuable at any stage of your journey.||Are these guides evidence-based?|Yes. Every guide is created by Jessica, an Ivy League-educated registered nurse with Obesity Medicine certification, certified personal trainer credentials, and 155 pounds of personal weight loss experience. She&rsquo;s also in the midst of becoming a Psychiatric Nurse Practitioner through Vanderbilt University. All recommendations are backed by clinical research and real world application.||How is this different from free information online?|Free content gives you pieces. These guides give you complete systems: step-by-step plans, meal templates, workout calendars, and troubleshooting for the specific challenges GLP-1 users face. No guessing, no piecing together random Instagram posts. Everything you need in one place.||Can I share these with friends or family?|These guides are for personal use only. If you&rsquo;d like to gift a guide to someone, you can purchase additional copies at checkout or send them the link to buy their own.||How long does it take to see results?|The guides give you immediate strategies you can implement today. Most people report feeling more confident, in control, and clear on their plan within the first week. Physical results (strength, energy, digestion improvements) typically show up within 2&ndash;4 weeks of consistent implementation.||Do you offer refunds?|All sales are final. These are digital products delivered instantly, so we cannot offer refunds. However, if you have questions about which guide is right for you before purchasing, feel free to reach out via the contact form.||I already bought one guide. Can I upgrade to the bundle?|Yes! Email us at Hello@ThatGLP1Girl.com with your purchase receipt and we&rsquo;ll send you a discount code for the difference so you can grab the bundle.||Will these guides work if I&rsquo;m also working with a doctor or nutritionist?|Yes. These guides complement medical advice&mdash;they don&rsquo;t replace it. Always follow your doctor&rsquo;s recommendations, especially regarding medication dosing and medical conditions. Think of these guides as additional tools in your toolkit.||What if I have a question after I buy?|Each guide is comprehensive and designed to be self-sufficient, but if you have questions, you can reach out through the contact form on this site.||Do these guides include meal plans?|The Beginner Kit includes sample meals and nutrition strategy. The Food &amp; Grocery Guide has 2 full days of meal plans plus the bloat-free plate formula. The 7-Day Meal Template gives you a full week of done-for-you meals. If you want comprehensive meal planning, grab the bundle&mdash;it has everything.||Are the workouts suitable for beginners?|Yes! The Workout Starter Pack includes 3 complete paths: At-Home Beginner (no gym, minimal equipment), Hybrid Intermediate (some gym access), and Gym-Based Advanced. Pick the one that matches your current fitness level.||How quickly will I receive the guides after purchase?|Instantly. You&rsquo;ll get an email with download links within minutes of purchase. Check your spam folder if you don&rsquo;t see it right away.||Can I access these on my phone?|Yes. All guides are PDFs that work on any device&mdash;phone, tablet, computer. Save them to your Files app, Google Drive, or read them in any PDF reader.||I&rsquo;m overwhelmed. Where should I start?|If you&rsquo;re NEW to GLP-1s &rarr; Start with the Beginner Kit. If you&rsquo;re STRUGGLING with food choices &rarr; Grab the Food &amp; Grocery Guide. If you need MOVEMENT structure &rarr; Get the Workout Starter Pack. If you want EVERYTHING &rarr; The Ultimate Bundle saves you $58 and covers your entire journey.||Is there a community or support group?|Not yet, but it&rsquo;s coming soon! For now, follow @jessicarockowitz on Instagram for daily tips, support, and updates." | split: "||" -%}
       {%- for pair in faqs -%}
         {%- assign qa = pair | split: "|" -%}
         <details>
@@ -122,6 +159,7 @@ permalink: /guides/
     </div>
   </section>
 
+  {% include section-guides-banner.html %}
   {% include section-journal-banner.html %}
   {% include section-connect.html %}
 
