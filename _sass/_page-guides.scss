@@ -24,14 +24,14 @@
 .guides-bundle {
   position: relative;
   background: $color-blush;
-  padding: 250px $space-5 $space-9;
+  padding: 210px $space-5 $space-9;
 }
 
 // Covers fan out across the seam between the pink hero and this section.
 // Fan visuals (.cover-fan) live in _sections.scss; this just places it.
 .guides-bundle__mockup {
   position: absolute;
-  top: -170px;
+  top: -120px;
   left: 0;
   right: 0;
   z-index: 3;
@@ -44,7 +44,7 @@
 
 .guides-bundle__copy {
   max-width: 820px;
-  padding-right: 220px;
+  padding-right: 160px;
 }
 
 .guides-bundle__heading {
@@ -83,18 +83,18 @@
 
   p {
     font-family: $font-body;
-    font-size: $fs-sm;
+    font-size: $fs-md;
     line-height: $lh-body;
     color: $color-ink;
     margin: 0;
   }
 }
 
-// Starburst price badge (.price-bubble, _sections.scss), straddling the
-// copy column's top-right corner.
+// Starburst price badge (.price-bubble, _sections.scss). Live centers this
+// vertically across the heading + squiggle rather than flush with the top.
 .guides-bundle__price {
   position: absolute;
-  top: 0;
+  top: -24px;
   right: 0;
 }
 

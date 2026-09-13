@@ -208,31 +208,33 @@
     flex: 0 0 auto;
     width: 170px;
     height: auto;
-    margin-left: -44px;
+    margin-left: -68px;
     border-radius: 6px;
     box-shadow: 0 10px 24px rgba($color-black, 0.18);
     background: $color-bg;
   }
   img:first-child { margin-left: 0; }
 
-  img:nth-child(1) { transform: rotate(-18deg) translateY(22px); z-index: 1; }
-  img:nth-child(2) { transform: rotate(-13deg) translateY(10px); z-index: 2; }
-  img:nth-child(3) { transform: rotate(-7deg)  translateY(2px);  z-index: 3; }
-  img:nth-child(4) { transform: rotate(-2deg)  translateY(-4px); z-index: 4; }
-  img:nth-child(5) { transform: rotate(3deg)   translateY(-4px); z-index: 4; }
-  img:nth-child(6) { transform: rotate(8deg)   translateY(2px);  z-index: 3; }
-  img:nth-child(7) { transform: rotate(13deg)  translateY(10px); z-index: 2; }
-  img:nth-child(8) { transform: rotate(18deg)  translateY(22px); z-index: 1; }
+  // Small, near-random per-card tilt (not a smooth dome arc) and no
+  // vertical stagger — matches the live fan's flatter, tighter overlap.
+  img:nth-child(1) { transform: rotate(4deg); }
+  img:nth-child(2) { transform: rotate(-3deg); }
+  img:nth-child(3) { transform: rotate(-7deg); }
+  img:nth-child(4) { transform: rotate(2deg); }
+  img:nth-child(5) { transform: rotate(-5deg); }
+  img:nth-child(6) { transform: rotate(3deg); }
+  img:nth-child(7) { transform: rotate(-1deg); }
+  img:nth-child(8) { transform: rotate(5deg); }
 }
 
 .cover-fan--compact img { width: 90px; margin-left: -28px; }
 
 @media (max-width: $bp-lg) {
-  .cover-fan img { width: 130px; margin-left: -34px; }
+  .cover-fan img { width: 130px; margin-left: -52px; }
   .cover-fan--compact img { width: 76px; margin-left: -22px; }
 }
 @media (max-width: $bp-md) {
-  .cover-fan img { width: 60px; margin-left: -16px; }
+  .cover-fan img { width: 60px; margin-left: -24px; }
 }
 
 // ----- Price bubble (starburst badge with a floating price) -----
