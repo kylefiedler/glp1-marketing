@@ -403,76 +403,8 @@
   .home-services__grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
 }
 
-// ===== Testimonials =====
-
-.home-testimonials {
-  background: $color-blush;
-  padding: $space-9 $space-5 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.home-testimonials__inner {
-  @extend %home-inner;
-  position: relative;
-}
-
-.home-testimonials__grid {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 $space-7;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: $space-7 $space-9;
-  position: relative;
-  z-index: 2;
-}
-
-.home-testimonial {
-  display: flex;
-  flex-direction: column;
-  gap: $space-3;
-}
-
-.home-testimonial__attr {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: $color-ink;
-  margin: 0;
-}
-
-.home-testimonial blockquote {
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
-  color: $color-ink;
-  margin: 0;
-  font-style: italic;
-}
-
-.home-testimonials__wordmark {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: clamp(80px, 14vw, 200px);
-  line-height: 1;
-  text-align: center;
-  color: $color-rose;
-  opacity: 0.55;
-  margin: 0;
-  letter-spacing: -0.02em;
-  position: relative;
-  z-index: 1;
-  transform: translateY(20%);
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-@media (max-width: $bp-md) {
-  .home-testimonials__grid { grid-template-columns: 1fr; gap: $space-6; }
-}
+// Testimonials moved to _sass/_sections.scss and
+// _includes/section-testimonials.html so About can reuse them.
 
 // Banners moved to _sass/_sections.scss and _includes/section-*-banner.html
 // so About / Coaching / Guides / Journal / Blog can reuse them.

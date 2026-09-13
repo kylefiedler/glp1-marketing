@@ -7,6 +7,7 @@
 //   .cover-scatter — loose rotated grid of covers, via _includes/section-bundle-cta.html
 //   .price-bubble  — starburst badge with a price, via _includes/price-bubble.html
 //   .bundle-cta    — flat hot-pink "$35 bundle" reminder banner, via _includes/section-bundle-cta.html
+//   .testimonials  — client reviews grid + wordmark, via _includes/section-testimonials.html
 
 // ----- Banners (guides + journal) -----
 
@@ -289,83 +290,252 @@
   .price-bubble__text  { color: $color-accent; }
 }
 
-// ----- Cover scatter (loose rotated grid of covers) -----
-// The plainer, pre-cascade mockup treatment still used by the live site's
-// quick bundle-reminder banners (see .bundle-cta below).
+// ----- Cover scatter (seven covers stacked, cropped by the section edge) -----
+// Live hand-places seven 208x301 covers across a 607px stage: a top row of
+// four whose tops sit above the band (-11/-5/-9/-5px) and a lower row of
+// three at +186px. The band's overflow crops both. Positions below are that
+// stage's px expressed as %.
 
 .cover-scatter {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: $space-3;
-  transform: rotate(-3deg);
+  position: relative;
+  height: 487px;
 
   img {
-    width: 100%;
+    position: absolute;
+    width: 34.27%;  // 208/607
     height: auto;
-    border-radius: 6px;
-    box-shadow: 0 8px 20px rgba($color-black, 0.2);
+    aspect-ratio: 208 / 301;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: drop-shadow(0 0 11px rgba($color-black, 0.11));
     background: $color-bg;
   }
-  img:nth-child(odd)  { transform: translateY(8px) rotate(-2deg); }
-  img:nth-child(even) { transform: translateY(-8px) rotate(2deg); }
+
+  img:nth-child(1) { left: 0;      top: -11px; }
+  img:nth-child(2) { left: 22.57%; top: -5px;  }
+  img:nth-child(3) { left: 42.5%;  top: -9px;  }
+  img:nth-child(4) { left: 65.73%; top: -5px;  }
+  img:nth-child(5) { left: 9.56%;  top: 186px; }
+  img:nth-child(6) { left: 30.15%; top: 189px; }
+  img:nth-child(7) { left: 47.78%; top: 191px; }
 }
 
-@media (max-width: $bp-md) {
-  .cover-scatter { transform: none; }
-}
-
-// ----- Bundle CTA (flat "$35 bundle" reminder banner) -----
+// ----- Bundle CTA (flat hot-pink "$35 bundle" reminder banner) -----
 // Markup via _includes/section-bundle-cta.html. Distinct from the fuller
-// .guides-bundle showcase — this is the shorter reminder version repeated
-// wherever the live site nudges toward the bundle a second time.
+// .guides-bundle showcase — this is the shorter reminder version the live
+// site repeats on About and twice on Guides. Copy sits left, a peach
+// squiggle-vert runs floor-to-ceiling at the seam, covers crop off the top.
+// Live canvas: 1200x487.
 
 .bundle-cta {
   position: relative;
   background: $color-accent;
   color: $color-bg;
-  padding: $space-9 $space-5;
+  padding: 0;
+  overflow: hidden;
 }
 
 .bundle-cta__inner {
   max-width: 1200px;
+  min-height: 487px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: $space-8;
+  position: relative;
+  display: flex;
   align-items: center;
+}
+
+// Peach squiggle-vert standing floor-to-ceiling between copy and covers.
+.bundle-cta__squiggle {
+  position: absolute;
+  left: 40.33%;  // 484/1200
+  top: 0;
+  width: 17.17%; // 206/1200
+  height: 100%;
+  color: $color-peach;
+  z-index: 0;
+
+  // The artwork letterboxes inside the box (as it does on live), drawing
+  // ~190px wide and centered.
+  > svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.bundle-cta__copy {
+  position: relative;
+  z-index: 2;
+  width: 50%;
+  padding: $space-5 $space-5 $space-5 78px;  // live sets the copy 78px in
 }
 
 .bundle-cta__heading {
   font-family: $font-display;
   font-weight: 500;
-  font-size: 52px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: 0;
   color: $color-bg;
   margin: 0 0 $space-4;
 }
 
 .bundle-cta__price { color: $color-bg; }
 
-.bundle-cta__strike {
-  font-family: $font-body;
-  font-size: $fs-md;
-  color: rgba($color-bg, 0.85);
-  margin: 0 0 $space-3;
-}
-
+// Live runs the "normally $135" line and the "no fluff" line together as one
+// peach paragraph.
 .bundle-cta__lede {
   font-family: $font-body;
-  font-size: $fs-md;
+  font-size: $fs-sm;
+  line-height: $lh-body;
+  color: $color-peach;
   margin: 0 0 $space-6;
-  color: rgba($color-bg, 0.95);
+  max-width: 451px;
+}
+
+.bundle-cta__cta {
+  margin: 0;
+
+  // Live's is a fixed 506x52 box, not a text-hugging pill.
+  .btn {
+    display: block;
+    width: 100%;
+    max-width: 506px;
+    padding: 10px $space-4;
+    text-align: center;
+  }
+}
+
+// Cover stage: 607px wide starting 621px into the 1200px canvas.
+.bundle-cta__mockup {
+  position: absolute;
+  left: 51.75%;  // 621/1200
+  top: 0;
+  width: 50.58%; // 607/1200
+  z-index: 1;
 }
 
 @media (max-width: $bp-lg) {
-  .bundle-cta__heading { font-size: 38px; }
-  .bundle-cta__inner { gap: $space-6; }
+  .bundle-cta__heading { font-size: 32px; }
+  .bundle-cta__squiggle { left: 44%; }
 }
 @media (max-width: $bp-md) {
-  .bundle-cta__inner { grid-template-columns: 1fr; }
-  .bundle-cta__heading { font-size: 30px; }
+  .bundle-cta__inner {
+    display: block;
+    min-height: 0;
+    padding-bottom: $space-7;
+  }
+  .bundle-cta__copy { width: auto; padding: $space-7 $space-5 0; }
+  .bundle-cta__heading { font-size: 27px; }
+  .bundle-cta__squiggle { display: none; }
+  .bundle-cta__mockup {
+    position: relative;
+    left: auto;
+    width: auto;
+    margin: $space-6 $space-5 0;
+  }
+  .cover-scatter {
+    height: 300px;
+
+    img { width: 40%; }
+    img:nth-child(1) { left: 0;   top: 0;   }
+    img:nth-child(2) { left: 20%; top: 20px; }
+    img:nth-child(3) { left: 40%; top: 0;   }
+    img:nth-child(4) { left: 60%; top: 20px; }
+    img:nth-child(5) { left: 10%; top: 150px; }
+    img:nth-child(6) { left: 32%; top: 155px; }
+    img:nth-child(7) { left: 54%; top: 150px; }
+  }
+}
+
+// ----- Testimonials (client reviews) -----
+// Markup via _includes/section-testimonials.html. Live runs the four reviews
+// through a two-up slider; we lay all four out as a 2x2 grid over the
+// oversized peach "Client Reviews" wordmark.
+
+.testimonials {
+  background: $color-blush;
+  padding: $space-9 $space-5 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.testimonials__grid {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 $space-7;
+  padding-left: 82px;          // live sets the first column 82px in
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 412px));
+  justify-content: start;
+  gap: $space-7 141px;         // second column lands at 635px
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.testimonial__attr {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-md;
+  line-height: 1.8;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-ink;
+  margin: 0;
+}
+
+.testimonial blockquote {
+  font-family: $font-body;
+  font-size: $fs-sm;
+  line-height: $lh-body;
+  color: $color-ink;
+  margin: 0;
+}
+
+.testimonials__wordmark {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: clamp(55px, 9.24vw, 133px);
+  line-height: 1;
+  text-align: center;
+  color: $color-peach;
+  margin: 0;
+  letter-spacing: 0;
+  position: relative;
+  z-index: 1;
+  transform: translateY(18%);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+@media (max-width: $bp-lg) {
+  .testimonials__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-left: 0;
+    column-gap: $space-7;
+  }
+}
+
+@media (max-width: $bp-md) {
+  .testimonials__grid {
+    grid-template-columns: 1fr;
+    padding-left: 0;
+    gap: $space-6;
+  }
+  // Live wraps the wordmark onto two lines on mobile rather than cropping it.
+  .testimonials__wordmark {
+    line-height: 0.9;
+    white-space: normal;
+  }
 }

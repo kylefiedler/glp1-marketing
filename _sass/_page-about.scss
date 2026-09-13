@@ -1,235 +1,370 @@
-// About page — shares the .home-hero hot-pink pattern via a joint class
-// on .about-hero. This file holds about-specific sections only.
+// About page — section layouts mirrored from the live Showit canvas (1200px
+// wide desktop / 320px mobile), so desktop offsets below are live px mapped
+// 1:1 inside a 1200px stage, and horizontal ones are expressed as % of it.
+//
+// The hero keeps the .home-hero class purely so _nav.scss's body:has() rule
+// still overlays the header in light-on-color; everything else is overridden.
 
-%about-inner {
-  max-width: 1100px;
+%about-stage {
+  max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
-// ===== Hero-specific overrides =====
+// ===== Hero (peach band: photo right, white card overlapping it) =====
 
-.about-hero__eyebrow {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: $color-bg;
-  margin: 0 auto $space-4;
-  opacity: 0.9;
+.about-hero {
+  background: $color-peach;
+  padding: 0;
+  text-align: left;
+  overflow: hidden;
+}
+
+.about-hero__inner {
+  @extend %about-stage;
+  min-height: 750px;
+}
+
+// Photo runs the full height of the band, flush right, one rounded corner.
+.about-hero__media {
+  position: absolute;
+  left: 51.17%;   // 614/1200
+  top: 0;
+  width: 48.83%;  // 586/1200
+  height: 100%;
+  border-radius: 0 0 0 16px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 60% 60%;
+    display: block;
+  }
+}
+
+.about-hero__card {
+  position: absolute;
+  left: 13.33%;   // 160/1200
+  top: 311px;
+  width: 46.92%;  // 563/1200
+  min-height: 455px;
+  z-index: 2;
+  background: $color-bg;
+  border-radius: 39px;
+  padding: 64px 39px 48px 36px;
+  text-align: right;
+}
+
+.about-hero__title {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: $color-accent;
+  margin: 0 0 26px;
 }
 
 .about-hero__lede {
   font-family: $font-body;
-  font-size: $fs-md;
-  line-height: $lh-snug;
-  color: $color-bg;
-  margin: 0 auto;
-  max-width: 56ch;
-}
-
-// ===== Intro (2-col: copy + photo) =====
-
-.about-intro {
-  background: $color-blush;
-  padding: $space-9 $space-5;
-}
-
-.about-intro__inner {
-  @extend %about-inner;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: $space-8;
-  align-items: center;
-}
-
-.about-intro__copy p {
-  font-family: $font-body;
-  font-size: $fs-md;
+  font-weight: 400;
+  font-size: $fs-sm;
   line-height: $lh-body;
   color: $color-ink;
-  margin: 0;
-}
-
-.about-intro__media img {
-  width: 100%;
-  height: auto;
-  border-radius: 24px;
-  object-fit: cover;
-  aspect-ratio: 4 / 5;
-  box-shadow: 0 12px 28px rgba($color-ink, 0.15);
+  margin: 0 0 0 auto;
+  max-width: 435px;
 }
 
 @media (max-width: $bp-lg) {
-  .about-intro__inner { grid-template-columns: 1fr; gap: $space-6; }
-  .about-intro__media { max-width: 480px; margin: 0 auto; order: -1; }
+  .about-hero__inner { min-height: 0; }
+  .about-hero__media {
+    position: relative;
+    left: auto;
+    width: 67%;
+    height: 400px;
+    margin-left: auto;
+    border-radius: 0 0 0 11px;
+  }
+  .about-hero__card {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: auto;
+    min-height: 0;
+    margin: -52px $space-4 $space-7;
+    border-radius: 16px;
+    padding: $space-6 $space-5;
+  }
+  .about-hero__title { font-size: 34px; }
 }
 
-// ===== Statement =====
+@media (max-width: $bp-md) {
+  .about-hero__media { height: 300px; }
+  .about-hero__title { font-size: 27px; }
+}
+
+// ===== Statement (hot-pink band, squiggle up top, two photos cropped
+// by the band's bottom edge) =====
 
 .about-statement {
-  background: $color-blush;
-  padding: 0 $space-5 $space-9;
-  text-align: center;
+  position: relative;
+  background: $color-accent;
+  padding: 0;
+  overflow: hidden;
+  min-height: 1136px;
 }
 
 .about-statement__inner {
-  @extend %about-inner;
-  max-width: 820px;
+  @extend %about-stage;
+  height: 1136px;
+  text-align: center;
 }
 
-.about-statement__eyebrow {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: $color-accent;
-  margin: 0 0 $space-4;
+.about-statement__squiggle {
+  position: absolute;
+  left: 32.92%;  // 395/1200
+  top: 83px;     // 69px box + the 14px the artwork is letterboxed by
+  width: 32.58%; // 391/1200
+  color: $color-peach;
 }
 
 .about-statement__heading {
+  position: absolute;
+  left: 12%;     // 144/1200
+  top: 133px;
+  width: 76%;    // 912/1200
   font-family: $font-display;
   font-weight: 500;
-  font-size: 40px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  color: $color-ink;
-  margin: 0 0 $space-5;
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: $color-bg;
+  margin: 0;
 }
 
-.about-statement__underline {
-  width: 60px;
-  margin: 0 auto;
-  color: $color-accent;
+.about-statement__lede {
+  position: absolute;
+  left: 19.92%;  // 239/1200
+  top: 285px;
+  width: 60.25%; // 723/1200
+  font-family: $font-body;
+  font-size: $fs-sm;
+  line-height: $lh-body;
+  color: $color-bg;
+  margin: 0;
 }
 
-@media (max-width: $bp-lg) { .about-statement__heading { font-size: 32px; } }
-@media (max-width: $bp-md) { .about-statement__heading { font-size: 26px; } }
+.about-statement__media {
+  @extend %about-stage;
+  height: 0;
+}
 
-// ===== Story (long-form narrative) =====
+.about-statement__photo {
+  position: absolute;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+// Sits behind, and is half-covered by, the taller photo to its left.
+.about-statement__photo--back {
+  left: 41.92%;  // 503/1200
+  top: -629px;   // 507 - 1136
+  width: 58.08%; // 697/1200
+  height: 650px;
+  object-position: 100% 100%;
+  z-index: 1;
+}
+
+.about-statement__photo--front {
+  left: 3.17%;   // 38/1200
+  top: -763px;   // 373 - 1136
+  width: 48.5%;  // 582/1200
+  height: 830px;
+  object-position: 60% 60%;
+  z-index: 2;
+}
+
+@media (max-width: $bp-lg) {
+  .about-statement { min-height: 0; padding-bottom: $space-8; }
+  .about-statement__inner {
+    height: auto;
+    padding: $space-8 $space-5 $space-7;
+  }
+  .about-statement__squiggle {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 225px;
+    margin: 0 auto $space-6;
+  }
+  .about-statement__heading,
+  .about-statement__lede {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: auto;
+  }
+  .about-statement__heading { font-size: 27px; margin-bottom: $space-5; }
+
+  .about-statement__media {
+    height: 340px;
+    padding: 0 $space-4;
+  }
+  .about-statement__photo--back {
+    left: auto;
+    right: 4%;
+    top: 40px;
+    width: 44%;
+    height: 300px;
+  }
+  .about-statement__photo--front {
+    left: 4%;
+    top: 0;
+    width: 44%;
+    height: 340px;
+  }
+}
+
+// ===== Story (blush, two-column zig-zag of copy, photos and squiggles) =====
 
 .about-story {
-  background: $color-bg;
-  padding: $space-9 $space-5;
+  background: $color-blush;
+  padding: 48px $space-5 44px;
 }
 
 .about-story__inner {
-  max-width: 720px;
-  margin: 0 auto;
+  @extend %about-stage;
+  // Live hand-places the story columns 90px in from the canvas's left edge
+  // and 24px in from its right.
+  padding: 0 24px 0 90px;
 }
 
 .about-story__heading {
   font-family: $font-display;
   font-weight: 500;
-  font-size: 36px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  font-size: 63px;
+  line-height: 1.1;
+  letter-spacing: 0;
   color: $color-ink;
-  margin: 0 0 $space-6;
-  text-align: center;
+  margin: 0 0 $space-6 87px;  // heading sits 177px into the 1200 canvas
+  max-width: 776px;
 }
 
-.about-story p {
+.about-story__row {
+  display: grid;
+  // minmax(0, 1fr) so the wider-than-column photos overhang instead of
+  // pushing the second column off live's 657px gridline.
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 48px;
+  row-gap: $space-7;
+  align-items: start;
+  margin-bottom: $space-7;
+
+  &:last-child { margin-bottom: 0; }
+}
+
+.about-story__copy p {
   font-family: $font-body;
-  font-size: $fs-md;
+  font-size: $fs-sm;
   line-height: $lh-body;
   color: $color-ink;
   margin: 0 0 $space-5;
 
   em { font-style: italic; }
   strong { font-weight: 700; }
+
+  &:last-child { margin-bottom: 0; }
+}
+
+// Pink wave-thin rule that opens most of the copy columns.
+.about-story__squiggle {
+  width: 391px;
+  max-width: 100%;
+  color: $color-accent;
+  margin: 0 0 38px;
 }
 
 .about-story__pullquote {
-  font-family: $font-display;
-  font-weight: 500 !important;
-  font-size: 28px !important;
-  line-height: 1.2 !important;
-  color: $color-accent !important;
-  text-align: center;
-  padding: $space-6 0 !important;
-  margin: $space-3 0 !important;
+  font-family: $font-heading !important;
+  font-weight: 600;
+  font-size: $fs-md !important;
+  line-height: 1.8 !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-ink;
+  margin: 0 0 $space-5 !important;
+}
+
+.about-story__signoff {
+  font-family: $font-body;
+  margin-top: $space-5;
 }
 
 .about-story__figure {
-  margin: $space-7 0;
+  margin: 0;
 
   img {
     width: 100%;
     height: auto;
-    border-radius: 16px;
     display: block;
-    box-shadow: 0 12px 28px rgba($color-ink, 0.15);
+    border-radius: 80px;
+    object-fit: cover;
   }
 }
 
-.about-story__signoff {
-  font-family: $font-display;
-  font-weight: 500 !important;
-  font-size: $fs-lg !important;
-  color: $color-accent !important;
-  text-align: center;
-  margin-top: $space-7 !important;
+// Live hand-places each photo: its own crop ratio, width and inset from the
+// column it shares. Offsets below are live canvas px.
+.about-story__row:nth-of-type(1) {
+  .about-story__figure {
+    width: 481px;
+    justify-self: end;
+    margin-top: -37px;
+    img { aspect-ratio: 481 / 509; }
+  }
+  .about-story__squiggle { margin-left: 155px; }  // live puts it at 245px
+}
+
+.about-story__row:nth-of-type(2) .about-story__squiggle {
+  margin-left: -25px;  // live nudges it left of the column at 632px
+}
+
+.about-story__row:nth-of-type(3) .about-story__figure {
+  width: 574px;
+  justify-self: start;
+  margin-left: -37px;  // live runs it out to 53px, left of the copy column
+  img { aspect-ratio: 574 / 579; }
+}
+
+.about-story__row:nth-of-type(4) .about-story__figure {
+  width: 521px;
+  justify-self: start;
+  margin: -64px 0 0 -30px;
+  img { aspect-ratio: 521 / 617; }
+}
+
+@media (max-width: $bp-lg) {
+  .about-story__heading { font-size: 42px; margin-left: 0; }
+  .about-story__inner { padding: 0; }
+  .about-story__row { column-gap: $space-6; }
+  // :nth-of-type(n) keeps specificity level with the per-row rules above.
+  .about-story__row:nth-of-type(n) {
+    .about-story__figure { width: auto; margin: 0; }
+    .about-story__squiggle { margin-left: 0; }
+  }
+  .about-story__figure img { border-radius: 40px; }
 }
 
 @media (max-width: $bp-md) {
-  .about-story__heading   { font-size: 26px; }
-  .about-story__pullquote { font-size: 22px !important; }
+  .about-story { padding: $space-7 $space-5; }
+  .about-story__heading { font-size: 36px; }
+  .about-story__row {
+    grid-template-columns: 1fr;
+    row-gap: $space-6;
+    margin-bottom: $space-6;
+  }
+  .about-story__row--reverse .about-story__figure { order: 2; }
+  .about-story__figure img { border-radius: 20px; }
+  .about-story__squiggle { width: 225px; }
 }
-
-// ===== Bundle (hot-pink full-bleed matching home-bundle pattern) =====
-
-.about-bundle {
-  position: relative;
-  background: $color-accent;
-  color: $color-bg;
-  padding: calc(#{$space-9} + 40px) $space-5;
-  text-align: center;
-}
-
-.about-bundle__wave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 60px;
-  line-height: 0;
-  z-index: 3;
-  pointer-events: none;
-  svg { width: 100%; height: 100%; display: block; }
-}
-.about-bundle__wave.home-bundle__wave--top    { top: -59px; }
-.about-bundle__wave.home-bundle__wave--bottom { bottom: -59px; }
-
-.about-bundle__inner {
-  @extend %about-inner;
-  position: relative;
-  z-index: 2;
-  max-width: 720px;
-}
-
-.about-bundle__heading {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: 52px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  color: $color-bg;
-  margin: 0 0 $space-4;
-}
-
-// Starburst price badge (.price-bubble, _sections.scss), centered above
-// the heading.
-.about-bundle__price {
-  margin: 0 auto $space-5;
-}
-
-.about-bundle__lede {
-  font-family: $font-body;
-  font-size: $fs-md;
-  margin: 0 0 $space-6;
-  color: rgba($color-bg, 0.95);
-}
-
-@media (max-width: $bp-lg) { .about-bundle__heading { font-size: 38px; } }
-@media (max-width: $bp-md) { .about-bundle__heading { font-size: 30px; } }

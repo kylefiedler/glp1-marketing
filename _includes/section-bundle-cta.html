@@ -1,20 +1,23 @@
-<!--
-  Bundle CTA — flat "$35 bundle" reminder banner with a scattered cover
-  mockup. Shorter than .guides-bundle; used to repeat the bundle pitch
-  partway down a long product-listing page. No params.
--->
+{%- comment -%}
+  Bundle CTA — flat hot-pink "$35 bundle" reminder banner: copy on the left,
+  a peach squiggle-vert at the seam, and seven guide covers cropped by the
+  band's top edge. Used on About and twice on Guides. No params.
+{%- endcomment -%}
+
 <section class="bundle-cta">
   <div class="bundle-cta__inner">
+    <span class="decor decor--squiggle-vert bundle-cta__squiggle" aria-hidden="true">
+      {% include decor/squiggle-vert.svg %}
+    </span>
     <div class="bundle-cta__copy">
       <h2 class="bundle-cta__heading">Get all of the Guides<br>for <span class="bundle-cta__price">$35</span></h2>
-      <p class="bundle-cta__strike">Normally $135+ if purchased separately.</p>
-      <p class="bundle-cta__lede">No fluff. No overwhelm. Just everything you need to succeed.</p>
+      <p class="bundle-cta__lede">Normally $135+ if purchased separately. No fluff. No overwhelm. Just everything you need to succeed.</p>
       <p class="bundle-cta__cta">
-        <a class="btn btn--outline-light btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy the ultimate bundle</a>
+        <a class="btn btn--white btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy the ultimate bundle</a>
       </p>
     </div>
     <div class="bundle-cta__mockup cover-scatter" aria-hidden="true">
-      {%- assign bundle_covers = "supplement_guide_cover.png|meal_template_cover.png|travel_survival_kit_cover.png|wean_off_glp-1_cover.png|workout_starter_cover.png|grocery_guide_cover.png|beginner_kit_cover.png|protien-cover.png" | split: "|" -%}
+      {%- assign bundle_covers = "supplement_guide_cover.png|meal_template_cover.png|travel_survival_kit_cover.png|wean_off_glp-1_cover.png|workout_starter_cover.png|grocery_guide_cover.png|beginner_kit_cover.png" | split: "|" -%}
       {%- for cover in bundle_covers -%}
         <img src="{{ '/assets/images/home/' | append: cover | relative_url }}" alt="" loading="lazy" width="400" height="520">
       {%- endfor -%}
