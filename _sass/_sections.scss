@@ -206,9 +206,9 @@
 
   img {
     flex: 0 0 auto;
-    width: 130px;
+    width: 170px;
     height: auto;
-    margin-left: -34px;
+    margin-left: -44px;
     border-radius: 6px;
     box-shadow: 0 10px 24px rgba($color-black, 0.18);
     background: $color-bg;
@@ -228,11 +228,11 @@
 .cover-fan--compact img { width: 90px; margin-left: -28px; }
 
 @media (max-width: $bp-lg) {
-  .cover-fan img { width: 96px; margin-left: -26px; }
+  .cover-fan img { width: 130px; margin-left: -34px; }
   .cover-fan--compact img { width: 76px; margin-left: -22px; }
 }
 @media (max-width: $bp-md) {
-  .cover-fan img { width: 64px; margin-left: -18px; }
+  .cover-fan img { width: 60px; margin-left: -16px; }
 }
 
 // ----- Price bubble (starburst badge with a floating price) -----

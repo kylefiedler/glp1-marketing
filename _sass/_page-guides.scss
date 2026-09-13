@@ -24,14 +24,14 @@
 .guides-bundle {
   position: relative;
   background: $color-blush;
-  padding: 190px $space-5 $space-9;
+  padding: 250px $space-5 $space-9;
 }
 
 // Covers fan out across the seam between the pink hero and this section.
 // Fan visuals (.cover-fan) live in _sections.scss; this just places it.
 .guides-bundle__mockup {
   position: absolute;
-  top: -130px;
+  top: -170px;
   left: 0;
   right: 0;
   z-index: 3;
@@ -57,8 +57,10 @@
   margin: 0 0 $space-4;
 }
 
+// A thin scalloped line (wave-thin), not the tall vertical squiggle — live
+// uses a flat decorative rule here, not the "M" shape.
 .guides-bundle__squiggle {
-  width: 220px;
+  width: 260px;
   color: $color-peach;
   margin: 0 0 $space-6;
 }
@@ -111,8 +113,8 @@
 }
 
 @media (max-width: $bp-lg) {
-  .guides-bundle          { padding-top: 150px; }
-  .guides-bundle__mockup  { top: -100px; }
+  .guides-bundle          { padding-top: 190px; }
+  .guides-bundle__mockup  { top: -130px; }
   .guides-bundle__copy    { max-width: none; padding-right: 160px; }
   .guides-bundle__heading { font-size: 34px; }
 }
