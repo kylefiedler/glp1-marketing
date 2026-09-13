@@ -13,13 +13,6 @@ permalink: /guides/
 <main class="guides">
 
   <section class="guides-hero home-hero">
-    <span class="decor decor--asterisk-8pt home-hero__decor home-hero__decor--asterisk" aria-hidden="true">
-      {% include decor/asterisk-8pt.svg %}
-    </span>
-    <span class="decor decor--squiggle home-hero__decor home-hero__decor--squiggle" aria-hidden="true">
-      {% include decor/squiggle.svg %}
-    </span>
-
     <div class="home-hero__inner">
       <p class="guides-hero__eyebrow">Your Complete GLP-1 Toolbox</p>
       <h1 class="home-hero__title">Build your foundation. Save your muscle. Learn to eat again.</h1>
@@ -31,7 +24,7 @@ permalink: /guides/
 
   <section class="guides-bundle">
     <div class="guides-bundle__mockup cover-fan" aria-hidden="true">
-      {%- assign bundle_covers = "supplement_guide_cover.png|meal_template_cover.png|travel_survival_kit_cover.png|wean_off_glp-1_cover.png|workout_starter_cover.png|grocery_guide_cover.png|beginner_kit_cover.png|protien-cover.png" | split: "|" -%}
+      {%- assign bundle_covers = "supplement_guide_cover.png|meal_template_cover.png|travel_survival_kit_cover.png|wean_off_glp-1_cover.png|workout_starter_cover.png|grocery_guide_cover.png|beginner_kit_cover.png" | split: "|" -%}
       {%- for cover in bundle_covers -%}
         <img src="{{ '/assets/images/home/' | append: cover | relative_url }}" alt="" loading="lazy" width="400" height="520">
       {%- endfor -%}
@@ -48,11 +41,17 @@ permalink: /guides/
           <p>You started this journey because you wanted something to finally work. But now you&rsquo;re here, trying to manage side effects, low appetite, social pressure, workouts that don&rsquo;t feel right, and the constant fear of gaining it all back when the meds stop. You don&rsquo;t need more guesswork.</p>
           <p>You need a strategy that actually fits your GLP-1 life. This is that strategy. Inside this bundle, you&rsquo;ll get every guide you need to feel confident, consistent, and completely in control, no matter what phase of your journey you&rsquo;re in.</p>
         </div>
-        <p><a class="btn btn--primary btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy the ultimate guide bundle</a></p>
       </div>
 
-      {% include price-bubble.html price="$35" sub="$135+ value" size="lg" class="guides-bundle__price" %}
+      <span class="decor decor--squiggle guides-bundle__squiggle-white" aria-hidden="true">
+        {% include decor/squiggle.svg %}
+      </span>
+      {% include price-bubble.html price="$35" sub="$45+ value" size="lg" class="guides-bundle__price" %}
     </div>
+
+    <p class="guides-bundle__cta">
+      <a class="btn btn--primary btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy the ultimate guide bundle</a>
+    </p>
 
     <div class="guides-bundle__wave" aria-hidden="true">
       {% include decor/wave-med.svg %}
@@ -77,7 +76,7 @@ permalink: /guides/
         </ul>
       </div>
       <div class="guides-included__col guides-included__col--why">
-        <h2 class="guides-included__heading">Why it works</h2>
+        <h2 class="guides-included__heading">Why It Works</h2>
         <ul class="guides-included__list">
           <li>It&rsquo;s created by an Ivy League educated registered nurse, certified personal trainer, and weight loss expert who&rsquo;s not just educated but has personally walked the GLP-1 journey.</li>
           <li>It&rsquo;s built for real life with solutions that actually work when your appetite disappears, your energy tanks, or your routine falls apart.</li>
@@ -85,8 +84,8 @@ permalink: /guides/
           <li>It&rsquo;s not just about losing weight, but about protecting your metabolism, building sustainable habits, and feeling strong in your own skin.</li>
           <li>It replaces overwhelm with structure, clarity, and confidence so you don&rsquo;t spend another month guessing, stalling, or spiraling.</li>
         </ul>
-        <span class="decor decor--flower guides-included__decor" aria-hidden="true">
-          {% include decor/flower.svg %}
+        <span class="decor decor--scallop-star guides-included__decor" aria-hidden="true">
+          {% include decor/scallop-star.svg %}
         </span>
         <img class="guides-included__photo" src="{{ '/assets/images/guides/screenshot_2025-12-15_at_5_58_40_pm.png' | relative_url }}" alt="" width="800" height="1072" loading="lazy">
       </div>
@@ -96,25 +95,28 @@ permalink: /guides/
   {% include section-bundle-cta.html %}
 
   <section class="guides-list">
-    <div class="guides-list__inner">
-      <p class="guides-list__eyebrow">Prefer to grab one at a time?</p>
-      <h2 class="guides-list__heading">Buy individually</h2>
-      <ul class="guides-list__rows">
-        {%- assign products =
-          "beginner_kit_cover.png|Beginner GLP-1 Survival Kit|$9|This is the playbook you wish came with your prescription.|Beginner-GLP-1-Survival-Kit||" |
-          append: "grocery_guide_cover.png|Food & Grocery Guide|$6|If you don't know what to eat, start here.|obqmks||" |
-          append: "workout_starter_cover.png|Workout Starter Pack|$9|Not about shrinking. About building strength you'll keep.|twfnd||" |
-          append: "travel_survival_kit_cover.png|Travel Survival Kit|$6|Travel doesn't have to derail your progress.|fgsiwc||" |
-          append: "wean_off_glp-1_cover.png|Wean Off GLP-1 Survival Kit|$9|The shot might end, but your results don't have to.|phprv||" |
-          append: "supplement_guide_cover.png|Mini Supplement Guide|$2|Cut through supplement noise.|owuwre||" |
-          append: "meal_template_cover.png|7-Day Meal Template|$2|A full week of done-for-you meals.|rziler"
-          | split: "||" -%}
-        {%- for product_str in products -%}
-          {%- assign p = product_str | split: "|" -%}
-          {%- assign row_price = p[2] -%}
-          {%- if forloop.index0 < 5 -%}
-            {%- assign is_reversed = forloop.index0 | modulo: 2 -%}
-            <li class="guide-row{% if is_reversed == 1 %} guide-row--reverse{% endif %}">
+    <ul class="guides-list__rows">
+      {%- comment -%}
+        cover | name | price | lede | gumroad slug | detail page | buy-button label
+        Row order and the image side alternate exactly as live does: odd rows
+        put the cover right (mist band), even rows put it left (white band).
+      {%- endcomment -%}
+      {%- assign products =
+        "beginner_kit_cover.png|That GLP-1 Girl Beginner GLP-1 Survival Kit|$9|This is the playbook you wish came with your prescription.|Beginner-GLP-1-Survival-Kit|/glp-1-beginner-survival-kit|Buy now;;" |
+        append: "grocery_guide_cover.png|That GLP-1 Girl Food &amp; Grocery Guide|$6|If you don&rsquo;t know what to eat, start here.|obqmks|/glp-1-food-and-grocery-guide|Buy now;;" |
+        append: "workout_starter_cover.png|That GLP-1 Girl Workout Starter Pack|$9|This isn&rsquo;t about shrinking. It&rsquo;s about building strength you&rsquo;ll keep.|twfnd|/glp-1-girl-workout-starter-pack|Buy Workout Starter Pack;;" |
+        append: "travel_survival_kit_cover.png|That GLP-1 Girl Travel Survival Kit|$6|Travel doesn&rsquo;t have to derail your progress.|fgsiwc|/glp-1-travel-survival-kit|Buy Travel Survival Kit;;" |
+        append: "wean_off_glp-1_cover.png|That GLP-1 Girl Wean Off GLP-1 Survival Kit|$9|The shot might end, but your results don&rsquo;t have to.|phprv|/wean-off-glp-2|Buy now;;" |
+        append: "supplement_guide_cover.png|Mini Supplement Guide|$2||owuwre|/mini-supplement-guide|Buy Supplement Guide;;" |
+        append: "meal_template_cover.png|7-Day Meal Template|$2||rziler|/7-day-meal-template|Buy Meal Template"
+        | split: ";;" -%}
+      {%- for product_str in products -%}
+        {%- assign p = product_str | split: "|" -%}
+        {%- assign row_price = p[2] -%}
+        {%- if forloop.index0 < 5 -%}
+          {%- assign is_reversed = forloop.index0 | modulo: 2 -%}
+          <li class="guide-row{% if is_reversed == 1 %} guide-row--reverse{% endif %}">
+            <div class="guide-row__inner">
               <div class="guide-row__media">
                 <img class="guide-row__img" src="{{ '/assets/images/home/' | append: p[0] | relative_url }}" alt="" width="400" height="520" loading="lazy">
                 {% include price-bubble.html price=row_price size="sm" class="guide-row__price" %}
@@ -122,28 +124,30 @@ permalink: /guides/
               <div class="guide-row__body">
                 <h3 class="guide-row__name">{{ p[1] }}</h3>
                 <p class="guide-row__lede">{{ p[3] }}</p>
-                {%- if p[4] -%}
-                  <p><a class="btn btn--primary" href="https://thatglp1girl.gumroad.com/l/{{ p[4] }}" target="_blank" rel="noopener">Buy now</a></p>
-                {%- endif -%}
               </div>
-            </li>
-          {%- else -%}
-            {%- if forloop.index0 == 5 -%}<li class="guide-mini-pair">{%- endif -%}
-              <div class="guide-mini">
-                <div class="guide-mini__media">
-                  <img class="guide-mini__img" src="{{ '/assets/images/home/' | append: p[0] | relative_url }}" alt="" width="400" height="520" loading="lazy">
-                  {% include price-bubble.html price=row_price size="sm" class="guide-mini__price" %}
-                </div>
-                <h3 class="guide-mini__name">{{ p[1] }}</h3>
-                {%- if p[4] -%}
-                  <p><a class="btn btn--primary" href="https://thatglp1girl.gumroad.com/l/{{ p[4] }}" target="_blank" rel="noopener">Buy now</a></p>
-                {%- endif -%}
+              <p class="guide-row__actions">
+                <a class="btn btn--primary" href="{{ p[5] | relative_url }}">Learn more</a>
+                <a class="btn btn--white" href="https://thatglp1girl.gumroad.com/l/{{ p[4] }}" target="_blank" rel="noopener">{{ p[6] }}</a>
+              </p>
+            </div>
+          </li>
+        {%- else -%}
+          {%- if forloop.index0 == 5 -%}<li class="guide-mini-pair"><div class="guide-mini-pair__inner">{%- endif -%}
+            <div class="guide-mini">
+              <div class="guide-mini__media">
+                <img class="guide-mini__img" src="{{ '/assets/images/home/' | append: p[0] | relative_url }}" alt="" width="400" height="520" loading="lazy">
+                {% include price-bubble.html price=row_price size="sm" class="guide-mini__price" %}
               </div>
-            {%- if forloop.last -%}</li>{%- endif -%}
-          {%- endif -%}
-        {%- endfor -%}
-      </ul>
-    </div>
+              <h3 class="guide-mini__name">{{ p[1] }}</h3>
+              <p class="guide-mini__actions">
+                <a class="btn btn--primary" href="{{ p[5] | relative_url }}">Learn more</a>
+                <a class="btn btn--white" href="https://thatglp1girl.gumroad.com/l/{{ p[4] }}" target="_blank" rel="noopener">{{ p[6] }}</a>
+              </p>
+            </div>
+          {%- if forloop.last -%}</div></li>{%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
   </section>
 
   {% include section-bundle-cta.html %}

@@ -1,22 +1,70 @@
 // Guides page — shares the .home-hero hot-pink pattern via a joint class
 // on .guides-hero. Rest is guides-specific.
+//
+// Geometry and type below are taken from the live page's 1200px Showit
+// canvas (scratchpad/live-guides.html), so the px values here are canvas
+// units: at the 1200px max-width they land 1:1.
 
 %guides-inner {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-// ===== Hero-specific overrides =====
-
-.guides-hero__eyebrow {
+// Live sets every eyebrow / small label on this page in Comfortaa 600 18/1.8
+// uppercase with 0.1em tracking (st-d-subheading).
+%guides-label {
   font-family: $font-heading;
   font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
+  font-size: $fs-md;
+  line-height: 1.8;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+// Unbounded 500 38/1.2 (st-d-heading) — bundle heading, product names,
+// FAQ questions and every price in a starburst.
+%guides-heading {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+// ===== Hero-specific overrides =====
+// Live's guides hero runs bigger than home's: 77px title (home is 63px) over
+// a 596px band, with the cover fan hanging off the bottom edge.
+
+.guides-hero {
+  padding: 108px $space-5 113px;
+}
+
+.guides-hero .home-hero__inner { max-width: 1088px; }
+
+.guides-hero .home-hero__title {
+  font-size: 77px;
+  line-height: 1.1;
+  letter-spacing: 0;
+  max-width: none;
+  margin-bottom: 37px;
+}
+
+.guides-hero__eyebrow {
+  @extend %guides-label;
+  line-height: 1.3;
   color: $color-bg;
-  margin: 0 auto $space-4;
-  opacity: 0.9;
+  margin: 0 auto 7px;
+}
+
+@media (max-width: $bp-lg) {
+  .guides-hero { padding: 80px $space-5 64px; }
+  .guides-hero .home-hero__title { font-size: 52px; }
+}
+@media (max-width: $bp-md) {
+  .guides-hero { padding: 96px $space-4 48px; }
+  .guides-hero .home-hero__title { font-size: 24px; margin-bottom: 24px; }
+  .guides-hero__eyebrow { font-size: 12px; }
+  .guides-hero .btn { font-size: 12px; }
 }
 
 // ===== Bundle (fanned covers up top + copy w/ price badge) =====
@@ -24,78 +72,108 @@
 .guides-bundle {
   position: relative;
   background: $color-blush;
-  padding: 210px $space-5 $space-9;
+  padding: 0 $space-5 130px;
 }
 
 // Covers fan out across the seam between the pink hero and this section.
-// Fan visuals (.cover-fan) live in _sections.scss; this just places it.
+// Fan visuals (.cover-fan) live in _sections.scss; this just places it and
+// matches live's 239x342 cards at a ~92px overlap.
 .guides-bundle__mockup {
   position: absolute;
-  top: -120px;
+  top: -23px;
   left: 0;
   right: 0;
   z-index: 3;
+
+  img { width: 239px; margin-left: -92px; aspect-ratio: 239 / 342; object-fit: cover; }
+  img:first-child { margin-left: 0; }
 }
 
 .guides-bundle__inner {
   @extend %guides-inner;
   position: relative;
+  padding-top: 396px;
 }
 
 .guides-bundle__copy {
-  max-width: 820px;
-  padding-right: 160px;
+  max-width: 914px;
+  padding-left: 134px;
 }
 
 .guides-bundle__heading {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: 44px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  @extend %guides-heading;
   color: $color-ink;
-  margin: 0 0 $space-4;
+  margin: 0;
+  max-width: 604px;
 }
 
 // A thin scalloped line (wave-thin), not the tall vertical squiggle — live
 // uses a flat decorative rule here, not the "M" shape.
 .guides-bundle__squiggle {
-  width: 260px;
+  width: 391px;
   color: $color-peach;
-  margin: 0 0 $space-6;
+  margin: 10px 0 35px;
 }
 
 .guides-bundle__eyebrow {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  @extend %guides-label;
   color: $color-ink;
-  margin: 0 0 $space-6;
+  margin: 0 0 38px;
+  max-width: 604px;
 }
 
 .guides-bundle__cols {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: $space-6;
-  margin: 0 0 $space-6;
+  grid-template-columns: 467px 419px;
+  gap: 28px;
+  margin: 0;
 
   p {
     font-family: $font-body;
-    font-size: $fs-md;
+    font-size: $fs-sm;
     line-height: $lh-body;
     color: $color-ink;
     margin: 0;
   }
 }
 
-// Starburst price badge (.price-bubble, _sections.scss). Live centers this
-// vertically across the heading + squiggle rather than flush with the top.
+.guides-bundle__cta {
+  margin: 47px 0 0;
+  text-align: center;
+
+  .btn { min-width: 506px; }
+}
+
+// The white "M" squiggle sits behind the badge, half off the copy column.
+.guides-bundle__squiggle-white {
+  position: absolute;
+  top: 361px;
+  right: 85px;
+  width: 210px;
+  color: $color-bg;
+  z-index: 1;
+}
+
+// Starburst price badge (.price-bubble, _sections.scss). Live floats it over
+// the right-hand edge of the copy block, overlapping the white squiggle.
 .guides-bundle__price {
   position: absolute;
-  top: -24px;
-  right: 0;
+  top: 384px;
+  right: 243px;
+  width: 205px;
+}
+
+.guides-bundle__price .price-bubble__text {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 1.2;
+
+  small {
+    font-size: $fs-md;
+    line-height: 1.1;
+    letter-spacing: 0.1em;
+  }
 }
 
 // Blush wave dipping down into the white "included" section below.
@@ -103,8 +181,8 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -60px;
-  height: 120px;
+  bottom: -61px;
+  height: 122px;
   color: $color-blush;
   z-index: 4;
   pointer-events: none;
@@ -113,17 +191,29 @@
 }
 
 @media (max-width: $bp-lg) {
-  .guides-bundle          { padding-top: 190px; }
-  .guides-bundle__mockup  { top: -130px; }
-  .guides-bundle__copy    { max-width: none; padding-right: 160px; }
-  .guides-bundle__heading { font-size: 34px; }
+  .guides-bundle__mockup  { top: -16px; img { width: 150px; margin-left: -58px; } }
+  .guides-bundle__inner   { padding-top: 300px; }
+  .guides-bundle__copy    { max-width: none; padding-left: 0; padding-right: 200px; }
+  .guides-bundle__heading { font-size: 32px; }
+  .guides-bundle__cols    { grid-template-columns: 1fr 1fr; }
+  .guides-bundle__squiggle-white { width: 150px; right: 0; top: 268px; }
+  .guides-bundle__price   { width: 150px; right: 110px; top: 288px; }
+  .guides-bundle__price .price-bubble__text { font-size: 28px; small { font-size: $fs-xs; } }
 }
 @media (max-width: $bp-md) {
-  .guides-bundle          { padding-top: 110px; }
-  .guides-bundle__mockup  { top: -70px; }
+  .guides-bundle          { padding-bottom: 48px; }
+  .guides-bundle__mockup  { top: -10px; img { width: 93px; margin-left: -36px; } }
+  .guides-bundle__inner   { padding-top: 130px; }
   .guides-bundle__copy    { padding-right: 0; }
-  .guides-bundle__cols    { grid-template-columns: 1fr; gap: $space-4; }
-  .guides-bundle__price   { position: relative; top: auto; right: auto; margin: 0 0 $space-6; }
+  .guides-bundle__heading { font-size: 20px; }
+  // leaves room for the badge, which live drops into its own band here
+  .guides-bundle__squiggle { width: 225px; margin: 122px 0 20px; }
+  .guides-bundle__eyebrow { font-size: 12px; margin-bottom: 24px; }
+  .guides-bundle__cols    { grid-template-columns: 1fr; gap: $space-4; p { font-size: $fs-xs; } }
+  .guides-bundle__cta     { margin-top: 32px; .btn { min-width: 0; width: 100%; font-size: 12px; } }
+  .guides-bundle__squiggle-white { top: 190px; right: auto; left: 26px; width: 105px; }
+  .guides-bundle__price   { top: 179px; right: 8px; width: 130px; }
+  .guides-bundle__price .price-bubble__text { font-size: 20px; small { font-size: 11px; } }
   .guides-bundle__wave    { bottom: -30px; height: 60px; }
 }
 
@@ -131,33 +221,34 @@
 
 .guides-included {
   background: $color-bg;
-  padding: $space-9 $space-5;
+  padding: 109px 0 33px;
+  overflow: hidden;
 }
 
 .guides-included__inner {
   @extend %guides-inner;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: $space-8;
+  grid-template-columns: 464px 464px;
+  justify-content: center;
+  gap: 32px;
   align-items: start;
+  padding: 0 $space-5;
 }
 
+// Live sets both column headers (and "Plus, Two Free Bonuses:") as small
+// Comfortaa labels, not display headings.
 .guides-included__heading {
-  font-family: $font-heading;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  @extend %guides-label;
   color: $color-ink;
-  margin: 0 0 $space-5;
+  margin: 0 0 10px;
 }
 
 .guides-included__list {
   list-style: disc;
   padding-left: $space-5;
-  margin: 0 0 $space-6;
+  margin: 0 0 $space-5;
   display: grid;
-  gap: $space-4;
+  gap: $space-3;
 
   li {
     font-family: $font-body;
@@ -170,81 +261,61 @@
 }
 
 .guides-included__bonus-label {
-  font-family: $font-heading;
-  font-weight: 700;
-  font-size: $fs-md;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  @extend %guides-label;
   color: $color-ink;
-  margin: 0 0 $space-4;
+  margin: 0 0 10px;
 }
 
 .guides-included__col--why {
   position: relative;
 }
 
-// Decorative flower peeking out from behind the photo's bottom-left corner.
+// Peach scallop-star peeking out from behind the photo's left edge.
 .guides-included__decor {
   position: absolute;
-  left: -56px;
-  bottom: -40px;
-  width: 260px;
-  color: $color-blush;
+  left: -32px;
+  bottom: -18px;
+  width: 205px;
+  color: $color-peach;
   z-index: 1;
 }
 
+// Live crops the portrait screenshot into a 522x398 landscape frame anchored
+// to its bottom-right and lets it run past the column's right edge.
 .guides-included__photo {
   position: relative;
   z-index: 2;
   display: block;
-  width: 100%;
-  max-width: 380px;
-  margin: $space-6 0 0 $space-6;
-  border-radius: 16px;
-  box-shadow: 0 12px 28px rgba($color-ink, 0.15);
+  width: 522px;
+  max-width: none;
+  aspect-ratio: 522 / 398;
+  height: auto;
+  object-fit: cover;
+  object-position: 100% 100%;
+  margin: 18px 0 0 58px;
+  border-radius: 10px;
 }
 
 @media (max-width: $bp-lg) {
+  .guides-included { padding-top: 72px; }
   .guides-included__inner { grid-template-columns: 1fr; gap: $space-7; }
-  .guides-included__photo { margin-left: auto; margin-right: auto; }
+  .guides-included__photo { width: 100%; margin-left: 0; }
+  .guides-included__decor { left: -24px; bottom: -24px; width: 150px; }
 }
 @media (max-width: $bp-md) {
-  .guides-included__heading { font-size: 18px; }
+  .guides-included { padding-top: 48px; }
+  .guides-included__heading,
+  .guides-included__bonus-label { font-size: 12px; }
+  .guides-included__list li { font-size: $fs-xs; }
+  .guides-included__decor { width: 120px; }
 }
 
-// ===== Individual guides — one full-width row per book =====
+// ===== Individual guides — one full-bleed band per book =====
+// Live gives every product its own section: mist band with the cover on the
+// right, then a white band with the cover on the left, alternating.
 
 .guides-list {
   background: $color-bg;
-  padding: $space-9 0;
-}
-
-.guides-list__inner {
-  @extend %guides-inner;
-  max-width: 1200px;
-  padding: 0 $space-5;
-}
-
-.guides-list__eyebrow {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: $color-accent;
-  margin: 0 0 $space-3;
-  text-align: center;
-}
-
-.guides-list__heading {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  color: $color-ink;
-  text-align: center;
-  margin: 0 0 $space-7;
 }
 
 .guides-list__rows {
@@ -254,148 +325,275 @@
 }
 
 .guide-row {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: $space-8;
-  align-items: center;
-  padding: $space-7 $space-5;
-  border-radius: 24px;
   background: $color-mist;
 }
 
-.guide-row__media { order: 2; }
-.guide-row__body  { order: 1; }
-
 .guide-row--reverse {
-  grid-template-columns: 0.85fr 1.15fr;
   background: $color-bg;
+}
 
-  .guide-row__media { order: 1; }
-  .guide-row__body  { order: 2; }
+.guide-row__inner {
+  @extend %guides-inner;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 295px;
+  grid-template-areas:
+    "body    media"
+    "actions media";
+  gap: 0 $space-7;
+  align-items: start;
+  padding: 61px 150px 26px;
+}
+
+.guide-row__body    { grid-area: body; }
+.guide-row__actions { grid-area: actions; }
+.guide-row__media   { grid-area: media; align-self: center; }
+
+.guide-row--reverse .guide-row__inner {
+  grid-template-columns: 259px minmax(0, 1fr);
+  grid-template-areas:
+    "media body"
+    "media actions";
 }
 
 .guide-row__media {
   position: relative;
-  max-width: 280px;
-  margin: 0 auto;
 }
 
 .guide-row__img {
   width: 100%;
   height: auto;
+  aspect-ratio: 295 / 422;
+  object-fit: cover;
   display: block;
-  border-radius: 10px;
-  box-shadow: 0 10px 24px rgba($color-ink, 0.15);
+  border-radius: 4px;
+  filter: drop-shadow(0 0 11px rgba($color-black, 0.11));
 }
 
 // Starburst price badge (.price-bubble, _sections.scss).
-.guide-row__price {
+.guide-row__price,
+.guide-mini__price {
   position: absolute;
-  bottom: -28px;
-  right: -28px;
+  bottom: -46px;
+  right: -24px;
+  width: 154px;
+}
+
+.guide-row__price .price-bubble__text,
+.guide-mini__price .price-bubble__text {
+  @extend %guides-heading;
+  color: $color-bg;
 }
 
 .guide-row__name {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: 28px;
-  line-height: 1.2;
+  @extend %guides-heading;
   color: $color-ink;
-  margin: 0 0 $space-3;
+  margin: 0 0 $space-2;
 }
 
 .guide-row__lede {
-  font-family: $font-body;
-  font-size: $fs-md;
-  line-height: $lh-body;
-  color: rgba($color-ink, 0.85);
-  margin: 0 0 $space-5;
+  @extend %guides-label;
+  color: $color-ink;
+  margin: 0 0 36px;
+  max-width: 460px;
+}
+
+// Live stacks the two CTAs as full-width blocks under the copy: pink
+// "Learn more" on top, plain white "Buy now" below.
+.guide-row__actions,
+.guide-mini__actions {
+  display: grid;
+  gap: 11px;
+  margin: 0;
+  max-width: 492px;
+
+  .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @media (max-width: $bp-lg) {
-  .guide-row,
-  .guide-row--reverse {
-    grid-template-columns: 1fr;
-    gap: $space-5;
-    padding: $space-6 $space-4;
-    text-align: center;
+  .guide-row__inner,
+  .guide-row--reverse .guide-row__inner {
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 0 $space-6;
+    padding: 48px $space-5;
   }
-  .guide-row__media,
-  .guide-row__body { order: initial; }
-  .guide-row__lede { margin-left: auto; margin-right: auto; }
+  .guide-row--reverse .guide-row__inner { grid-template-columns: 220px minmax(0, 1fr); }
+  .guide-row__name { font-size: 28px; }
+  .guide-row__price,
+  .guide-mini__price { width: 110px; bottom: -32px; right: -18px; }
+  .guide-row__price .price-bubble__text,
+  .guide-mini__price .price-bubble__text { font-size: 26px; }
 }
 @media (max-width: $bp-md) {
-  .guides-list__heading { font-size: 26px; }
-  .guide-row__name { font-size: 22px; }
+  // Live keeps the cover beside the copy on mobile and runs both CTAs
+  // full-bleed underneath.
+  .guide-row__inner,
+  .guide-row--reverse .guide-row__inner {
+    grid-template-columns: minmax(0, 1fr) 120px;
+    grid-template-areas:
+      "body    media"
+      "actions actions";
+    gap: 0 $space-4;
+    padding: 43px $space-4 48px;
+  }
+  .guide-row--reverse .guide-row__inner {
+    grid-template-columns: 120px minmax(0, 1fr);
+    grid-template-areas:
+      "media body"
+      "actions actions";
+  }
+  .guide-row__name { font-size: 20px; }
+  .guide-row__lede { font-size: 12px; margin-bottom: $space-5; }
+  .guide-row__actions,
+  .guide-mini__actions { max-width: none; margin-top: $space-5; }
+  .guide-row__actions .btn,
+  .guide-mini__actions .btn { font-size: 12px; }
+  .guide-row__price,
+  .guide-mini__price { width: 83px; bottom: -24px; right: -14px; }
+  .guide-row__price .price-bubble__text,
+  .guide-mini__price .price-bubble__text { font-size: 18px; }
 }
 
-// ===== Mini bonus pair (the two $2 add-ons share one compact row) =====
+// ===== Mini bonus pair (the two $2 add-ons share one white band) =====
 
 .guide-mini-pair {
+  background: $color-bg;
+}
+
+.guide-mini-pair__inner {
+  @extend %guides-inner;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: $space-8;
-  padding: $space-7 $space-5;
-  background: $color-bg;
-  border-radius: 24px;
+  gap: 45px;
+  padding: 50px 130px 64px;
   text-align: center;
 }
 
 .guide-mini__media {
   position: relative;
-  max-width: 200px;
-  margin: 0 auto $space-5;
+  width: 230px;
+  margin: 0 auto 33px;
 }
 
 .guide-mini__img {
   width: 100%;
   height: auto;
+  aspect-ratio: 230 / 329;
+  object-fit: cover;
   display: block;
-  border-radius: 10px;
-  box-shadow: 0 10px 24px rgba($color-ink, 0.15);
-}
-
-// Starburst price badge (.price-bubble, _sections.scss).
-.guide-mini__price {
-  position: absolute;
-  bottom: -20px;
-  right: -20px;
+  border-radius: 4px;
+  filter: drop-shadow(0 0 11px rgba($color-black, 0.11));
 }
 
 .guide-mini__name {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 1.2;
+  @extend %guides-heading;
   color: $color-ink;
-  margin: 0 0 $space-4;
+  margin: 0 0 $space-5;
 }
 
+.guide-mini__actions {
+  justify-items: center;
+  max-width: 402px;
+  margin: 0 auto;
+}
+
+@media (max-width: $bp-lg) {
+  .guide-mini-pair__inner { padding: 48px $space-5; gap: $space-6; }
+  .guide-mini__media { width: 180px; }
+  .guide-mini__name { font-size: 28px; }
+}
 @media (max-width: $bp-md) {
-  .guide-mini-pair { grid-template-columns: 1fr; gap: $space-6; padding: $space-6 $space-4; }
+  .guide-mini-pair__inner { grid-template-columns: 1fr; gap: 48px; padding: 31px $space-4 48px; }
+  .guide-mini__media { width: 91px; margin-bottom: 24px; }
+  .guide-mini__name { font-size: 20px; }
 }
 
 // ===== FAQ =====
 
 .guides-faq {
   background: $color-bg;
-  padding: $space-9 $space-5;
+  padding: 120px 0 82px;
 }
 
 .guides-faq__inner {
   @extend %guides-inner;
-  max-width: 780px;
 }
 
 .guides-faq__heading {
   font-family: $font-display;
   font-weight: 500;
-  font-size: 36px;
+  font-size: 63px;
   line-height: 1.1;
-  letter-spacing: -0.01em;
-  color: $color-ink;
-  margin: 0 0 $space-6;
+  letter-spacing: 0;
+  color: $color-peach;
+  margin: 0 0 52px;
   text-align: center;
 }
 
-@media (max-width: $bp-md) { .guides-faq__heading { font-size: 26px; } }
+// Live renders each Q/A as its own white block: question left at 53px, a
+// dark +/x toggle pinned at 1144px, answer indented to match.
+.guides-faq details {
+  border: 0;
+  padding: 0;
+}
+
+.guides-faq summary {
+  @extend %guides-heading;
+  position: relative;
+  display: block;
+  list-style: none;
+  cursor: pointer;
+  color: $color-ink;
+  padding: 21px 80px 18px 53px;
+}
+
+.guides-faq summary::-webkit-details-marker { display: none; }
+
+.guides-faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 27px;
+  top: 21px;
+  width: 29px;
+  height: 31px;
+  font-family: $font-body;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 31px;
+  text-align: center;
+  color: $color-ink;
+}
+
+.guides-faq details[open] summary::after { content: "\00d7"; transform: none; }
+
+.guides-faq details > p {
+  font-family: $font-body;
+  font-size: $fs-sm;
+  line-height: $lh-body;
+  color: $color-ink;
+  max-width: 642px;
+  margin: 0;
+  padding: 0 $space-5 22px 55px;
+  color: $color-ink;
+}
+
+@media (max-width: 1248px) {
+  .guides-faq__inner { padding: 0 $space-5; }
+}
+
+@media (max-width: $bp-lg) {
+  .guides-faq { padding: 80px $space-5 56px; }
+  .guides-faq__heading { font-size: 46px; margin-bottom: 40px; }
+  .guides-faq summary { font-size: 26px; padding: 20px 70px 20px $space-5; }
+  .guides-faq details > p { padding-left: $space-5; }
+}
+@media (max-width: $bp-md) {
+  .guides-faq { padding: 43px $space-4; }
+  .guides-faq__heading { font-size: 36px; margin-bottom: 24px; }
+  .guides-faq summary { font-size: 20px; padding: 16px 44px 16px 14px; }
+  .guides-faq summary::after { right: 0; top: 16px; width: 24px; height: 24px; font-size: 28px; line-height: 24px; }
+  .guides-faq details > p { font-size: $fs-xs; padding: 0 0 12px 16px; }
+}

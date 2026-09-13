@@ -25,6 +25,15 @@ exclude = [
   # ----- Self-canonical on /404.html intentionally points at itself -----
   '^https://thatglp1girl\.com/404\.html$',
 
+  # ----- Guides "Learn more" targets: live Showit detail pages not yet ported -----
+  '^https?://[^/]+/glp-1-beginner-survival-kit',
+  '^https?://[^/]+/glp-1-food-and-grocery-guide',
+  '^https?://[^/]+/glp-1-girl-workout-starter-pack',
+  '^https?://[^/]+/glp-1-travel-survival-kit',
+  '^https?://[^/]+/wean-off-glp-2',
+  '^https?://[^/]+/mini-supplement-guide',
+  '^https?://[^/]+/7-day-meal-template',
+
   # ----- Mailtos -----
   '^mailto:',
 ]
