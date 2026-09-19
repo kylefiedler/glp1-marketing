@@ -1,9 +1,6 @@
 // Shared pill-button system used on every marketing page.
 // Variants:
 //   .btn--primary       hot-pink filled, white text (default CTA)
-//   .btn--ghost         transparent, dark outline (secondary)
-//   .btn--outline       transparent, pink outline (on light bg)
-//   .btn--outline-light transparent, white outline (on colored bg)
 //   .btn--white         solid white, pink text (on pink hero bg)
 //   .btn--lg            larger padding + font size
 
@@ -28,27 +25,6 @@
   border-color: $color-accent;
 }
 .btn--primary:hover { filter: brightness(0.92); }
-
-.btn--ghost {
-  background: transparent;
-  color: $color-ink;
-  border-color: $color-ink;
-}
-.btn--ghost:hover { background: $color-ink; color: $color-bg; }
-
-.btn--outline {
-  background: transparent;
-  color: $color-accent;
-  border-color: $color-accent;
-}
-.btn--outline:hover { background: $color-accent; color: $color-bg; }
-
-.btn--outline-light {
-  background: transparent;
-  color: $color-bg;
-  border-color: $color-bg;
-}
-.btn--outline-light:hover { background: $color-bg; color: $color-accent; }
 
 .btn--white {
   background: $color-bg;
