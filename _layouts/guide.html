@@ -1,0 +1,87 @@
+---
+layout: default
+---
+{%- comment -%}
+  Guide detail page (one per document in _guides/). Ported from the live
+  Showit guide template: pink hero with cover, blush "what you get" section
+  with price bubble + two lists, then the shared banners/connect/footer.
+
+  Front matter:
+    title, description  - page <title> and meta description
+    name                - display name in the hero
+    cover               - cover image path
+    price               - e.g. "$9" (keep in sync with Gumroad + guides.html)
+    gumroad             - Gumroad product slug (thatglp1girl.gumroad.com/l/<slug>)
+    perfect_for         - hero line after "Perfect for:"
+    headline            - section heading
+    know                - list for "You'll know exactly"
+    inside              - list for "Inside this guide"
+  The page body is the intro copy under the headline.
+{%- endcomment -%}
+{%- assign buy_url = "https://thatglp1girl.gumroad.com/l/" | append: page.gumroad -%}
+{% include header.html %}
+
+<main class="guide-page">
+
+  <section class="guide-hero home-hero">
+    <div class="guide-hero__inner">
+      <div class="guide-hero__copy">
+        <p class="guide-hero__eyebrow">That GLP-1 Girl</p>
+        <h1 class="guide-hero__title">{{ page.name | escape | replace: "GLP-1", '<span class="guide-hero__nowrap">GLP-1</span>' }}</h1>
+        <p class="guide-hero__for"><strong>Perfect for:</strong> {{ page.perfect_for }}</p>
+        <p class="guide-hero__cta">
+          <a class="btn btn--white" href="{{ buy_url }}" target="_blank" rel="noopener">Buy the guide</a>
+        </p>
+      </div>
+      <div class="guide-hero__media">
+        <span class="decor decor--scallop-star guide-hero__decor" aria-hidden="true">
+          {% include decor/scallop-star.svg %}
+        </span>
+        <img class="guide-hero__cover" src="{{ page.cover | relative_url }}" alt="{{ page.name | escape }} cover" width="612" height="792" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <section class="guide-detail">
+    <div class="guide-detail__wave" aria-hidden="true">
+      {% include decor/wave-med.svg %}
+    </div>
+    <div class="guide-detail__inner">
+      <div class="guide-detail__intro">
+        <h2 class="guide-detail__headline">{{ page.headline }}</h2>
+        <div class="guide-detail__body">{{ content }}</div>
+      </div>
+      <div class="guide-detail__price">
+        {% include price-bubble.html price=page.price size="lg" %}
+        <span class="visually-hidden">Price: {{ page.price }}</span>
+      </div>
+
+      <div class="guide-detail__col">
+        <h3 class="guide-detail__label">Inside this guide:</h3>
+        <ul class="guide-detail__list">
+          {%- for item in page.inside %}
+          <li>{{ item }}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+      <div class="guide-detail__col">
+        <h3 class="guide-detail__label">You&rsquo;ll know exactly:</h3>
+        <ul class="guide-detail__list">
+          {%- for item in page.know %}
+          <li>{{ item }}</li>
+          {%- endfor %}
+        </ul>
+        <p class="guide-detail__cta">
+          <a class="btn btn--primary btn--lg" href="{{ buy_url }}" target="_blank" rel="noopener">Buy the guide</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {% include section-guides-banner.html %}
+  {% include section-journal-banner.html %}
+  {% include section-connect.html %}
+
+</main>
+
+{% include footer.html %}

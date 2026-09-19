@@ -1,0 +1,201 @@
+// Guide detail pages (_layouts/guide.html) — one template for all seven
+// guides. The hero keeps the .home-hero class so _nav.scss flips the header
+// to its light-on-pink treatment; everything else is guide-specific.
+
+%guide-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+// ===== Hero: copy left, cover right =====
+
+.guide-hero {
+  text-align: left;
+  padding: calc(#{$space-9} + 24px) $space-5 calc(#{$space-9} + 24px);
+  overflow: hidden;
+}
+
+.guide-hero__inner {
+  @extend %guide-inner;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: $space-8;
+  align-items: center;
+}
+
+.guide-hero__eyebrow {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 $space-3;
+  opacity: 0.9;
+}
+
+.guide-hero__title {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: $color-bg;
+  margin: 0 0 $space-5;
+}
+
+// Keeps "GLP-1" from splitting at its hyphen on narrow screens.
+.guide-hero__nowrap { white-space: nowrap; }
+
+.guide-hero__for {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-sm;
+  line-height: 1.7;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 $space-6;
+  max-width: 48ch;
+
+  strong { font-weight: 700; }
+}
+
+.guide-hero__cta { margin: 0; }
+
+.guide-hero__media {
+  position: relative;
+  justify-self: center;
+  width: 100%;
+  max-width: 340px;
+}
+
+.guide-hero__cover {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: rotate(4deg);
+  box-shadow: 0 16px 40px rgba($color-black, 0.2);
+}
+
+.guide-hero__decor {
+  position: absolute;
+  z-index: 1;
+  top: -56px;
+  left: -64px;
+  width: 150px;
+}
+
+@media (max-width: $bp-lg) {
+  .guide-hero__title { font-size: 44px; }
+}
+
+@media (max-width: $bp-md) {
+  .guide-hero { padding: calc(#{$space-9} + 48px) $space-5 $space-9; }
+  .guide-hero__inner { grid-template-columns: 1fr; gap: $space-7; }
+  .guide-hero__title { font-size: 32px; }
+  .guide-hero__for { font-size: $fs-xs; }
+  .guide-hero__media { max-width: 220px; }
+  .guide-hero__decor { width: 100px; top: -32px; left: -40px; }
+}
+
+// ===== Detail: headline + intro + price, then the two lists =====
+
+.guide-detail {
+  position: relative;
+  background: $color-blush;
+  padding: $space-9 $space-5;
+}
+
+// Scalloped seam dipping up into the pink hero above (same as the journal).
+.guide-detail__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  // Width-driven (height: auto) so the scallops span any viewport without
+  // distorting; bottom: 100% seats it on the section's top edge.
+  bottom: calc(100% - 1px);
+  color: $color-blush;
+  transform: rotate(180deg);
+  pointer-events: none;
+
+  svg { width: 100%; height: auto; display: block; }
+}
+
+.guide-detail__inner {
+  @extend %guide-inner;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: $space-8;
+  row-gap: $space-8;
+}
+
+.guide-detail__intro { grid-column: 1 / 2; }
+
+.guide-detail__headline {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.25;
+  color: $color-ink;
+  margin: 0 0 $space-5;
+}
+
+.guide-detail__body p {
+  font-family: $font-body;
+  font-size: $fs-sm;
+  line-height: $lh-body;
+  color: $color-ink;
+  margin: 0 0 $space-3;
+}
+
+.guide-detail__price {
+  grid-column: 2 / 3;
+  align-self: center;
+  justify-self: center;
+}
+
+.guide-detail__label {
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-md;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-ink;
+  margin: 0 0 $space-5;
+}
+
+.guide-detail__list {
+  margin: 0;
+  padding-left: 1.2em;
+  display: grid;
+  gap: $space-2;
+
+  li {
+    font-family: $font-body;
+    font-size: $fs-sm;
+    line-height: $lh-body;
+    color: $color-ink;
+  }
+}
+
+.guide-detail__cta {
+  margin: $space-7 0 0;
+
+  .btn { width: 100%; }
+}
+
+@media (max-width: $bp-lg) {
+  .guide-detail__headline { font-size: 26px; }
+}
+
+@media (max-width: $bp-md) {
+  .guide-detail__inner { grid-template-columns: 1fr; row-gap: $space-7; }
+  .guide-detail__intro,
+  .guide-detail__price { grid-column: auto; }
+  .guide-detail__headline { font-size: 22px; }
+}

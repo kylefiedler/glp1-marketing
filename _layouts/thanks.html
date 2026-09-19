@@ -1,0 +1,61 @@
+---
+layout: default
+---
+{%- comment -%}
+  Post-submit landing page for the Formspree forms. Forms carry
+  `data-thanks="/…/"` and assets/js/forms.js redirects here on success.
+
+  Front matter:
+    eyebrow, heading, lede — hero copy
+    steps (optional)       — list of { title, copy } for "what happens next"
+{%- endcomment -%}
+{% include header.html %}
+
+<main class="thanks">
+  <section class="thanks-hero">
+    <span class="decor decor--asterisk-8pt thanks-hero__asterisk" aria-hidden="true">
+      {% include decor/asterisk-8pt.svg %}
+    </span>
+
+    <div class="thanks-hero__inner">
+      <div class="thanks-hero__copy">
+        <p class="thanks-hero__eyebrow">{{ page.eyebrow }}</p>
+        <h1 class="thanks-hero__title">{{ page.heading }}</h1>
+        <p class="thanks-hero__lede">{{ page.lede }}</p>
+
+        {%- if page.steps %}
+        <ol class="thanks-steps">
+          {%- for step in page.steps %}
+          <li class="thanks-steps__item">
+            <h2 class="thanks-steps__title">{{ step.title }}</h2>
+            <p class="thanks-steps__copy">{{ step.copy }}</p>
+          </li>
+          {%- endfor %}
+        </ol>
+        {%- endif %}
+
+        <div class="thanks-hero__actions">
+          <a class="btn btn--primary" href="{{ '/' | relative_url }}">Back to home</a>
+          <div class="thanks-hero__follow">
+            <span>Follow along</span>
+            {% include social-links.html class="connect__social" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="thanks-hero__media">
+        <img src="{{ '/assets/images/about/portrait.jpg' | relative_url }}" alt="Jess, That GLP-1 Girl" width="1600" height="2286" loading="eager">
+        <span class="decor decor--starburst thanks-hero__burst" aria-hidden="true">
+          {% include decor/starburst.svg %}
+        </span>
+        <p class="thanks-hero__signoff">Talk soon!<br><span>&mdash; Jess</span></p>
+      </div>
+    </div>
+  </section>
+
+  {% include section-services.html
+     heading="While you wait"
+     items="GLP-1 Guides|Everything you need to understand your medication, manage side effects, and start building healthy habits.|/guides||Yearlong Journal|Track your progress, symptoms, meals, and mindset throughout your entire GLP-1 journey.|/journal||The Blog|Real talk on protein, workouts, and what I wish I&rsquo;d known before starting GLP-1s.|/blog" %}
+</main>
+
+{% include footer.html %}

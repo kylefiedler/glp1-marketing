@@ -1,0 +1,208 @@
+// Thanks pages (/thanks/, /coaching/thanks/) — shown after a Formspree
+// submit. Copy on the left, Jess's portrait on the right with a starburst
+// sign-off badge; the "While you wait" services grid follows.
+
+.thanks-hero {
+  position: relative;
+  overflow: hidden;
+  padding: $space-8 $space-5 $space-9;
+}
+
+.thanks-hero__asterisk {
+  position: absolute;
+  top: -40px;
+  left: -48px;
+  width: 180px;
+  opacity: 0.6;
+}
+
+.thanks-hero__inner {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: $space-8;
+  align-items: center;
+}
+
+.thanks-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  margin: 0 0 $space-4;
+  padding: $space-1 $space-4;
+  border-radius: 999px;
+  background: $color-blush;
+  color: $color-accent;
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: $fs-xs;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  &::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+}
+
+.thanks-hero__title {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 52px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: $color-ink;
+  margin: 0 0 $space-5;
+  max-width: 16ch;
+}
+
+.thanks-hero__lede {
+  font-family: $font-body;
+  font-size: $fs-md;
+  line-height: $lh-body;
+  color: $color-ink;
+  margin: 0 0 $space-6;
+  max-width: 52ch;
+}
+
+.thanks-steps {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  margin: 0 0 $space-7;
+  display: grid;
+  gap: $space-5;
+}
+
+.thanks-steps__item {
+  counter-increment: step;
+  position: relative;
+  padding-left: 64px;
+
+  &::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: $color-peach;
+    color: $color-ink;
+    font-family: $font-display;
+    font-weight: 500;
+    font-size: $fs-md;
+  }
+
+  // Dotted connector between step badges.
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 21px;
+    top: 52px;
+    bottom: -$space-5 + 8px;
+    border-left: 2px dotted $color-peach;
+  }
+}
+
+.thanks-steps__title {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: $fs-lg;
+  line-height: $lh-snug;
+  color: $color-ink;
+  margin: 8px 0 $space-1;
+}
+
+.thanks-steps__copy {
+  font-family: $font-body;
+  font-size: $fs-sm;
+  line-height: $lh-body;
+  color: $color-ink;
+  margin: 0;
+}
+
+.thanks-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-6;
+}
+
+.thanks-hero__follow {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  font-family: $font-heading;
+  font-weight: 600;
+  font-size: $fs-xs;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-ink;
+}
+
+.thanks-hero__media {
+  position: relative;
+  justify-self: center;
+  width: 100%;
+  max-width: 440px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 220px 220px 24px 24px;
+    box-shadow: 16px 16px 0 $color-blush;
+  }
+}
+
+.thanks-hero__burst {
+  position: absolute;
+  left: -56px;
+  bottom: 32px;
+  width: 150px;
+  transform: rotate(-12deg);
+}
+
+.thanks-hero__signoff {
+  position: absolute;
+  left: -56px;
+  bottom: 32px;
+  width: 150px;
+  aspect-ratio: 1;
+  display: grid;
+  place-content: center;
+  margin: 0;
+  transform: rotate(-12deg);
+  text-align: center;
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: $fs-md;
+  line-height: 1.2;
+  color: $color-bg;
+
+  span { font-weight: 400; font-size: $fs-xs; }
+}
+
+@media (max-width: $bp-lg) {
+  .thanks-hero__title { font-size: 42px; }
+}
+
+@media (max-width: $bp-md) {
+  .thanks-hero { padding: $space-6 $space-4 $space-8; }
+  .thanks-hero__inner { grid-template-columns: 1fr; gap: $space-7; }
+  .thanks-hero__title { font-size: 34px; }
+  .thanks-hero__media { max-width: 320px; }
+  .thanks-hero__burst,
+  .thanks-hero__signoff { left: -24px; width: 120px; bottom: 16px; }
+  .thanks-hero__signoff { font-size: $fs-sm; }
+}

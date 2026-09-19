@@ -14,7 +14,7 @@
 
     <div class="connect__side">
       <h2 class="connect__heading">Contact Jess</h2>
-      <form class="connect__form" method="POST" action="{{ site.formspree_endpoint }}">
+      <form class="connect__form" method="POST" action="{{ site.formspree_endpoint }}" data-thanks="{{ '/thanks/' | relative_url }}">
         <input type="hidden" name="_subject" value="New contact message - That GLP-1 Girl">
         <label class="connect__field">
           <span class="visually-hidden">Name</span>

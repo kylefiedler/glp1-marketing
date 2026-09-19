@@ -166,3 +166,11 @@
 .contact-form__submit:hover {
   filter: brightness(0.92);
 }
+
+// Inline error shown by assets/js/forms.js when a Formspree submit fails.
+.form-error {
+  margin: 0;
+  font-family: $font-body;
+  font-size: $fs-sm;
+  color: $color-accent;
+}

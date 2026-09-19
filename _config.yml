@@ -19,6 +19,9 @@ social:
     - https://www.tiktok.com/@jessicarockowitz
     - https://pin.it/6vBQYvXpE
 
+# Default share image for pages without their own `image`.
+image: /assets/images/home/hero.jpg
+
 encoding: utf-8
 
 # Formspree endpoint for the "Contact Jess" and coaching application forms.
@@ -30,9 +33,30 @@ theme:
 
 permalink: /:year/:month/:day/:title/
 
+# Guide detail pages (_guides/*.md, rendered with _layouts/guide.html).
+# Served at the root to keep the live Showit URLs, e.g. /wean-off-glp-2/.
+collections:
+  guides:
+    output: true
+    permalink: /:name/
+
+defaults:
+  # 1200x630 share card for any page without its own `image`.
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/site/share.jpg
+  - scope:
+      path: ""
+      type: guides
+    values:
+      layout: guide
+
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-redirect-from
 
 exclude:
   - Gemfile
@@ -42,3 +66,4 @@ exclude:
   - lychee.toml
   - vendor
   - .bundle
+  - scratchpad

@@ -21,7 +21,9 @@ The "Contact Jess" form (on every page) and the coaching application form
 both post to `formspree_endpoint` in `_config.yml`. To change where they
 deliver, update that one value. Before cutover, submit a test message from
 the preview site and confirm it lands in Formspree (the first submission
-also triggers Formspree's one-time confirmation email).
+also triggers Formspree's one-time confirmation email). A successful submit
+should land on `/thanks/` (contact) or `/coaching/thanks/` (coaching); if you
+see Formspree's generic "Thanks!" page instead, `assets/js/forms.js` didn't run.
 
 ---
 
@@ -109,6 +111,11 @@ renders correctly:
 - <https://thatglp1girl.com/guides/>
 - <https://thatglp1girl.com/journal/>
 - <https://thatglp1girl.com/blog/>
+- 2 guide detail pages, e.g. <https://thatglp1girl.com/glp-1-beginner-survival-kit/>
+  and <https://thatglp1girl.com/wean-off-glp-2/> - "Buy the guide" should open
+  the matching Gumroad product
+- <https://thatglp1girl.com/category/protein-on-glp1/> - should redirect to
+  `/blog/`
 - 3 random blog post URLs from `/blog/` (each should be `/YYYY/MM/DD/<slug>/`)
 - A made-up URL like <https://thatglp1girl.com/this-does-not-exist> - should
   show the branded 404 page
@@ -122,6 +129,22 @@ While you're there:
 
 ---
 
+## Step 6b: tell Google about the new site
+
+1. In [Google Search Console](https://search.google.com/search-console),
+   open (or add) the `thatglp1girl.com` property.
+2. **Sitemaps** → submit `https://thatglp1girl.com/sitemap.xml`. The old
+   Yoast sitemaps (`post-sitemap.xml` etc.) will start 404ing - that's
+   expected; remove them from the list if they're there.
+3. Check **Pages → Not found (404)** once a week for the next two weeks and
+   add a `redirect_from` for any old URL that still gets traffic.
+
+The RSS feed moves from `/feed/` to `/feed.xml`. Browsers get redirected,
+but feed readers won't follow the redirect - update anything (Pinterest,
+EmailOctopus RSS campaigns, etc.) that pulls from the old feed URL.
+
+---
+
 ## Step 7: cancel Showit (after 48 hours of verified uptime)
 
 Wait **two full days** with the new site live before you cancel Showit.
@@ -130,8 +153,13 @@ DNS back temporarily.
 
 After 48 hours of clean traffic:
 
-1. Log into Showit and cancel the subscription.
-2. Archive any Showit-specific assets you might want later (the Showit
+1. **Back up the WordPress blog first.** The old blog runs on the WordPress
+   install that comes with Showit, and it's deleted when the subscription
+   ends. In WP admin: **Tools → Export → All content** (saves an XML file),
+   and download the **Media Library** (`wp-content/uploads`) via Showit
+   support or a backup plugin. Save both somewhere safe.
+2. Log into Showit and cancel the subscription.
+3. Archive any Showit-specific assets you might want later (the Showit
    project file, any custom graphics) to local storage or a personal Drive.
 
 ---
