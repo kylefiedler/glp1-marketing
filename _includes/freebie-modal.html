@@ -1,0 +1,36 @@
+{%- comment -%}
+  Freebie popup: newsletter signup for the free protein guide.
+
+  Opened by assets/js/freebie-modal.js once the element marked
+  [data-freebie-trigger] scrolls off the top of the viewport, or by clicking
+  any [data-open-freebie] element. Closing it (or signing up) snoozes the
+  auto-open for 30 days via localStorage.
+
+  The form itself is the same EmailOctopus embed used by the newsletter
+  include and footer.
+{%- endcomment -%}
+
+{%- assign nl_form_id = "94634042-e774-11f0-8715-19e8bfe62148" -%}
+
+<dialog class="freebie-modal" id="freebie-modal" aria-labelledby="freebie-modal-title">
+  <div class="freebie-modal__panel">
+    <button class="freebie-modal__close" type="button" data-close-freebie aria-label="Close">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 4 L20 20 M20 4 L4 20"/>
+      </svg>
+    </button>
+
+    <img class="freebie-modal__cover" src="{{ '/assets/images/home/protien-cover.png' | relative_url }}" alt="Cover of the guide: How I get 150g of Protein Per Day: A Week in My Food Life" width="400" height="518" loading="lazy">
+
+    <div class="freebie-modal__body">
+      <h2 class="freebie-modal__title" id="freebie-modal-title">Join my mailing list for a FREE GUIDE: 150g Protein Daily Made Easy</h2>
+      <p class="freebie-modal__lead">Learn the exact strategy I used to preserve muscle during my 155-lb weight loss. Real meals, zero fluff, designed specifically for GLP-1 users.</p>
+
+      <div class="freebie-modal__embed newsletter__embed">
+        <script async src="https://eocampaign1.com/form/{{ nl_form_id }}.js" data-form="{{ nl_form_id }}"></script>
+      </div>
+
+      <p class="freebie-modal__note">By submitting your email, you acknowledge you&rsquo;re joining my email crew &mdash; but you can hop off the list anytime, no questions asked!</p>
+    </div>
+  </div>
+</dialog>

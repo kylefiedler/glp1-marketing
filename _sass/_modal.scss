@@ -1,0 +1,130 @@
+// Freebie popup (_includes/freebie-modal.html). The <dialog> itself is a
+// transparent, unpadded shell so backdrop clicks land on it; the white panel
+// inside carries the visuals, with the tilted cover hanging off its top-left.
+
+.freebie-modal {
+  width: min(1000px, calc(100% - #{$space-7}));
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+  color: $color-ink;
+
+  &::backdrop {
+    background: rgba($color-ink, 0.75);
+  }
+
+  &[open] {
+    animation: freebie-modal-in 300ms ease-out;
+  }
+}
+
+@keyframes freebie-modal-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.freebie-modal__panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 38% 1fr;
+  align-items: center;
+  gap: $space-5;
+  background: $color-bg;
+  border-radius: 24px;
+  padding: $space-7 $space-7 $space-7 0;
+}
+
+.freebie-modal__close {
+  position: absolute;
+  top: $space-4;
+  right: $space-4;
+  display: inline-flex;
+  padding: $space-2;
+  border: 0;
+  background: none;
+  color: $color-ink;
+  cursor: pointer;
+
+  &:hover { color: $color-accent; }
+}
+
+.freebie-modal__cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: -$space-9 0 -$space-5 (-$space-4);
+  transform: rotate(-5deg);
+  box-shadow: 0 12px 32px rgba($color-black, 0.18);
+}
+
+.freebie-modal__title {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 1.1;
+  margin: 0 0 $space-5;
+  padding-right: $space-6; // clear the close button
+}
+
+.freebie-modal__lead {
+  font-family: $font-body;
+  font-size: $fs-md;
+  line-height: $lh-body;
+  margin: 0 0 $space-4;
+}
+
+// Let EmailOctopus's embed fill the column instead of its own 520-600px cap.
+// Its injected styles come after ours at equal specificity, hence the extra
+// .freebie-modal qualifier.
+.freebie-modal .freebie-modal__embed {
+  .inline-container,
+  .form-container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.freebie-modal__note {
+  font-family: $font-body;
+  font-size: 12px;
+  line-height: $lh-snug;
+  margin: $space-3 0 0;
+}
+
+@media (max-width: $bp-md - 1) {
+  .freebie-modal {
+    width: calc(100% - #{$space-5});
+    max-height: calc(100dvh - #{$space-5});
+  }
+
+  .freebie-modal__panel {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+    max-height: calc(100dvh - #{$space-5});
+    overflow-y: auto;
+    padding: $space-6 $space-5 $space-5;
+    text-align: center;
+  }
+
+  .freebie-modal__cover {
+    width: 45%;
+    margin: 0 auto;
+    transform: rotate(-4deg);
+  }
+
+  .freebie-modal__title {
+    font-size: $fs-lg;
+    padding-right: 0;
+  }
+
+  .freebie-modal__lead { font-size: $fs-sm; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .freebie-modal[open] { animation: none; }
+}
