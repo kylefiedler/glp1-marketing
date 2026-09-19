@@ -317,8 +317,8 @@ permalink: /coaching/
         <p>Fill out the form below and I&rsquo;ll be in touch within 24 hours to schedule a free 15-minute discovery call. We&rsquo;ll talk about your goals, where you&rsquo;re struggling, and whether this program is the right fit for you.</p>
       </div>
 
-      {%- comment -%} TODO(ticket-#6): swap "TODO" for the real Formspree endpoint. {%- endcomment -%}
-      <form class="coaching-apply__form" method="POST" action="TODO">
+      <form class="coaching-apply__form" method="POST" action="{{ site.formspree_endpoint }}">
+        <input type="hidden" name="_subject" value="New coaching application - That GLP-1 Girl">
         <label class="coaching-apply__field">
           <span class="visually-hidden">Name</span>
           <input type="text" name="name" placeholder="Name" required autocomplete="name">

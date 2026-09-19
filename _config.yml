@@ -21,6 +21,9 @@ social:
 
 encoding: utf-8
 
+# Formspree endpoint for the "Contact Jess" and coaching application forms.
+formspree_endpoint: https://formspree.io/f/xeaoeqjw
+
 # No theme - styles are built from scratch in _sass/ and assets/css/main.scss.
 # The empty value overrides the github-pages default theme (jekyll-theme-primer).
 theme:

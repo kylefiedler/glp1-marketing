@@ -2,8 +2,7 @@
   Connect section — "Connect with me" (social) + "Contact Jess" (form).
   Two-column layout on desktop, stacked on mobile.
 
-  Form action is left as "TODO" per the plan; wire the Formspree endpoint
-  before shipping public contact submissions.
+  Form posts to Formspree via `site.formspree_endpoint` in _config.yml.
 {%- endcomment -%}
 
 <section class="connect">
@@ -15,8 +14,8 @@
 
     <div class="connect__side">
       <h2 class="connect__heading">Contact Jess</h2>
-      {%- comment -%} TODO(ticket-#6): swap "TODO" for the real Formspree endpoint. {%- endcomment -%}
-      <form class="connect__form" method="POST" action="TODO">
+      <form class="connect__form" method="POST" action="{{ site.formspree_endpoint }}">
+        <input type="hidden" name="_subject" value="New contact message - That GLP-1 Girl">
         <label class="connect__field">
           <span class="visually-hidden">Name</span>
           <input type="text" name="name" placeholder="NAME" required autocomplete="name">

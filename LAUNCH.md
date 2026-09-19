@@ -15,23 +15,13 @@ for DNS to propagate and HTTPS to provision.
 
 ---
 
-## Step 0 (optional but recommended): wire the Formspree endpoint
+## Step 0: confirm the Formspree endpoint
 
-The coaching contact form currently posts to a placeholder URL. To make it
-actually deliver emails:
-
-1. Log into Formspree, create a form, and copy its endpoint URL (looks like
-   `https://formspree.io/f/abc123xyz`).
-2. Open `_includes/contact-form.html` and replace the line
-   `{%- assign cf_endpoint = include.endpoint | default: "https://formspree.io/f/TODO" -%}`
-   with your real URL in place of `TODO`.
-3. Commit and push to `main`. Wait ~2 minutes for the Actions deploy to
-   finish.
-4. Submit the form on `/coaching/` with your own email and confirm a test
-   submission lands in Formspree.
-
-Skipping this means the form will accept submissions but they go nowhere
-until you wire it later. Do it before cutover if possible.
+The "Contact Jess" form (on every page) and the coaching application form
+both post to `formspree_endpoint` in `_config.yml`. To change where they
+deliver, update that one value. Before cutover, submit a test message from
+the preview site and confirm it lands in Formspree (the first submission
+also triggers Formspree's one-time confirmation email).
 
 ---
 
@@ -127,8 +117,8 @@ While you're there:
 - Click the **Buy The Ultimate Bundle** button on the home page - should
   open Gumroad.
 - Submit a test email on any newsletter form - should land in EmailOctopus.
-- Submit the contact form on `/coaching/` - should land in Formspree (only
-  if you completed Step 0).
+- Submit the coaching form on `/coaching/` and the "Contact Jess" form on
+  any page - both should land in Formspree.
 
 ---
 
