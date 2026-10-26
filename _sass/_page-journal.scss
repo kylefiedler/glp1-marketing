@@ -229,5 +229,19 @@
   text-align: center;
 }
 
+.journal-faq__legal {
+  font-family: $font-body;
+  font-size: $fs-sm;
+  color: rgba($color-ink, 0.75);
+  text-align: center;
+  margin: $space-7 0 0;
+
+  a {
+    color: $color-accent;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
 @media (max-width: $bp-lg) { .journal-faq__heading { font-size: 34px; } }
 @media (max-width: $bp-md) { .journal-faq__heading { font-size: 26px; } }

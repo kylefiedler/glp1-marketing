@@ -1,0 +1,34 @@
+---
+layout: default
+---
+{%- comment -%}
+  Legal pages (privacy policy, terms). Front matter: `updated` (date) and an
+  optional `lede`. Reuses the blog post header/body styles.
+{%- endcomment -%}
+{% include header.html %}
+
+<main class="post">
+  <header class="post-header">
+    <div class="post-header__inner">
+      <p class="post-header__meta">Last updated <time datetime="{{ page.updated | date_to_xmlschema }}">{{ page.updated | date: "%B %-d, %Y" }}</time></p>
+      <h1 class="post-header__title">{{ page.title }}</h1>
+      {% if page.lede %}
+        <p class="post-header__lede">{{ page.lede }}</p>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="post-body">
+    <div class="post-body__inner">
+      {{ content }}
+
+      <h2>Changes</h2>
+      <p>If this page changes, we&rsquo;ll update it and the &ldquo;Last updated&rdquo; date above.</p>
+
+      <h2>Contact</h2>
+      <p>Questions? Email <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>.</p>
+    </div>
+  </div>
+</main>
+
+{% include footer.html %}
