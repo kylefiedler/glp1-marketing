@@ -6,9 +6,6 @@
 
 {%- assign app_store_url = site.journal_app_store_url | default: "" | strip -%}
 <section class="banner banner--journal">
-  <svg class="banner__hills" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0 600 V430 Q0 300 130 300 Q260 300 260 430 V600 Z M290 600 V200 Q290 20 485 20 Q680 20 680 200 V600 Z M700 600 V330 Q700 210 850 210 Q1000 210 1000 330 V600 Z"/>
-  </svg>
   <div class="banner__inner">
     <span class="decor decor--starburst banner__decor banner__decor--star" aria-hidden="true">
       {% include decor/starburst.svg %}
@@ -26,9 +23,11 @@
       </p>
       {%- endif %}
     </div>
-    <div class="banner__media banner__media--journal">
-      <img src="{{ '/assets/images/journal/app-home.png' | relative_url }}" alt="The GLP-1 Journal home screen, showing recent entries and this week's theme" loading="lazy" width="720" height="1290" class="banner__phone">
-    </div>
+  </div>
+  <div class="banner__screens" aria-hidden="true">
+    <img src="{{ '/assets/images/journal/app-progress.webp' | relative_url }}" alt="" loading="lazy" width="920" height="2000" class="banner__screen banner__screen--left">
+    <img src="{{ '/assets/images/journal/app-today.webp' | relative_url }}" alt="" loading="lazy" width="920" height="2000" class="banner__screen banner__screen--mid">
+    <img src="{{ '/assets/images/journal/app-question.webp' | relative_url }}" alt="" loading="lazy" width="920" height="2000" class="banner__screen banner__screen--right">
   </div>
   <div class="banner__scallop" aria-hidden="true">
     {% include decor/wave-med.svg %}
