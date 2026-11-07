@@ -107,7 +107,7 @@ permalink: /
   <section class="home-services">
     <div class="home-services__inner">
       <ul class="home-services__grid">
-        {%- assign services = "GLP-1 Guides|Eight focused guides covering nutrition, supplements, workouts, travel, and weaning off &mdash; written by a nurse who&rsquo;s been there.|/guides||Yearlong Journal|Not just a tracker. A transformation companion. Track meals, mood, medication and movement in one place built for the GLP-1 journey.|/journal||Personalized Coaching|Unlock your optimal well-being with expert guidance from our coaching service. Tailored advice, customized plans, and ongoing support for a healthier, happier you.|/coaching" | split: "||" -%}
+        {%- assign services = "GLP-1 Guides|Eight focused guides covering nutrition, supplements, workouts, travel, and weaning off &mdash; written by a nurse who&rsquo;s been there.|/guides||GLP-1 Journal|Not just a tracker. A transformation companion. Daily prompts, weekly themes and progress selfies for your GLP-1 journey, private on your iPhone.|/journal||Personalized Coaching|Unlock your optimal well-being with expert guidance from our coaching service. Tailored advice, customized plans, and ongoing support for a healthier, happier you.|/coaching" | split: "||" -%}
         {%- for service in services -%}
           {%- assign parts = service | split: "|" -%}
           <li class="home-service">

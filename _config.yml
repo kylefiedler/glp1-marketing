@@ -27,6 +27,11 @@ encoding: utf-8
 # Contact address shown on the journal app's legal pages (_layouts/legal.html).
 contact_email: hello@thatglp1girl.com
 
+# GLP-1 Journal App Store listing. Leave empty until the app is live: every
+# journal CTA (_includes/app-store-cta.html) shows "Coming soon" until this is
+# set, then switches to the App Store badge.
+journal_app_store_url: ""
+
 # Formspree endpoint for the "Contact Jess" and coaching application forms.
 formspree_endpoint: https://formspree.io/f/xeaoeqjw
 

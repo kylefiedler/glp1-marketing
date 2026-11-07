@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Yearlong Journal
+title: GLP-1 Journal for iPhone
 description: >-
-  The That GLP-1 Girl Yearlong Journal - daily prompts, weekly check-ins, and
-  emotional regulation tools designed for GLP-1 users. Join the waitlist.
-image: /assets/images/home/journal_cover.png
+  GLP-1 Journal is an iPhone app with daily prompts, weekly themes and
+  reflections, and progress selfies, made for people on GLP-1 medication.
+  Private by design: no account, and your journal stays in your iCloud.
 permalink: /journal/
 ---
 {% include header.html %}
@@ -20,11 +20,9 @@ permalink: /journal/
     </span>
 
     <div class="home-hero__inner">
-      <p class="journal-hero__eyebrow">That GLP-1 Girl Yearlong Journal</p>
+      <p class="journal-hero__eyebrow">GLP-1 Journal for iPhone</p>
       <h1 class="home-hero__title">Not just a tracker. A transformation companion.</h1>
-      <p class="home-hero__cta">
-        <a class="btn btn--white" href="https://thatglp1girl.gumroad.com/subscribe" target="_blank" rel="noopener">Join the waitlist</a>
-      </p>
+      <p class="home-hero__cta">{% include app-store-cta.html %}</p>
     </div>
   </section>
 
@@ -40,11 +38,11 @@ permalink: /journal/
         <span class="decor decor--asterisk-8pt journal-product__decor journal-product__decor--orange" aria-hidden="true">
           {% include decor/asterisk-8pt.svg %}
         </span>
-        <img src="{{ '/assets/images/journal/gabrielle-henderson-m4lve6jr26e-unsplash.jpg' | relative_url }}" alt="" width="800" height="533" loading="eager">
+        <img src="{{ '/assets/images/journal/app-entry.png' | relative_url }}" alt="A day's entry in GLP-1 Journal, with prompts like &ldquo;Today I feel&rdquo; and &ldquo;Good enough today looked like&rdquo;" width="720" height="1290" loading="eager">
       </div>
       <div class="journal-product__copy">
-        <p class="journal-product__eyebrow">Whether you&rsquo;re just starting, adjusting to a new dose, or weaning off, this journal helps you build the habits and identity that make your results last.</p>
-        <p>If you&rsquo;ve ever started a program strong, only to lose focus a few weeks in, this journal is your antidote. Designed specifically for GLP-1 users, it helps you stay consistent, connected, and in control through all initial 12 months of your journey.</p>
+        <p class="journal-product__eyebrow">Whether you&rsquo;re just starting, adjusting to a new dose, or weaning off, GLP-1 Journal helps you build the habits and identity that make your results last.</p>
+        <p>If you&rsquo;ve ever started a program strong, only to lose focus a few weeks in, this journal is your antidote. Designed for GLP-1 users, it gives you a few minutes of prompts each day and a new theme each week, so you stay consistent, connected, and in control through your first year.</p>
       </div>
     </div>
   </section>
@@ -54,18 +52,19 @@ permalink: /journal/
       <div class="journal-inside__col">
         <h3 class="journal-inside__label">What&rsquo;s Inside:</h3>
         <ul class="journal-inside__list">
-          <li><strong>Daily Entries:</strong> Quick, effective prompts to track habits, hunger, movement, and mindset in under 5 minutes</li>
-          <li><strong>Weekly Check-Ins:</strong> Reflect on your wins, troubleshoot struggles, and set intentional goals for the week ahead</li>
-          <li><strong>Monthly Reflections:</strong> Measure progress beyond the scale &mdash; energy, confidence, boundaries, and body trust</li>
-          <li><strong>Emotional Regulation Tools:</strong> CBT/DBT-inspired prompts to help you ride out cravings, shift thought patterns, and reset after tough days</li>
-          <li><strong>Discipline Builders:</strong> Includes the Discipline Tracker, &ldquo;10 Promises I Keep to Myself,&rdquo; and the &ldquo;I Don&rsquo;t Negotiate&rdquo; insert to anchor your consistency</li>
-          <li><strong>Visual Reminders &amp; Motivation Inserts:</strong> Strategic affirmations, quotes, and mindset pages throughout to keep you anchored in your why</li>
+          <li><strong>Daily Entries:</strong> Quick prompts to check in on hunger, movement, and mindset in under 5 minutes</li>
+          <li><strong>Weekly Themes:</strong> A year of themes, from riding the urge to rebuilding food trust, each with its own affirmation</li>
+          <li><strong>Weekly Reflections:</strong> Look back on your wins, notice cravings and how you responded, and set an intention for the week ahead</li>
+          <li><strong>Emotional Regulation Prompts:</strong> CBT/DBT-inspired questions to help you ride out cravings, shift thought patterns, and reset after tough days</li>
+          <li><strong>Progress Selfies:</strong> Add a photo to any reflection and watch your journey play back as a slideshow</li>
+          <li><strong>Your Streak at a Glance:</strong> A calendar of the days you showed up, plus an optional daily reminder</li>
         </ul>
       </div>
       <div class="journal-inside__col">
         <h3 class="journal-inside__label">Why It Works:</h3>
         <p>GLP-1s calm your hunger, and this journal helps you listen to everything else.</p>
         <p>It keeps your habits front and center, your mindset sharp, and your journey personal. Skip the overwhelm and the mental chaos, this is a place where you can show up daily and stay grounded in the person you&rsquo;re becoming.</p>
+        <p>And it&rsquo;s yours alone. There&rsquo;s no account, no ads, and no tracking. Your entries stay on your iPhone and in your own iCloud.</p>
       </div>
     </div>
   </section>
@@ -77,7 +76,7 @@ permalink: /journal/
     <div class="journal-cta__inner">
       <h2 class="journal-cta__heading">Ready to journal your glow-up?</h2>
       <p class="journal-cta__subheading">This is the perfect companion to your GLP-1 Survival Kits, Grocery Guide, and Workout Starter Pack.</p>
-      <p><a class="btn btn--white btn--lg" href="https://thatglp1girl.gumroad.com/subscribe" target="_blank" rel="noopener">Join the waitlist</a></p>
+      <p>{% include app-store-cta.html size="lg" %}</p>
     </div>
   </section>
 
@@ -85,17 +84,29 @@ permalink: /journal/
     <div class="journal-faq__inner">
       <h2 class="journal-faq__heading">Frequently Asked Questions</h2>
 
-      {%- assign faqs = "How long until I should expect to see results?|Results vary, but many clients experience positive changes within a few weeks. Consistency and adherence to the customized plan significantly impact the pace of progress.||How often will we communicate?|The frequency of our interactions depends on the plan you sign up for.||How can nutrition consulting help me?|We tailor plans to your unique needs, fostering sustainable habits for weight management, increased energy, improved digestion, and overall well-being.||What if I have special dietary restrictions?|We adapt to your preferences and restrictions, creating a plan that aligns with your lifestyle, whether you&rsquo;re vegetarian, vegan, gluten-free, or have other dietary needs." | split: "||" -%}
-      {%- for pair in faqs -%}
-        {%- assign qa = pair | split: "|" -%}
-        <details>
-          <summary>{{ qa[0] }}</summary>
-          <p>{{ qa[1] }}</p>
-        </details>
-      {%- endfor -%}
+      <details>
+        <summary>Which devices does it work on?</summary>
+        <p>GLP-1 Journal is for iPhone, running iOS 17 or later. If iCloud is on, your journal syncs to your other iPhones signed in to the same Apple ID.</p>
+      </details>
+      <details>
+        <summary>What does it cost?</summary>
+        <p>Your first 7 entries are free. After that, Premium is $1.99 a month or $19.99 a year for unlimited entries. Subscriptions are handled by Apple, and you can cancel any time in your App Store settings.</p>
+      </details>
+      <details>
+        <summary>Who can see my journal?</summary>
+        <p>Only you. There&rsquo;s no account to create and no analytics or tracking. Your entries and photos are stored on your iPhone and in your own private iCloud, which we can&rsquo;t access.</p>
+      </details>
+      <details>
+        <summary>Can I export or delete my entries?</summary>
+        <p>Yes. You can export your journal as a spreadsheet (CSV) from Settings in the app. To delete everything, see the steps in our <a href="{{ '/journal/privacy/' | relative_url }}">Privacy Policy</a>.</p>
+      </details>
+      <details>
+        <summary>Is this medical advice?</summary>
+        <p>No. GLP-1 Journal is a journaling tool, not a substitute for care from your doctor or prescriber. Talk to them about your medication, dosing, and health.</p>
+      </details>
 
       <p class="journal-faq__legal">
-        GLP-1 Journal app:
+        GLP-1 Journal:
         <a href="{{ '/journal/privacy/' | relative_url }}">Privacy Policy</a> &middot;
         <a href="{{ '/journal/terms/' | relative_url }}">Terms of Use</a>
       </p>
@@ -103,7 +114,6 @@ permalink: /journal/
   </section>
 
   {% include section-guides-banner.html %}
-  {% include section-journal-banner.html %}
   {% include section-connect.html %}
 
 </main>
