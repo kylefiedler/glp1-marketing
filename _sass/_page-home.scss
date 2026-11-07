@@ -40,8 +40,8 @@
 .home-hero__eyebrow {
   font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
+  font-size: $fs-xs;
+  letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-bg;
   margin: 0 auto $space-6;
@@ -220,8 +220,8 @@
 .home-about__eyebrow {
   font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
+  font-size: $fs-xs;
+  letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-ink;
   margin: 0 0 $space-5;

@@ -8,8 +8,8 @@
 .journal-hero__eyebrow {
   font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
+  font-size: $fs-xs;
+  letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-bg;
   margin: 0 auto $space-4;
@@ -53,8 +53,8 @@
 .journal-product__eyebrow {
   font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
+  font-size: $fs-xs;
+  letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-ink;
   margin: 0 0 $space-4;
@@ -117,8 +117,8 @@
 .journal-inside__label {
   font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-md;
-  letter-spacing: 0.1em;
+  font-size: $fs-sm;
+  letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   color: $color-ink;
   margin: 0 0 $space-5;
@@ -196,8 +196,8 @@
 .journal-cta__subheading {
   font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-md;
-  letter-spacing: 0.1em;
+  font-size: $fs-sm;
+  letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   color: $color-bg;
   margin: 0 0 $space-6;

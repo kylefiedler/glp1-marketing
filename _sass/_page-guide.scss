@@ -28,8 +28,8 @@
 .guide-hero__eyebrow {
   font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.1em;
+  font-size: $fs-xs;
+  letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   margin: 0 0 $space-3;
   opacity: 0.9;
@@ -51,9 +51,9 @@
 .guide-hero__for {
   font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-sm;
+  font-size: $fs-xs;
   line-height: 1.7;
-  letter-spacing: 0.06em;
+  letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   margin: 0 0 $space-6;
   max-width: 48ch;
@@ -162,8 +162,8 @@
 .guide-detail__label {
   font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-md;
-  letter-spacing: 0.1em;
+  font-size: $fs-sm;
+  letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   color: $color-ink;
   margin: 0 0 $space-5;

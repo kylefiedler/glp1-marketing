@@ -20,9 +20,9 @@
 %coaching-subheading {
   font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-md;
+  font-size: $fs-sm;
   line-height: 1.8;
-  letter-spacing: 0.1em;
+  letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   color: $color-ink;
 
@@ -65,8 +65,8 @@
   padding-bottom: 0;
 }
 
-// Live's hero eyebrow is the 18px subheading, not the 16px home one.
-.coaching-hero__eyebrow { font-size: $fs-md; }
+// The coaching hero eyebrow matches the coaching subheading size.
+.coaching-hero__eyebrow { font-size: $fs-sm; }
 
 .coaching-hero__title {
   font-size: 57px;
