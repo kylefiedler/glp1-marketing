@@ -21,6 +21,53 @@
   &--journal { background: $color-accent; color: $color-bg; }
 }
 
+// Journal banner: wavy top rising over the section above, peach scallops
+// along the bottom (into the peach connect section), and rounded hills
+// behind the phone.
+.banner--journal {
+  z-index: 3;
+  overflow: visible;
+  overflow-x: clip;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(100% - 1px);
+    height: 40px;
+    background: no-repeat center / 100% 100%
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 16 C 200 0, 360 0, 560 18 C 760 36, 920 34, 1120 14 C 1260 2, 1360 4, 1440 12 L1440 40 Z' fill='%23EE2273'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+}
+
+.banner__hills {
+  position: absolute;
+  right: 7%;
+  bottom: 0;
+  width: 50%;
+  height: 78%;
+  fill: $color-peach;
+  opacity: 0.35;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.banner__scallop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  color: $color-peach;
+  transform: rotate(180deg);
+  line-height: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  svg { width: 100%; height: auto; display: block; }
+}
+
 .banner__inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -104,6 +151,7 @@
   .banner__cover--front { left: 35%; }
   .banner__phone { width: 52%; }
   .banner__decor { display: none; }
+  .banner__hills { right: 0; width: 100%; height: 40%; }
   .banner--journal .banner__copy { padding-left: 0; }
 }
 
