@@ -8,7 +8,7 @@ body {
 
 h1 {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: $fs-3xl;
   line-height: $lh-tight;
   color: $color-ink;
@@ -16,7 +16,7 @@ h1 {
 
 h2 {
   font-family: $font-heading;
-  font-weight: 600;
+  font-weight: 700;
   font-size: $fs-2xl;
   line-height: $lh-snug;
   color: $color-ink;
@@ -24,7 +24,7 @@ h2 {
 
 h3 {
   font-family: $font-heading;
-  font-weight: 600;
+  font-weight: 700;
   font-size: $fs-xl;
   line-height: $lh-snug;
   color: $color-ink;
@@ -32,7 +32,7 @@ h3 {
 
 h4 {
   font-family: $font-heading;
-  font-weight: 600;
+  font-weight: 700;
   font-size: $fs-lg;
   line-height: $lh-snug;
   color: $color-ink;
@@ -95,3 +95,6 @@ details > p {
   margin-top: $space-3;
   color: rgba($color-ink, 0.85);
 }
+
+// Keeps a term like "GLP-1" from breaking at its hyphen.
+.nowrap { white-space: nowrap; }

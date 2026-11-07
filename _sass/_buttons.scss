@@ -10,10 +10,10 @@
   display: inline-block;
   padding: $space-3 $space-6;
   font-family: $font-heading;
-  font-weight: 600;
+  font-weight: 400;
   font-size: $fs-sm;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 999px;
   transition: filter 120ms ease, background 120ms ease, color 120ms ease, border-color 120ms ease;
   border: 2px solid transparent;
   cursor: pointer;

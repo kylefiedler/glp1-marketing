@@ -25,7 +25,7 @@
 
 .newsletter__heading {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: $fs-2xl;
   color: $color-ink;
   margin-bottom: $space-3;
@@ -67,12 +67,12 @@
 .newsletter__submit {
   padding: $space-3 $space-5;
   font-family: $font-heading;
-  font-weight: 600;
+  font-weight: 400;
   font-size: $fs-sm;
   color: $color-bg;
   background: $color-accent;
   border: 0;
-  border-radius: 6px;
+  border-radius: 999px;
   cursor: pointer;
   transition: filter 120ms ease;
 }
@@ -107,7 +107,7 @@
 
 .contact-form__heading {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: $fs-2xl;
   color: $color-ink;
   margin-bottom: $space-5;
@@ -153,12 +153,12 @@
   justify-self: start;
   padding: $space-3 $space-6;
   font-family: $font-heading;
-  font-weight: 600;
+  font-weight: 400;
   font-size: $fs-sm;
   color: $color-bg;
   background: $color-accent;
   border: 0;
-  border-radius: 6px;
+  border-radius: 999px;
   cursor: pointer;
   transition: filter 120ms ease;
 }
