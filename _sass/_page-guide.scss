@@ -29,6 +29,7 @@
   font-family: $font-label;
   font-weight: 600;
   font-size: $fs-xs;
+  line-height: $lh-snug;
   letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   margin: 0 0 $space-3;
@@ -52,7 +53,7 @@
   font-family: $font-label;
   font-weight: 600;
   font-size: $fs-xs;
-  line-height: 1.7;
+  line-height: $lh-snug;
   letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   margin: 0 0 $space-6;
@@ -163,6 +164,7 @@
   font-family: $font-label;
   font-weight: 600;
   font-size: $fs-sm;
+  line-height: $lh-snug;
   letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   color: $color-ink;

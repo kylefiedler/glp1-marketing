@@ -16,7 +16,7 @@
   font-family: $font-label;
   font-weight: 600;
   font-size: $fs-sm;
-  line-height: 1.8;
+  line-height: $lh-snug;
   letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
 }

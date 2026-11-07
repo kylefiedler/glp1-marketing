@@ -4,6 +4,7 @@
   font-family: $font-label;
   font-weight: 600;
   font-size: $fs-xs;
+  line-height: $lh-snug;
   letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-bg;
@@ -140,14 +141,15 @@
   display: block;
 }
 
-.blog-index__sidebar-eyebrow {
+.blog-index__sidebar .blog-index__sidebar-eyebrow {
   font-family: $font-label;
   font-weight: 600;
   font-size: $fs-xs;
+  line-height: $lh-snug;
   letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-accent;
-  margin: 0 0 $space-2;
+  margin: 0 0 $space-4;
 }
 
 .blog-index__sidebar-heading {

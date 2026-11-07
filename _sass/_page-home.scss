@@ -41,6 +41,7 @@
   font-family: $font-label;
   font-weight: 600;
   font-size: $fs-xs;
+  line-height: $lh-snug;
   letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-bg;
@@ -217,14 +218,15 @@
   margin: 0 0 $space-5;
 }
 
-.home-about__eyebrow {
+.home-about .home-about__eyebrow {
   font-family: $font-label;
   font-weight: 600;
   font-size: $fs-xs;
+  line-height: $lh-snug;
   letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-ink;
-  margin: 0 0 $space-5;
+  margin: 0 0 $space-4;
 }
 
 .home-about p {

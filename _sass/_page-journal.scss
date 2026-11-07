@@ -9,6 +9,7 @@
   font-family: $font-label;
   font-weight: 600;
   font-size: $fs-xs;
+  line-height: $lh-snug;
   letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-bg;
@@ -50,10 +51,11 @@
   align-items: center;
 }
 
-.journal-product__eyebrow {
+.journal-product__copy .journal-product__eyebrow {
   font-family: $font-label;
   font-weight: 600;
   font-size: $fs-xs;
+  line-height: $lh-snug;
   letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-ink;
@@ -118,6 +120,7 @@
   font-family: $font-label;
   font-weight: 600;
   font-size: $fs-sm;
+  line-height: $lh-snug;
   letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   color: $color-ink;
@@ -197,6 +200,7 @@
   font-family: $font-label;
   font-weight: 600;
   font-size: $fs-sm;
+  line-height: $lh-snug;
   letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   color: $color-bg;
