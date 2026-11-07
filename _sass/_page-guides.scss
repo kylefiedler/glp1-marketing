@@ -46,7 +46,7 @@
   line-height: 1.1;
   letter-spacing: 0;
   max-width: none;
-  margin-bottom: 37px;
+  margin-bottom: 0;
 }
 
 .guides-hero__eyebrow {
@@ -57,14 +57,13 @@
 }
 
 @media (max-width: $bp-lg) {
-  .guides-hero { padding: 80px $space-5 64px; }
+  .guides-hero { padding: 80px $space-5 96px; }
   .guides-hero .home-hero__title { font-size: 52px; }
 }
 @media (max-width: $bp-md) {
-  .guides-hero { padding: 96px $space-4 48px; }
-  .guides-hero .home-hero__title { font-size: 24px; margin-bottom: 24px; }
+  .guides-hero { padding: 96px $space-4 80px; }
+  .guides-hero .home-hero__title { font-size: 24px; }
   .guides-hero__eyebrow { font-size: 12px; }
-  .guides-hero .btn { font-size: 12px; }
 }
 
 // ===== Bundle (fanned covers up top + copy w/ price badge) =====
@@ -76,6 +75,21 @@
   // Clip only sideways: the fan's outer cover pokes past the edge on phones,
   // but the covers still need to rise into the hero above.
   overflow-x: clip;
+}
+
+// Wavy seam rising into the pink hero; the cover fan sits on top of it.
+.guides-bundle__seam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% - 1px);
+  z-index: 1;
+  height: 60px;
+  line-height: 0;
+  color: $color-blush;
+  pointer-events: none;
+
+  svg { width: 100%; height: 100%; display: block; }
 }
 
 // Covers fan out across the seam between the pink hero and this section.
