@@ -71,7 +71,7 @@
 .guides-bundle {
   position: relative;
   background: $color-blush;
-  padding: 0 $space-5 130px;
+  padding: 0 $space-5 $space-8;
   // Clip only sideways: the fan's outer cover pokes past the edge on phones,
   // but the covers still need to rise into the hero above.
   overflow-x: clip;
@@ -218,7 +218,7 @@
   .guides-bundle__price .price-bubble__text { font-size: 28px; small { font-size: $fs-xs; } }
 }
 @media (max-width: $bp-md) {
-  .guides-bundle          { padding-bottom: 48px; }
+  .guides-bundle          { padding-bottom: $space-5; }
   .guides-bundle__mockup  { top: -10px; img { width: 93px; margin-left: -36px; } }
   .guides-bundle__inner   { padding-top: 130px; }
   .guides-bundle__copy    { padding-right: 0; }
