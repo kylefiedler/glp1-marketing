@@ -380,7 +380,7 @@
 .home-service__icon {
   display: block;
   width: 64px;
-  margin-bottom: $space-3;
+  margin-bottom: $space-5;
 }
 
 .home-service__heading {
@@ -402,7 +402,7 @@
   max-width: 38ch;
 }
 
-.home-service__cta { margin-top: $space-4; }
+.home-service__cta { margin-top: $space-6; }
 
 @media (max-width: $bp-lg) {
   .home-services__grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }

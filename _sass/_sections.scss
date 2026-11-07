@@ -468,8 +468,21 @@
 // through a two-up slider; we lay all four out as a 2x2 grid over the
 // oversized peach "Client Reviews" wordmark.
 
+// Wavy top edge, laid over the bottom of whichever section comes before.
+.testimonials-wave {
+  position: relative;
+  z-index: 3;
+  height: 60px;
+  margin: -60px 0 -1px;
+  line-height: 0;
+  color: $color-sand;
+  pointer-events: none;
+
+  svg { width: 100%; height: 100%; display: block; }
+}
+
 .testimonials {
-  background: $color-blush;
+  background: $color-sand;
   padding: $space-9 $space-5 0;
   position: relative;
   overflow: hidden;
@@ -606,7 +619,7 @@
   position: relative;
   width: 78px;
   color: $color-accent;
-  margin-bottom: $space-2;
+  margin-bottom: $space-5;
 }
 
 .service__heading {
@@ -627,7 +640,7 @@
   max-width: 40ch;
 }
 
-.service__cta { margin-top: $space-4; }
+.service__cta { margin-top: $space-6; }
 
 @media (max-width: $bp-lg) {
   .services__heading { font-size: 38px; }
