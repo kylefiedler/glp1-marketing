@@ -486,6 +486,8 @@
   padding: $space-9 $space-5 $space-6;
   position: relative;
   overflow: hidden;
+  overflow: clip; // hidden still lets find-in-page scroll the wordmark under the wave
+
 }
 
 .testimonials__inner {
