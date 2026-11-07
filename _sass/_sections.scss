@@ -58,14 +58,15 @@
 
 .banner__screen {
   position: absolute;
-  width: 31%;
+  width: 35%;
   height: auto;
   border-radius: 24px;
   box-shadow: 0 12px 32px rgba($color-black, 0.22);
 }
-.banner__screen--left  { left: 0;     top: 46%; }
-.banner__screen--mid   { left: 34.5%; top: 12%; }
-.banner__screen--right { left: 69%;   top: 30%; }
+// Slight overlap, with the middle screen on top.
+.banner__screen--left  { left: 0;     top: 34%; }
+.banner__screen--mid   { left: 32.5%; top: 12%; z-index: 1; }
+.banner__screen--right { left: 65%;   top: 30%; }
 
 .banner__scallop {
   position: absolute;
@@ -162,7 +163,7 @@
     margin: $space-7 auto 0;
   }
   .banner__screen { border-radius: 18px; }
-  .banner__screen--left  { top: 30%; }
+  .banner__screen--left  { top: 20%; }
   .banner__screen--mid   { top: 0; }
   .banner__screen--right { top: 18%; }
   .banner--journal .banner__copy { padding-left: 0; }
@@ -172,7 +173,7 @@
 
 .connect {
   background: $color-peach;
-  padding: $space-9 $space-5;
+  padding: $space-7 $space-5;
   position: relative;
 }
 
