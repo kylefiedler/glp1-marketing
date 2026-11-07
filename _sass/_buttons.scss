@@ -3,6 +3,8 @@
 //   .btn--primary       hot-pink filled, white text (default CTA)
 //   .btn--white         solid white, pink text (on pink hero bg)
 //   .btn--lg            larger padding + font size
+//
+// Also here: .app-store-badge, Apple's badge link from _includes/app-store-cta.html.
 
 .btn {
   display: inline-block;
@@ -36,4 +38,23 @@
 .btn--lg {
   padding: $space-4 $space-7;
   font-size: $fs-md;
+}
+
+// Apple's badge artwork must stay unmodified; only its size changes.
+.app-store-badge {
+  display: inline-block;
+  line-height: 0;
+
+  img { height: 54px; width: auto; }
+}
+.app-store-badge--lg img { height: 64px; }
+
+// Small print under the pre-launch button. Every journal CTA sits on pink.
+.app-store-cta__note {
+  display: block;
+  margin-top: $space-3;
+  font-family: $font-body;
+  font-size: $fs-xs;
+  color: $color-bg;
+  opacity: 0.9;
 }

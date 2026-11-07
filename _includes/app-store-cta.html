@@ -1,0 +1,19 @@
+{%- comment -%}
+  GLP-1 Journal call to action, driven by `site.journal_app_store_url`.
+
+  Before launch (URL empty): a launch-updates button with a "Coming soon" note.
+  After launch (URL set): Apple's unmodified App Store badge.
+
+  Params:
+    size (optional) - "lg" for the larger button and badge.
+{%- endcomment -%}
+
+{%- assign app_store_url = site.journal_app_store_url | default: "" | strip -%}
+{%- if app_store_url != "" -%}
+<a class="app-store-badge{% if include.size == 'lg' %} app-store-badge--lg{% endif %}" href="{{ app_store_url }}" target="_blank" rel="noopener">
+  <img src="{{ '/assets/images/site/app-store-badge.svg' | relative_url }}" alt="Download GLP-1 Journal on the App Store" width="120" height="40">
+</a>
+{%- else -%}
+<a class="btn btn--white{% if include.size == 'lg' %} btn--lg{% endif %}" href="https://thatglp1girl.gumroad.com/subscribe" target="_blank" rel="noopener">Get notified at launch</a>
+<span class="app-store-cta__note">Coming soon to the App Store.</span>
+{%- endif -%}

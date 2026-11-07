@@ -1,6 +1,7 @@
 {%- comment -%}
-  Journal banner — "That GLP-1 Girl Yearlong Journal" CTA with cover mockup.
-  Repeated at the bottom of home, about, coaching, guides, blog.
+  Journal banner - GLP-1 Journal app CTA with a phone screenshot.
+  Repeated at the bottom of home, about, coaching, guides, blog, every post
+  and every guide page.
 {%- endcomment -%}
 
 <section class="banner banner--journal">
@@ -9,12 +10,13 @@
       {% include decor/starburst.svg %}
     </span>
     <div class="banner__copy">
-      <h2 class="banner__heading">That GLP-1 Girl Yearlong Journal</h2>
-      <p>Not just a tracker. A transformation companion.</p>
-      <p><a class="btn btn--white" href="{{ '/journal' | relative_url }}">Learn more</a></p>
+      <h2 class="banner__heading">GLP-1 Journal for iPhone</h2>
+      <p>Daily prompts and weekly check-ins for your GLP-1 journey, private on your phone.</p>
+      <p>{% include app-store-cta.html %}</p>
+      <p><a class="banner__link" href="{{ '/journal' | relative_url }}">See what&rsquo;s inside</a></p>
     </div>
     <div class="banner__media banner__media--journal">
-      <img src="{{ '/assets/images/home/journal_cover.png' | relative_url }}" alt="" loading="lazy" width="400" height="520" class="banner__cover">
+      <img src="{{ '/assets/images/journal/app-home.png' | relative_url }}" alt="The GLP-1 Journal home screen, showing recent entries and this week's theme" loading="lazy" width="720" height="1290" class="banner__phone">
     </div>
   </div>
 </section>

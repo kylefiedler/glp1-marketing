@@ -67,7 +67,21 @@
 .banner__cover--front { position: absolute; top: 30px; left: 30%; transform: rotate(5deg); }
 
 .banner__media--journal { display: flex; justify-content: center; }
-.banner__media--journal .banner__cover { transform: rotate(6deg); width: 60%; }
+
+.banner__phone {
+  width: 46%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 28px;
+  box-shadow: 0 16px 36px rgba($color-black, 0.25);
+  transform: rotate(6deg);
+}
+
+.banner__link {
+  color: $color-bg;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
 .banner__decor {
   position: absolute;
@@ -88,6 +102,7 @@
   .banner__media { min-height: 280px; }
   .banner__cover--back  { left: 15%; }
   .banner__cover--front { left: 35%; }
+  .banner__phone { width: 52%; }
   .banner__decor { display: none; }
   .banner--journal .banner__copy { padding-left: 0; }
 }
