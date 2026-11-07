@@ -238,7 +238,7 @@
 
 .guides-included {
   position: relative;
-  z-index: 2; // the photo hangs over the first guide band's wavy top
+  z-index: 0; // below the first guide band, so the photo tucks behind its wavy top
   background: $color-bg;
   padding: 109px 0 33px;
   overflow-x: clip;
@@ -386,9 +386,13 @@
   @extend %guides-inner;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 295px;
+  // Empty rows above and below center the copy against the cover.
+  grid-template-rows: 1fr auto auto 1fr;
   grid-template-areas:
+    ".       media"
     "body    media"
-    "actions media";
+    "actions media"
+    ".       media";
   gap: 0 $space-7;
   align-items: start;
   padding: 61px 150px 26px;
@@ -401,8 +405,10 @@
 .guide-row--reverse .guide-row__inner {
   grid-template-columns: 259px minmax(0, 1fr);
   grid-template-areas:
+    "media ."
     "media body"
-    "media actions";
+    "media actions"
+    "media .";
 }
 
 .guide-row__media {
@@ -448,19 +454,22 @@
   font-size: $fs-md;
   line-height: $lh-snug;
   color: $color-ink;
-  margin: 0 0 $space-6;
+  margin: 0 0 $space-4;
   max-width: 460px;
 }
 
 // Guide rows: the two CTAs sit side by side at their natural width, with the
-// buy button outlined so it reads on both white and mist bands.
+// buy button outlined on the band's own background.
 .guide-row__actions {
   display: flex;
   flex-wrap: wrap;
   gap: $space-3;
   margin: 0;
 
-  .btn--white { border-color: $color-accent; }
+  .btn--white {
+    background: transparent;
+    border-color: $color-accent;
+  }
 }
 
 // Bonus minis stack two full-width CTAs.
@@ -497,6 +506,7 @@
   .guide-row__inner,
   .guide-row--reverse .guide-row__inner {
     grid-template-columns: minmax(0, 1fr) 120px;
+    grid-template-rows: auto;
     grid-template-areas:
       "body    media"
       "actions actions";
@@ -510,7 +520,7 @@
       "actions actions";
   }
   .guide-row__name { font-size: 20px; }
-  .guide-row__lede { font-size: $fs-sm; margin-bottom: $space-5; }
+  .guide-row__lede { font-size: $fs-sm; margin-bottom: 0; }
   .guide-row__actions,
   .guide-mini__actions { max-width: none; margin-top: $space-5; }
   .guide-row__actions .btn,
@@ -579,8 +589,30 @@
 // ===== FAQ =====
 
 .guides-faq {
-  background: $color-bg;
+  position: relative;
+  z-index: 2;
+  background: $color-blush;
   padding: 120px 0 82px;
+
+  // Wavy top and bottom edges overlapping the sections either side.
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: no-repeat center / 100% 100%;
+    pointer-events: none;
+  }
+  &::before {
+    bottom: calc(100% - 1px);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 14 C 240 36, 480 36, 720 18 C 960 0, 1200 0, 1440 24 L1440 40 Z' fill='%23FDEADD'/%3E%3C/svg%3E");
+  }
+  &::after {
+    top: calc(100% - 1px);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L0 24 C 240 4, 480 4, 720 20 C 960 38, 1200 38, 1440 16 L1440 0 Z' fill='%23FDEADD'/%3E%3C/svg%3E");
+  }
 }
 
 .guides-faq__inner {
@@ -593,7 +625,7 @@
   font-size: 63px;
   line-height: 1.1;
   letter-spacing: 0;
-  color: $color-peach;
+  color: $color-accent;
   margin: 0 0 52px;
   text-align: center;
 }
