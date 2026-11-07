@@ -21,7 +21,7 @@
   text-transform: uppercase;
 }
 
-// Unbounded 500 38/1.2 (st-d-heading) — bundle heading, product names,
+// Unbounded 700 38/1.2 (st-d-heading) — bundle heading, product names,
 // FAQ questions and every price in a starburst.
 %guides-heading {
   font-family: $font-display;
@@ -73,6 +73,9 @@
   position: relative;
   background: $color-blush;
   padding: 0 $space-5 130px;
+  // Clip only sideways: the fan's outer cover pokes past the edge on phones,
+  // but the covers still need to rise into the hero above.
+  overflow-x: clip;
 }
 
 // Covers fan out across the seam between the pink hero and this section.
@@ -112,13 +115,13 @@
 .guides-bundle__squiggle {
   width: 391px;
   color: $color-peach;
-  margin: 10px 0 35px;
+  margin: 28px 0 35px;
 }
 
 .guides-bundle__eyebrow {
   @extend %guides-label;
   color: $color-ink;
-  margin: 0 0 38px;
+  margin: 0 0 $space-5;
   max-width: 604px;
 }
 
@@ -165,7 +168,7 @@
 
 .guides-bundle__price .price-bubble__text {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 38px;
   line-height: 1.2;
 
@@ -208,7 +211,7 @@
   .guides-bundle__heading { font-size: 20px; }
   // leaves room for the badge, which live drops into its own band here
   .guides-bundle__squiggle { width: 225px; margin: 122px 0 20px; }
-  .guides-bundle__eyebrow { font-size: 12px; margin-bottom: 24px; }
+  .guides-bundle__eyebrow { font-size: 12px; margin-bottom: $space-4; }
   .guides-bundle__cols    { grid-template-columns: 1fr; gap: $space-4; p { font-size: $fs-xs; } }
   .guides-bundle__cta     { margin-top: 32px; .btn { min-width: 0; width: 100%; font-size: 12px; } }
   .guides-bundle__squiggle-white { top: 190px; right: auto; left: 26px; width: 105px; }
