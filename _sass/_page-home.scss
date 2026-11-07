@@ -218,7 +218,9 @@
 
 .home-about__underline {
   display: block;
-  width: 280px;
+  width: 320px;
+  max-width: 100%;
+  color: $color-accent;
   margin: 0 0 $space-5;
 }
 
@@ -242,7 +244,8 @@
   max-width: 52ch;
 }
 
-.home-about__cta { margin-top: $space-6; }
+// Scoped under .home-about so it beats the `.home-about p` margin.
+.home-about .home-about__cta { margin-top: $space-7; }
 
 .home-about__media img {
   width: 100%;
@@ -306,14 +309,6 @@
 }
 
 .home-bundle__price { color: $color-bg; }
-
-.home-bundle__strike {
-  font-family: $font-body;
-  font-size: $fs-md;
-  color: rgba($color-bg, 0.85);
-  text-decoration: line-through;
-  margin: 0 0 $space-3;
-}
 
 .home-bundle__lede {
   font-family: $font-body;
