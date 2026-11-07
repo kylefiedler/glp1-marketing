@@ -201,6 +201,9 @@
   line-height: $lh-snug;
   color: $color-ink;
   margin: 0;
+  max-width: 46ch;
+
+  em { font-style: italic; }
 }
 
 .nl-band__form { min-width: 0; }
@@ -223,6 +226,7 @@
   .nl-band { padding: $space-7 $space-4 calc(#{$space-7} + 24px); }
   .nl-band__inner { grid-template-columns: 1fr; gap: $space-5; text-align: center; }
   .nl-band__heading { font-size: 28px; }
+  .nl-band__sub { margin-inline: auto; font-size: $fs-sm; }
 }
 
 // ----- Cover fan (product covers cascading like a hand of cards) -----
