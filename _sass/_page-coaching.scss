@@ -39,21 +39,18 @@
   > svg { width: 100%; height: auto; }
 }
 
-// Scalloped blush seam (wave-med) that the-truth, for-you and program-details
-// each hang over the section above them. Flat-edged banners stay flat; this
-// motif is only for these three section tops, as on live.
-.coaching-seam {
+// Soft 40px wave on a section's top or bottom edge, filled with the
+// section's own color so it overlaps its neighbour.
+@mixin coaching-wave($edge, $image) {
+  content: "";
   position: absolute;
-  left: -30%;
-  width: 160%;
-  top: 0;
-  transform: translateY(-68%);
-  line-height: 0;
-  color: $color-blush;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: no-repeat center / 100% 100% $image;
   z-index: 3;
   pointer-events: none;
-
-  svg { width: 100%; height: auto; display: block; }
+  @if $edge == top { bottom: calc(100% - 1px); } @else { top: calc(100% - 1px); }
 }
 
 // ===== Hero (extends the hot-pink home-hero pattern) =====
@@ -91,17 +88,32 @@
   height: auto;
 }
 
-.coaching-hero__photo--left  { width: 32%; aspect-ratio: 378 / 386; margin-bottom: 30px; }
+.coaching-hero__left {
+  position: relative;
+  width: 32%;
+  margin-bottom: 30px;
+}
+
+// White "M" squiggle resting just above the left photo.
+.coaching-hero__squiggle {
+  position: absolute;
+  right: 12%;
+  bottom: calc(100% + #{$space-4});
+  width: 44%;
+  color: $color-bg;
+  pointer-events: none;
+}
+
+.coaching-hero__photo--left  { display: block; width: 100%; aspect-ratio: 378 / 386; }
 .coaching-hero__photo--right { width: 50%; aspect-ratio: 590 / 597; }
 
-// Peach badge straddling the hero's bottom edge; the starburst is the
+// Peach badge straddling the hero's bottom edge, right of the photos; the starburst is the
 // counterclockwise spinner (the asterisk is the clockwise one).
 .coaching-hero__badge {
   position: absolute;
-  left: 50%;
+  right: 6%;
   bottom: -70px;
   width: 200px;
-  margin-left: -100px;
   color: $color-peach;
   z-index: 4;
   animation: decor-spin-ccw 48s linear infinite;
@@ -118,7 +130,7 @@
 
 @media (max-width: $bp-lg) {
   .coaching-hero__title { font-size: 42px; }
-  .coaching-hero__badge { width: 140px; margin-left: -70px; bottom: -50px; }
+  .coaching-hero__badge { width: 140px; right: 2%; bottom: -50px; }
 }
 
 @media (max-width: $bp-md) {
@@ -129,9 +141,10 @@
   // asterisk up and in so it stops crossing that line.
   .coaching-hero .home-hero__decor--asterisk { width: 72px; top: 24px; left: -4%; }
   .coaching-hero__media   { flex-direction: column; align-items: center; gap: $space-4; }
-  .coaching-hero__photo--left,
+  .coaching-hero__left,
   .coaching-hero__photo--right { width: 78%; margin-bottom: 0; }
-  .coaching-hero__badge   { display: none; }
+  .coaching-hero__badge,
+  .coaching-hero__squiggle { display: none; }
 }
 
 // ===== The truth =====
@@ -140,15 +153,23 @@
   position: relative;
   overflow-x: clip; // the oversized seam runs past both edges
   background: $color-blush;
-  padding: calc(#{$space-9} + 24px) $space-5 $space-9;
+  padding: $space-8 $space-5 $space-9;
+
+  &::before { @include coaching-wave(top, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 18 C 240 0, 480 0, 720 16 C 960 34, 1200 34, 1440 14 L1440 40 Z' fill='%23FDEADD'/%3E%3C/svg%3E")); }
 }
 
 .coaching-truth__inner {
   @extend %coaching-inner;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: $space-8;
+  gap: 0 $space-8;
   align-items: start;
+}
+
+// Heading runs across both columns, above the copy and the photo.
+.coaching-truth__header {
+  grid-column: 1 / -1;
+  margin-bottom: $space-6;
 }
 
 .coaching-truth__heading {
@@ -159,12 +180,13 @@
   letter-spacing: 0;
   color: $color-ink;
   margin: 0 0 $space-4;
+  max-width: 24ch;
 }
 
 .coaching-truth__rule {
   @include wave-rule(391px);
   color: $color-peach;
-  margin: 0 0 $space-6;
+  margin: 0;
 }
 
 .coaching-truth p {
@@ -200,7 +222,7 @@
 // Never rotated — only the asterisk and starburst spin.
 .coaching-truth__squiggle {
   position: absolute;
-  left: -80px;
+  left: -50px; // stays inside the column gap, clear of the copy
   top: 62%;
   width: 210px;
   color: $color-bg;
@@ -213,6 +235,7 @@
 
 @media (max-width: $bp-md) {
   .coaching-truth__inner   { grid-template-columns: 1fr; gap: $space-7; }
+  .coaching-truth__header  { margin-bottom: 0; }
   .coaching-truth__heading { font-size: 20px; }
 
   .coaching-truth__squiggle { left: -10px; top: -20px; width: 105px; }
@@ -230,7 +253,7 @@
 .coaching-features__star {
   position: absolute;
   left: 5%;
-  top: -30px;
+  top: -70px; // tucked up into the corner, clear of the heading
   width: 153px;
   color: $color-peach;
   z-index: 1;
@@ -255,8 +278,7 @@
   letter-spacing: 0;
   color: $color-ink;
   margin: 0 0 $space-8;
-  max-width: 742px;
-  padding-left: 113px; // clears the starburst in the top-left corner
+  max-width: 1000px;
 }
 
 .coaching-features__grid {
@@ -322,8 +344,7 @@
 
 @media (max-width: $bp-lg) {
   .coaching-features__heading { font-size: 30px; }
-  .coaching-features__star    { width: 110px; left: 2%; }
-  .coaching-features__heading { padding-left: 80px; }
+  .coaching-features__star    { width: 110px; left: 2%; top: -50px; }
 }
 
 @media (max-width: $bp-md) {
@@ -339,8 +360,12 @@
 .coaching-fit {
   position: relative;
   overflow-x: clip;
+  z-index: 1; // its bottom wave sits over the about section
   background: $color-blush;
-  padding: calc(#{$space-9} + 24px) $space-5 $space-9;
+  padding: $space-7 $space-5 $space-9;
+
+  &::before { @include coaching-wave(top, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 18 C 240 0, 480 0, 720 16 C 960 34, 1200 34, 1440 14 L1440 40 Z' fill='%23FDEADD'/%3E%3C/svg%3E")); }
+  &::after  { @include coaching-wave(bottom, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L0 20 C 240 40, 480 40, 720 24 C 960 6, 1200 6, 1440 26 L1440 0 Z' fill='%23FDEADD'/%3E%3C/svg%3E")); }
 }
 
 .coaching-fit__asterisk {
@@ -376,7 +401,12 @@
 }
 
 .coaching-fit__heading {
-  @extend %coaching-subheading;
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: $color-ink;
   margin: 0 0 $space-5;
 }
 
@@ -408,6 +438,7 @@
 @media (max-width: $bp-md) {
   .coaching-fit__inner    { grid-template-columns: 1fr; gap: $space-6; }
   .coaching-fit__asterisk { width: 64px; left: 0; top: -22px; }
+  .coaching-fit__heading  { font-size: 24px; }
 }
 
 // ===== About / Why me =====
@@ -510,12 +541,14 @@
   overflow-x: clip;
   background: $color-blush;
   padding: $space-8 $space-5 $space-9;
+
+  &::before { @include coaching-wave(top, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 18 C 240 0, 480 0, 720 16 C 960 34, 1200 34, 1440 14 L1440 40 Z' fill='%23FDEADD'/%3E%3C/svg%3E")); }
 }
 
-// Above the scalloped seam so its top points aren't cut off.
+// Top-right corner, clear of the heading.
 .coaching-program__asterisk {
   position: absolute;
-  left: 5%;
+  right: 6%;
   top: 8px;
   width: 189px;
   color: $color-peach;
@@ -627,7 +660,7 @@
   .coaching-program__heading  { font-size: 36px; }
   .coaching-program__cols     { grid-template-columns: 1fr; }
   .coaching-program__outcome  { grid-template-columns: 1fr; gap: $space-6; }
-  .coaching-program__asterisk { width: 64px; left: 0; top: 36px; }
+  .coaching-program__asterisk { width: 64px; right: 4%; top: 16px; }
 }
 
 // ===== Investment (pink band) =====
@@ -636,8 +669,11 @@
   position: relative;
   background: $color-accent;
   padding: $space-8 $space-5;
-  // Live puts this band on z-index 2 so its pink wave spills over be-real.
+  // z-index 2 so its pink waves sit over program details and be-real.
   z-index: 2;
+
+  &::before { @include coaching-wave(top, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 18 C 240 0, 480 0, 720 16 C 960 34, 1200 34, 1440 14 L1440 40 Z' fill='%23EE2273'/%3E%3C/svg%3E")); }
+  &::after  { @include coaching-wave(bottom, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L0 24 C 300 44, 620 44, 900 26 C 1140 10, 1320 12, 1440 22 L1440 0 Z' fill='%23EE2273'/%3E%3C/svg%3E")); height: 50px; }
 }
 
 .coaching-investment__inner {
@@ -670,7 +706,7 @@
   top: 78%; // hangs off the band's bottom edge, clear of the copy
   width: 224px;
   color: $color-peach;
-  z-index: 2;
+  z-index: 4; // over the band's bottom wave
   animation: decor-spin-ccw 48s linear infinite;
 }
 
@@ -678,19 +714,6 @@
   .coaching-investment__star { animation: none; }
 }
 
-// Wide pink wave bleeding out of the band's bottom edge into be-real.
-.coaching-investment__wave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -37%;
-  line-height: 0;
-  color: $color-accent;
-  z-index: 1;
-  pointer-events: none;
-
-  svg { width: 100%; height: auto; display: block; }
-}
 
 @media (max-width: $bp-lg) {
   .coaching-investment__heading { font-size: 30px; }
@@ -701,7 +724,6 @@
   .coaching-investment__heading { font-size: 20px; }
 
   .coaching-investment__star    { width: 83px; left: auto; right: 4%; top: -30px; }
-  .coaching-investment__wave    { bottom: -30%; }
 }
 
 // ===== Be real =====
@@ -928,6 +950,4 @@
   .coaching-be-real p,
   .coaching-apply__copy p { font-size: $fs-xs; }
 
-  // The seam has to be much wider than the viewport to keep live's scallop size.
-  .coaching-seam { left: -130%; width: 360%; }
 }
