@@ -237,9 +237,11 @@
 // ===== What's included / Why it works (2-col) =====
 
 .guides-included {
+  position: relative;
+  z-index: 2; // the photo hangs over the first guide band's wavy top
   background: $color-bg;
   padding: 109px 0 33px;
-  overflow: hidden;
+  overflow-x: clip;
 }
 
 .guides-included__inner {
@@ -295,6 +297,11 @@
   width: 205px;
   color: $color-peach;
   z-index: 1;
+  animation: decor-spin 56s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guides-included__decor { animation: none; }
 }
 
 // Live crops the portrait screenshot into a 522x398 landscape frame anchored
@@ -309,14 +316,14 @@
   height: auto;
   object-fit: cover;
   object-position: 100% 100%;
-  margin: 18px 0 0 58px;
+  margin: 18px 0 -64px 58px;
   border-radius: 10px;
 }
 
 @media (max-width: $bp-lg) {
   .guides-included { padding-top: 72px; }
   .guides-included__inner { grid-template-columns: 1fr; gap: $space-7; }
-  .guides-included__photo { width: 100%; margin-left: 0; }
+  .guides-included__photo { width: 100%; margin: 18px 0 0; }
   .guides-included__decor { left: -24px; bottom: -24px; width: 150px; }
 }
 @media (max-width: $bp-md) {
@@ -341,8 +348,34 @@
   margin: 0;
 }
 
+// Mist bands get wavy top and bottom edges that overlap the white bands
+// either side.
 .guide-row {
   background: $color-mist;
+}
+
+.guide-row:not(.guide-row--reverse) {
+  position: relative;
+  z-index: 1;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: no-repeat center / 100% 100%;
+    pointer-events: none;
+  }
+  &::before {
+    bottom: calc(100% - 1px);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 22 C 240 0, 480 0, 720 18 C 960 36, 1200 36, 1440 12 L1440 40 Z' fill='%23F2EFEE'/%3E%3C/svg%3E");
+  }
+  &::after {
+    top: calc(100% - 1px);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L0 18 C 240 40, 480 40, 720 22 C 960 4, 1200 4, 1440 28 L1440 0 Z' fill='%23F2EFEE'/%3E%3C/svg%3E");
+  }
 }
 
 .guide-row--reverse {
@@ -384,7 +417,10 @@
   display: block;
   border-radius: 4px;
   filter: drop-shadow(0 0 11px rgba($color-black, 0.11));
+  transform: rotate(3deg);
 }
+
+.guide-row--reverse .guide-row__img { transform: rotate(-3deg); }
 
 // Starburst price badge (.price-bubble, _sections.scss).
 .guide-row__price,
@@ -408,15 +444,26 @@
 }
 
 .guide-row__lede {
-  @extend %guides-label;
+  font-family: $font-body;
+  font-size: $fs-md;
+  line-height: $lh-snug;
   color: $color-ink;
-  margin: 0 0 36px;
+  margin: 0 0 $space-6;
   max-width: 460px;
 }
 
-// Live stacks the two CTAs as full-width blocks under the copy: pink
-// "Learn more" on top, plain white "Buy now" below.
-.guide-row__actions,
+// Guide rows: the two CTAs sit side by side at their natural width, with the
+// buy button outlined so it reads on both white and mist bands.
+.guide-row__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+  margin: 0;
+
+  .btn--white { border-color: $color-accent; }
+}
+
+// Bonus minis stack two full-width CTAs.
 .guide-mini__actions {
   display: grid;
   gap: 11px;
@@ -463,11 +510,12 @@
       "actions actions";
   }
   .guide-row__name { font-size: 20px; }
-  .guide-row__lede { font-size: 12px; margin-bottom: $space-5; }
+  .guide-row__lede { font-size: $fs-sm; margin-bottom: $space-5; }
   .guide-row__actions,
   .guide-mini__actions { max-width: none; margin-top: $space-5; }
   .guide-row__actions .btn,
   .guide-mini__actions .btn { font-size: 12px; }
+  .guide-row__actions .btn  { flex: 1 1 auto; text-align: center; }
   .guide-row__price,
   .guide-mini__price { width: 83px; bottom: -24px; right: -14px; }
   .guide-row__price .price-bubble__text,
