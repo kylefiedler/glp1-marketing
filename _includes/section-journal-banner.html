@@ -6,6 +6,7 @@
 
 {%- assign app_store_url = site.journal_app_store_url | default: "" | strip -%}
 <section class="banner banner--journal">
+  {% include wave.html fill="pink" %}
   <div class="banner__inner">
     <div class="banner__copy">
       <h2 class="banner__heading">GLP-1 Journal for iPhone</h2>
@@ -25,8 +26,5 @@
     <img src="{{ '/assets/images/journal/app-progress.webp' | relative_url }}" alt="" loading="lazy" width="920" height="2000" class="banner__screen banner__screen--left">
     <img src="{{ '/assets/images/journal/app-today.webp' | relative_url }}" alt="" loading="lazy" width="920" height="2000" class="banner__screen banner__screen--mid">
     <img src="{{ '/assets/images/journal/app-question.webp' | relative_url }}" alt="" loading="lazy" width="920" height="2000" class="banner__screen banner__screen--right">
-  </div>
-  <div class="banner__scallop" aria-hidden="true">
-    {% include decor/wave-med.svg %}
   </div>
 </section>

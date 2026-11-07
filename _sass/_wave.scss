@@ -1,0 +1,52 @@
+// Wave dividers - the site's only section edge, matching the app's
+// WaveDivider (glp1Journal Theme/Wave.swift). Markup: _includes/wave.html.
+// Motion: assets/js/waves.js.
+//
+// Overlap contract
+// - A wave is the first child of the lower section and rises out of its top
+//   edge, painting over the bottom of the section above.
+// - Waves sit at z-index 3. Sections don't set a z-index of their own, so
+//   every wave and every piece of decor share one stacking context.
+// - Decor meant to sit over a seam (starbursts, squiggles) uses z-index 4+.
+//   Content meant to tuck behind a wave (photos) stays at 2 or below.
+
+:where(:has(> .wave)) { position: relative; }
+
+// For a section that has to crop its own content at the sides and bottom:
+// use this instead of overflow: hidden, which would also crop its top wave.
+// Exception to the contract above: clip-path gives the section its own
+// stacking layer, so decor from the section above with z-index 1+ paints
+// over this section's wave. Keep such decor clear of these seams.
+@mixin clip-below-wave {
+  overflow: visible;
+  clip-path: inset(-60px 0 0 0);
+}
+
+.wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% - 1px);
+  z-index: 3;
+  line-height: 0;
+  pointer-events: none;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+}
+
+// The app draws ripple 28pt and swell 22pt tall on a phone; desktop grows to
+// a cap so the curve keeps roughly the same gentle proportion.
+.wave--ripple { height: clamp(28px, 3.9vw, 56px); }
+.wave--swell  { height: clamp(22px, 3.05vw, 44px); }
+
+.wave--pink  { color: $color-accent; }
+.wave--peach { color: $color-peach; }
+.wave--blush { color: $color-blush; }
+.wave--sand  { color: $color-sand; }
+.wave--mist  { color: $color-mist; }
+.wave--white { color: $color-bg; }

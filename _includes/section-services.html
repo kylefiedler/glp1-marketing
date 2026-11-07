@@ -13,6 +13,7 @@
 {%- endcomment -%}
 
 <section class="services{% if include.class %} {{ include.class }}{% endif %}">
+  {% include wave.html shape="swell" fill="blush" %}
   <div class="services__inner">
     {%- if include.heading %}
     <h2 class="services__heading">{{ include.heading }}</h2>

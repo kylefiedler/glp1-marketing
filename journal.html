@@ -27,9 +27,7 @@ permalink: /journal/
   </section>
 
   <section class="journal-product">
-    <div class="journal-product__wave" aria-hidden="true">
-      {% include decor/wave-med.svg %}
-    </div>
+    {% include wave.html fill="blush" %}
     <div class="journal-product__inner">
       <div class="journal-product__media">
         <span class="decor decor--asterisk-8pt journal-product__decor journal-product__decor--peach" aria-hidden="true">
@@ -48,6 +46,7 @@ permalink: /journal/
   </section>
 
   <section class="journal-inside">
+    {% include wave.html shape="swell" fill="white" %}
     <div class="journal-inside__inner">
       <div class="journal-inside__col">
         <h3 class="journal-inside__label">What&rsquo;s Inside:</h3>
@@ -70,6 +69,7 @@ permalink: /journal/
   </section>
 
   <section class="journal-cta">
+    {% include wave.html fill="pink" %}
     <span class="decor decor--squiggle-vert journal-cta__decor" aria-hidden="true">
       {% include decor/squiggle-vert.svg %}
     </span>
@@ -81,6 +81,7 @@ permalink: /journal/
   </section>
 
   <section class="journal-faq">
+    {% include wave.html shape="swell" fill="blush" %}
     <div class="journal-faq__inner">
       <h2 class="journal-faq__heading">Frequently Asked Questions</h2>
 

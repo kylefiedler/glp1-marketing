@@ -4,12 +4,8 @@
   "Client Reviews" wordmark. Shared by home + about. No params.
 {%- endcomment -%}
 
-<div class="testimonials-wave" aria-hidden="true">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 60 L0 30 C 240 0, 480 0, 720 25 C 960 50, 1200 50, 1440 15 L1440 60 Z" fill="currentColor"/>
-  </svg>
-</div>
 <section class="testimonials">
+  {% include wave.html fill="sand" %}
   <div class="testimonials__inner">
     <div class="testimonials__carousel" data-carousel>
       <button class="testimonials__nav testimonials__nav--prev" type="button" aria-label="Previous review" data-carousel-prev>
@@ -38,11 +34,6 @@
       </button>
     </div>
     <p class="testimonials__wordmark" aria-hidden="true">Client Reviews</p>
-  </div>
-  <div class="testimonials__wave" aria-hidden="true">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 24 C 360 12, 720 12, 1080 20 C 1260 24, 1380 26, 1440 22 L1440 60 L0 60 Z" fill="currentColor"/>
-    </svg>
   </div>
 </section>
 <script src="{{ '/assets/js/testimonials.js' | relative_url }}" defer></script>
