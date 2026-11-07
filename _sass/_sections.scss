@@ -558,7 +558,7 @@
 
 // ----- Services (product/offer cards) -----
 // Markup via _includes/section-services.html. Live runs the same card —
-// pink flower icon with a white centre dot, Unbounded name, DM Sans pitch,
+// pink flower icon (its centre dot is in flower.svg), Unbounded name, DM Sans pitch,
 // "learn more" — three-up on home and two-up on coaching under a title.
 // The grid auto-fits, so the caller only supplies items.
 
@@ -607,19 +607,6 @@
   width: 78px;
   color: $color-accent;
   margin-bottom: $space-2;
-
-  // The live icon is a pink flower with a white dot punched out of the middle.
-  &::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 20px;
-    height: 19px;
-    transform: translate(-50%, -50%);
-    background: $color-bg;
-    border-radius: 50%;
-  }
 }
 
 .service__heading {
