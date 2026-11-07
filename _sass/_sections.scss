@@ -133,18 +133,8 @@
   text-underline-offset: 3px;
 }
 
-.banner__decor {
-  position: absolute;
-  z-index: 3;
-  pointer-events: none;
-}
-.banner__decor--star     { width: 96px;  left: -2%; top: -8%; }
-
-.banner--journal .banner__copy { padding-left: 110px; }
-
 @media (max-width: $bp-lg) {
   .banner__heading { font-size: 32px; }
-  .banner--journal .banner__copy { padding-left: 0; }
 }
 
 @media (max-width: $bp-md) {
@@ -152,7 +142,6 @@
   .banner__media { min-height: 280px; }
   .banner__cover--back  { left: 15%; }
   .banner__cover--front { left: 35%; }
-  .banner__decor { display: none; }
   .banner--journal { padding-bottom: 0; }
   .banner__screens {
     position: relative;
@@ -166,7 +155,6 @@
   .banner__screen--left  { top: 20%; }
   .banner__screen--mid   { top: 0; }
   .banner__screen--right { top: 18%; }
-  .banner--journal .banner__copy { padding-left: 0; }
 }
 
 // ----- Newsletter band (above the footer) -----
