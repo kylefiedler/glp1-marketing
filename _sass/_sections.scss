@@ -22,7 +22,7 @@
 }
 
 // Journal banner: wavy top rising over the section above, peach scallops
-// along the bottom (into the peach connect section), and three app screens
+// along the bottom (into the peach newsletter band), and three app screens
 // rising behind them.
 .banner--journal {
   z-index: 3;
@@ -168,109 +168,61 @@
   .banner--journal .banner__copy { padding-left: 0; }
 }
 
-// ----- Connect (social + contact form) -----
+// ----- Newsletter band (above the footer) -----
 
-.connect {
-  background: $color-peach;
-  padding: $space-7 $space-5;
+.nl-band {
   position: relative;
+  background: $color-peach;
+  padding: $space-8 $space-5 calc(#{$space-8} + 40px);
 }
 
-.connect__inner {
+.nl-band__inner {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: $space-8;
-  align-items: start;
+  align-items: center;
 }
 
-.connect__side {
-  min-width: 0;
-}
-
-.connect__heading {
+.nl-band__heading {
   font-family: $font-display;
   font-weight: 700;
   font-size: 36px;
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: $color-ink;
-  margin: 0 0 $space-5;
+  margin: 0 0 $space-3;
 }
 
-.connect__social {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: $space-4;
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: $color-accent;
-    color: $color-bg;
-    transition: filter 120ms ease;
-  }
-  a:hover { filter: brightness(0.92); }
-
-  svg { width: 20px; height: 20px; }
-}
-
-.connect__form {
-  display: grid;
-  gap: $space-3;
-}
-
-.connect__field input,
-.connect__field textarea {
-  width: 100%;
-  padding: $space-3 $space-4;
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
-  color: $color-ink;
-  background: $color-bg;
-  border: 0;
-  border-radius: 999px;
-  resize: none;
-
-  &::placeholder {
-    color: $color-muted;
-    text-transform: uppercase;
-  }
-
-  &:focus {
-    outline: 2px solid $color-accent;
-    outline-offset: 1px;
-  }
-}
-
-.connect__field textarea {
-  border-radius: 24px;
-  min-height: 120px;
+.nl-band__sub {
   font-family: $font-body;
-  font-weight: 400;
-  letter-spacing: 0;
+  font-size: $fs-md;
+  line-height: $lh-snug;
+  color: $color-ink;
+  margin: 0;
 }
 
-.connect__submit {
-  justify-self: end;
-  margin-top: $space-3;
-  min-width: 200px;
-  border: 0;
+.nl-band__form { min-width: 0; }
+
+// Blush scallops rising from the footer into the band.
+.nl-band__scallop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  color: $color-blush;
+  transform: rotate(180deg);
+  line-height: 0;
+  pointer-events: none;
+
+  svg { width: 100%; height: auto; display: block; }
 }
 
 @media (max-width: $bp-md) {
-  .connect__inner { grid-template-columns: 1fr; gap: $space-6; }
-  .connect__heading { font-size: 28px; }
-  .connect__submit { justify-self: stretch; }
+  .nl-band { padding: $space-7 $space-4 calc(#{$space-7} + 24px); }
+  .nl-band__inner { grid-template-columns: 1fr; gap: $space-5; text-align: center; }
+  .nl-band__heading { font-size: 28px; }
 }
 
 // ----- Cover fan (product covers cascading like a hand of cards) -----
@@ -736,13 +688,16 @@
   margin-bottom: $space-5;
 }
 
+// Small uppercase label, not a display heading.
 .service__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 38px;
-  line-height: 1.2;
+  font-family: $font-label;
+  font-weight: 600;
+  font-size: $fs-sm;
+  line-height: $lh-snug;
+  letter-spacing: calc(0.1em + 1px);
+  text-transform: uppercase;
   color: $color-ink;
-  margin: 0;
+  margin: 0 0 $space-3;
 }
 
 .service__copy {
@@ -758,13 +713,11 @@
 
 @media (max-width: $bp-lg) {
   .services__heading { font-size: 38px; }
-  .service__heading  { font-size: 30px; }
 }
 
 @media (max-width: $bp-md) {
   .services__grid    { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
   .services__heading { font-size: 36px; text-align: center; }
-  .service__heading  { font-size: 20px; }
   .service__copy     { font-size: $fs-xs; }
   .services--left .service { align-items: center; text-align: center; }
 }

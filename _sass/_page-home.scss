@@ -92,6 +92,7 @@
 
 .home-stat {
   position: relative;
+  overflow-x: clip; // the spinning star's corners can poke past the right edge
   background: $color-peach;
   padding: $space-9 $space-5 calc(#{$space-9} + 40px);
   text-align: center;
@@ -380,13 +381,14 @@
 }
 
 .home-service__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 1.1;
+  font-family: $font-label;
+  font-weight: 600;
+  font-size: $fs-sm;
+  line-height: $lh-snug;
+  letter-spacing: calc(0.1em + 1px);
+  text-transform: uppercase;
   color: $color-ink;
-  margin: 0;
-  max-width: 12ch;
+  margin: 0 0 $space-3;
 }
 
 .home-service p {

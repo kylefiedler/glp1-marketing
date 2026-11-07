@@ -1,0 +1,21 @@
+{%- comment -%}
+  Newsletter band - title and offer on the left, the EmailOctopus signup on
+  the right, with blush scallops rising from the footer below. Sits just
+  above the footer on every marketing page.
+{%- endcomment -%}
+
+{%- assign nl_form_id = "94634042-e774-11f0-8715-19e8bfe62148" -%}
+<section class="nl-band">
+  <div class="nl-band__inner">
+    <div class="nl-band__copy">
+      <h2 class="nl-band__heading">Sign up for our newsletter</h2>
+      <p class="nl-band__sub">Get the protein guide for free.</p>
+    </div>
+    <div class="nl-band__form newsletter__embed">
+      <script async src="https://eocampaign1.com/form/{{ nl_form_id }}.js" data-form="{{ nl_form_id }}"></script>
+    </div>
+  </div>
+  <div class="nl-band__scallop" aria-hidden="true">
+    {% include decor/wave-med.svg %}
+  </div>
+</section>

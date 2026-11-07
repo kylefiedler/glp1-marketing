@@ -13,13 +13,25 @@
       </ul>
     </nav>
 
-    <div class="site-footer__newsletter">
-      <p class="site-footer__nl-lead">
-        Sign up for our newsletter and get <em>How I get 150g of Protein Per Day: A Week in My Food Life</em> for free!
-      </p>
-      <div class="newsletter__embed">
-        <script async src="https://eocampaign1.com/form/94634042-e774-11f0-8715-19e8bfe62148.js" data-form="94634042-e774-11f0-8715-19e8bfe62148"></script>
-      </div>
+    <div class="site-footer__contact">
+      <h2 class="site-footer__heading">Contact Jess</h2>
+      <form class="site-footer__form" method="POST" action="{{ site.formspree_endpoint }}" data-thanks="{{ '/thanks/' | relative_url }}">
+        <input type="hidden" name="_subject" value="New contact message - That GLP-1 Girl">
+        <label class="site-footer__field">
+          <span class="visually-hidden">Name</span>
+          <input type="text" name="name" placeholder="Name" required autocomplete="name">
+        </label>
+        <label class="site-footer__field">
+          <span class="visually-hidden">Email</span>
+          <input type="email" name="email" placeholder="Email" required autocomplete="email">
+        </label>
+        <label class="site-footer__field site-footer__field--wide">
+          <span class="visually-hidden">Message</span>
+          <textarea name="message" rows="4" placeholder="Message" required></textarea>
+        </label>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+        <button type="submit" class="btn btn--primary site-footer__submit">Submit</button>
+      </form>
     </div>
 
     <a class="site-footer__brand" href="{{ '/' | relative_url }}" aria-label="That GLP-1 Girl — home">

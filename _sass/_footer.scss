@@ -25,12 +25,11 @@
     gap: $space-2;
   }
 
+  // Same face, size and weight as button text.
   a {
-    font-family: $font-label;
-    font-weight: 600;
+    font-family: $font-heading;
+    font-weight: 400;
     font-size: $fs-sm;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
     color: $color-ink;
     text-decoration: none;
     transition: color 120ms ease;
@@ -39,18 +38,57 @@
   a:hover { color: $color-accent; }
 }
 
-.site-footer__newsletter {
-  max-width: 460px;
+.site-footer__contact {
+  max-width: 560px;
 }
 
-.site-footer__nl-lead {
+.site-footer__heading {
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: $fs-xl;
+  line-height: 1.1;
+  color: $color-ink;
+  margin: 0 0 $space-4;
+}
+
+.site-footer__form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-3;
+}
+
+.site-footer__field--wide { grid-column: 1 / -1; }
+
+.site-footer__field input,
+.site-footer__field textarea {
+  width: 100%;
+  padding: $space-3 $space-4;
   font-family: $font-body;
   font-size: $fs-sm;
-  line-height: $lh-body;
   color: $color-ink;
-  margin: 0 0 $space-3;
+  background: $color-bg;
+  border: 0;
+  border-radius: 999px;
+  resize: none;
 
-  em { font-style: italic; }
+  &::placeholder { color: $color-muted; }
+
+  &:focus {
+    outline: 2px solid $color-accent;
+    outline-offset: 1px;
+  }
+}
+
+.site-footer__field textarea {
+  border-radius: 20px;
+  min-height: 104px;
+}
+
+.site-footer__submit {
+  grid-column: 1 / -1;
+  justify-self: start;
+  min-width: 160px;
+  border: 0;
 }
 
 .site-footer__brand img {
@@ -106,10 +144,15 @@
     justify-content: center;
     gap: $space-6;
   }
-  .site-footer__newsletter { margin: 0 auto; }
+  .site-footer__contact { width: 100%; margin: 0 auto; text-align: left; }
   .site-footer__brand img { margin: 0 auto; }
   .site-footer__meta {
     flex-direction: column;
     gap: $space-4;
   }
+}
+
+@media (max-width: $bp-md) {
+  .site-footer__form { grid-template-columns: 1fr; }
+  .site-footer__submit { justify-self: stretch; }
 }
