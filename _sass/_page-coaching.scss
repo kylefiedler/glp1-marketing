@@ -509,16 +509,17 @@
   position: relative;
   overflow-x: clip;
   background: $color-blush;
-  padding: calc(#{$space-9} + 24px) $space-5 $space-9;
+  padding: $space-8 $space-5 $space-9;
 }
 
+// Above the scalloped seam so its top points aren't cut off.
 .coaching-program__asterisk {
   position: absolute;
   left: 5%;
-  top: -18px;
+  top: 8px;
   width: 189px;
   color: $color-peach;
-  z-index: 1;
+  z-index: 4;
   animation: decor-spin 56s linear infinite;
 }
 
@@ -529,7 +530,7 @@
 .coaching-program__inner {
   @extend %coaching-inner;
   position: relative;
-  z-index: 2;
+  z-index: 5; // over the asterisk
 }
 
 .coaching-program__heading {
@@ -559,7 +560,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: $space-7 $space-8;
-  margin-bottom: $space-8;
+  margin-bottom: $space-6;
 
   h3 {
     @extend %coaching-subheading;
@@ -582,7 +583,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: $space-8;
-  align-items: center;
+  align-items: start;
 
   h3 {
     @extend %coaching-subheading;
@@ -591,7 +592,7 @@
 
   ul {
     padding-left: $space-5;
-    margin: 0 0 $space-6;
+    margin: 0 0 $space-7;
     color: $color-ink;
     font-family: $font-body;
     font-size: $fs-sm;
@@ -604,7 +605,7 @@
 .coaching-program__rule {
   @include wave-rule(518px);
   color: $color-accent;
-  margin: 0 0 $space-5;
+  margin: 0 0 $space-6;
 }
 
 .coaching-program__cta { margin: 0; }
