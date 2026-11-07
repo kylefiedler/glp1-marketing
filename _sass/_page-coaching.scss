@@ -4,10 +4,10 @@
 //   → be-real (blush) → form (peach) → faq (white) → services (blush)
 //   → guides-banner → journal-banner → connect
 //
-// Live type roles, straight from the Showit base styles:
+// Type roles (Showit layout, typefaces aligned with the GLP-1 Journal app):
 //   title      Unbounded 500 / 63px / lh 1.1  ($font-display)
 //   heading    Unbounded 500 / 38px / lh 1.2  ($font-display)
-//   subheading Comfortaa 600 / 18px / uppercase / 0.1em  ($font-heading)
+//   subheading Lato 600 / 18px / uppercase / 0.1em  ($font-label)
 //   paragraph  Lato 400 / 16px / lh 1.6  ($font-body)
 
 %coaching-inner {
@@ -15,10 +15,10 @@
   margin: 0 auto;
 }
 
-// Live's uppercase Comfortaa "subheading" — the workhorse label used for
+// The uppercase "subheading" — the workhorse label used for
 // eyebrows, feature names and the punchy one-liners between paragraphs.
 %coaching-subheading {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-md;
   line-height: 1.8;
@@ -176,7 +176,7 @@
 }
 
 // "MOST PEOPLE DON'T HAVE A PLAN FOR THAT." / "THAT'S EXACTLY WHY I CREATED
-// THIS." are uppercase Comfortaa labels on live, not display headings.
+// THIS." are uppercase labels on live, not display headings.
 .coaching-truth p.coaching-truth__punch {
   @extend %coaching-subheading;
   margin: 0 0 $space-5;
@@ -837,7 +837,7 @@
   border-radius: 22px;
   resize: none;
 
-  &::placeholder { color: rgba($color-ink, 0.6); }
+  &::placeholder { color: $color-muted; }
 
   &:focus {
     outline: 2px solid $color-accent;
@@ -892,7 +892,7 @@
 }
 
 // Questions are the 38px Unbounded heading on live, not the global
-// Comfortaa summary style.
+// heading-font summary style.
 .coaching-faq summary {
   font-family: $font-display;
   font-weight: 500;

@@ -10,10 +10,10 @@
   margin: 0 auto;
 }
 
-// Live sets every eyebrow / small label on this page in Comfortaa 600 18/1.8
+// Live sets every eyebrow / small label on this page in the label face at 600 18/1.8
 // uppercase with 0.1em tracking (st-d-subheading).
 %guides-label {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-md;
   line-height: 1.8;
@@ -236,7 +236,7 @@
 }
 
 // Live sets both column headers (and "Plus, Two Free Bonuses:") as small
-// Comfortaa labels, not display headings.
+// uppercase labels, not display headings.
 .guides-included__heading {
   @extend %guides-label;
   color: $color-ink;

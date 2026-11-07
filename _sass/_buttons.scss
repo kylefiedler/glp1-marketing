@@ -12,8 +12,6 @@
   font-family: $font-heading;
   font-weight: 600;
   font-size: $fs-sm;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   text-decoration: none;
   border-radius: 10px;
   transition: filter 120ms ease, background 120ms ease, color 120ms ease, border-color 120ms ease;
@@ -38,6 +36,13 @@
 .btn--lg {
   padding: $space-4 $space-7;
   font-size: $fs-md;
+}
+
+@media (max-width: $bp-md) {
+  .btn--lg {
+    padding: $space-4 $space-6;
+    font-size: $fs-sm;
+  }
 }
 
 // Apple's badge artwork must stay unmodified; only its size changes.

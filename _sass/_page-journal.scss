@@ -6,7 +6,7 @@
 }
 
 .journal-hero__eyebrow {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-sm;
   letter-spacing: 0.06em;
@@ -51,7 +51,7 @@
 }
 
 .journal-product__eyebrow {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-sm;
   letter-spacing: 0.06em;
@@ -115,7 +115,7 @@
 }
 
 .journal-inside__label {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-md;
   letter-spacing: 0.1em;
@@ -194,7 +194,7 @@
 }
 
 .journal-cta__subheading {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-md;
   letter-spacing: 0.1em;
@@ -235,7 +235,7 @@
 .journal-faq__legal {
   font-family: $font-body;
   font-size: $fs-sm;
-  color: rgba($color-ink, 0.75);
+  color: $color-muted;
   text-align: center;
   margin: $space-7 0 0;
 

@@ -26,7 +26,7 @@
 }
 
 .guide-hero__eyebrow {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-sm;
   letter-spacing: 0.1em;
@@ -49,7 +49,7 @@
 .guide-hero__nowrap { white-space: nowrap; }
 
 .guide-hero__for {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-sm;
   line-height: 1.7;
@@ -160,7 +160,7 @@
 }
 
 .guide-detail__label {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-md;
   letter-spacing: 0.1em;

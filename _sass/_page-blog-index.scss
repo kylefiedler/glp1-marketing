@@ -1,7 +1,7 @@
 // Blog index — reuses the hot-pink .home-hero pattern for the header.
 
 .blog-index__eyebrow {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-sm;
   letter-spacing: 0.06em;
@@ -82,12 +82,12 @@
 }
 
 .blog-card__meta {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-xs;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba($color-ink, 0.6);
+  color: $color-muted;
   margin: 0;
 }
 
@@ -141,7 +141,7 @@
 }
 
 .blog-index__sidebar-eyebrow {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-sm;
   letter-spacing: 0.06em;

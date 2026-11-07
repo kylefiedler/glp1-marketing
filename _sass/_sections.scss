@@ -170,7 +170,7 @@
 .connect__field textarea {
   width: 100%;
   padding: $space-3 $space-4;
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-sm;
   letter-spacing: 0.06em;
@@ -181,7 +181,7 @@
   resize: none;
 
   &::placeholder {
-    color: rgba($color-ink, 0.6);
+    color: $color-muted;
     text-transform: uppercase;
   }
 
@@ -280,7 +280,7 @@
   line-height: 1.15;
 
   small {
-    font-family: $font-heading;
+    font-family: $font-label;
     font-weight: 600;
     font-size: $fs-xs;
     letter-spacing: 0.02em;
@@ -501,7 +501,7 @@
 }
 
 .testimonial__attr {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-md;
   line-height: 1.8;

@@ -13,12 +13,12 @@
 }
 
 .post-header__meta {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-xs;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba($color-ink, 0.65);
+  color: $color-muted;
   margin: 0 0 $space-4;
 }
 
