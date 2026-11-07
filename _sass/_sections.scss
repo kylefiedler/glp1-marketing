@@ -483,7 +483,7 @@
 
 .testimonials {
   background: $color-sand;
-  padding: $space-9 $space-5 0;
+  padding: $space-9 $space-5 $space-6;
   position: relative;
   overflow: hidden;
 }
@@ -494,20 +494,63 @@
   position: relative;
 }
 
-.testimonials__grid {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 $space-7;
-  padding-left: 82px;          // live sets the first column 82px in
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 412px));
-  justify-content: start;
-  gap: $space-7 141px;         // second column lands at 635px
+// One scrolling row: two reviews per view on desktop, one plus a peek on
+// phones. Arrows (assets/js/testimonials.js) sit in the side gutters.
+.testimonials__carousel {
   position: relative;
   z-index: 2;
+  padding: 0 72px;
+  margin: 0 0 $space-7;
+}
+
+.testimonials__track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: $space-8;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+  &:focus-visible { outline: 2px solid $color-accent; outline-offset: 8px; }
+}
+
+.testimonials__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 2px solid $color-accent;
+  border-radius: 50%;
+  background: transparent;
+  color: $color-accent;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, opacity 120ms ease;
+
+  svg { width: 22px; height: 22px; }
+
+  &:hover:not(:disabled) { background: $color-accent; color: $color-bg; }
+  &:disabled { opacity: 0.3; cursor: default; }
+}
+.testimonials__nav--prev { left: 0; }
+.testimonials__nav--next { right: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials__track { scroll-behavior: auto; }
 }
 
 .testimonial {
+  flex: 0 0 calc((100% - #{$space-8}) / 2);
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   gap: $space-3;
@@ -532,6 +575,22 @@
   margin: 0;
 }
 
+// Wavy bottom edge in the peach of the guides banner that follows the
+// reviews on every page, so the wordmark rises out of the same band.
+.testimonials__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 2;
+  height: 60px;
+  line-height: 0;
+  color: $color-peach;
+  pointer-events: none;
+
+  svg { width: 100%; height: 100%; display: block; }
+}
+
 .testimonials__wordmark {
   font-family: $font-display;
   font-weight: 500;
@@ -548,20 +607,12 @@
   white-space: nowrap;
 }
 
-@media (max-width: $bp-lg) {
-  .testimonials__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding-left: 0;
-    column-gap: $space-7;
-  }
-}
-
 @media (max-width: $bp-md) {
-  .testimonials__grid {
-    grid-template-columns: 1fr;
-    padding-left: 0;
-    gap: $space-6;
-  }
+  .testimonials__carousel { padding: 0; }
+  .testimonials__track    { gap: $space-5; }
+  .testimonial            { flex-basis: 85%; }
+  .testimonials__nav      { display: none; }
+
   // Live wraps the wordmark onto two lines on mobile rather than cropping it.
   .testimonials__wordmark {
     line-height: 0.9;
