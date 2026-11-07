@@ -104,7 +104,7 @@
   margin-left: -100px;
   color: $color-peach;
   z-index: 4;
-  animation: decor-spin-ccw 24s linear infinite;
+  animation: decor-spin-ccw 48s linear infinite;
 }
 
 @keyframes decor-spin-ccw {
@@ -234,7 +234,7 @@
   width: 153px;
   color: $color-peach;
   z-index: 1;
-  animation: decor-spin-ccw 24s linear infinite;
+  animation: decor-spin-ccw 48s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -350,7 +350,7 @@
   width: 226px;
   color: $color-peach;
   z-index: 4; // live stacks it over the photo, not behind it
-  animation: decor-spin 28s linear infinite;
+  animation: decor-spin 56s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -519,7 +519,7 @@
   width: 189px;
   color: $color-peach;
   z-index: 1;
-  animation: decor-spin 28s linear infinite;
+  animation: decor-spin 56s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -670,7 +670,7 @@
   width: 224px;
   color: $color-peach;
   z-index: 2;
-  animation: decor-spin-ccw 24s linear infinite;
+  animation: decor-spin-ccw 48s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
