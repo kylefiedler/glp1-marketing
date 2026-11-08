@@ -29,7 +29,7 @@
   right: 0;
   bottom: calc(100% - 1px);
   z-index: 3;
-  line-height: 0;
+  line-height: 0; // type-exception: collapses the inline gap around the wave svg
   pointer-events: none;
 
   svg {

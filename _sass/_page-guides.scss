@@ -116,11 +116,11 @@
 
 .guides-bundle__price .price-bubble__text {
   font-size: 38px; // type-exception: price numerals sized to the starburst artwork
-  line-height: 1.2;
+  line-height: 1.2; // type-exception: price numerals sized to the starburst artwork
 
   small {
     font-size: $fs-md; // type-exception: price caption sized to the starburst artwork
-    line-height: 1.1;
+    line-height: 1.1; // type-exception: price caption sized to the starburst artwork
     letter-spacing: 0.1em; // type-exception: price caption sized to the starburst artwork
   }
 }
@@ -326,7 +326,7 @@
 .guide-row__price .price-bubble__text,
 .guide-mini__price .price-bubble__text {
   font-size: 38px; // type-exception: price numerals sized to the starburst artwork
-  line-height: 1.2;
+  line-height: 1.2; // type-exception: price numerals sized to the starburst artwork
 }
 
 .guide-row__name {

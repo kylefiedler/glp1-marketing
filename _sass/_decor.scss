@@ -11,7 +11,7 @@
 
 .decor {
   display: block;
-  line-height: 0;
+  line-height: 0; // type-exception: collapses the inline gap around the artwork
   pointer-events: none;
 
   > svg {

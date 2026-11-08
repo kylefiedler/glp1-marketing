@@ -48,7 +48,7 @@
 // Apple's badge artwork must stay unmodified; only its size changes.
 .app-store-badge {
   display: inline-block;
-  line-height: 0;
+  line-height: 0; // type-exception: collapses the inline gap around the badge image
 
   img { height: 54px; width: auto; }
 }

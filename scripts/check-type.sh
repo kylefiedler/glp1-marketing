@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
 # Keeps type on the roles in _sass/_type.scss. Fails on any font-size,
-# font-family, font-weight, letter-spacing, text-transform or font shorthand
-# line in _sass (outside _tokens.scss and _type.scss) without a trailing
-# `// type-exception: <reason>` comment. Text styles belong in an
-# `@include type-*` role; only ornament and UI type is an exception.
+# font-family, font-weight, font-style, line-height, letter-spacing,
+# text-transform or font shorthand line in _sass (outside _tokens.scss and
+# _type.scss) without a trailing `// type-exception: <reason>` comment. Text
+# styles belong in an `@include type-*` role; only ornament, UI and layout
+# type is an exception.
 # The check is line-based: keep each declaration on one line.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
+if [ ! -d _sass ]; then
+  echo "::error::Type check could not find _sass."
+  exit 2
+fi
+
 status=0
 matches=$(grep -rnE --include='*.scss' --exclude='_tokens.scss' --exclude='_type.scss' \
-  '(^|[{;[:space:]])(font-size|font-family|font-weight|letter-spacing|text-transform|font)[[:space:]]*:' \
+  '(^|[{;[:space:]])(font-size|font-family|font-weight|font-style|line-height|letter-spacing|text-transform|font)[[:space:]]*:' \
   _sass) || status=$?
 if [ "$status" -gt 1 ]; then
   echo "::error::Type check could not read _sass."

@@ -145,7 +145,6 @@
   color: $color-ink;
   max-width: 46ch;
 
-  em { font-style: italic; }
 }
 
 .nl-band__form { min-width: 0; }
@@ -220,7 +219,7 @@
   font-family: $font-display; // type-exception: price numerals sized to the bubble artwork
   font-weight: 700; // type-exception: price numerals
   color: $color-bg;
-  line-height: 1.15;
+  line-height: 1.15; // type-exception: price numerals
 
   small {
     font-family: $font-label; // type-exception: fits the fixed-width bubble
@@ -494,7 +493,7 @@
   font-family: $font-display; // type-exception: decorative wordmark
   font-weight: 500; // type-exception: decorative wordmark
   font-size: clamp(55px, 9.24vw, 133px); // type-exception: decorative wordmark sized to the band
-  line-height: 1;
+  line-height: 1; // type-exception: decorative wordmark
   text-align: center;
   color: $color-peach;
   margin: 0;
@@ -513,7 +512,7 @@
 
   // Live wraps the wordmark onto two lines on mobile rather than cropping it.
   .testimonials__wordmark {
-    line-height: 0.9;
+    line-height: 0.9; // type-exception: decorative wordmark
     white-space: normal;
   }
 }
