@@ -8,10 +8,23 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-raw=$(grep -nE '(padding|margin|gap|max-width)[a-z-]*:[^;]*[0-9]+px' _sass/*.scss \
-  | grep -v '_sass/_tokens.scss' \
+if [ ! -d _sass ]; then
+  echo "::error::Spacing check could not find _sass."
+  exit 2
+fi
+
+status=0
+matches=$(grep -rnE --include='*.scss' --exclude='_tokens.scss' \
+  '(padding|margin|gap|max-width)[a-z-]*:[^;]*[0-9]+px' _sass) || status=$?
+if [ "$status" -gt 1 ]; then
+  echo "::error::Spacing check could not read _sass."
+  exit "$status"
+fi
+
+raw=$(printf '%s\n' "$matches" \
   | grep -v '@media' \
-  | grep -vE 'geometry:|rhythm-exception:' || true)
+  | grep -vE 'geometry:|rhythm-exception:' \
+  | grep -v '^$' || true)
 
 if [ -n "$raw" ]; then
   echo "::error::Raw px spacing in _sass. Use a \$grid-* step or a rhythm role, or add an inline // geometry: or // rhythm-exception: comment (with a reason) on the same line."
