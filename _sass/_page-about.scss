@@ -5,12 +5,6 @@
 // The hero keeps the .page-hero class purely so _nav.scss's body:has() rule
 // still overlays the header in light-on-color; everything else is overridden.
 
-%about-stage {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
-
 // ===== Hero (peach band: photo right, white card overlapping it) =====
 
 // rhythm-exception: photo-and-card composition fills the band edge to edge.
@@ -22,7 +16,7 @@
 }
 
 .about-hero__inner {
-  @extend %about-stage;
+  position: relative;
   min-height: 750px;
 }
 
@@ -54,7 +48,7 @@
   z-index: 2;
   background: $color-bg;
   border-radius: 39px;
-  padding: 64px 39px 48px 36px;
+  padding: $grid-8 $grid-5 $grid-6 $grid-5;
   text-align: right;
 }
 
@@ -65,7 +59,7 @@
   line-height: 1;
   letter-spacing: 0;
   color: $color-accent;
-  margin: 0 0 26px;
+  margin: 0 0 $grid-3;
 }
 
 .about-hero__lede {
@@ -94,9 +88,9 @@
     top: auto;
     width: auto;
     min-height: 0;
-    margin: -52px $space-4 $space-7;
+    margin: -52px $grid-2 $grid-6; // geometry: card overlaps the photo above it
     border-radius: 16px;
-    padding: $space-6 $space-5;
+    padding: $grid-4 $grid-3;
   }
   .about-hero__title { font-size: 34px; }
 }
@@ -109,6 +103,9 @@
 // ===== Statement (hot-pink band, squiggle up top, two photos cropped
 // by the band's bottom edge) =====
 
+// rhythm-exception: on desktop the heading, lede and photos are absolutely
+// placed in a fixed 1136px stage, so the band has no vertical padding of its
+// own. Below lg it returns to the shell.
 .about-statement {
   position: relative;
   background: $color-accent;
@@ -118,7 +115,7 @@
 }
 
 .about-statement__inner {
-  @extend %about-stage;
+  position: relative;
   height: 1136px;
   text-align: center;
 }
@@ -158,7 +155,7 @@
 }
 
 .about-statement__media {
-  @extend %about-stage;
+  position: relative;
   height: 0;
 }
 
@@ -188,17 +185,18 @@
 }
 
 @media (max-width: $bp-lg) {
-  .about-statement { min-height: 0; padding-bottom: $space-8; }
-  .about-statement__inner {
-    height: auto;
-    padding: $space-8 $space-5 $space-7;
+  .about-statement {
+    min-height: 0;
+    padding: var(--section-pad) var(--gutter);
+    padding-bottom: calc(var(--section-pad) + var(--wave-below));
   }
+  .about-statement__inner { height: auto; }
   .about-statement__squiggle {
     position: relative;
     left: auto;
     top: auto;
     width: 225px;
-    margin: 0 auto $space-6;
+    margin: 0 auto $grid-4;
   }
   .about-statement__heading,
   .about-statement__lede {
@@ -207,12 +205,9 @@
     top: auto;
     width: auto;
   }
-  .about-statement__heading { font-size: 27px; margin-bottom: $space-5; }
+  .about-statement__heading { font-size: 27px; margin-bottom: $grid-3; }
 
-  .about-statement__media {
-    height: 340px;
-    padding: 0 $space-4;
-  }
+  .about-statement__media { height: 340px; }
   .about-statement__photo--back {
     left: auto;
     right: 4%;
@@ -232,14 +227,12 @@
 
 .about-story {
   background: $color-blush;
-  padding: 48px $space-5 44px;
 }
 
 .about-story__inner {
-  @extend %about-stage;
   // Live hand-places the story columns 90px in from the canvas's left edge
   // and 24px in from its right.
-  padding: 0 24px 0 90px;
+  padding: 0 24px 0 90px; // geometry: text offset against the artwork
 }
 
 .about-story__heading {
@@ -249,7 +242,7 @@
   line-height: 1.1;
   letter-spacing: 0;
   color: $color-ink;
-  margin: 0 0 $space-6 87px;  // heading sits 177px into the 1200 canvas
+  margin-left: 87px; // geometry: heading sits 177px into the 1200 canvas
   max-width: 776px;
 }
 
@@ -258,25 +251,24 @@
   // minmax(0, 1fr) so the wider-than-column photos overhang instead of
   // pushing the second column off live's 657px gridline.
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 48px;
-  row-gap: $space-7;
+  column-gap: $grid-6; // geometry: second column stays on live's 657px gridline
+  row-gap: var(--stack-gap);
   align-items: start;
-  margin-bottom: $space-7;
+  margin-bottom: var(--stack-gap);
 
   &:last-child { margin-bottom: 0; }
 }
 
-.about-story__copy p {
+.about-story__copy {
   font-family: $font-body;
   font-size: $fs-sm;
   line-height: $lh-body;
   color: $color-ink;
-  margin: 0 0 $space-5;
+}
 
+.about-story__copy p {
   em { font-style: italic; }
   strong { font-weight: 700; }
-
-  &:last-child { margin-bottom: 0; }
 }
 
 // Pink wave-thin rule that opens most of the copy columns.
@@ -284,23 +276,21 @@
   width: 391px;
   max-width: 100%;
   color: $color-accent;
-  margin: 0 0 38px;
+  margin: 0 0 var(--title-gap);
 }
 
 .about-story__pullquote {
-  font-family: $font-label !important;
+  font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-md !important;
-  line-height: 1.8 !important;
+  font-size: $fs-md;
+  line-height: 1.8;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: $color-ink;
-  margin: 0 0 $space-5 !important;
 }
 
 .about-story__signoff {
   font-family: $font-body;
-  margin-top: $space-5;
 }
 
 .about-story__figure {
@@ -321,34 +311,34 @@
   .about-story__figure {
     width: 481px;
     justify-self: end;
-    margin-top: -37px;
+    margin-top: -37px; // geometry: photo rides up against the copy
     img { aspect-ratio: 481 / 509; }
   }
-  .about-story__squiggle { margin-left: 155px; }  // live puts it at 245px
+  .about-story__squiggle { margin-left: 155px; } // geometry: live puts it at 245px
 }
 
 .about-story__row:nth-of-type(2) .about-story__squiggle {
-  margin-left: -25px;  // live nudges it left of the column at 632px
+  margin-left: -25px; // geometry: live nudges it left of the column at 632px
 }
 
 .about-story__row:nth-of-type(3) .about-story__figure {
   width: 574px;
   justify-self: start;
-  margin-left: -37px;  // live runs it out to 53px, left of the copy column
+  margin-left: -37px; // geometry: live runs it out to 53px, left of the copy column
   img { aspect-ratio: 574 / 579; }
 }
 
 .about-story__row:nth-of-type(4) .about-story__figure {
   width: 521px;
   justify-self: start;
-  margin: -64px 0 0 -30px;
+  margin: -64px 0 0 -30px; // geometry: photo overhangs its column
   img { aspect-ratio: 521 / 617; }
 }
 
 @media (max-width: $bp-lg) {
   .about-story__heading { font-size: 42px; margin-left: 0; }
   .about-story__inner { padding: 0; }
-  .about-story__row { column-gap: $space-6; }
+  .about-story__row { column-gap: $grid-4; }
   // :nth-of-type(n) keeps specificity level with the per-row rules above.
   .about-story__row:nth-of-type(n) {
     .about-story__figure { width: auto; margin: 0; }
@@ -358,13 +348,8 @@
 }
 
 @media (max-width: $bp-md) {
-  .about-story { padding: $space-7 $space-5; }
   .about-story__heading { font-size: 36px; }
-  .about-story__row {
-    grid-template-columns: 1fr;
-    row-gap: $space-6;
-    margin-bottom: $space-6;
-  }
+  .about-story__row { grid-template-columns: 1fr; }
   .about-story__row--reverse .about-story__figure { order: 2; }
   .about-story__figure img { border-radius: 20px; }
   .about-story__squiggle { width: 225px; }
