@@ -4,25 +4,7 @@
 //   → be-real (blush) → form (peach) → faq (white) → services (blush)
 //   → guides-banner → journal-banner → newsletter band
 //
-// Type roles (Showit layout, typefaces aligned with the GLP-1 Journal app):
-//   title      Unbounded 500 / 63px / lh 1.1  ($font-display)
-//   heading    Unbounded 500 / 38px / lh 1.2  ($font-display)
-//   subheading DM Sans 600 / 18px / uppercase / 0.1em  ($font-label)
-//   paragraph  DM Sans 400 / 16px / lh 1.6  ($font-body)
-
-// The uppercase "subheading" — the workhorse label used for
-// eyebrows, feature names and the punchy one-liners between paragraphs.
-%coaching-subheading {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-sm;
-  line-height: $lh-snug;
-  letter-spacing: calc(0.1em + 1px);
-  text-transform: uppercase;
-  color: $color-ink;
-
-  @media (max-width: $bp-md) { font-size: 12px; }
-}
+// Type comes from the roles in _type.scss; this file only sets color and layout.
 
 // Live boxes the wave-thin rules taller than the shape but leaves the SVG's
 // aspect intact (the graphic letterboxes inside), so size on width alone.
@@ -44,11 +26,7 @@
   padding-bottom: 0;
 }
 
-// The coaching hero eyebrow matches the coaching subheading size.
-.coaching-hero__eyebrow { font-size: $fs-sm; }
-
 .coaching-hero__title {
-  font-size: 57px;
   max-width: 20ch;
 }
 
@@ -111,14 +89,10 @@
 }
 
 @media (max-width: $bp-lg) {
-  .coaching-hero__title { font-size: 42px; }
   .coaching-hero__badge { width: 140px; right: 2%; bottom: -50px; }
 }
 
 @media (max-width: $bp-md) {
-  .coaching-hero__eyebrow { font-size: 12px; }
-  .coaching-hero__title   { font-size: 24px; }
-
   // The coaching hero leads with the small eyebrow, so pull the shared hero
   // asterisk up and in so it stops crossing that line.
   .coaching-hero .page-hero__decor--asterisk { width: 72px; top: 24px; left: -4%; }
@@ -150,11 +124,7 @@
 }
 
 .coaching-truth__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 38px;
-  line-height: 1.2;
-  letter-spacing: 0;
+  @include type-section;
   color: $color-ink;
   margin: 0 0 $grid-2;
   max-width: 24ch;
@@ -167,16 +137,15 @@
 }
 
 .coaching-truth p {
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  @include type-body;
   color: $color-ink;
 }
 
 // "MOST PEOPLE DON'T HAVE A PLAN FOR THAT." / "THAT'S EXACTLY WHY I CREATED
 // THIS." are uppercase labels on live, not display headings.
 .coaching-truth p.coaching-truth__punch {
-  @extend %coaching-subheading;
+  @include type-label;
+  color: $color-ink;
 }
 
 .coaching-truth__media {
@@ -202,14 +171,9 @@
   z-index: 2;
 }
 
-@media (max-width: $bp-lg) {
-  .coaching-truth__heading { font-size: 30px; }
-}
-
 @media (max-width: $bp-md) {
   .coaching-truth__inner   { grid-template-columns: 1fr; }
   .coaching-truth__media   { margin-top: var(--stack-gap); }
-  .coaching-truth__heading { font-size: 20px; }
 
   .coaching-truth__squiggle { left: -10px; top: -20px; width: 105px; }
 }
@@ -242,11 +206,7 @@
 }
 
 .coaching-features__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 38px;
-  line-height: 1.1;
-  letter-spacing: 0;
+  @include type-section;
   color: $color-ink;
   max-width: $content-narrow;
 }
@@ -272,26 +232,23 @@
 
 .coaching-feature {
   h3 {
-    @extend %coaching-subheading;
+    @include type-label;
+    color: $color-ink;
     margin: 0 0 $grid-1;
   }
 
   ul {
-    padding-left: $grid-3;
+    @include list-bullet;
+    @include type-body;
     margin: 0;
     color: $color-ink;
-    font-family: $font-body;
-    font-size: $fs-sm;
-    line-height: $lh-body;
 
     li { margin-bottom: $grid-1; }
   }
 }
 
 .coaching-feature__sub {
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  @include type-body;
   color: $color-ink;
   margin: 0 0 $grid-2;
 }
@@ -313,13 +270,11 @@
 }
 
 @media (max-width: $bp-lg) {
-  .coaching-features__heading { font-size: 30px; }
   .coaching-features__star    { width: 110px; left: 2%; top: -50px; }
 }
 
 @media (max-width: $bp-md) {
   .coaching-features__grid    { grid-template-columns: 1fr; }
-  .coaching-features__heading { font-size: 29px; }
   .coaching-features__media   { grid-template-columns: 1fr; }
   .coaching-features__star    { width: 90px; opacity: 0.8; }
   .coaching-features__heading { padding-left: 0; padding-top: $grid-6; } // geometry: clears the star
@@ -365,43 +320,25 @@
 }
 
 .coaching-fit__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 38px;
-  line-height: 1.2;
-  letter-spacing: 0;
+  @include type-section;
   color: $color-ink;
 }
 
 .coaching-fit__list {
-  list-style: none;
-  padding: 0;
+  @include list-flower;
   margin: 0;
   display: grid;
   gap: $grid-2;
 }
 
 .coaching-fit__list li {
-  display: grid;
-  grid-template-columns: 25px 1fr;
-  gap: $grid-2;
-  align-items: start;
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  @include type-body;
   color: $color-ink;
-}
-
-.coaching-fit__bullet {
-  width: 25px;
-  color: $color-accent;
-  margin-top: 2px; // geometry: optical alignment with the first line
 }
 
 @media (max-width: $bp-md) {
   .coaching-fit__inner    { grid-template-columns: 1fr; }
   .coaching-fit__asterisk { width: 64px; left: 0; top: -22px; }
-  .coaching-fit__heading  { font-size: 24px; }
 }
 
 // ===== About / Why me =====
@@ -411,16 +348,13 @@
 }
 
 .coaching-about__eyebrow {
-  @extend %coaching-subheading;
+  @include type-eyebrow;
+  color: $color-ink;
   margin: 0 0 $grid-1;
 }
 
 .coaching-about__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 38px;
-  line-height: 1.2;
-  letter-spacing: 0;
+  @include type-section;
   color: $color-ink;
   margin: 0;
   max-width: $content-narrow;
@@ -444,25 +378,22 @@
 
 .coaching-about__copy {
   h3 {
-    @extend %coaching-subheading;
+    @include type-label;
+    color: $color-ink;
     margin: $grid-4 0 $grid-2;
   }
 
   ul {
-    padding-left: $grid-3;
+    @include list-bullet;
+    @include type-body;
     margin: 0;
     color: $color-ink;
-    font-family: $font-body;
-    font-size: $fs-sm;
-    line-height: $lh-body;
 
     li { margin-bottom: $grid-1; }
   }
 
   p {
-    font-family: $font-body;
-    font-size: $fs-sm;
-    line-height: $lh-body;
+    @include type-body;
     color: $color-ink;
     margin: 0 0 $grid-2;
   }
@@ -480,14 +411,9 @@
 .coaching-about__row .coaching-about__media img { aspect-ratio: 497 / 626; }
 .coaching-about__row--flip .coaching-about__media img { aspect-ratio: 541 / 489; }
 
-@media (max-width: $bp-lg) {
-  .coaching-about__heading { font-size: 30px; }
-}
-
 @media (max-width: $bp-md) {
   .coaching-about__row     { grid-template-columns: 1fr; }
   .coaching-about__row--flip .coaching-about__media { order: -1; }
-  .coaching-about__heading { font-size: 20px; }
 }
 
 // ===== Program details =====
@@ -519,24 +445,19 @@
 }
 
 .coaching-program__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 63px;
-  line-height: 1.1;
-  letter-spacing: 0;
+  @include type-section;
   color: $color-ink;
 }
 
 .coaching-program__duration {
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  @include type-body;
   color: $color-ink;
   margin: 0 0 var(--stack-gap);
 }
 
 .coaching-program__label {
-  @extend %coaching-subheading;
+  @include type-label;
+  color: $color-ink;
   margin-right: $grid-2;
 }
 
@@ -547,17 +468,16 @@
   margin-bottom: $grid-4;
 
   h3 {
-    @extend %coaching-subheading;
+    @include type-label;
+    color: $color-ink;
     margin: 0 0 $grid-2;
   }
 
   ul {
-    padding-left: $grid-3;
+    @include list-bullet;
+    @include type-body;
     margin: 0;
     color: $color-ink;
-    font-family: $font-body;
-    font-size: $fs-sm;
-    line-height: $lh-body;
 
     li { margin-bottom: $grid-1; }
   }
@@ -570,17 +490,16 @@
   align-items: start;
 
   h3 {
-    @extend %coaching-subheading;
+    @include type-label;
+    color: $color-ink;
     margin: 0 0 $grid-2;
   }
 
   ul {
-    padding-left: $grid-3;
+    @include list-bullet;
+    @include type-body;
     margin: 0;
     color: $color-ink;
-    font-family: $font-body;
-    font-size: $fs-sm;
-    line-height: $lh-body;
 
     li { margin-bottom: $grid-1; }
   }
@@ -601,12 +520,10 @@
 }
 
 @media (max-width: $bp-lg) {
-  .coaching-program__heading { font-size: 44px; }
   .coaching-program__asterisk { width: 120px; }
 }
 
 @media (max-width: $bp-md) {
-  .coaching-program__heading  { font-size: 36px; }
   .coaching-program__cols     { grid-template-columns: 1fr; }
   .coaching-program__outcome  { grid-template-columns: 1fr; }
   .coaching-program__asterisk { width: 64px; right: 4%; top: 16px; }
@@ -626,16 +543,12 @@
 }
 
 .coaching-investment__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 38px;
-  line-height: 1.2;
-  letter-spacing: 0;
+  @include type-section;
   color: $color-bg;
 }
 
 .coaching-investment__note {
-  @extend %coaching-subheading;
+  @include type-label;
   color: $color-bg;
   margin: 0 auto;
   max-width: 682px;
@@ -656,13 +569,10 @@
 }
 
 @media (max-width: $bp-lg) {
-  .coaching-investment__heading { font-size: 30px; }
   .coaching-investment__star    { width: 140px; }
 }
 
 @media (max-width: $bp-md) {
-  .coaching-investment__heading { font-size: 20px; }
-
   .coaching-investment__star    { width: 83px; left: auto; right: 4%; top: -30px; }
 }
 
@@ -695,36 +605,27 @@
 }
 
 .coaching-be-real__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 38px;
-  line-height: 1.2;
-  letter-spacing: 0;
+  @include type-section;
   color: $color-ink;
 }
 
 .coaching-be-real p {
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  @include type-body;
   color: $color-ink;
 }
 
 .coaching-be-real p.coaching-be-real__punch {
-  @extend %coaching-subheading;
-  line-height: 1.6;
+  @include type-label;
+  color: $color-ink;
 }
 
 @media (max-width: $bp-lg) {
-  .coaching-be-real__heading { font-size: 30px; }
   .coaching-be-real__media   { margin-left: calc(-1 * #{$grid-4}); } // geometry: photo bleed
 }
 
 @media (max-width: $bp-md) {
   .coaching-be-real__inner   { grid-template-columns: 1fr; }
   .coaching-be-real__media   { margin-left: 0; }
-  .coaching-be-real__heading { font-size: 20px; }
-
 }
 
 // ===== Apply (peach application form) =====
@@ -758,18 +659,12 @@
 }
 
 .coaching-apply__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 63px;
-  line-height: 1.1;
-  letter-spacing: 0;
+  @include type-section;
   color: $color-accent;
 }
 
 .coaching-apply__copy p {
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  @include type-body;
   color: $color-ink;
   margin: 0;
 }
@@ -783,9 +678,9 @@
 .coaching-apply__field textarea {
   width: 100%;
   padding: $grid-2;
-  font-family: $font-body;
-  font-size: 13px;
-  letter-spacing: 0.05em;
+  font-family: $font-body; // type-exception: form control
+  font-size: 13px; // type-exception: form control
+  letter-spacing: 0.05em; // type-exception: form control
   color: $color-ink;
   background: $color-bg;
   border: 0;
@@ -812,13 +707,11 @@
 }
 
 @media (max-width: $bp-lg) {
-  .coaching-apply__heading  { font-size: 44px; }
   .coaching-apply__squiggle { left: 30%; width: 200px; }
 }
 
 @media (max-width: $bp-md) {
   .coaching-apply__inner    { grid-template-columns: 1fr; }
-  .coaching-apply__heading  { font-size: 36px; }
   .coaching-apply__squiggle { left: 31%; }
   .coaching-apply__submit   { justify-self: stretch; }
 }
@@ -829,51 +722,13 @@
   background: $color-bg;
 }
 
-// Live sets the FAQ title in peach at the full title size.
 .coaching-faq__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 63px;
-  line-height: 1.1;
-  letter-spacing: 0;
+  @include type-section;
   color: $color-peach;
   text-align: center;
 }
 
-// Questions are the 38px Unbounded heading on live, not the global
-// heading-font summary style.
 .coaching-faq summary {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: 38px;
-  line-height: 1.2;
-  align-items: flex-start;
-}
-
-@media (max-width: $bp-lg) {
-  .coaching-faq__heading { font-size: 44px; }
-  .coaching-faq summary  { font-size: 28px; }
-}
-
-@media (max-width: $bp-md) {
-  .coaching-faq__heading { font-size: 36px; }
-  .coaching-faq summary  { font-size: 20px; }
-}
-
-// ===== Mobile body copy =====
-// Live drops the paragraph role from 16px to 14px below its 768px break.
-
-@media (max-width: $bp-md) {
-  .coaching-truth p,
-  .coaching-feature ul,
-  .coaching-feature__sub,
-  .coaching-fit__list li,
-  .coaching-about__copy p,
-  .coaching-about__copy ul,
-  .coaching-program__duration,
-  .coaching-program__cols ul,
-  .coaching-program__outcome ul,
-  .coaching-be-real p,
-  .coaching-apply__copy p { font-size: $fs-xs; }
-
+  @include type-faq;
+  align-items: flex-start; // keep the toggle on the first line when a question wraps
 }
