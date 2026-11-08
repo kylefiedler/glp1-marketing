@@ -1,4 +1,4 @@
-// Guides page — shares the .home-hero hot-pink pattern via a joint class
+// Guides page — shares the .page-hero hot-pink pattern via a joint class
 // on .guides-hero. Rest is guides-specific.
 //
 // Geometry and type below are taken from the live page's 1200px Showit
@@ -35,13 +35,9 @@
 // Live's guides hero runs bigger than home's: 77px title (home is 63px) over
 // a 596px band, with the cover fan hanging off the bottom edge.
 
-.guides-hero {
-  padding: 108px $space-5 113px;
-}
+.guides-hero .page-hero__inner { max-width: 1088px; }
 
-.guides-hero .home-hero__inner { max-width: 1088px; }
-
-.guides-hero .home-hero__title {
+.guides-hero .page-hero__title {
   font-size: 77px;
   line-height: 1.1;
   letter-spacing: 0;
@@ -57,12 +53,10 @@
 }
 
 @media (max-width: $bp-lg) {
-  .guides-hero { padding: 80px $space-5 96px; }
-  .guides-hero .home-hero__title { font-size: 52px; }
+  .guides-hero .page-hero__title { font-size: 52px; }
 }
 @media (max-width: $bp-md) {
-  .guides-hero { padding: 96px $space-4 80px; }
-  .guides-hero .home-hero__title { font-size: 24px; }
+  .guides-hero .page-hero__title { font-size: 24px; }
   .guides-hero__eyebrow { font-size: 12px; }
 }
 

@@ -41,8 +41,13 @@
 
 // The app draws ripple 28pt and swell 22pt tall on a phone; desktop grows to
 // a cap so the curve keeps roughly the same gentle proportion.
-.wave--ripple { height: clamp(28px, 3.9vw, 56px); }
-.wave--swell  { height: clamp(22px, 3.05vw, 44px); }
+:root {
+  --wave-ripple-h: clamp(28px, 3.9vw, 56px);
+  --wave-swell-h:  clamp(22px, 3.05vw, 44px);
+}
+
+.wave--ripple { height: var(--wave-ripple-h); }
+.wave--swell  { height: var(--wave-swell-h); }
 
 .wave--pink  { color: $color-accent; }
 .wave--peach { color: $color-peach; }

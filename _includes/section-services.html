@@ -12,11 +12,11 @@
     class   (optional) — extra modifier(s), e.g. "services--left"
 {%- endcomment -%}
 
-<section class="services{% if include.class %} {{ include.class }}{% endif %}">
+<section class="section services{% if include.class %} {{ include.class }}{% endif %}">
   {% include wave.html shape="swell" fill="blush" %}
-  <div class="services__inner">
+  <div class="section__inner">
     {%- if include.heading %}
-    <h2 class="services__heading">{{ include.heading }}</h2>
+    <h2 class="services__heading section__title">{{ include.heading }}</h2>
     {%- endif %}
     <ul class="services__grid">
       {%- assign service_items = include.items | split: "||" -%}
@@ -28,7 +28,7 @@
           </span>
           <h3 class="service__heading">{{ parts[0] }}</h3>
           <p class="service__copy">{{ parts[1] }}</p>
-          <p class="service__cta"><a class="btn btn--primary" href="{{ parts[2] | relative_url }}">Learn more</a></p>
+          <p class="service__cta section__cta"><a class="btn btn--primary" href="{{ parts[2] | relative_url }}">Learn more</a></p>
         </li>
       {%- endfor -%}
     </ul>

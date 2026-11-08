@@ -1,0 +1,128 @@
+// Section shell - the one layout every wave-divided band uses. Spacing comes
+// from the rhythm roles in _tokens.scss.
+//
+// Markup:
+//   <section class="section [page-specific BEM class]">
+//     {% include wave.html ... %}
+//     <div class="section__inner [section__inner--narrow]"> ... </div>
+//   </section>
+//   Inside: .section__title on the band's main title, .section__cta on the
+//   element wrapping the call-to-action.
+//
+// Exception markers (grep-able, see .context/plans/site-spacing-rhythm.md):
+//   // geometry:              artwork coordinates, not rhythm
+//   // rhythm-exception: why  a band that deliberately departs from the shell
+
+// ----- Band -----
+
+.section {
+  // Every band is followed by a wave: the footer's ripple, or the next
+  // band's. Ripple is the default; a following swell overrides it below.
+  --wave-below: var(--wave-ripple-h);
+  padding: var(--section-pad) var(--gutter);
+  padding-bottom: calc(var(--section-pad) + var(--wave-below));
+}
+
+// Wave compensation. The next section's wave rises out of its top edge and
+// paints over the bottom of this one, so this band pads its bottom by that
+// wave's height (--wave-below). The visible space under the content then
+// equals --section-pad, whichever wave shape follows. The second selector
+// form steps over one non-section sibling (a scroll trigger, an include's
+// <script>). This rule only sets the variable, so a band that needs its own
+// bottom padding overrides `padding-bottom` with a plain class selector.
+.section:has(+ * > .wave--swell, + :not(section) + * > .wave--swell) {
+  --wave-below: var(--wave-swell-h);
+}
+
+// ----- Content column -----
+
+.section__inner {
+  max-width: $content-width;
+  margin-inline: auto;
+}
+
+.section__inner--narrow { max-width: $content-narrow; }
+
+// ----- Title and CTA rhythm (spacing only; type stays with the section) -----
+
+.section__title { margin: 0 0 var(--title-gap); }
+
+.section__cta { margin: var(--cta-gap) 0 0; }
+
+// ----- Page hero -----
+// Hot-pink header band shared by every page. Markup:
+//   <section class="section page-hero">
+//     <div class="section__inner section__inner--narrow page-hero__inner">
+// The site header overlays it (_nav.scss keys off .page-hero), so it pads its
+// top by --hero-offset.
+
+.page-hero {
+  padding-top: calc(var(--section-pad) + var(--hero-offset));
+  position: relative;
+  background: $color-accent;
+  color: $color-bg;
+  text-align: center;
+}
+
+.page-hero__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.page-hero__title {
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: $color-bg;
+  margin: 0 auto var(--title-gap); // .section__title's gap, centred
+  max-width: 22ch;
+}
+
+.page-hero__eyebrow {
+  font-family: $font-label;
+  font-weight: 600;
+  font-size: $fs-xs;
+  line-height: $lh-snug;
+  letter-spacing: calc(0.06em + 1px);
+  text-transform: uppercase;
+  color: $color-bg;
+  margin: 0 auto var(--title-gap); // eyebrow can lead or follow the title
+  max-width: 60ch;
+}
+
+.page-hero__decor {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.page-hero__decor--asterisk {
+  left: 8%;   // geometry:
+  top: 48%;   // geometry:
+  width: 200px;
+  animation: decor-spin 56s linear infinite;
+}
+
+@media (max-width: $bp-lg) {
+  .page-hero__title { font-size: 44px; }
+  .page-hero__decor--asterisk { width: 140px; left: 3%; } // geometry:
+}
+
+@media (max-width: $bp-md) {
+  .page-hero__title { font-size: 32px; }
+  // Stack each credential on its own line rather than wrapping at a divider.
+  .page-hero__eyebrow span:not(.page-hero__sep) { display: block; }
+  .page-hero__sep, .page-hero__eyebrow br { display: none; }
+  .page-hero__decor--asterisk { width: 90px; opacity: 0.8; top: 8%; } // geometry:
+}
+
+@keyframes decor-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-hero__decor--asterisk { animation: none; }
+}

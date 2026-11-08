@@ -3,20 +3,20 @@
   background: $color-bg;
 }
 
-// On pages whose first section is a colored hero (currently just the home
-// page), overlay the header on top of that hero with light-on-color text.
-body:has(.home-hero) .site-header {
+// On pages whose first section is a colored hero (.page-hero), overlay the
+// header on top of that hero with light-on-color text.
+body:has(.page-hero) .site-header {
   position: absolute;
   inset: 0 0 auto 0;
   background: transparent;
   z-index: 10;
 }
 
-body:has(.home-hero) .site-header__brand {
+body:has(.page-hero) .site-header__brand {
   color: $color-bg;
 }
 
-body:has(.home-hero) .site-nav-toggle-label span {
+body:has(.page-hero) .site-nav-toggle-label span {
   background: $color-bg;
 }
 
@@ -47,8 +47,8 @@ body:has(.home-hero) .site-nav-toggle-label span {
 // pages whose first section is a colored hero.
 .site-header__logo--light { display: none; }
 
-body:has(.home-hero) .site-header__logo--dark  { display: none; }
-body:has(.home-hero) .site-header__logo--light { display: block; }
+body:has(.page-hero) .site-header__logo--dark  { display: none; }
+body:has(.page-hero) .site-header__logo--light { display: block; }
 
 // Hidden checkbox drives overlay open/close.
 .site-nav-toggle {
