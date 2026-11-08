@@ -74,23 +74,14 @@
 }
 
 .page-hero__title {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 56px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  @include type-hero;
   color: $color-bg;
   margin: 0 auto var(--title-gap); // .section__title's gap, centred
   max-width: 22ch;
 }
 
 .page-hero__eyebrow {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-xs;
-  line-height: $lh-snug;
-  letter-spacing: calc(0.06em + 1px);
-  text-transform: uppercase;
+  @include type-eyebrow;
   color: $color-bg;
   margin: 0 auto var(--title-gap); // eyebrow can lead or follow the title
   max-width: 60ch;
@@ -110,12 +101,10 @@
 }
 
 @media (max-width: $bp-lg) {
-  .page-hero__title { font-size: 44px; }
   .page-hero__decor--asterisk { width: 140px; left: 3%; } // geometry:
 }
 
 @media (max-width: $bp-md) {
-  .page-hero__title { font-size: 32px; }
   // Stack each credential on its own line rather than wrapping at a divider.
   .page-hero__eyebrow span:not(.page-hero__sep) { display: block; }
   .page-hero__sep, .page-hero__eyebrow br { display: none; }

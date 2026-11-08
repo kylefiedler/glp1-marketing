@@ -150,10 +150,10 @@ body:has(.page-hero) .site-header__logo--light { display: block; }
   }
 
   a {
-    font-family: $font-display;
-    font-weight: 500;
-    font-size: clamp($fs-3xl, 6vw, 80px);
-    line-height: 1.05;
+    font-family: $font-display; // type-exception: nav overlay display links
+    font-weight: 500; // type-exception: nav overlay display links
+    font-size: clamp($fs-3xl, 6vw, 80px); // type-exception: nav overlay display links
+    line-height: 1.05; // type-exception: nav overlay display links
     color: $color-ink;
     text-decoration: none;
     transition: color 120ms ease;
@@ -178,11 +178,11 @@ body:has(.page-hero) .site-header__logo--light { display: block; }
   }
 
   a {
-    font-family: $font-label;
-    font-weight: 600;
-    font-size: $fs-sm;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    font-family: $font-label; // type-exception: nav overlay secondary links
+    font-weight: 600; // type-exception: nav overlay secondary links
+    font-size: $fs-sm; // type-exception: nav overlay secondary links
+    letter-spacing: 0.18em; // type-exception: nav overlay secondary links
+    text-transform: uppercase; // type-exception: nav overlay secondary links
     color: $color-muted;
     text-decoration: none;
     transition: color 120ms ease;
@@ -241,7 +241,7 @@ body:has(.page-hero) .site-header__logo--light { display: block; }
   }
 
   .site-nav-overlay__primary a {
-    font-size: clamp(40px, 12vw, 64px);
+    font-size: clamp(40px, 12vw, 64px); // type-exception: nav overlay display links
   }
 
   .site-nav-overlay__close {

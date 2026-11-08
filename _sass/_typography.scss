@@ -1,45 +1,31 @@
 body {
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  @include type-body;
   color: $color-ink;
   background-color: $color-bg;
 }
 
 h1 {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: $fs-3xl;
-  line-height: $lh-tight;
+  @include type-hero;
   color: $color-ink;
 }
 
 h2 {
-  font-family: $font-heading;
-  font-weight: 700;
-  font-size: $fs-2xl;
-  line-height: $lh-snug;
+  @include type-section;
   color: $color-ink;
 }
 
 h3 {
-  font-family: $font-heading;
-  font-weight: 700;
-  font-size: $fs-xl;
-  line-height: $lh-snug;
+  @include type-title;
   color: $color-ink;
 }
 
 h4 {
-  font-family: $font-heading;
-  font-weight: 700;
-  font-size: $fs-lg;
-  line-height: $lh-snug;
+  @include type-label;
   color: $color-ink;
 }
 
 p {
-  font-size: $fs-sm;
+  font-size: $fs-sm; // type-exception: Body's size only, so paragraphs keep their container's family and line height
 }
 
 a {
@@ -64,9 +50,7 @@ details:last-of-type {
 summary {
   cursor: pointer;
   list-style: none;
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-md;
+  @include type-faq;
   color: $color-ink;
   display: flex;
   align-items: center;
@@ -80,8 +64,8 @@ summary::-webkit-details-marker {
 
 summary::after {
   content: "+";
-  font-family: $font-heading;
-  font-size: $fs-xl;
+  font-family: $font-heading; // type-exception: glyph, not text
+  font-size: $fs-xl; // type-exception: glyph, fixed whatever the question size
   line-height: 1;
   color: $color-accent;
   transition: transform 200ms ease;
@@ -92,6 +76,7 @@ details[open] summary::after {
 }
 
 details > p {
+  @include type-body;
   margin-top: $space-3;
   color: rgba($color-ink, 0.85);
 }

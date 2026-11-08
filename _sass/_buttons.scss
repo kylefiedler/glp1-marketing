@@ -9,9 +9,9 @@
 .btn {
   display: inline-block;
   padding: $space-3 $space-6;
-  font-family: $font-heading;
-  font-weight: 400;
-  font-size: $fs-sm;
+  font-family: $font-heading; // type-exception: button face
+  font-weight: 400; // type-exception: button face
+  font-size: $fs-sm; // type-exception: button face
   text-decoration: none;
   border-radius: 999px;
   transition: filter 120ms ease, background 120ms ease, color 120ms ease, border-color 120ms ease;
@@ -35,13 +35,13 @@
 
 .btn--lg {
   padding: $space-4 $space-7;
-  font-size: $fs-md;
+  font-size: $fs-md; // type-exception: button face
 }
 
 @media (max-width: $bp-md) {
   .btn--lg {
     padding: $space-4 $space-6;
-    font-size: $fs-sm;
+    font-size: $fs-sm; // type-exception: button face
   }
 }
 
@@ -58,8 +58,7 @@
 .app-store-cta__note {
   display: block;
   margin-top: $space-3;
-  font-family: $font-body;
-  font-size: $fs-xs;
+  @include type-small;
   color: $color-bg;
   opacity: 0.9;
 }
