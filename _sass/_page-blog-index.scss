@@ -8,7 +8,7 @@
   letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-bg;
-  margin: 0 auto $space-4;
+  margin: 0 auto $grid-2;
   opacity: 0.9;
 }
 
@@ -25,15 +25,12 @@
 
 .blog-index__body {
   background: $color-blush;
-  padding: $space-9 $space-5;
 }
 
 .blog-index__body-inner {
-  max-width: 1200px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: $space-8;
+  gap: var(--stack-gap);
   align-items: start;
 }
 
@@ -42,7 +39,7 @@
   padding: 0;
   margin: 0;
   display: grid;
-  gap: $space-6;
+  gap: var(--stack-gap);
 }
 
 .blog-card {
@@ -76,10 +73,10 @@
 }
 
 .blog-card__body {
-  padding: $space-6;
+  padding: $grid-4;
   display: flex;
   flex-direction: column;
-  gap: $space-3;
+  gap: $grid-2;
 }
 
 .blog-card__meta {
@@ -124,20 +121,20 @@
 .blog-index__sidebar {
   background: $color-bg;
   border-radius: 16px;
-  padding: $space-6;
+  padding: $grid-4;
   text-align: center;
   position: sticky;
-  top: $space-6;
+  top: $grid-4;
 }
 
 .blog-index__sidebar-img {
   width: 100%;
-  max-width: 240px;
+  max-width: 240px; // geometry: sidebar portrait size
   height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 50%;
-  margin: 0 auto $space-5;
+  margin: 0 auto $grid-3;
   display: block;
 }
 
@@ -149,7 +146,7 @@
   letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-accent;
-  margin: 0 0 $space-4;
+  margin: 0 0 $grid-2;
 }
 
 .blog-index__sidebar-heading {
@@ -158,7 +155,7 @@
   font-size: 26px;
   line-height: 1.15;
   color: $color-ink;
-  margin: 0 0 $space-4;
+  margin: 0 0 $grid-2;
 }
 
 .blog-index__sidebar p {
@@ -166,12 +163,12 @@
   font-size: $fs-sm;
   line-height: $lh-body;
   color: $color-ink;
-  margin: 0 0 $space-4;
+  margin: 0 0 $grid-2;
 }
 
 @media (max-width: $bp-lg) {
-  .blog-index__body-inner { grid-template-columns: 1fr; gap: $space-7; }
-  .blog-index__sidebar { position: static; max-width: 480px; margin: 0 auto; }
+  .blog-index__body-inner { grid-template-columns: 1fr; }
+  .blog-index__sidebar { position: static; max-width: 480px; margin: 0 auto; } // geometry: sidebar card width
 }
 @media (max-width: $bp-md) {
   .blog-card__link { grid-template-columns: 1fr; }

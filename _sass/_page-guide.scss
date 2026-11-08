@@ -2,11 +2,6 @@
 // guides. The hero keeps the .page-hero class so _nav.scss flips the header
 // to its light-on-pink treatment; everything else is guide-specific.
 
-%guide-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
 // ===== Hero: copy left, cover right =====
 
 .guide-hero {
@@ -15,12 +10,11 @@
 }
 
 .guide-hero__inner {
-  @extend %guide-inner;
   position: relative;
   z-index: 2;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
-  gap: $space-8;
+  gap: var(--stack-gap);
   align-items: center;
 }
 
@@ -31,7 +25,7 @@
   line-height: $lh-snug;
   letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
-  margin: 0 0 $space-3;
+  margin: 0 0 $grid-2;
   opacity: 0.9;
 }
 
@@ -42,7 +36,6 @@
   line-height: 1.1;
   text-transform: uppercase;
   color: $color-bg;
-  margin: 0 0 $space-5;
 }
 
 // Keeps "GLP-1" from splitting at its hyphen on narrow screens.
@@ -55,19 +48,17 @@
   line-height: $lh-snug;
   letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
-  margin: 0 0 $space-6;
+  margin: 0;
   max-width: 48ch;
 
   strong { font-weight: 700; }
 }
 
-.guide-hero__cta { margin: 0; }
-
 .guide-hero__media {
   position: relative;
   justify-self: center;
   width: 100%;
-  max-width: 340px;
+  max-width: 340px; // geometry: cover size
 }
 
 .guide-hero__cover {
@@ -93,11 +84,10 @@
 }
 
 @media (max-width: $bp-md) {
-  .guide-hero { padding: calc(#{$space-9} + 48px) $space-5 $space-9; }
-  .guide-hero__inner { grid-template-columns: 1fr; gap: $space-7; }
+  .guide-hero__inner { grid-template-columns: 1fr; }
   .guide-hero__title { font-size: 32px; }
   .guide-hero__for { font-size: $fs-xs; }
-  .guide-hero__media { max-width: 220px; }
+  .guide-hero__media { max-width: 220px; } // geometry: cover size
   .guide-hero__decor { width: 100px; top: -32px; left: -40px; }
 }
 
@@ -106,17 +96,14 @@
 .guide-detail {
   position: relative;
   background: $color-blush;
-  padding: $space-9 $space-5;
 }
 
 .guide-detail__inner {
-  @extend %guide-inner;
   position: relative;
   z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: $space-8;
-  row-gap: $space-8;
+  gap: var(--stack-gap);
 }
 
 .guide-detail__intro { grid-column: 1 / 2; }
@@ -127,7 +114,6 @@
   font-size: 32px;
   line-height: 1.25;
   color: $color-ink;
-  margin: 0 0 $space-5;
 }
 
 .guide-detail__body p {
@@ -135,7 +121,7 @@
   font-size: $fs-sm;
   line-height: $lh-body;
   color: $color-ink;
-  margin: 0 0 $space-3;
+  margin: 0;
 }
 
 .guide-detail__price {
@@ -152,14 +138,14 @@
   letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   color: $color-ink;
-  margin: 0 0 $space-5;
+  margin: 0 0 $grid-2;
 }
 
 .guide-detail__list {
   margin: 0;
   padding-left: 1.2em;
   display: grid;
-  gap: $space-2;
+  gap: $grid-1;
 
   li {
     font-family: $font-body;
@@ -170,8 +156,6 @@
 }
 
 .guide-detail__cta {
-  margin: $space-7 0 0;
-
   .btn { width: 100%; }
 }
 
@@ -180,7 +164,7 @@
 }
 
 @media (max-width: $bp-md) {
-  .guide-detail__inner { grid-template-columns: 1fr; row-gap: $space-7; }
+  .guide-detail__inner { grid-template-columns: 1fr; }
   .guide-detail__intro,
   .guide-detail__price { grid-column: auto; }
   .guide-detail__headline { font-size: 22px; }

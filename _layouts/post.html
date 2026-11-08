@@ -3,36 +3,38 @@ layout: default
 ---
 {% include header.html %}
 
-<article class="post">
-  <header class="post-header">
-    <div class="post-header__inner">
-      <p class="post-header__meta">
-        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
-        {% if page.author %}<span class="post-header__author"> &middot; by {{ page.author }}</span>{% endif %}
-      </p>
-      <h1 class="post-header__title">{{ page.title }}</h1>
-      {% if page.description %}
-        <p class="post-header__lede">{{ page.description }}</p>
+<main class="post">
+  <header class="section post-header">
+    <div class="section__inner section__inner--narrow">
+      <div class="post-header__inner">
+        <p class="post-header__meta">
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+          {% if page.author %}<span class="post-header__author"> &middot; by {{ page.author }}</span>{% endif %}
+        </p>
+        <h1 class="post-header__title section__title">{{ page.title }}</h1>
+        {% if page.description %}
+          <p class="post-header__lede">{{ page.description }}</p>
+        {% endif %}
+      </div>
+      {% if page.image %}
+        <div class="post-header__hero">
+          <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" loading="eager">
+        </div>
       {% endif %}
     </div>
-    {% if page.image %}
-      <div class="post-header__hero">
-        <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" loading="eager">
-      </div>
-    {% endif %}
   </header>
 
-  <div class="post-body">
+  <article class="section post-body">
     {% include wave.html shape="swell" fill="white" %}
-    <div class="post-body__inner">
+    <div class="section__inner post-body__inner">
       {{ content }}
     </div>
-  </div>
+  </article>
 
-  <aside class="post-more">
+  <aside class="section post-more">
     {% include wave.html fill="blush" %}
-    <div class="post-more__inner">
-      <h2>Keep reading</h2>
+    <div class="section__inner post-more__inner">
+      <h2 class="section__title">Keep reading</h2>
       <ul>
         {%- assign related = site.posts | where_exp: "p", "p.url != page.url" | sample: 3 -%}
         {%- for p in related -%}
@@ -46,10 +48,10 @@ layout: default
       </ul>
     </div>
   </aside>
-</article>
 
-{% include section-guides-banner.html %}
-{% include section-journal-banner.html %}
-{% include section-newsletter.html %}
+  {% include section-guides-banner.html %}
+  {% include section-journal-banner.html %}
+  {% include section-newsletter.html %}
+</main>
 
 {% include footer.html %}
