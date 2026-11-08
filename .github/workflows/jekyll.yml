@@ -34,6 +34,9 @@ jobs:
       - name: Check spacing stays on the 8-point scale
         run: scripts/check-spacing.sh
 
+      - name: Check type stays on the roles
+        run: scripts/check-type.sh
+
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:

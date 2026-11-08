@@ -31,7 +31,7 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+  font: inherit; // type-exception: form controls inherit their context's type
 }
 
 p,
