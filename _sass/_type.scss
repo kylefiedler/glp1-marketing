@@ -25,32 +25,33 @@
 // Scale. Like the rhythm roles in _tokens.scss, the stepped sizes are custom
 // properties set once per breakpoint, so a role is a plain declaration and an
 // include never re-emits media queries.
-//   Hero keeps the shared page hero's sizes. Section lands between the old
-//   36-44px and 52-63px tiers so both groups move a little, not one a lot.
-//   Title covers the 20-32px card titles; FAQ sits between Title and Section
-//   at a lighter weight, carrying the coaching FAQ's look.
+//   Hero keeps the shared page hero's sizes. Section sits at the old lower
+//   tier (~36px), clearly below Hero and above Title, so band headings
+//   don't overpower their content.
+//   Title covers the 20-32px card titles. FAQ questions are small and regular
+//   weight, so a long list reads as a list under its Section heading.
 :root {
   --fs-hero:    56px;
-  --fs-section: 48px;
+  --fs-section: 36px;
   --fs-title:   28px;
-  --fs-faq:     32px;
+  --fs-faq:     20px;
 }
 
 @media (max-width: $bp-lg) {
   :root {
     --fs-hero:    44px;
-    --fs-section: 38px;
+    --fs-section: 30px;
     --fs-title:   24px;
-    --fs-faq:     26px;
+    --fs-faq:     18px;
   }
 }
 
 @media (max-width: $bp-md) {
   :root {
     --fs-hero:    32px;
-    --fs-section: 28px;
+    --fs-section: 24px;
     --fs-title:   20px;
-    --fs-faq:     22px;
+    --fs-faq:     18px;
   }
 }
 
@@ -80,9 +81,9 @@
 
 @mixin type-faq {
   font-family: $font-heading;
-  font-weight: 500;
+  font-weight: 400;
   font-size: var(--fs-faq);
-  line-height: 1.25;
+  line-height: 1.35;
   letter-spacing: 0;
 }
 

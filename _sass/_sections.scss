@@ -530,6 +530,7 @@
 .services__heading {
   @include type-section;
   color: $color-ink;
+  text-align: center;
 }
 
 .services__grid {
@@ -547,8 +548,8 @@
   text-align: center;
 }
 
-// Coaching aligns the cards (and title) left; home centres them.
-.services--left .service { align-items: flex-start; text-align: left; }
+// Two-up (coaching): pull the pair in so both cards sit centred on the page.
+.services--narrow .services__grid { max-width: $content-narrow; margin-inline: auto; }
 
 .service__icon {
   position: relative;
@@ -572,6 +573,4 @@
 
 @media (max-width: $bp-md) {
   .services__grid    { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; } // geometry: card column
-  .services__heading { text-align: center; }
-  .services--left .service { align-items: center; text-align: center; }
 }

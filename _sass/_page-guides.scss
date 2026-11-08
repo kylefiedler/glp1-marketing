@@ -467,33 +467,3 @@
   color: $color-accent;
   text-align: center;
 }
-
-// Each Q/A: question inset from the left, the shared +/rotate toggle pinned
-// right by the global summary flex, answer indented to match the question.
-.guides-faq details {
-  border: 0;
-  padding: 0;
-}
-
-.guides-faq summary {
-  @include type-faq;
-  color: $color-ink;
-  align-items: flex-start; // keep the toggle on the first line when a question wraps
-  padding: $grid-3 $grid-3 $grid-2 $grid-6;
-}
-
-.guides-faq details > p {
-  @include type-body;
-  color: $color-ink;
-  max-width: 642px; // geometry: copy column
-  padding: 0 $grid-3 $grid-3 $grid-6;
-}
-
-@media (max-width: $bp-lg) {
-  .guides-faq summary { padding: $grid-2 $grid-3; }
-  .guides-faq details > p { padding-left: $grid-3; }
-}
-@media (max-width: $bp-md) {
-  .guides-faq summary { padding: $grid-2; }
-  .guides-faq details > p { padding: 0 0 $grid-2 $grid-2; }
-}

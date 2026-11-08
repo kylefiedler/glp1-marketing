@@ -180,16 +180,18 @@
 
 // ===== More than just coaching (6 features) =====
 
+// The blush band above hangs its wave into this one, so the star tucks
+// behind that curve; overflow crops the star at this band's top edge.
 .coaching-features {
   position: relative;
   background: $color-bg;
-  @include clip-below-wave;
+  overflow: hidden;
 }
 
 .coaching-features__star {
   position: absolute;
-  left: 5%;
-  top: -70px; // tucked up into the corner, clear of the heading
+  right: 5%;
+  top: -24px; // geometry: about half shows below the blush curve
   width: 153px;
   color: $color-peach;
   z-index: 1;
@@ -270,14 +272,13 @@
 }
 
 @media (max-width: $bp-lg) {
-  .coaching-features__star    { width: 110px; left: 2%; top: -50px; }
+  .coaching-features__star    { width: 110px; right: 2%; top: -16px; } // geometry: about half shows below the blush curve
 }
 
 @media (max-width: $bp-md) {
   .coaching-features__grid    { grid-template-columns: 1fr; }
   .coaching-features__media   { grid-template-columns: 1fr; }
   .coaching-features__star    { width: 90px; opacity: 0.8; }
-  .coaching-features__heading { padding-left: 0; padding-top: $grid-6; } // geometry: clears the star
 }
 
 // ===== This is for you if =====
@@ -360,15 +361,20 @@
   max-width: $content-narrow;
 }
 
-.coaching-about__row {
+// Two staggered columns: story copy then the progress photo on the left,
+// portrait then the approach copy on the right. Each block starts right
+// under the one above it in its own column, whatever their heights.
+.coaching-about__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--stack-gap);
+  column-gap: var(--stack-gap);
   align-items: start;
-  margin-bottom: var(--stack-gap);
-
-  &:last-child { margin-bottom: 0; }
 }
+
+.coaching-about__copy--story     { grid-column: 1; grid-row: 1; }
+.coaching-about__media--portrait { grid-column: 2; grid-row: 1 / span 2; }
+.coaching-about__media--progress { grid-column: 1; grid-row: 2 / span 2; margin-top: var(--stack-gap); }
+.coaching-about__copy--approach  { grid-column: 2; grid-row: 3; margin-top: var(--stack-gap); }
 
 .coaching-about__rule {
   @include wave-rule(391px);
@@ -407,12 +413,12 @@
   border-radius: 10px;
 }
 
-.coaching-about__row .coaching-about__media img { aspect-ratio: 497 / 626; }
-.coaching-about__row--flip .coaching-about__media img { aspect-ratio: 541 / 489; }
+.coaching-about__media--portrait img { aspect-ratio: 497 / 626; }
+.coaching-about__media--progress img { aspect-ratio: 541 / 489; }
 
 @media (max-width: $bp-md) {
-  .coaching-about__row     { grid-template-columns: 1fr; }
-  .coaching-about__row--flip .coaching-about__media { order: -1; }
+  .coaching-about__grid { grid-template-columns: 1fr; row-gap: var(--stack-gap); }
+  .coaching-about__grid > * { grid-column: auto; grid-row: auto; margin-top: 0; }
 }
 
 // ===== Program details =====
@@ -460,34 +466,16 @@
   margin-right: $grid-2;
 }
 
-.coaching-program__cols {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: $grid-6 var(--stack-gap);
-  margin-bottom: $grid-4;
-
-  h3 {
-    @include type-label;
-    color: $color-ink;
-    margin: 0 0 $grid-2;
-  }
-
-  ul {
-    @include list-bullet;
-    @include type-body;
-    margin: 0;
-    color: $color-ink;
-
-    li { margin-bottom: $grid-1; }
-  }
-}
-
-.coaching-program__outcome {
+// Copy column (schedule, between sessions, outcomes, divided by squiggles)
+// beside the progress photo, which sits at the top of the right column.
+.coaching-program__body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--stack-gap);
   align-items: start;
+}
 
+.coaching-program__copy {
   h3 {
     @include type-label;
     color: $color-ink;
@@ -507,7 +495,7 @@
 .coaching-program__rule {
   @include wave-rule(518px);
   color: $color-accent;
-  margin: 0 0 $grid-4;
+  margin: $grid-4 0;
 }
 
 .coaching-program__media img {
@@ -523,8 +511,7 @@
 }
 
 @media (max-width: $bp-md) {
-  .coaching-program__cols     { grid-template-columns: 1fr; }
-  .coaching-program__outcome  { grid-template-columns: 1fr; }
+  .coaching-program__body     { grid-template-columns: 1fr; }
   .coaching-program__asterisk { width: 64px; right: 4%; top: 16px; }
 }
 
@@ -635,22 +622,24 @@
   @include clip-below-wave;
 }
 
-// Blush vertical squiggle standing behind the form, floor to ceiling.
+// Blush vertical squiggle standing behind the form, floor to ceiling. It
+// starts at the top of this band's wave and paints over it, so it runs on
+// up into the blush band above.
 .coaching-apply__squiggle {
   position: absolute;
   left: 42%;
-  top: 0;
+  top: calc(-1 * var(--wave-swell-h));
   bottom: 0;
   width: auto;
   color: $color-blush;
-  z-index: 0;
+  z-index: 4; // over this band's wave
 
   > svg { height: 100%; width: auto; }
 }
 
 .coaching-apply__inner {
   position: relative;
-  z-index: 2;
+  z-index: 5; // over the squiggle
   display: grid;
   grid-template-columns: 0.45fr 0.55fr;
   gap: var(--stack-gap);
@@ -725,9 +714,4 @@
   @include type-section;
   color: $color-peach;
   text-align: center;
-}
-
-.coaching-faq summary {
-  @include type-faq;
-  align-items: flex-start; // keep the toggle on the first line when a question wraps
 }

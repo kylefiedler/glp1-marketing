@@ -67,10 +67,10 @@ permalink: /coaching/
         </span>
       </div>
     </div>
+    {% include wave.html shape="swell" fill="blush" hang=true %}
   </section>
 
   <section class="section coaching-features">
-    {% include wave.html shape="swell" fill="white" %}
     <span class="decor decor--starburst coaching-features__star" aria-hidden="true">
       {% include decor/starburst.svg %}
     </span>
@@ -186,8 +186,8 @@ permalink: /coaching/
         <h2 class="coaching-about__heading">I&rsquo;m not just a coach. I&rsquo;m someone who&rsquo;s walked every step of this journey.</h2>
       </header>
 
-      <div class="coaching-about__row">
-        <div class="coaching-about__copy">
+      <div class="coaching-about__grid">
+        <div class="coaching-about__copy coaching-about__copy--story">
           <span class="decor decor--wave-thin coaching-about__rule" aria-hidden="true">
             {% include decor/wave-thin.svg %}
           </span>
@@ -205,17 +205,15 @@ permalink: /coaching/
           </ul>
         </div>
 
-        <div class="coaching-about__media">
+        <div class="coaching-about__media coaching-about__media--portrait">
           <img src="{{ '/assets/images/coaching/fh3a7768.jpg' | relative_url }}" alt="Jessica" width="497" height="626" loading="lazy">
         </div>
-      </div>
 
-      <div class="coaching-about__row coaching-about__row--flip">
-        <div class="coaching-about__media">
+        <div class="coaching-about__media coaching-about__media--progress">
           <img src="{{ '/assets/images/coaching/screenshot_2026-01-04_at_7_05_07_pm.png' | relative_url }}" alt="" width="541" height="489" loading="lazy">
         </div>
 
-        <div class="coaching-about__copy">
+        <div class="coaching-about__copy coaching-about__copy--approach">
           <span class="decor decor--wave-thin coaching-about__rule" aria-hidden="true">
             {% include decor/wave-thin.svg %}
           </span>
@@ -241,27 +239,25 @@ permalink: /coaching/
         Month-to-month commitment (minimum 3 months recommended for real results)
       </p>
 
-      <div class="coaching-program__cols">
-        <div>
+      <div class="coaching-program__body">
+        <div class="coaching-program__copy">
           <h3>Weekly Schedule:</h3>
           <ul>
             <li>One 30-minute 1:1 video session (scheduled at a consistent time that works for you)</li>
             <li>Unlimited weekday messaging support via your preferred platform</li>
             <li>Weekly macro/training adjustments as needed</li>
           </ul>
-        </div>
-        <div>
+
+          <span class="decor decor--wave-thin coaching-program__rule" aria-hidden="true">
+            {% include decor/wave-thin.svg %}
+          </span>
           <h3>Between Sessions:</h3>
           <ul>
             <li>You&rsquo;ll track your food, workouts, and progress using tools we&rsquo;ll set up together</li>
             <li>I&rsquo;ll review your logs and send feedback/adjustments</li>
             <li>You&rsquo;ll have access to me for questions, troubleshooting, and support</li>
           </ul>
-        </div>
-      </div>
 
-      <div class="coaching-program__outcome">
-        <div class="coaching-program__outcome-copy">
           <span class="decor decor--wave-thin coaching-program__rule" aria-hidden="true">
             {% include decor/wave-thin.svg %}
           </span>
@@ -375,7 +371,7 @@ permalink: /coaching/
 
   {% include section-services.html
      heading="Not ready for 1:1 coaching yet?"
-     class="services--left"
+     class="services--narrow"
      items="GLP-1 Guides|Everything you need to understand your medication, manage side effects, and start building healthy habits.|/guides||GLP-1 Journal|Daily prompts and weekly check-ins for your GLP-1 journey, private on your iPhone.|/journal" %}
 
   {% include section-guides-banner.html %}
