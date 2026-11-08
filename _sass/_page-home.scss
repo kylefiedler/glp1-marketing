@@ -141,9 +141,6 @@
   max-width: 52ch;
 }
 
-// Paragraphs stack 16px apart; the CTA (last) brings its own --cta-gap.
-.home-about__copy > p:not(:last-child) { margin-bottom: $grid-2; }
-
 .home-about__media img {
   width: 100%;
   height: auto;
