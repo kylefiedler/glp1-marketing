@@ -2,14 +2,12 @@
 
 .post-header {
   background: $color-blush;
-  padding: calc(#{$space-9} + 48px) $space-5 0;
+  // The site header overlays this band, as it does a .page-hero.
+  padding-top: calc(var(--section-pad) + var(--hero-offset));
 }
 
 .post-header__inner {
-  max-width: 780px;
-  margin: 0 auto;
   text-align: center;
-  padding-bottom: $space-8;
 }
 
 .post-header__meta {
@@ -19,7 +17,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: $color-muted;
-  margin: 0 0 $space-4;
+  margin: 0 0 $grid-2;
 }
 
 .post-header__author {
@@ -33,7 +31,6 @@
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: $color-ink;
-  margin: 0 0 $space-4;
 }
 
 .post-header__lede {
@@ -46,8 +43,7 @@
 }
 
 .post-header__hero {
-  max-width: 1100px;
-  margin: 0 auto;
+  margin-top: var(--stack-gap);
 
   img {
     width: 100%;
@@ -62,12 +58,14 @@
 
 .post-body {
   background: $color-bg;
-  padding: $space-9 $space-5;
 }
 
 .post-body__inner {
-  max-width: 720px;
-  margin: 0 auto;
+  max-width: 720px; // geometry: reading measure for prose
+
+  // --section-pad frames the prose, so the first/last blocks add no margin.
+  > :first-child { margin-top: 0; }
+  > :last-child  { margin-bottom: 0; }
 
   h2 {
     font-family: $font-display;
@@ -75,7 +73,7 @@
     font-size: 32px;
     line-height: 1.2;
     color: $color-ink;
-    margin: $space-8 0 $space-4;
+    margin: $grid-8 0 var(--title-gap);
   }
 
   h3 {
@@ -84,7 +82,7 @@
     font-size: 24px;
     line-height: 1.25;
     color: $color-accent;
-    margin: $space-7 0 $space-3;
+    margin: $grid-6 0 $grid-2;
   }
 
   p, ul, ol {
@@ -92,13 +90,13 @@
     font-size: 18px;
     line-height: 1.7;
     color: $color-ink;
-    margin: 0 0 $space-5;
+    margin: 0 0 $grid-3;
   }
 
   ul, ol {
-    padding-left: $space-6;
+    padding-left: $grid-4;
 
-    li { margin-bottom: $space-3; }
+    li { margin-bottom: $grid-2; }
   }
 
   a {
@@ -113,8 +111,8 @@
 
   blockquote {
     border-left: 4px solid $color-accent;
-    padding: 0 0 0 $space-5;
-    margin: $space-6 0;
+    padding: 0 0 0 $grid-3;
+    margin: $grid-4 0;
     font-family: $font-display;
     font-weight: 500;
     font-size: 22px;
@@ -128,7 +126,7 @@
     height: auto;
     border-radius: 12px;
     display: block;
-    margin: $space-6 0;
+    margin: $grid-4 0;
     box-shadow: 0 12px 28px rgba($color-ink, 0.15);
   }
 }
@@ -145,13 +143,9 @@
 
 .post-more {
   background: $color-blush;
-  padding: $space-9 $space-5;
 }
 
 .post-more__inner {
-  max-width: 1100px;
-  margin: 0 auto;
-
   h2 {
     font-family: $font-display;
     font-weight: 700;
@@ -159,7 +153,6 @@
     line-height: 1.15;
     color: $color-ink;
     text-align: center;
-    margin: 0 0 $space-6;
   }
 
   ul {
@@ -168,7 +161,7 @@
     margin: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: $space-6;
+    gap: var(--stack-gap);
   }
 
   li a {
@@ -195,7 +188,7 @@
 
   li span {
     display: block;
-    padding: $space-4 $space-5 $space-5;
+    padding: $grid-2 $grid-3 $grid-3;
     font-family: $font-display;
     font-weight: 700;
     font-size: 18px;

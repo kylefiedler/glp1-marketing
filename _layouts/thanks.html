@@ -12,15 +12,15 @@ layout: default
 {% include header.html %}
 
 <main class="thanks">
-  <section class="thanks-hero">
+  <section class="section thanks-hero">
     <span class="decor decor--asterisk-8pt thanks-hero__asterisk" aria-hidden="true">
       {% include decor/asterisk-8pt.svg %}
     </span>
 
-    <div class="thanks-hero__inner">
+    <div class="section__inner thanks-hero__inner">
       <div class="thanks-hero__copy">
         <p class="thanks-hero__eyebrow">{{ page.eyebrow }}</p>
-        <h1 class="thanks-hero__title">{{ page.heading }}</h1>
+        <h1 class="thanks-hero__title section__title">{{ page.heading }}</h1>
         <p class="thanks-hero__lede">{{ page.lede }}</p>
 
         {%- if page.steps %}
@@ -34,7 +34,7 @@ layout: default
         </ol>
         {%- endif %}
 
-        <div class="thanks-hero__actions">
+        <div class="thanks-hero__actions section__cta">
           <a class="btn btn--primary" href="{{ '/' | relative_url }}">Back to home</a>
           <div class="thanks-hero__follow">
             <span>Follow along</span>
