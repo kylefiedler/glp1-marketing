@@ -27,10 +27,15 @@
 // breakpoint, so wave compensation still holds.
 .banner--journal {
   --section-pad: #{$grid-12};
+  min-height: 640px; // geometry: room for the near full-height middle screen
+}
+
+@media (max-width: $bp-lg) {
+  .banner--journal { min-height: 560px; } // geometry: room for the screens
 }
 
 @media (max-width: $bp-md) {
-  .banner--journal { --section-pad: #{$grid-8}; }
+  .banner--journal { --section-pad: #{$grid-8}; min-height: 0; }
 }
 
 // Three app screens rising from the bottom edge, cropped by the next wave.
@@ -44,20 +49,26 @@
   overflow: hidden;
   z-index: 1;
   pointer-events: none;
+  container-type: size; // the screens size off this box (cqw / cqh)
 }
 
-// Three equal screens, evenly spaced with a small gap so each shows at full
-// width; the middle one sits highest.
+// Three screens at one size: the middle one stands nearly floor to ceiling,
+// centred; the outer two sit lower behind it,
+// each shifted out by most of a screen width (translate % is the screen's own
+// width, so the overlap holds at any size).
+// Width is capped twice: 88% of the box's height (the screens are 920x2000),
+// and 44% of its width so all three, spread across 2.24 widths, still fit.
 .banner__screen {
   position: absolute;
-  width: 31%;
+  left: 50%;
+  width: min(44cqw, 40.5cqh);
   height: auto;
   border-radius: 24px;
   box-shadow: 0 12px 32px rgba($color-black, 0.22);
 }
-.banner__screen--left  { left: 0;     top: 34%; }
-.banner__screen--mid   { left: 34.5%; top: 12%; }
-.banner__screen--right { left: 69%;   top: 30%; }
+.banner__screen--mid   { top: 6%;  transform: translateX(-50%);  z-index: 2; }
+.banner__screen--left  { top: 18%; transform: translateX(-112%); z-index: 1; }
+.banner__screen--right { top: 18%; transform: translateX(12%);   z-index: 1; }
 
 .banner__inner {
   position: relative;
@@ -113,13 +124,10 @@
     right: auto;
     width: 100%;
     max-width: 420px; // geometry: copy column
-    height: 300px;
+    height: 380px; // geometry: room for the near full-height middle screen
     margin: $grid-6 auto 0;
   }
   .banner__screen { border-radius: 18px; }
-  .banner__screen--left  { top: 20%; }
-  .banner__screen--mid   { top: 0; }
-  .banner__screen--right { top: 18%; }
 }
 
 // ----- Newsletter band (above the footer) -----
