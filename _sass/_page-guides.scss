@@ -59,7 +59,7 @@
   @include type-section;
   color: $color-ink;
   margin: 0;
-  max-width: 604px;
+  max-width: 604px; // geometry: copy column
 }
 
 // A thin scalloped line (wave-thin), not the tall vertical squiggle — live
@@ -74,7 +74,7 @@
   @include type-label;
   color: $color-ink;
   margin: 0 0 $grid-3;
-  max-width: 604px;
+  max-width: 604px; // geometry: copy column
 }
 
 .guides-bundle__cols {
@@ -338,7 +338,7 @@
 .guide-row__lede {
   @include type-lead;
   color: $color-ink;
-  max-width: 460px;
+  max-width: 460px; // geometry: copy column against artwork
 }
 
 // Guide rows: the two CTAs sit side by side at their natural width, with the
@@ -358,7 +358,7 @@
 .guide-mini__actions {
   display: grid;
   gap: $grid-2;
-  max-width: 492px;
+  max-width: 492px; // geometry: copy column against artwork
 
   .btn {
     display: block;
@@ -444,7 +444,7 @@
 
 .guide-mini__actions {
   justify-items: center;
-  max-width: 402px;
+  max-width: 402px; // geometry: card width
   margin-inline: auto;
 }
 
@@ -485,7 +485,7 @@
 .guides-faq details > p {
   @include type-body;
   color: $color-ink;
-  max-width: 642px;
+  max-width: 642px; // geometry: copy column
   padding: 0 $grid-3 $grid-3 $grid-6;
 }
 

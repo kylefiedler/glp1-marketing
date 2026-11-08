@@ -49,18 +49,6 @@ $grid-10:   80px;
 $grid-12:   96px;
 $grid-16:   128px;
 
-// Legacy 4px-based scale - being retired page by page (KYL-111..115). New
-// code uses $grid-* and the rhythm roles.
-$space-1: 4px;
-$space-2: 8px;
-$space-3: 12px;
-$space-4: 16px;
-$space-5: 24px;
-$space-6: 32px;
-$space-7: 48px;
-$space-8: 64px;
-$space-9: 96px;
-
 // Breakpoints - pixel-perfect bar is 1440px desktop
 $bp-md: 768px;
 $bp-lg: 1024px;

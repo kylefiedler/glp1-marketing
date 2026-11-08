@@ -3,7 +3,7 @@
   width: 1px;
   height: 1px;
   padding: 0;
-  margin: -1px;
+  margin: -1px; // geometry: visually-hidden clip box
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -14,11 +14,11 @@
 
 .newsletter {
   background: $color-peach;
-  padding: $space-7 $space-5;
+  padding: $grid-6 $grid-3;
 }
 
 .newsletter__inner {
-  max-width: 640px;
+  max-width: 640px; // geometry: newsletter form column
   margin: 0 auto;
   text-align: center;
 }
@@ -26,19 +26,19 @@
 .newsletter__heading {
   @include type-section;
   color: $color-ink;
-  margin-bottom: $space-3;
+  margin-bottom: var(--title-gap);
 }
 
 .newsletter__lead {
   @include type-lead;
   color: $color-ink;
-  margin-bottom: $space-5;
+  margin-bottom: $grid-3;
 }
 
 .newsletter__form {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: $space-3;
+  gap: $grid-2;
   align-items: stretch;
 }
 
@@ -48,7 +48,7 @@
 
 .newsletter__field input {
   width: 100%;
-  padding: $space-3 $space-4;
+  padding: $grid-1 $grid-2;
   font-family: $font-body; // type-exception: form control
   font-size: $fs-sm; // type-exception: form control
   color: $color-ink;
@@ -63,7 +63,7 @@
 }
 
 .newsletter__submit {
-  padding: $space-3 $space-5;
+  padding: $grid-1 $grid-3;
   font-family: $font-heading; // type-exception: form control
   font-weight: 400; // type-exception: form control
   font-size: $fs-sm; // type-exception: form control
@@ -81,7 +81,7 @@
 
 .newsletter__note {
   grid-column: 1 / -1;
-  margin-top: $space-3;
+  margin-top: $grid-1;
   @include type-small;
   color: $color-muted;
 }
@@ -95,29 +95,29 @@
 // ----- Contact form -----
 
 .contact-form {
-  padding: $space-7 $space-5;
+  padding: $grid-6 $grid-3;
 }
 
 .contact-form__inner {
-  max-width: 560px;
+  max-width: 560px; // geometry: contact form column
   margin: 0 auto;
 }
 
 .contact-form__heading {
   @include type-section;
   color: $color-ink;
-  margin-bottom: $space-5;
+  margin-bottom: var(--title-gap);
   text-align: center;
 }
 
 .contact-form__form {
   display: grid;
-  gap: $space-4;
+  gap: $grid-2;
 }
 
 .contact-form__field {
   display: grid;
-  gap: $space-2;
+  gap: $grid-1;
 }
 
 .contact-form__field > span {
@@ -129,7 +129,7 @@
 
 .contact-form__field input,
 .contact-form__field textarea {
-  padding: $space-3 $space-4;
+  padding: $grid-1 $grid-2;
   font-family: $font-body; // type-exception: form control
   font-size: $fs-sm; // type-exception: form control
   color: $color-ink;
@@ -147,7 +147,7 @@
 
 .contact-form__submit {
   justify-self: start;
-  padding: $space-3 $space-6;
+  padding: $grid-1 $grid-4;
   font-family: $font-heading; // type-exception: form control
   font-weight: 400; // type-exception: form control
   font-size: $fs-sm; // type-exception: form control

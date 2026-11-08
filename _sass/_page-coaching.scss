@@ -551,7 +551,7 @@
   @include type-label;
   color: $color-bg;
   margin: 0 auto;
-  max-width: 682px;
+  max-width: 682px; // geometry: copy column against artwork
 }
 
 .coaching-investment__star {

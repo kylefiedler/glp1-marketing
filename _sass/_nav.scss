@@ -24,10 +24,13 @@ body:has(.page-hero) .site-nav-toggle-label span {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: $space-5;
-  max-width: 1440px;
+  gap: $grid-3;
+  max-width: $content-width;
   margin: 0 auto;
-  padding: $space-5 $space-6;
+  padding: $grid-3 var(--gutter);
+  // Padding sits outside max-width so the logo lines up with the 1200 content
+  // column of the bands below.
+  box-sizing: content-box;
 }
 
 .site-header__brand {
@@ -61,11 +64,11 @@ body:has(.page-hero) .site-header__logo--light { display: block; }
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
-  gap: 6px;
+  gap: 6px; // geometry: hamburger bar spacing
   width: 36px;
   height: 36px;
   cursor: pointer;
-  padding: 4px 0;
+  padding: $grid-half 0;
 
   span {
     display: block;
@@ -117,14 +120,14 @@ body:has(.page-hero) .site-header__logo--light { display: block; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: $space-7 $space-8;
-  gap: $space-5;
+  padding: $grid-6 $grid-8;
+  gap: $grid-3;
 }
 
 .site-nav-overlay__close {
   position: absolute;
-  top: $space-6;
-  right: $space-6;
+  top: $grid-4;
+  right: $grid-4;
   width: 36px;
   height: 36px;
   display: inline-flex;
@@ -146,7 +149,7 @@ body:has(.page-hero) .site-header__logo--light { display: block; }
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: $space-3;
+    gap: $grid-1;
   }
 
   a {
@@ -166,7 +169,7 @@ body:has(.page-hero) .site-header__logo--light { display: block; }
 }
 
 .site-nav-overlay__secondary {
-  margin-top: $space-5;
+  margin-top: $grid-3;
 
   ul {
     list-style: none;
@@ -174,7 +177,7 @@ body:has(.page-hero) .site-header__logo--light { display: block; }
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: $space-3;
+    gap: $grid-1;
   }
 
   a {
@@ -196,10 +199,10 @@ body:has(.page-hero) .site-header__logo--light { display: block; }
 
 .site-nav-overlay__social {
   position: absolute;
-  bottom: $space-6;
-  right: $space-6;
+  bottom: $grid-4;
+  right: $grid-4;
   display: flex;
-  gap: $space-4;
+  gap: $grid-2;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -226,7 +229,7 @@ body:has(.page-hero) .site-header__logo--light { display: block; }
 
 @media (max-width: $bp-md) {
   .site-header__inner {
-    padding: $space-4 $space-5;
+    padding-block: $grid-2;
   }
 
   .site-nav-overlay {
@@ -235,9 +238,9 @@ body:has(.page-hero) .site-header__logo--light { display: block; }
   }
 
   .site-nav-overlay__panel {
-    padding: $space-6 $space-5;
+    padding: $grid-4 $grid-3;
     justify-content: flex-start;
-    padding-top: $space-7;
+    padding-top: $grid-6;
   }
 
   .site-nav-overlay__primary a {
@@ -245,12 +248,12 @@ body:has(.page-hero) .site-header__logo--light { display: block; }
   }
 
   .site-nav-overlay__close {
-    top: $space-4;
-    right: $space-4;
+    top: $grid-2;
+    right: $grid-2;
   }
 
   .site-nav-overlay__social {
-    bottom: $space-5;
-    right: $space-5;
+    bottom: $grid-3;
+    right: $grid-3;
   }
 }

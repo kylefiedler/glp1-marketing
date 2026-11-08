@@ -115,7 +115,7 @@
     position: relative;
     right: auto;
     width: 100%;
-    max-width: 420px;
+    max-width: 420px; // geometry: copy column
     height: 300px;
     margin: $grid-6 auto 0;
   }
@@ -348,7 +348,7 @@
 .bundle-cta__lede {
   @include type-body;
   color: $color-peach;
-  max-width: 451px;
+  max-width: 451px; // geometry: copy column against artwork
 }
 
 .bundle-cta__cta {
@@ -356,7 +356,7 @@
   .btn {
     display: block;
     width: 100%;
-    max-width: 506px;
+    max-width: 506px; // geometry: copy column against artwork
     padding: $grid-1 $grid-2;
     text-align: center;
   }
