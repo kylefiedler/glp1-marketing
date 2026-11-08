@@ -9,6 +9,11 @@
     fill  (required) - the lower section's color: pink, peach, blush, sand,
                        mist or white.
     still (optional) - true holds the curve still (task areas: forms).
+    hang  (optional) - true flips the wave so it hangs from the bottom of the
+                       section above instead: put it last in the upper
+                       section and fill with that section's color. Use it
+                       when the upper band must paint over decor in the lower
+                       one (the decor tucks behind the curve).
 {%- endcomment -%}
 
 {%- assign wave_shape = include.shape | default: "ripple" -%}
@@ -19,6 +24,6 @@
   {%- assign wave_h = 60 -%}
   {%- assign wave_d = "M0 60 L1440 60 L1440 25 C1200 60 960 0 720 30 C480 60 240 0 0 30 Z" -%}
 {%- endif -%}
-<div class="wave wave--{{ wave_shape }} wave--{{ include.fill }}" data-wave="{{ wave_shape }}"{% if include.still %} data-wave-still{% endif %} aria-hidden="true">
+<div class="wave wave--{{ wave_shape }} wave--{{ include.fill }}{% if include.hang %} wave--hang{% endif %}" data-wave="{{ wave_shape }}"{% if include.still %} data-wave-still{% endif %} aria-hidden="true">
   <svg viewBox="0 0 1440 {{ wave_h }}" preserveAspectRatio="none" focusable="false"><path d="{{ wave_d }}"/></svg>
 </div>

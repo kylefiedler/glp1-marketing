@@ -9,6 +9,9 @@
 //   every wave and every piece of decor share one stacking context.
 // - Decor meant to sit over a seam (starbursts, squiggles) uses z-index 4+.
 //   Content meant to tuck behind a wave (photos) stays at 2 or below.
+// - A hanging wave (.wave--hang) is the last child of the upper section and
+//   drops out of its bottom edge, so decor in the lower section (z-index 2 or
+//   below) tucks behind the upper band's color instead.
 
 :where(:has(> .wave)) { position: relative; }
 
@@ -45,6 +48,14 @@
 :root {
   --wave-ripple-h: clamp(28px, 3.9vw, 56px);
   --wave-swell-h:  clamp(22px, 3.05vw, 44px);
+}
+
+// Mirrored, so the still edge sits flush with the upper section's bottom and
+// the crests roll below it.
+.wave--hang {
+  bottom: auto;
+  top: calc(100% - 1px);
+  transform: scaleY(-1);
 }
 
 .wave--ripple { height: var(--wave-ripple-h); }

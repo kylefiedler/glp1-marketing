@@ -36,6 +36,12 @@
   --wave-below: var(--wave-swell-h);
 }
 
+// A hanging wave drops into the next band instead, so that band pads its
+// top by the wave's height and this one needs no bottom allowance.
+.section:has(> .wave--hang) { --wave-below: 0px; }
+.section:has(> .wave--hang.wave--ripple) + .section { padding-top: calc(var(--section-pad) + var(--wave-ripple-h)); }
+.section:has(> .wave--hang.wave--swell) + .section { padding-top: calc(var(--section-pad) + var(--wave-swell-h)); }
+
 // Compact band: about half the vertical padding, for repeated rows (each
 // guide on the Guides page) that read as a list rather than a feature.
 .section--compact { --section-pad: var(--section-pad-compact); }

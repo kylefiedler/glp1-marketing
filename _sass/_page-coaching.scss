@@ -180,16 +180,18 @@
 
 // ===== More than just coaching (6 features) =====
 
+// The blush band above hangs its wave into this one, so the star tucks
+// behind that curve; overflow crops the star at this band's top edge.
 .coaching-features {
   position: relative;
   background: $color-bg;
-  @include clip-below-wave;
+  overflow: hidden;
 }
 
 .coaching-features__star {
   position: absolute;
-  left: 5%;
-  top: -70px; // tucked up into the corner, clear of the heading
+  right: 5%;
+  top: -24px; // geometry: about half shows below the blush curve
   width: 153px;
   color: $color-peach;
   z-index: 1;
@@ -270,14 +272,13 @@
 }
 
 @media (max-width: $bp-lg) {
-  .coaching-features__star    { width: 110px; left: 2%; top: -50px; }
+  .coaching-features__star    { width: 110px; right: 2%; top: -16px; } // geometry: about half shows below the blush curve
 }
 
 @media (max-width: $bp-md) {
   .coaching-features__grid    { grid-template-columns: 1fr; }
   .coaching-features__media   { grid-template-columns: 1fr; }
   .coaching-features__star    { width: 90px; opacity: 0.8; }
-  .coaching-features__heading { padding-left: 0; padding-top: $grid-6; } // geometry: clears the star
 }
 
 // ===== This is for you if =====
