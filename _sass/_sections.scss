@@ -14,7 +14,7 @@
 
 .banner {
   position: relative;
-  overflow-x: clip; // sideways only, so the top wave stays visible
+  @include clip-below-wave; // crops the covers and screens, keeps the top wave
 
   &--guides  { background: $color-peach; }
   &--journal { background: $color-accent; color: $color-bg; }

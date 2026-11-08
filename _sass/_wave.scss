@@ -19,6 +19,7 @@
 // over this section's wave. Keep such decor clear of these seams.
 @mixin clip-below-wave {
   overflow: visible;
+  overflow-x: clip; // clip-path hides overflow but still lets it scroll
   clip-path: inset(-60px 0 0 0);
 }
 
