@@ -53,20 +53,14 @@
 }
 
 .home-stat__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 56px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  @include type-section;
   color: $color-ink;
   margin-inline: auto;
   max-width: 20ch;
 }
 
 .home-stat__lede {
-  font-family: $font-body;
-  font-size: $fs-md;
-  line-height: $lh-snug;
+  @include type-lead;
   color: $color-ink;
   margin: 0 auto;
   max-width: 48ch;
@@ -77,13 +71,6 @@
   color: $color-bg;
   width: 40px;
   margin: $grid-6 auto 0;
-}
-
-@media (max-width: $bp-lg) {
-  .home-stat__heading { font-size: 40px; }
-}
-@media (max-width: $bp-md) {
-  .home-stat__heading { font-size: 30px; }
 }
 
 // ===== About =====
@@ -101,18 +88,13 @@
 }
 
 .home-about__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 56px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  @include type-section;
   color: $color-ink;
   margin: 0 0 $grid-2;
 }
 
 .home-about__heading em {
   font-style: italic;
-  font-weight: 700;
 }
 
 .home-about__underline {
@@ -124,19 +106,12 @@
 }
 
 .home-about .home-about__eyebrow {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-xs;
-  line-height: $lh-snug;
-  letter-spacing: calc(0.06em + 1px);
-  text-transform: uppercase;
+  @include type-eyebrow;
   color: $color-ink;
 }
 
 .home-about p {
-  font-family: $font-body;
-  font-size: $fs-md;
-  line-height: $lh-body;
+  @include type-lead;
   color: $color-ink;
   max-width: 52ch;
 }
@@ -150,14 +125,9 @@
   box-shadow: 0 12px 28px rgba($color-ink, 0.15);
 }
 
-@media (max-width: $bp-lg) {
-  .home-about__heading { font-size: 40px; }
-}
-
 @media (max-width: $bp-md) {
   .home-about__inner { grid-template-columns: 1fr; }
   .home-about__media { max-width: 360px; margin: 0 auto; order: -1; } // geometry: photo column
-  .home-about__heading { font-size: 30px; }
 }
 
 // ===== Bundle =====
@@ -178,19 +148,14 @@
 }
 
 .home-bundle__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 52px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  @include type-section;
   color: $color-bg;
 }
 
 .home-bundle__price { color: $color-bg; }
 
 .home-bundle__lede {
-  font-family: $font-body;
-  font-size: $fs-md;
+  @include type-lead;
   color: rgba($color-bg, 0.95);
 }
 
@@ -211,13 +176,8 @@
   img:nth-child(even) { transform: translateY(-8px) rotate(2deg); }
 }
 
-@media (max-width: $bp-lg) {
-  .home-bundle__heading { font-size: 38px; }
-}
-
 @media (max-width: $bp-md) {
   .home-bundle__inner { grid-template-columns: 1fr; }
-  .home-bundle__heading { font-size: 30px; }
   .home-bundle__mockup { transform: none; }
 }
 
