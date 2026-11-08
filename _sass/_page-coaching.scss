@@ -48,24 +48,40 @@
   height: auto;
 }
 
+// The left photo tucks in behind the right one: the negative margin cancels
+// the flex gap and pulls the right photo over its inner edge.
 .coaching-hero__left {
   position: relative;
+  z-index: 0;
   width: 32%;
   margin-bottom: $grid-4; // geometry: lifts the left photo off the band edge
+  margin-right: calc(-1 * (#{$grid-8} + #{$grid-6}));
 }
 
-// White "M" squiggle resting just above the left photo.
+// Peach asterisk and white "M" squiggle sit side by side just above the left
+// photo's top-left corner.
+.coaching-hero__asterisk,
 .coaching-hero__squiggle {
   position: absolute;
-  right: 12%;
   bottom: calc(100% + #{$grid-2});
-  width: 44%;
-  color: $color-bg;
   pointer-events: none;
 }
 
+.coaching-hero__asterisk {
+  z-index: 1; // sits on top of the M where they overlap
+  left: -6%;
+  width: 36%;
+  animation: decor-spin 56s linear infinite;
+}
+
+.coaching-hero__squiggle {
+  left: 10%;
+  width: 46%;
+  color: $color-bg;
+}
+
 .coaching-hero__photo--left  { display: block; width: 100%; aspect-ratio: 378 / 386; }
-.coaching-hero__photo--right { width: 50%; aspect-ratio: 590 / 597; }
+.coaching-hero__photo--right { position: relative; z-index: 1; width: 50%; aspect-ratio: 590 / 597; }
 
 // Peach badge straddling the hero's bottom edge, right of the photos; the starburst is the
 // counterclockwise spinner (the asterisk is the clockwise one).
@@ -85,7 +101,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .coaching-hero__badge { animation: none; }
+  .coaching-hero__badge,
+  .coaching-hero__asterisk { animation: none; }
 }
 
 @media (max-width: $bp-lg) {
@@ -93,12 +110,11 @@
 }
 
 @media (max-width: $bp-md) {
-  // The coaching hero leads with the small eyebrow, so pull the shared hero
-  // asterisk up and in so it stops crossing that line.
-  .coaching-hero .page-hero__decor--asterisk { width: 72px; top: 24px; left: -4%; }
   .coaching-hero__media   { flex-direction: column; align-items: center; gap: $grid-2; }
   .coaching-hero__left,
   .coaching-hero__photo--right { width: 78%; margin-bottom: 0; }
+  .coaching-hero__left    { margin-right: 0; margin-top: $grid-8; }
+  .coaching-hero__asterisk { left: 0; width: 72px; bottom: calc(100% + #{$grid-1}); } // geometry: small mobile mark
   .coaching-hero__badge,
   .coaching-hero__squiggle { display: none; }
 }
