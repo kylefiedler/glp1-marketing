@@ -49,6 +49,10 @@
 
 .section__cta { margin: var(--cta-gap) 0 0; }
 
+// A block of copy: paragraphs stack by --copy-gap. A CTA closing the block is
+// its last child, so it keeps --cta-gap instead.
+.section__copy > p:not(:last-child) { margin-bottom: var(--copy-gap); }
+
 // ----- Page hero -----
 // Hot-pink header band shared by every page. Markup:
 //   <section class="section page-hero">

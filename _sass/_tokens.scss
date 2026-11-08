@@ -76,6 +76,7 @@ $content-narrow: 880px;
 //   --hero-offset  extra top padding a page hero needs to clear the header
 //   --title-gap    a section's main title -> its content
 //   --cta-gap      copy -> the call-to-action under it
+//   --copy-gap     between paragraphs in a block of copy
 //   --stack-gap    between sibling items (cards, grid cells, columns)
 //   --gutter       side padding
 :root {
@@ -83,6 +84,7 @@ $content-narrow: 880px;
   --hero-offset: #{$grid-6};
   --title-gap:   #{$grid-3};
   --cta-gap:     #{$grid-4};
+  --copy-gap:    #{$grid-2};
   --stack-gap:   #{$grid-8};
   --gutter:      #{$grid-3};
 }
