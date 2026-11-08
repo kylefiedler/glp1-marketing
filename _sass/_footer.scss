@@ -27,9 +27,9 @@
 
   // Same face, size and weight as button text.
   a {
-    font-family: $font-heading;
-    font-weight: 400;
-    font-size: $fs-sm;
+    font-family: $font-heading; // type-exception: nav links share the button face
+    font-weight: 400; // type-exception: nav links share the button face
+    font-size: $fs-sm; // type-exception: nav links share the button face
     color: $color-ink;
     text-decoration: none;
     transition: color 120ms ease;
@@ -38,7 +38,7 @@
   a:hover { color: $color-accent; }
 
   // The second column (Home, About, Blog) uses the text face.
-  .site-footer__links--secondary a { font-family: $font-body; }
+  .site-footer__links--secondary a { font-family: $font-body; } // type-exception: nav links
 }
 
 .site-footer__side {
@@ -53,12 +53,7 @@
 
 // Small all-caps secondary title.
 .site-footer__heading {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-sm;
-  line-height: $lh-snug;
-  letter-spacing: calc(0.1em + 1px);
-  text-transform: uppercase;
+  @include type-label;
   color: $color-ink;
   margin: 0 0 $space-4;
 }
@@ -75,8 +70,8 @@
 .site-footer__field textarea {
   width: 100%;
   padding: $space-3 $space-4;
-  font-family: $font-body;
-  font-size: $fs-sm;
+  font-family: $font-body; // type-exception: form control
+  font-size: $fs-sm; // type-exception: form control
   color: $color-ink;
   background: $color-bg;
   border: 0;
@@ -141,7 +136,7 @@
 }
 
 .site-footer__copy {
-  font-size: $fs-xs;
+  @include type-small;
   color: $color-muted;
   margin: 0;
 }

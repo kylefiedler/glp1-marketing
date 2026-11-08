@@ -62,18 +62,13 @@
 }
 
 .freebie-modal__title {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 44px;
-  line-height: 1.1;
+  @include type-section;
   margin: 0 0 $space-5;
   padding-right: $space-6; // clear the close button
 }
 
 .freebie-modal__lead {
-  font-family: $font-body;
-  font-size: $fs-md;
-  line-height: $lh-body;
+  @include type-lead;
   margin: 0 0 $space-4;
 }
 
@@ -90,9 +85,7 @@
 }
 
 .freebie-modal__note {
-  font-family: $font-body;
-  font-size: 12px;
-  line-height: $lh-snug;
+  @include type-small;
   margin: $space-3 0 0;
 }
 
@@ -117,12 +110,7 @@
     transform: rotate(-4deg);
   }
 
-  .freebie-modal__title {
-    font-size: $fs-lg;
-    padding-right: 0;
-  }
-
-  .freebie-modal__lead { font-size: $fs-sm; }
+  .freebie-modal__title { padding-right: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

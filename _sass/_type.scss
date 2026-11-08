@@ -1,0 +1,146 @@
+// Type roles - the one place type is decided. Every text selector takes its
+// family, weight, size, line height, tracking and case from one of these eight
+// roles (Label comes in two sizes), so partials never write font sizes or
+// responsive font-size steps.
+// Roles leave color to the context (most headings sit on both white and pink).
+//
+//   type-hero     page hero title (.page-hero__title, h1)
+//   type-section  a band's main heading - one tier for every section (h2)
+//   type-title    card, row, step and sub-section titles (h3)
+//   type-faq      FAQ questions (summary)
+//   type-label    all-caps sub-heading inside a section (h4), 16px
+//   type-eyebrow  the same role at 14px, above or beside a heading
+//   type-body     paragraphs
+//   type-lead     intro paragraph under a heading; long-form post body
+//   type-small    fine print: notes, disclaimers, copyright
+//
+// Lists: list-bullet (disc) and list-flower (inline .decor--flower marker).
+//
+// Ornament and UI type that is deliberately not a role (nav overlay links,
+// testimonials wordmark, price-bubble numerals, buttons, form fields and
+// labels, post blockquote) stays where it is and carries a
+// `// type-exception: <why>` marker on its declarations.
+
+// Scale. Like the rhythm roles in _tokens.scss, the stepped sizes are custom
+// properties set once per breakpoint, so a role is a plain declaration and an
+// include never re-emits media queries.
+//   Hero keeps the shared page hero's sizes. Section lands between the old
+//   36-44px and 52-63px tiers so both groups move a little, not one a lot.
+//   Title covers the 20-32px card titles; FAQ sits between Title and Section
+//   at a lighter weight, carrying the coaching FAQ's look.
+:root {
+  --fs-hero:    56px;
+  --fs-section: 48px;
+  --fs-title:   28px;
+  --fs-faq:     32px;
+}
+
+@media (max-width: $bp-lg) {
+  :root {
+    --fs-hero:    44px;
+    --fs-section: 38px;
+    --fs-title:   24px;
+    --fs-faq:     26px;
+  }
+}
+
+@media (max-width: $bp-md) {
+  :root {
+    --fs-hero:    32px;
+    --fs-section: 28px;
+    --fs-title:   20px;
+    --fs-faq:     22px;
+  }
+}
+
+@mixin type-hero {
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: var(--fs-hero);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+@mixin type-section {
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: var(--fs-section);
+  line-height: $lh-tight;
+  letter-spacing: -0.01em;
+}
+
+@mixin type-title {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: var(--fs-title);
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+@mixin type-faq {
+  font-family: $font-heading;
+  font-weight: 500;
+  font-size: var(--fs-faq);
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+// Label is one all-caps role at two sizes - eyebrow (14px) and label (16px) -
+// sharing one tracking. Use the two named mixins, not this helper.
+@mixin _type-caps($size) {
+  font-family: $font-label;
+  font-weight: 600;
+  font-size: $size;
+  line-height: $lh-snug;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@mixin type-eyebrow { @include _type-caps($fs-xs); }
+@mixin type-label   { @include _type-caps($fs-sm); }
+
+@mixin type-body {
+  font-family: $font-body;
+  font-weight: 400;
+  font-size: $fs-sm;
+  line-height: $lh-body;
+}
+
+@mixin type-lead {
+  font-family: $font-body;
+  font-weight: 400;
+  font-size: $fs-md;
+  line-height: $lh-body;
+}
+
+@mixin type-small {
+  font-family: $font-body;
+  font-weight: 400;
+  font-size: $fs-xs;
+  line-height: 1.5;
+}
+
+// ----- Lists -----
+
+@mixin list-bullet {
+  list-style: disc;
+  padding-left: $grid-3;
+}
+
+// Markup: <li><span class="decor decor--flower ..." aria-hidden="true">…</span>text</li>
+@mixin list-flower {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: $grid-2;
+    align-items: start;
+  }
+
+  .decor--flower {
+    width: 24px;
+    margin-top: 2px; // geometry: centres the flower on the first line of text
+  }
+}

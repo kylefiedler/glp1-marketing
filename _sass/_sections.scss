@@ -72,19 +72,13 @@
 }
 
 .banner__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 44px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  @include type-section;
 }
 
 .banner--journal .banner__heading { color: $color-bg; }
 
 .banner p {
-  font-family: $font-body;
-  font-size: $fs-md;
-  line-height: $lh-snug;
+  @include type-lead;
 }
 
 .banner__aside { margin-top: $grid-2; }
@@ -108,10 +102,6 @@
   color: $color-bg;
   text-decoration: underline;
   text-underline-offset: 3px;
-}
-
-@media (max-width: $bp-lg) {
-  .banner__heading { font-size: 32px; }
 }
 
 @media (max-width: $bp-md) {
@@ -150,18 +140,12 @@
 }
 
 .nl-band__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  @include type-section;
   color: $color-ink;
 }
 
 .nl-band__sub {
-  font-family: $font-body;
-  font-size: $fs-md;
-  line-height: $lh-snug;
+  @include type-lead;
   color: $color-ink;
   max-width: 46ch;
 
@@ -172,8 +156,7 @@
 
 @media (max-width: $bp-md) {
   .nl-band__inner { grid-template-columns: 1fr; text-align: center; }
-  .nl-band__heading { font-size: 28px; }
-  .nl-band__sub { margin-inline: auto; font-size: $fs-sm; }
+  .nl-band__sub { margin-inline: auto; }
 }
 
 // ----- Cover fan (product covers cascading like a hand of cards) -----
@@ -238,26 +221,26 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-family: $font-display;
-  font-weight: 700;
+  font-family: $font-display; // type-exception: price numerals sized to the bubble artwork
+  font-weight: 700; // type-exception: price numerals
   color: $color-bg;
   line-height: 1.15;
 
   small {
-    font-family: $font-label;
-    font-weight: 600;
-    font-size: $fs-xs;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+    font-family: $font-label; // type-exception: fits the fixed-width bubble
+    font-weight: 600; // type-exception: fits the fixed-width bubble
+    font-size: $fs-xs; // type-exception: fits the fixed-width bubble
+    letter-spacing: 0.02em; // type-exception: fits the fixed-width bubble
+    text-transform: uppercase; // type-exception: fits the fixed-width bubble
   }
 }
 
-.price-bubble--lg .price-bubble__text { font-size: 32px; }
-.price-bubble--sm .price-bubble__text { font-size: $fs-lg; }
+.price-bubble--lg .price-bubble__text { font-size: 32px; } // type-exception: price numerals
+.price-bubble--sm .price-bubble__text { font-size: $fs-lg; } // type-exception: price numerals
 
 @media (max-width: $bp-lg) {
   .price-bubble--lg { width: 140px; }
-  .price-bubble--lg .price-bubble__text { font-size: 24px; }
+  .price-bubble--lg .price-bubble__text { font-size: 24px; } // type-exception: price numerals
 }
 @media (max-width: $bp-md) {
   .price-bubble--lg { width: 120px; }
@@ -354,11 +337,7 @@
 }
 
 .bundle-cta__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 38px;
-  line-height: 1.2;
-  letter-spacing: 0;
+  @include type-section;
   color: $color-bg;
 }
 
@@ -367,9 +346,7 @@
 // Live runs the "normally $135" line and the "no fluff" line together as one
 // peach paragraph.
 .bundle-cta__lede {
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  @include type-body;
   color: $color-peach;
   max-width: 451px;
 }
@@ -395,7 +372,6 @@
 }
 
 @media (max-width: $bp-lg) {
-  .bundle-cta__heading { font-size: 32px; }
   .bundle-cta__squiggle { left: 44%; }
 }
 @media (max-width: $bp-md) {
@@ -404,7 +380,6 @@
     min-height: 0;
   }
   .bundle-cta__copy { width: auto; padding: 0; }
-  .bundle-cta__heading { font-size: 27px; }
   .bundle-cta__squiggle { display: none; }
   .bundle-cta__mockup {
     position: relative;
@@ -508,33 +483,26 @@
 }
 
 .testimonial__attr {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-md;
-  line-height: 1.8;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  @include type-label;
   color: $color-ink;
   margin: 0;
 }
 
 .testimonial blockquote {
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  @include type-body;
   color: $color-ink;
   margin: 0;
 }
 
 .testimonials__wordmark {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: clamp(55px, 9.24vw, 133px);
+  font-family: $font-display; // type-exception: decorative wordmark
+  font-weight: 500; // type-exception: decorative wordmark
+  font-size: clamp(55px, 9.24vw, 133px); // type-exception: decorative wordmark sized to the band
   line-height: 1;
   text-align: center;
   color: $color-peach;
   margin: 0;
-  letter-spacing: 0;
+  letter-spacing: 0; // type-exception: decorative wordmark
   position: relative;
   z-index: 1;
   transform: translateY(18%);
@@ -565,11 +533,7 @@
 }
 
 .services__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 54px;
-  line-height: 1.1;
-  letter-spacing: 0;
+  @include type-section;
   color: $color-ink;
 }
 
@@ -600,31 +564,19 @@
 
 // Small uppercase label, not a display heading.
 .service__heading {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-sm;
-  line-height: $lh-snug;
-  letter-spacing: calc(0.1em + 1px);
-  text-transform: uppercase;
+  @include type-label;
   color: $color-ink;
   margin-bottom: $grid-2;
 }
 
 .service__copy {
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  @include type-body;
   color: $color-ink;
   max-width: 40ch;
 }
 
-@media (max-width: $bp-lg) {
-  .services__heading { font-size: 38px; }
-}
-
 @media (max-width: $bp-md) {
   .services__grid    { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; } // geometry: card column
-  .services__heading { font-size: 36px; text-align: center; }
-  .service__copy     { font-size: $fs-xs; }
+  .services__heading { text-align: center; }
   .services--left .service { align-items: center; text-align: center; }
 }

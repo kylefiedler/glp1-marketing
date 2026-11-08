@@ -24,15 +24,13 @@
 }
 
 .newsletter__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: $fs-2xl;
+  @include type-section;
   color: $color-ink;
   margin-bottom: $space-3;
 }
 
 .newsletter__lead {
-  font-size: $fs-md;
+  @include type-lead;
   color: $color-ink;
   margin-bottom: $space-5;
 }
@@ -51,8 +49,8 @@
 .newsletter__field input {
   width: 100%;
   padding: $space-3 $space-4;
-  font-family: $font-body;
-  font-size: $fs-sm;
+  font-family: $font-body; // type-exception: form control
+  font-size: $fs-sm; // type-exception: form control
   color: $color-ink;
   background: $color-bg;
   border: 1px solid rgba($color-ink, 0.15);
@@ -66,9 +64,9 @@
 
 .newsletter__submit {
   padding: $space-3 $space-5;
-  font-family: $font-heading;
-  font-weight: 400;
-  font-size: $fs-sm;
+  font-family: $font-heading; // type-exception: form control
+  font-weight: 400; // type-exception: form control
+  font-size: $fs-sm; // type-exception: form control
   color: $color-bg;
   background: $color-accent;
   border: 0;
@@ -84,7 +82,7 @@
 .newsletter__note {
   grid-column: 1 / -1;
   margin-top: $space-3;
-  font-size: $fs-xs;
+  @include type-small;
   color: $color-muted;
 }
 
@@ -106,9 +104,7 @@
 }
 
 .contact-form__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: $fs-2xl;
+  @include type-section;
   color: $color-ink;
   margin-bottom: $space-5;
   text-align: center;
@@ -125,17 +121,17 @@
 }
 
 .contact-form__field > span {
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
+  font-family: $font-heading; // type-exception: form control
+  font-weight: 600; // type-exception: form control
+  font-size: $fs-sm; // type-exception: form control
   color: $color-ink;
 }
 
 .contact-form__field input,
 .contact-form__field textarea {
   padding: $space-3 $space-4;
-  font-family: $font-body;
-  font-size: $fs-sm;
+  font-family: $font-body; // type-exception: form control
+  font-size: $fs-sm; // type-exception: form control
   color: $color-ink;
   background: $color-bg;
   border: 1px solid rgba($color-ink, 0.15);
@@ -152,9 +148,9 @@
 .contact-form__submit {
   justify-self: start;
   padding: $space-3 $space-6;
-  font-family: $font-heading;
-  font-weight: 400;
-  font-size: $fs-sm;
+  font-family: $font-heading; // type-exception: form control
+  font-weight: 400; // type-exception: form control
+  font-size: $fs-sm; // type-exception: form control
   color: $color-bg;
   background: $color-accent;
   border: 0;
@@ -170,7 +166,7 @@
 // Inline error shown by assets/js/forms.js when a Formspree submit fails.
 .form-error {
   margin: 0;
-  font-family: $font-body;
-  font-size: $fs-sm;
+  font-family: $font-body; // type-exception: form control
+  font-size: $fs-sm; // type-exception: form control
   color: $color-accent;
 }
