@@ -1,12 +1,7 @@
 // Journal page — shares the .page-hero hot-pink pattern.
 
 .journal-hero__eyebrow {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-xs;
-  line-height: $lh-snug;
-  letter-spacing: calc(0.06em + 1px);
-  text-transform: uppercase;
+  @include type-eyebrow;
   color: $color-bg;
   margin: 0 auto var(--title-gap);
   opacity: 0.9;
@@ -29,19 +24,12 @@
 }
 
 .journal-product__copy .journal-product__eyebrow {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-xs;
-  line-height: $lh-snug;
-  letter-spacing: calc(0.06em + 1px);
-  text-transform: uppercase;
+  @include type-eyebrow;
   color: $color-ink;
 }
 
 .journal-product__copy p {
-  font-family: $font-body;
-  font-size: $fs-md;
-  line-height: $lh-body;
+  @include type-lead;
   color: $color-ink;
 }
 
@@ -90,37 +78,25 @@
 }
 
 .journal-inside__label {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-sm;
-  line-height: $lh-snug;
-  letter-spacing: calc(0.1em + 1px);
-  text-transform: uppercase;
+  @include type-label;
   color: $color-ink;
   margin: 0 0 $grid-3;
 }
 
 .journal-inside__list {
-  list-style: none;
-  padding: 0;
+  @include list-bullet;
   margin: 0;
   display: grid;
   gap: $grid-2;
 
   li {
-    font-family: $font-body;
-    font-size: $fs-sm;
-    line-height: $lh-body;
+    @include type-body;
     color: $color-ink;
   }
-
-  strong { font-weight: 700; }
 }
 
 .journal-inside__col p {
-  font-family: $font-body;
-  font-size: $fs-md;
-  line-height: $lh-body;
+  @include type-lead;
   color: $color-ink;
 }
 
@@ -156,29 +132,18 @@
 }
 
 .journal-cta__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  @include type-section;
   color: $color-bg;
 }
 
 .journal-cta__subheading {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-sm;
-  line-height: $lh-snug;
-  letter-spacing: calc(0.1em + 1px);
-  text-transform: uppercase;
+  @include type-label;
   color: $color-bg;
   margin: 0;
 }
 
-@media (max-width: $bp-lg) { .journal-cta__heading { font-size: 32px; } }
 @media (max-width: $bp-md) {
-  .journal-cta__heading { font-size: 26px; }
-  .journal-cta__decor   { display: none; }
+  .journal-cta__decor { display: none; }
 }
 
 // ===== FAQ =====
@@ -188,18 +153,13 @@
 }
 
 .journal-faq__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 44px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  @include type-section;
   color: $color-peach;
   text-align: center;
 }
 
 .journal-faq__legal {
-  font-family: $font-body;
-  font-size: $fs-sm;
+  @include type-small;
   color: $color-muted;
   text-align: center;
   margin: var(--stack-gap) 0 0;
@@ -210,6 +170,3 @@
     text-underline-offset: 3px;
   }
 }
-
-@media (max-width: $bp-lg) { .journal-faq__heading { font-size: 34px; } }
-@media (max-width: $bp-md) { .journal-faq__heading { font-size: 26px; } }

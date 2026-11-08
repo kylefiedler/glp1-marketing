@@ -18,6 +18,7 @@
 .about-hero__inner {
   position: relative;
   min-height: 750px;
+  padding-top: 311px; // geometry: the card's top on the live canvas
 }
 
 // Photo runs the full height of the band, flush right, one rounded corner.
@@ -39,10 +40,10 @@
   }
 }
 
+// In flow so long copy grows the band; the band clips the card's last 16px.
 .about-hero__card {
-  position: absolute;
-  left: 13.33%;   // 160/1200
-  top: 311px;
+  position: relative;
+  margin: 0 0 (-$grid-2) 13.33%; // geometry: 160/1200 in
   width: 46.92%;  // 563/1200
   min-height: 455px;
   z-index: 2;
@@ -53,27 +54,20 @@
 }
 
 .about-hero__title {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 52px;
-  line-height: 1;
-  letter-spacing: 0;
+  @include type-hero;
   color: $color-accent;
   margin: 0 0 $grid-3;
 }
 
 .about-hero__lede {
-  font-family: $font-body;
-  font-weight: 400;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  @include type-lead;
   color: $color-ink;
   margin: 0 0 0 auto;
   max-width: 435px;
 }
 
 @media (max-width: $bp-lg) {
-  .about-hero__inner { min-height: 0; }
+  .about-hero__inner { min-height: 0; padding-top: 0; }
   .about-hero__media {
     position: relative;
     left: auto;
@@ -83,21 +77,16 @@
     border-radius: 0 0 0 11px;
   }
   .about-hero__card {
-    position: relative;
-    left: auto;
-    top: auto;
     width: auto;
     min-height: 0;
     margin: -52px $grid-2 $grid-6; // geometry: card overlaps the photo above it
     border-radius: 16px;
     padding: $grid-4 $grid-3;
   }
-  .about-hero__title { font-size: 34px; }
 }
 
 @media (max-width: $bp-md) {
   .about-hero__media { height: 300px; }
-  .about-hero__title { font-size: 27px; }
 }
 
 // ===== Statement (hot-pink band, squiggle up top, two photos cropped
@@ -111,12 +100,11 @@
   background: $color-accent;
   padding: 0;
   @include clip-below-wave;
-  min-height: 1136px;
 }
 
 .about-statement__inner {
   position: relative;
-  height: 1136px;
+  padding-top: 133px; // geometry: heading's top on the live canvas
   text-align: center;
 }
 
@@ -129,34 +117,24 @@
 }
 
 .about-statement__heading {
-  position: absolute;
-  left: 12%;     // 144/1200
-  top: 133px;
-  width: 76%;    // 912/1200
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 38px;
-  line-height: 1.2;
-  letter-spacing: 0;
+  width: 76%;    // 912/1200, centred
+  @include type-section;
   color: $color-bg;
-  margin: 0;
+  margin: 0 auto $grid-4;
 }
 
 .about-statement__lede {
-  position: absolute;
-  left: 19.92%;  // 239/1200
-  top: 285px;
-  width: 60.25%; // 723/1200
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  width: 60.25%; // 723/1200, centred
+  @include type-lead;
   color: $color-bg;
-  margin: 0;
+  margin: 0 auto;
 }
 
+// Photo stage: 373-1136 on the live canvas; the wave crops photos past its bottom.
 .about-statement__media {
   position: relative;
-  height: 0;
+  height: 763px;
+  margin-top: $grid-4;
 }
 
 .about-statement__photo {
@@ -168,7 +146,7 @@
 // Sits behind, and is half-covered by, the taller photo to its left.
 .about-statement__photo--back {
   left: 41.92%;  // 503/1200
-  top: -629px;   // 507 - 1136
+  top: 134px;    // 507 - 373
   width: 58.08%; // 697/1200
   height: 650px;
   object-position: 100% 100%;
@@ -177,7 +155,7 @@
 
 .about-statement__photo--front {
   left: 3.17%;   // 38/1200
-  top: -763px;   // 373 - 1136
+  top: 0;
   width: 48.5%;  // 582/1200
   height: 830px;
   object-position: 60% 60%;
@@ -186,11 +164,10 @@
 
 @media (max-width: $bp-lg) {
   .about-statement {
-    min-height: 0;
     padding: var(--section-pad) var(--gutter);
     padding-bottom: calc(var(--section-pad) + var(--wave-below));
   }
-  .about-statement__inner { height: auto; }
+  .about-statement__inner { padding-top: 0; }
   .about-statement__squiggle {
     position: relative;
     left: auto;
@@ -199,15 +176,10 @@
     margin: 0 auto $grid-4;
   }
   .about-statement__heading,
-  .about-statement__lede {
-    position: relative;
-    left: auto;
-    top: auto;
-    width: auto;
-  }
-  .about-statement__heading { font-size: 27px; margin-bottom: $grid-3; }
+  .about-statement__lede { width: auto; }
+  .about-statement__heading { margin-bottom: $grid-3; }
 
-  .about-statement__media { height: 340px; }
+  .about-statement__media { height: 340px; margin-top: 0; }
   .about-statement__photo--back {
     left: auto;
     right: 4%;
@@ -236,11 +208,7 @@
 }
 
 .about-story__heading {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 63px;
-  line-height: 1.1;
-  letter-spacing: 0;
+  @include type-section;
   color: $color-ink;
   margin-left: 87px; // geometry: heading sits 177px into the 1200 canvas
   max-width: 776px;
@@ -260,15 +228,12 @@
 }
 
 .about-story__copy {
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  @include type-body;
   color: $color-ink;
 }
 
 .about-story__copy p {
   em { font-style: italic; }
-  strong { font-weight: 700; }
 }
 
 // Pink wave-thin rule that opens most of the copy columns.
@@ -280,17 +245,12 @@
 }
 
 .about-story__pullquote {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-md;
-  line-height: 1.8;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  @include type-label;
   color: $color-ink;
 }
 
 .about-story__signoff {
-  font-family: $font-body;
+  @include type-body;
 }
 
 .about-story__figure {
@@ -336,7 +296,7 @@
 }
 
 @media (max-width: $bp-lg) {
-  .about-story__heading { font-size: 42px; margin-left: 0; }
+  .about-story__heading { margin-left: 0; }
   .about-story__inner { padding: 0; }
   .about-story__row { column-gap: $grid-4; }
   // :nth-of-type(n) keeps specificity level with the per-row rules above.
@@ -348,7 +308,6 @@
 }
 
 @media (max-width: $bp-md) {
-  .about-story__heading { font-size: 36px; }
   .about-story__row { grid-template-columns: 1fr; }
   .about-story__row--reverse .about-story__figure { order: 2; }
   .about-story__figure img { border-radius: 20px; }
