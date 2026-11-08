@@ -8,7 +8,7 @@
 
 .btn {
   display: inline-block;
-  padding: $space-3 $space-6;
+  padding: $grid-1 $grid-4;
   font-family: $font-heading; // type-exception: button face
   font-weight: 400; // type-exception: button face
   font-size: $fs-sm; // type-exception: button face
@@ -34,13 +34,13 @@
 .btn--white:hover { filter: brightness(0.94); }
 
 .btn--lg {
-  padding: $space-4 $space-7;
+  padding: $grid-2 $grid-6;
   font-size: $fs-md; // type-exception: button face
 }
 
 @media (max-width: $bp-md) {
   .btn--lg {
-    padding: $space-4 $space-6;
+    padding: $grid-2 $grid-4;
     font-size: $fs-sm; // type-exception: button face
   }
 }
@@ -57,7 +57,7 @@
 // Small print under the pre-launch button. Every journal CTA sits on pink.
 .app-store-cta__note {
   display: block;
-  margin-top: $space-3;
+  margin-top: $grid-1;
   @include type-small;
   color: $color-bg;
   opacity: 0.9;

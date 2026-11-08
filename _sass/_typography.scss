@@ -40,7 +40,7 @@ a:hover {
 
 details {
   border-top: 1px solid rgba($color-ink, 0.12);
-  padding: $space-4 0;
+  padding: $grid-2 0;
 }
 
 details:last-of-type {
@@ -55,7 +55,7 @@ summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: $space-3;
+  gap: $grid-1;
 }
 
 summary::-webkit-details-marker {
@@ -77,7 +77,7 @@ details[open] summary::after {
 
 details > p {
   @include type-body;
-  margin-top: $space-3;
+  margin-top: $grid-2;
   color: rgba($color-ink, 0.85);
 }
 

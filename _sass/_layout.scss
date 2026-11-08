@@ -10,8 +10,10 @@
 //   element wrapping the call-to-action.
 //
 // Exception markers (grep-able, see .context/plans/site-spacing-rhythm.md):
-//   // geometry:              artwork coordinates, not rhythm
+//   // geometry: why          artwork coordinates or component sizes, not rhythm
 //   // rhythm-exception: why  a band that deliberately departs from the shell
+// scripts/check-spacing.sh (CI) rejects raw px in padding, margin, gap and
+// max-width unless one of these sits on the same line.
 
 // ----- Band -----
 

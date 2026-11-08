@@ -1,20 +1,20 @@
 .site-footer {
   background: $color-blush;
-  padding: $space-8 $space-5 $space-6;
+  padding: $grid-8 var(--gutter) $grid-4;
 }
 
 .site-footer__inner {
-  max-width: 1280px;
+  max-width: $content-width;
   margin: 0 auto;
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: $space-7;
+  gap: $grid-6;
   align-items: start;
 }
 
 .site-footer__links {
   display: flex;
-  gap: $space-7;
+  gap: $grid-6;
 
   ul {
     list-style: none;
@@ -22,7 +22,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: $space-2;
+    gap: $grid-1;
   }
 
   // Same face, size and weight as button text.
@@ -44,24 +44,24 @@
 .site-footer__side {
   display: flex;
   flex-direction: column;
-  gap: $space-6;
+  gap: $grid-4;
 }
 
 .site-footer__contact {
-  max-width: 560px;
+  max-width: 560px; // geometry: contact form column
 }
 
 // Small all-caps secondary title.
 .site-footer__heading {
   @include type-label;
   color: $color-ink;
-  margin: 0 0 $space-4;
+  margin: 0 0 $grid-2;
 }
 
 .site-footer__form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: $space-3;
+  gap: $grid-2;
 }
 
 .site-footer__field--wide { grid-column: 1 / -1; }
@@ -69,7 +69,7 @@
 .site-footer__field input,
 .site-footer__field textarea {
   width: 100%;
-  padding: $space-3 $space-4;
+  padding: $grid-1 $grid-2;
   font-family: $font-body; // type-exception: form control
   font-size: $fs-sm; // type-exception: form control
   color: $color-ink;
@@ -105,12 +105,12 @@
 }
 
 .site-footer__meta {
-  max-width: 1280px;
-  margin: $space-6 auto 0;
+  max-width: $content-width;
+  margin: $grid-4 auto 0;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: $space-5;
+  gap: $grid-3;
 }
 
 .site-footer__social {
@@ -118,7 +118,7 @@
   padding: 0;
   margin: 0;
   display: flex;
-  gap: $space-4;
+  gap: $grid-2;
 
   a {
     display: inline-flex;
@@ -144,12 +144,12 @@
 @media (max-width: $bp-lg) {
   .site-footer__inner {
     grid-template-columns: 1fr;
-    gap: $space-6;
+    gap: $grid-4;
     text-align: center;
   }
   .site-footer__links {
     justify-content: center;
-    gap: $space-6;
+    gap: $grid-4;
   }
   .site-footer__contact { width: 100%; margin: 0 auto; text-align: left; }
   .site-footer__brand img { margin: 0 auto; }
