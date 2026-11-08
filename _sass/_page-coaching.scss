@@ -726,8 +726,3 @@
   color: $color-peach;
   text-align: center;
 }
-
-.coaching-faq summary {
-  @include type-faq;
-  align-items: flex-start; // keep the toggle on the first line when a question wraps
-}

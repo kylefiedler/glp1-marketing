@@ -53,7 +53,7 @@ summary {
   @include type-faq;
   color: $color-ink;
   display: flex;
-  align-items: center;
+  align-items: flex-start; // the toggle stays on the first line when a question wraps
   justify-content: space-between;
   gap: $grid-1;
 }
