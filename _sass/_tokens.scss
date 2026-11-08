@@ -60,7 +60,9 @@ $content-narrow: 880px;
 
 // Rhythm roles - the one place section-level spacing is decided. Sections
 // reference these instead of raw values; each steps down at $bp-lg / $bp-md.
-//   --section-pad  vertical padding inside a wave-divided band
+//   --section-pad          vertical padding inside a wave-divided band
+//   --section-pad-compact  the same for a compact band (.section--compact):
+//                          repeated rows such as the guide list
 //   --hero-offset  extra top padding a page hero needs to clear the header
 //   --title-gap    a section's main title -> its content
 //   --cta-gap      copy -> the call-to-action under it
@@ -68,7 +70,8 @@ $content-narrow: 880px;
 //   --stack-gap    between sibling items (cards, grid cells, columns)
 //   --gutter       side padding
 :root {
-  --section-pad: #{$grid-12};
+  --section-pad: #{$grid-8};
+  --section-pad-compact: #{$grid-4};
   --hero-offset: #{$grid-6};
   --title-gap:   #{$grid-3};
   --cta-gap:     #{$grid-4};
@@ -79,14 +82,14 @@ $content-narrow: 880px;
 
 @media (max-width: $bp-lg) {
   :root {
-    --section-pad: #{$grid-10};
     --stack-gap:   #{$grid-6};
   }
 }
 
 @media (max-width: $bp-md) {
   :root {
-    --section-pad: #{$grid-8};
+    --section-pad: #{$grid-6};
+    --section-pad-compact: #{$grid-3};
     --title-gap:   #{$grid-2};
     --cta-gap:     #{$grid-3};
     --stack-gap:   #{$grid-4};

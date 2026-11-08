@@ -36,6 +36,10 @@
   --wave-below: var(--wave-swell-h);
 }
 
+// Compact band: about half the vertical padding, for repeated rows (each
+// guide on the Guides page) that read as a list rather than a feature.
+.section--compact { --section-pad: var(--section-pad-compact); }
+
 // ----- Content column -----
 
 .section__inner {
