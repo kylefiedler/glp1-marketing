@@ -1,6 +1,10 @@
 <footer class="site-footer">
   {% include wave.html fill="blush" still=true %}
   <div class="site-footer__inner">
+    <a class="site-footer__brand" href="{{ '/' | relative_url }}" aria-label="That GLP-1 Girl — home">
+      <img src="{{ '/assets/images/site/logo-dark.svg' | relative_url }}" alt="" width="70" height="63">
+    </a>
+
     <div class="site-footer__side">
       <nav class="site-footer__links" aria-label="Site">
         <ul>
@@ -17,6 +21,10 @@
       {% include social-links.html class="site-footer__social" %}
     </div>
 
+    <span class="decor decor--wave-thin site-footer__divider" aria-hidden="true">
+      {% include decor/wave-thin.svg %}
+    </span>
+
     <div class="site-footer__contact">
       <h2 class="site-footer__heading">Contact Jess</h2>
       <form class="site-footer__form" method="POST" action="{{ site.formspree_endpoint }}" data-thanks="{{ '/thanks/' | relative_url }}">
@@ -31,16 +39,12 @@
         </label>
         <label class="site-footer__field site-footer__field--wide">
           <span class="visually-hidden">Message</span>
-          <textarea name="message" rows="4" placeholder="Message" required></textarea>
+          <textarea name="message" rows="3" placeholder="Message" required></textarea>
         </label>
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
         <button type="submit" class="btn btn--primary site-footer__submit">Submit</button>
       </form>
     </div>
-
-    <a class="site-footer__brand" href="{{ '/' | relative_url }}" aria-label="That GLP-1 Girl — home">
-      <img src="{{ '/assets/images/site/logo-dark.svg' | relative_url }}" alt="" width="70" height="63">
-    </a>
   </div>
 
   <div class="site-footer__meta">
