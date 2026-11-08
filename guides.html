@@ -20,11 +20,7 @@ permalink: /guides/
   </section>
 
   <section class="guides-bundle">
-    <div class="guides-bundle__seam" aria-hidden="true">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 60 L0 30 C 240 0, 480 0, 720 25 C 960 50, 1200 50, 1440 15 L1440 60 Z" fill="currentColor"/>
-      </svg>
-    </div>
+    {% include wave.html fill="blush" %}
     <div class="guides-bundle__mockup cover-fan" aria-hidden="true">
       {%- assign bundle_covers = "supplement_guide_cover.png|meal_template_cover.png|travel_survival_kit_cover.png|wean_off_glp-1_cover.png|workout_starter_cover.png|grocery_guide_cover.png|beginner_kit_cover.png" | split: "|" -%}
       {%- for cover in bundle_covers -%}
@@ -55,12 +51,10 @@ permalink: /guides/
       <a class="btn btn--primary btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy the ultimate guide bundle</a>
     </p>
 
-    <div class="guides-bundle__wave" aria-hidden="true">
-      {% include decor/wave-med.svg %}
-    </div>
   </section>
 
   <section class="guides-included">
+    {% include wave.html shape="swell" fill="white" %}
     <div class="guides-included__inner">
       <div class="guides-included__col">
         <h2 class="guides-included__heading">What&rsquo;s included</h2>
@@ -116,6 +110,11 @@ permalink: /guides/
         {%- if forloop.index0 < 5 -%}
           {%- assign is_reversed = forloop.index0 | modulo: 2 -%}
           <li class="guide-row{% if is_reversed == 1 %} guide-row--reverse{% endif %}">
+            {%- if is_reversed == 1 %}
+            {% include wave.html shape="swell" fill="white" %}
+            {%- else %}
+            {% include wave.html fill="mist" %}
+            {%- endif %}
             <div class="guide-row__inner">
               <div class="guide-row__media">
                 <img class="guide-row__img" src="{{ '/assets/images/home/' | append: p[0] | relative_url }}" alt="" width="400" height="520" loading="lazy">
@@ -132,7 +131,7 @@ permalink: /guides/
             </div>
           </li>
         {%- else -%}
-          {%- if forloop.index0 == 5 -%}<li class="guide-mini-pair"><div class="guide-mini-pair__inner">{%- endif -%}
+          {%- if forloop.index0 == 5 -%}<li class="guide-mini-pair">{% include wave.html shape="swell" fill="white" %}<div class="guide-mini-pair__inner">{%- endif -%}
             <div class="guide-mini">
               <div class="guide-mini__media">
                 <img class="guide-mini__img" src="{{ '/assets/images/home/' | append: p[0] | relative_url }}" alt="" width="400" height="520" loading="lazy">
@@ -151,6 +150,7 @@ permalink: /guides/
   </section>
 
   <section class="guides-faq">
+    {% include wave.html shape="swell" fill="blush" %}
     <div class="guides-faq__inner">
       <h2 class="guides-faq__heading">Frequently Asked Questions</h2>
 

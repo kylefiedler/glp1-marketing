@@ -39,20 +39,6 @@
   > svg { width: 100%; height: auto; }
 }
 
-// Soft 40px wave on a section's top or bottom edge, filled with the
-// section's own color so it overlaps its neighbour.
-@mixin coaching-wave($edge, $image) {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 40px;
-  background: no-repeat center / 100% 100% $image;
-  z-index: 3;
-  pointer-events: none;
-  @if $edge == top { bottom: calc(100% - 1px); } @else { top: calc(100% - 1px); }
-}
-
 // ===== Hero (extends the hot-pink home-hero pattern) =====
 // coaching.html applies both `.coaching-hero` and `.home-hero` so the header
 // overlay + hot-pink hero styles from _page-home.scss apply. This block only
@@ -151,11 +137,9 @@
 
 .coaching-truth {
   position: relative;
-  overflow-x: clip; // the oversized seam runs past both edges
+  overflow-x: clip;
   background: $color-blush;
   padding: $space-8 $space-5 $space-9;
-
-  &::before { @include coaching-wave(top, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 18 C 240 0, 480 0, 720 16 C 960 34, 1200 34, 1440 14 L1440 40 Z' fill='%23FDEADD'/%3E%3C/svg%3E")); }
 }
 
 .coaching-truth__inner {
@@ -247,7 +231,7 @@
   position: relative;
   background: $color-bg;
   padding: $space-9 $space-5;
-  overflow: hidden;
+  @include clip-below-wave;
 }
 
 .coaching-features__star {
@@ -360,12 +344,8 @@
 .coaching-fit {
   position: relative;
   overflow-x: clip;
-  z-index: 1; // its bottom wave sits over the about section
   background: $color-blush;
   padding: $space-7 $space-5 $space-9;
-
-  &::before { @include coaching-wave(top, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 18 C 240 0, 480 0, 720 16 C 960 34, 1200 34, 1440 14 L1440 40 Z' fill='%23FDEADD'/%3E%3C/svg%3E")); }
-  &::after  { @include coaching-wave(bottom, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L0 20 C 240 40, 480 40, 720 24 C 960 6, 1200 6, 1440 26 L1440 0 Z' fill='%23FDEADD'/%3E%3C/svg%3E")); }
 }
 
 .coaching-fit__asterisk {
@@ -541,8 +521,6 @@
   overflow-x: clip;
   background: $color-blush;
   padding: $space-8 $space-5 $space-9;
-
-  &::before { @include coaching-wave(top, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 18 C 240 0, 480 0, 720 16 C 960 34, 1200 34, 1440 14 L1440 40 Z' fill='%23FDEADD'/%3E%3C/svg%3E")); }
 }
 
 // Top-right corner, clear of the heading.
@@ -669,11 +647,6 @@
   position: relative;
   background: $color-accent;
   padding: $space-8 $space-5;
-  // z-index 2 so its pink waves sit over program details and be-real.
-  z-index: 2;
-
-  &::before { @include coaching-wave(top, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 18 C 240 0, 480 0, 720 16 C 960 34, 1200 34, 1440 14 L1440 40 Z' fill='%23EE2273'/%3E%3C/svg%3E")); }
-  &::after  { @include coaching-wave(bottom, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L0 24 C 300 44, 620 44, 900 26 C 1140 10, 1320 12, 1440 22 L1440 0 Z' fill='%23EE2273'/%3E%3C/svg%3E")); height: 50px; }
 }
 
 .coaching-investment__inner {
@@ -706,7 +679,7 @@
   top: 78%; // hangs off the band's bottom edge, clear of the copy
   width: 224px;
   color: $color-peach;
-  z-index: 4; // over the band's bottom wave
+  z-index: 4; // over be-real's wave
   animation: decor-spin-ccw 48s linear infinite;
 }
 
@@ -732,7 +705,7 @@
   position: relative;
   background: $color-blush;
   padding: $space-9 $space-5;
-  overflow: hidden;
+  @include clip-below-wave;
 }
 
 .coaching-be-real__inner {
@@ -798,7 +771,7 @@
   position: relative;
   background: $color-peach;
   padding: $space-9 $space-5;
-  overflow: hidden;
+  @include clip-below-wave;
 }
 
 // Blush vertical squiggle standing behind the form, floor to ceiling.

@@ -163,22 +163,6 @@
   margin: $space-7 auto 0;
 }
 
-.home-stat__wave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 44px;
-  line-height: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-.home-stat__wave svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
 @media (max-width: $bp-lg) {
   .home-stat__heading { font-size: 40px; }
 }
@@ -275,19 +259,6 @@
   color: $color-bg;
   padding: calc(#{$space-9} + 40px) $space-5;
 }
-
-.home-bundle__wave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 60px;
-  line-height: 0;
-  z-index: 3;
-  pointer-events: none;
-}
-.home-bundle__wave--top { top: -59px; }
-.home-bundle__wave--bottom { bottom: -59px; }
-.home-bundle__wave svg { width: 100%; height: 100%; display: block; }
 
 .home-bundle__inner {
   @extend %home-inner;

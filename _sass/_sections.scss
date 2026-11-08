@@ -15,35 +15,19 @@
 .banner {
   position: relative;
   padding: $space-9 0;
-  overflow: hidden;
+  overflow-x: clip; // sideways only, so the top wave stays visible
 
   &--guides  { background: $color-peach; }
   &--journal { background: $color-accent; color: $color-bg; }
 }
 
-// Journal banner: wavy top rising over the section above, peach scallops
-// along the bottom (into the peach newsletter band), and three app screens
-// rising behind them.
+// Journal banner: taller, with three app screens rising behind the
+// newsletter band's wave.
 .banner--journal {
-  z-index: 3;
   padding: 150px 0;
-  overflow: visible;
-  overflow-x: clip;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: calc(100% - 1px);
-    height: 40px;
-    background: no-repeat center / 100% 100%
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 16 C 200 0, 360 0, 560 18 C 760 36, 920 34, 1120 14 C 1260 2, 1360 4, 1440 12 L1440 40 Z' fill='%23EE2273'/%3E%3C/svg%3E");
-    pointer-events: none;
-  }
 }
 
-// Three app screens rising from the bottom edge, cropped by the scallops.
+// Three app screens rising from the bottom edge, cropped by the next wave.
 .banner__screens {
   position: absolute;
   top: 0;
@@ -67,20 +51,6 @@
 .banner__screen--left  { left: 0;     top: 34%; }
 .banner__screen--mid   { left: 32.5%; top: 12%; z-index: 1; }
 .banner__screen--right { left: 65%;   top: 30%; }
-
-.banner__scallop {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  color: $color-peach;
-  transform: rotate(180deg);
-  line-height: 0;
-  z-index: 2;
-  pointer-events: none;
-
-  svg { width: 100%; height: auto; display: block; }
-}
 
 .banner__inner {
   max-width: 1200px;
@@ -162,7 +132,7 @@
 .nl-band {
   position: relative;
   background: $color-peach;
-  padding: $space-8 $space-5 calc(#{$space-8} + 40px);
+  padding: $space-8 $space-5;
 }
 
 .nl-band__inner {
@@ -197,22 +167,8 @@
 
 .nl-band__form { min-width: 0; }
 
-// Blush scallops rising from the footer into the band.
-.nl-band__scallop {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  color: $color-blush;
-  transform: rotate(180deg);
-  line-height: 0;
-  pointer-events: none;
-
-  svg { width: 100%; height: auto; display: block; }
-}
-
 @media (max-width: $bp-md) {
-  .nl-band { padding: $space-7 $space-4 calc(#{$space-7} + 24px); }
+  .nl-band { padding: $space-7 $space-4; }
   .nl-band__inner { grid-template-columns: 1fr; gap: $space-5; text-align: center; }
   .nl-band__heading { font-size: 28px; }
   .nl-band__sub { margin-inline: auto; font-size: $fs-sm; }
@@ -354,7 +310,7 @@
   background: $color-accent;
   color: $color-bg;
   padding: 0;
-  overflow: hidden;
+  @include clip-below-wave;
 }
 
 .bundle-cta__inner {
@@ -474,26 +430,12 @@
 // through a two-up slider; we lay all four out as a 2x2 grid over the
 // oversized peach "Client Reviews" wordmark.
 
-// Wavy top edge, laid over the bottom of whichever section comes before.
-.testimonials-wave {
-  position: relative;
-  z-index: 3;
-  height: 60px;
-  margin: -60px 0 -1px;
-  line-height: 0;
-  color: $color-sand;
-  pointer-events: none;
-
-  svg { width: 100%; height: 100%; display: block; }
-}
-
 .testimonials {
   background: $color-sand;
   padding: $space-9 $space-5 $space-6;
   position: relative;
-  overflow: hidden;
-  overflow: clip; // hidden still lets find-in-page scroll the wordmark under the wave
-
+  // Clip sideways only, so the wave rising from the top edge stays visible.
+  overflow-x: clip;
 }
 
 .testimonials__inner {
@@ -581,22 +523,6 @@
   line-height: $lh-body;
   color: $color-ink;
   margin: 0;
-}
-
-// Wavy bottom edge in the peach of the guides banner that follows the
-// reviews on every page, so the wordmark rises out of the same band.
-.testimonials__wave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  z-index: 2;
-  height: 60px;
-  line-height: 0;
-  color: $color-peach;
-  pointer-events: none;
-
-  svg { width: 100%; height: 100%; display: block; }
 }
 
 .testimonials__wordmark {

@@ -77,22 +77,7 @@
   overflow-x: clip;
 }
 
-// Wavy seam rising into the pink hero; the cover fan sits on top of it.
-.guides-bundle__seam {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: calc(100% - 1px);
-  z-index: 1;
-  height: 60px;
-  line-height: 0;
-  color: $color-blush;
-  pointer-events: none;
-
-  svg { width: 100%; height: 100%; display: block; }
-}
-
-// Covers fan out across the seam between the pink hero and this section.
+// Covers fan out across the wave between the pink hero and this section.
 // Fan visuals (.cover-fan) live in _sections.scss; this just places it and
 // matches live's 239x342 cards at a ~92px overlap.
 .guides-bundle__mockup {
@@ -100,7 +85,7 @@
   top: -23px;
   left: 0;
   right: 0;
-  z-index: 3;
+  z-index: 4; // over the wave
 
   img { width: 239px; margin-left: -92px; aspect-ratio: 239 / 342; object-fit: cover; }
   img:first-child { margin-left: 0; }
@@ -193,20 +178,6 @@
   }
 }
 
-// Blush wave dipping down into the white "included" section below.
-.guides-bundle__wave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -61px;
-  height: 122px;
-  color: $color-blush;
-  z-index: 4;
-  pointer-events: none;
-
-  svg { width: 100%; height: 100%; display: block; }
-}
-
 @media (max-width: $bp-lg) {
   .guides-bundle__mockup  { top: -16px; img { width: 150px; margin-left: -58px; } }
   .guides-bundle__inner   { padding-top: 300px; }
@@ -231,14 +202,11 @@
   .guides-bundle__squiggle-white { top: 190px; right: auto; left: 26px; width: 105px; }
   .guides-bundle__price   { top: 179px; right: 8px; width: 130px; }
   .guides-bundle__price .price-bubble__text { font-size: 20px; small { font-size: 11px; } }
-  .guides-bundle__wave    { bottom: -30px; height: 60px; }
 }
 
 // ===== What's included / Why it works (2-col) =====
 
 .guides-included {
-  position: relative;
-  z-index: 0; // below the first guide band, so the photo tucks behind its wavy top
   background: $color-bg;
   padding: 109px 0 33px;
   overflow-x: clip;
@@ -285,8 +253,11 @@
   margin: 0 0 10px;
 }
 
+// Isolated so the photo and its star stack only against each other; the
+// first guide band's wave then paints over the photo's bottom edge.
 .guides-included__col--why {
   position: relative;
+  isolation: isolate;
 }
 
 // Peach scallop-star peeking out from behind the photo's left edge.
@@ -348,34 +319,9 @@
   margin: 0;
 }
 
-// Mist bands get wavy top and bottom edges that overlap the white bands
-// either side.
+// Mist and white bands alternate, each opening with its own wave.
 .guide-row {
   background: $color-mist;
-}
-
-.guide-row:not(.guide-row--reverse) {
-  position: relative;
-  z-index: 1;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background: no-repeat center / 100% 100%;
-    pointer-events: none;
-  }
-  &::before {
-    bottom: calc(100% - 1px);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 22 C 240 0, 480 0, 720 18 C 960 36, 1200 36, 1440 12 L1440 40 Z' fill='%23F2EFEE'/%3E%3C/svg%3E");
-  }
-  &::after {
-    top: calc(100% - 1px);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L0 18 C 240 40, 480 40, 720 22 C 960 4, 1200 4, 1440 28 L1440 0 Z' fill='%23F2EFEE'/%3E%3C/svg%3E");
-  }
 }
 
 .guide-row--reverse {
@@ -589,24 +535,8 @@
 // ===== FAQ =====
 
 .guides-faq {
-  position: relative;
-  z-index: 2;
   background: $color-blush;
   padding: 120px 0 82px;
-
-  // Wavy top over the guide bands; the journal banner below brings its own
-  // wavy top, which forms this section's bottom edge.
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: calc(100% - 1px);
-    height: 40px;
-    background: no-repeat center / 100% 100%
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 14 C 240 36, 480 36, 720 18 C 960 0, 1200 0, 1440 24 L1440 40 Z' fill='%23FDEADD'/%3E%3C/svg%3E");
-    pointer-events: none;
-  }
 }
 
 .guides-faq__inner {

@@ -25,22 +25,6 @@
   padding: $space-9 $space-5;
 }
 
-// Scalloped seam dipping up into the pink hero above.
-.journal-product__wave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  // Width-driven (height: auto) so the scallops span any viewport without
-  // distorting; bottom: 100% seats it on the section's top edge.
-  bottom: calc(100% - 1px);
-  color: $color-blush;
-  transform: rotate(180deg);
-  z-index: 1;
-  pointer-events: none;
-
-  svg { width: 100%; height: auto; display: block; }
-}
-
 .journal-product__inner {
   @extend %journal-inner;
   position: relative;
@@ -163,7 +147,7 @@
   background: $color-accent;
   padding: $space-9 $space-5;
   text-align: center;
-  overflow: hidden;
+  @include clip-below-wave;
 }
 
 .journal-cta__decor {

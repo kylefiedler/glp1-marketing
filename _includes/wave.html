@@ -1,0 +1,24 @@
+{%- comment -%}
+  Wave divider - the app's section edge (glp1Journal Theme/Wave.swift).
+  Drop it in as the first child of the lower section. It rises into the
+  section above and fills with the lower section's color.
+
+  Params:
+    shape (optional) - "ripple" (default) or "swell". Alternate them down a
+                       page, starting with ripple, as the app does.
+    fill  (required) - the lower section's color: pink, peach, blush, sand,
+                       mist or white.
+    still (optional) - true holds the curve still (task areas: forms).
+{%- endcomment -%}
+
+{%- assign wave_shape = include.shape | default: "ripple" -%}
+{%- if wave_shape == "swell" -%}
+  {%- assign wave_h = 80 -%}
+  {%- assign wave_d = "M0 80 C240 0 480 0 720 40 C960 80 1200 80 1440 20 L1440 80 Z" -%}
+{%- else -%}
+  {%- assign wave_h = 60 -%}
+  {%- assign wave_d = "M0 60 L1440 60 L1440 25 C1200 60 960 0 720 30 C480 60 240 0 0 30 Z" -%}
+{%- endif -%}
+<div class="wave wave--{{ wave_shape }} wave--{{ include.fill }}" data-wave="{{ wave_shape }}"{% if include.still %} data-wave-still{% endif %} aria-hidden="true">
+  <svg viewBox="0 0 1440 {{ wave_h }}" preserveAspectRatio="none" focusable="false"><path d="{{ wave_d }}"/></svg>
+</div>
