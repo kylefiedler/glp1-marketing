@@ -28,13 +28,13 @@
 //   Hero keeps the shared page hero's sizes. Section sits at the old lower
 //   tier (~36px), clearly below Hero and above Title, so band headings
 //   don't overpower their content.
-//   Title covers the 20-32px card titles; FAQ sits between Title and Section
-//   at a lighter weight, carrying the coaching FAQ's look.
+//   Title covers the 20-32px card titles. FAQ questions are small and regular
+//   weight, so a long list reads as a list under its Section heading.
 :root {
   --fs-hero:    56px;
   --fs-section: 36px;
   --fs-title:   28px;
-  --fs-faq:     32px;
+  --fs-faq:     20px;
 }
 
 @media (max-width: $bp-lg) {
@@ -42,7 +42,7 @@
     --fs-hero:    44px;
     --fs-section: 30px;
     --fs-title:   24px;
-    --fs-faq:     26px;
+    --fs-faq:     18px;
   }
 }
 
@@ -51,7 +51,7 @@
     --fs-hero:    32px;
     --fs-section: 24px;
     --fs-title:   20px;
-    --fs-faq:     22px;
+    --fs-faq:     18px;
   }
 }
 
@@ -81,9 +81,9 @@
 
 @mixin type-faq {
   font-family: $font-heading;
-  font-weight: 500;
+  font-weight: 400;
   font-size: var(--fs-faq);
-  line-height: 1.25;
+  line-height: 1.35;
   letter-spacing: 0;
 }
 
