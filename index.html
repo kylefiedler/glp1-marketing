@@ -23,10 +23,10 @@ permalink: /
         <a class="btn btn--white" href="{{ '/guides' | relative_url }}">Shop the guides</a>
       </p>
     </div>
+    <div data-freebie-trigger aria-hidden="true"></div>
   </section>
-  <div data-freebie-trigger aria-hidden="true"></div>
 
-  <section class="home-stat">
+  <section class="section home-stat">
     {% include wave.html fill="peach" %}
     <span class="decor decor--starburst home-stat__decor home-stat__decor--star" aria-hidden="true">
       {% include decor/starburst.svg %}
@@ -35,8 +35,8 @@ permalink: /
       {% include decor/squiggle.svg %}
     </span>
 
-    <div class="home-stat__inner">
-      <h2 class="home-stat__heading">I Lost 155 Pounds on <span class="nowrap">GLP-1</span>&mdash;And Kept It Off.</h2>
+    <div class="section__inner section__inner--narrow home-stat__inner">
+      <h2 class="home-stat__heading section__title">I Lost 155 Pounds on <span class="nowrap">GLP-1</span>&mdash;And Kept It Off.</h2>
       <p class="home-stat__lede">Now I help you do the same, without the guesswork, side effects, or fear of regaining.</p>
       <span class="home-stat__arrow" aria-hidden="true">
         <svg viewBox="0 0 40 80" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
@@ -47,9 +47,9 @@ permalink: /
     </div>
   </section>
 
-  <section class="home-about">
+  <section class="section home-about">
     {% include wave.html shape="swell" fill="blush" %}
-    <div class="home-about__inner">
+    <div class="section__inner home-about__inner">
       <div class="home-about__copy">
         <h2 class="home-about__heading">The word <em>coach</em> can mean anything these days.</h2>
         <span class="decor decor--wave-thin home-about__underline" aria-hidden="true">
@@ -58,7 +58,7 @@ permalink: /
         <p class="home-about__eyebrow">Let&rsquo;s be honest, it doesn&rsquo;t always inspire confidence.</p>
         <p>Here&rsquo;s what it means to me: I&rsquo;m an Ivy League educated registered nurse, a certified personal trainer, a certified nutrition coach, and am currently completing my Obesity Medicine certification with the Obesity Medicine Association.</p>
         <p>But more importantly? I&rsquo;ve lost 155 pounds myself&mdash;and kept it off.</p>
-        <p class="home-about__cta">
+        <p class="home-about__cta section__cta">
           <a class="btn btn--primary" href="{{ '/about' | relative_url }}">More about me</a>
         </p>
       </div>
@@ -68,13 +68,13 @@ permalink: /
     </div>
   </section>
 
-  <section class="home-bundle">
+  <section class="section home-bundle">
     {% include wave.html fill="pink" %}
-    <div class="home-bundle__inner">
+    <div class="section__inner home-bundle__inner">
       <div class="home-bundle__copy">
-        <h2 class="home-bundle__heading">Get all of the Guides<br>for <span class="home-bundle__price">$35</span></h2>
+        <h2 class="home-bundle__heading section__title">Get all of the Guides<br>for <span class="home-bundle__price">$35</span></h2>
         <p class="home-bundle__lede">Normally $135+ if purchased separately. No fluff. No overwhelm. Just everything you need to succeed.</p>
-        <p class="home-bundle__cta">
+        <p class="home-bundle__cta section__cta">
           <a class="btn btn--white btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy the ultimate bundle</a>
         </p>
       </div>
@@ -87,25 +87,9 @@ permalink: /
     </div>
   </section>
 
-  <section class="home-services">
-    {% include wave.html shape="swell" fill="blush" %}
-    <div class="home-services__inner">
-      <ul class="home-services__grid">
-        {%- assign services = "GLP-1 Guides|Eight focused guides covering nutrition, supplements, workouts, travel, and weaning off &mdash; written by a nurse who&rsquo;s been there.|/guides||GLP-1 Journal|Not just a tracker. A transformation companion. Daily prompts, weekly themes and progress selfies for your GLP-1 journey, private on your iPhone.|/journal||Personalized Coaching|Unlock your optimal well-being with expert guidance from our coaching service. Tailored advice, customized plans, and ongoing support for a healthier, happier you.|/coaching" | split: "||" -%}
-        {%- for service in services -%}
-          {%- assign parts = service | split: "|" -%}
-          <li class="home-service">
-            <span class="decor decor--flower home-service__icon" aria-hidden="true">
-              {% include decor/flower.svg %}
-            </span>
-            <h3 class="home-service__heading">{{ parts[0] }}</h3>
-            <p>{{ parts[1] }}</p>
-            <p class="home-service__cta"><a class="btn btn--primary" href="{{ parts[2] | relative_url }}">Learn more</a></p>
-          </li>
-        {%- endfor -%}
-      </ul>
-    </div>
-  </section>
+  {% include section-services.html
+     items="GLP-1 Guides|Eight focused guides covering nutrition, supplements, workouts, travel, and weaning off &mdash; written by a nurse who&rsquo;s been there.|/guides||GLP-1 Journal|Not just a tracker. A transformation companion. Daily prompts, weekly themes and progress selfies for your GLP-1 journey, private on your iPhone.|/journal||Personalized Coaching|Unlock your optimal well-being with expert guidance from our coaching service. Tailored advice, customized plans, and ongoing support for a healthier, happier you.|/coaching"
+  %}
 
   {% include section-testimonials.html %}
 

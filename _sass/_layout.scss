@@ -26,11 +26,11 @@
 // Wave compensation. The next section's wave rises out of its top edge and
 // paints over the bottom of this one, so this band pads its bottom by that
 // wave's height (--wave-below). The visible space under the content then
-// equals --section-pad, whichever wave shape follows. The second selector
-// form steps over one non-section sibling (a scroll trigger, an include's
-// <script>). This rule only sets the variable, so a band that needs its own
-// bottom padding overrides `padding-bottom` with a plain class selector.
-.section:has(+ * > .wave--swell, + :not(section) + * > .wave--swell) {
+// equals --section-pad, whichever wave shape follows. Bands must be direct
+// siblings: keep scroll triggers and scripts inside a band, not between two.
+// This rule only sets the variable, so a band that needs its own bottom
+// padding overrides `padding-bottom` with a plain class selector.
+.section:has(+ * > .wave--swell) {
   --wave-below: var(--wave-swell-h);
 }
 

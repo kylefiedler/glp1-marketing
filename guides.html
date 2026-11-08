@@ -13,13 +13,13 @@ permalink: /guides/
 <main class="guides">
 
   <section class="section guides-hero page-hero">
-    <div class="section__inner section__inner--narrow page-hero__inner">
+    <div class="section__inner page-hero__inner">
       <p class="guides-hero__eyebrow">Your Complete GLP-1 Toolbox</p>
       <h1 class="page-hero__title">Build your foundation. Save your muscle. Learn to eat again.</h1>
     </div>
   </section>
 
-  <section class="guides-bundle">
+  <section class="section guides-bundle">
     {% include wave.html fill="blush" %}
     <div class="guides-bundle__mockup cover-fan" aria-hidden="true">
       {%- assign bundle_covers = "supplement_guide_cover.png|meal_template_cover.png|travel_survival_kit_cover.png|wean_off_glp-1_cover.png|workout_starter_cover.png|grocery_guide_cover.png|beginner_kit_cover.png" | split: "|" -%}
@@ -28,7 +28,7 @@ permalink: /guides/
       {%- endfor -%}
     </div>
 
-    <div class="guides-bundle__inner">
+    <div class="section__inner guides-bundle__inner">
       <div class="guides-bundle__copy">
         <h2 class="guides-bundle__heading">The Ultimate That GLP-1 Girl Bundle</h2>
         <span class="decor decor--wave-thin guides-bundle__squiggle" aria-hidden="true">
@@ -47,15 +47,15 @@ permalink: /guides/
       {% include price-bubble.html price="$35" sub="$45+<br>value" size="lg" class="guides-bundle__price" %}
     </div>
 
-    <p class="guides-bundle__cta">
+    <p class="guides-bundle__cta section__cta">
       <a class="btn btn--primary btn--lg" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy the ultimate guide bundle</a>
     </p>
 
   </section>
 
-  <section class="guides-included">
+  <section class="section guides-included">
     {% include wave.html shape="swell" fill="white" %}
-    <div class="guides-included__inner">
+    <div class="section__inner guides-included__inner">
       <div class="guides-included__col">
         <h2 class="guides-included__heading">What&rsquo;s included</h2>
         <ul class="guides-included__list">
@@ -109,13 +109,13 @@ permalink: /guides/
         {%- assign row_price = p[2] -%}
         {%- if forloop.index0 < 5 -%}
           {%- assign is_reversed = forloop.index0 | modulo: 2 -%}
-          <li class="guide-row{% if is_reversed == 1 %} guide-row--reverse{% endif %}">
+          <li class="section guide-row{% if is_reversed == 1 %} guide-row--reverse{% endif %}">
             {%- if is_reversed == 1 %}
             {% include wave.html shape="swell" fill="white" %}
             {%- else %}
             {% include wave.html fill="mist" %}
             {%- endif %}
-            <div class="guide-row__inner">
+            <div class="section__inner guide-row__inner">
               <div class="guide-row__media">
                 <img class="guide-row__img" src="{{ '/assets/images/home/' | append: p[0] | relative_url }}" alt="" width="400" height="520" loading="lazy">
                 {% include price-bubble.html price=row_price size="sm" class="guide-row__price" %}
@@ -124,21 +124,21 @@ permalink: /guides/
                 <h3 class="guide-row__name">{{ p[1] }}</h3>
                 <p class="guide-row__lede">{{ p[3] }}</p>
               </div>
-              <p class="guide-row__actions">
+              <p class="guide-row__actions section__cta">
                 <a class="btn btn--primary" href="{{ p[5] | relative_url }}">Learn more</a>
                 <a class="btn btn--white" href="https://thatglp1girl.gumroad.com/l/{{ p[4] }}" target="_blank" rel="noopener">{{ p[6] }}</a>
               </p>
             </div>
           </li>
         {%- else -%}
-          {%- if forloop.index0 == 5 -%}<li class="guide-mini-pair">{% include wave.html shape="swell" fill="white" %}<div class="guide-mini-pair__inner">{%- endif -%}
+          {%- if forloop.index0 == 5 -%}<li class="section guide-mini-pair">{% include wave.html shape="swell" fill="white" %}<div class="section__inner guide-mini-pair__inner">{%- endif -%}
             <div class="guide-mini">
               <div class="guide-mini__media">
                 <img class="guide-mini__img" src="{{ '/assets/images/home/' | append: p[0] | relative_url }}" alt="" width="400" height="520" loading="lazy">
                 {% include price-bubble.html price=row_price size="sm" class="guide-mini__price" %}
               </div>
               <h3 class="guide-mini__name">{{ p[1] }}</h3>
-              <p class="guide-mini__actions">
+              <p class="guide-mini__actions section__cta">
                 <a class="btn btn--primary" href="{{ p[5] | relative_url }}">Learn more</a>
                 <a class="btn btn--white" href="https://thatglp1girl.gumroad.com/l/{{ p[4] }}" target="_blank" rel="noopener">{{ p[6] }}</a>
               </p>
@@ -149,10 +149,10 @@ permalink: /guides/
     </ul>
   </section>
 
-  <section class="guides-faq">
-    {% include wave.html shape="swell" fill="blush" %}
-    <div class="guides-faq__inner">
-      <h2 class="guides-faq__heading">Frequently Asked Questions</h2>
+  <section class="section guides-faq">
+    {% include wave.html fill="blush" %}
+    <div class="section__inner">
+      <h2 class="guides-faq__heading section__title">Frequently Asked Questions</h2>
 
       {%- assign faqs = "What format are the guides?|All guides are downloadable PDFs. You&rsquo;ll get instant access after purchase via email and can save them to your phone, tablet, or computer. Read them offline anytime.||Do I need to be on a GLP-1 medication to use these?|Most guides work whether you&rsquo;re on Ozempic, Wegovy, Mounjaro, Zepbound, or planning to start. The Beginner Kit is perfect for people just starting, and the Wean-Off Kit is specifically for those transitioning off medication. If you&rsquo;re maintaining results post-GLP-1, the guides still apply.||I&rsquo;m already a few months into my GLP-1 journey. Will these still help?|Absolutely. The Beginner Kit covers months 1&ndash;6+ and addresses plateaus, side effects, and maintenance strategies. The other guides (Food, Workout, Travel, Wean-Off) are valuable at any stage of your journey.||Are these guides evidence-based?|Yes. Every guide is created by Jessica, an Ivy League-educated registered nurse with Obesity Medicine certification, certified personal trainer credentials, and 155 pounds of personal weight loss experience. She&rsquo;s also in the midst of becoming a Psychiatric Nurse Practitioner through Vanderbilt University. All recommendations are backed by clinical research and real world application.||How is this different from free information online?|Free content gives you pieces. These guides give you complete systems: step-by-step plans, meal templates, workout calendars, and troubleshooting for the specific challenges GLP-1 users face. No guessing, no piecing together random Instagram posts. Everything you need in one place.||Can I share these with friends or family?|These guides are for personal use only. If you&rsquo;d like to gift a guide to someone, you can purchase additional copies at checkout or send them the link to buy their own.||How long does it take to see results?|The guides give you immediate strategies you can implement today. Most people report feeling more confident, in control, and clear on their plan within the first week. Physical results (strength, energy, digestion improvements) typically show up within 2&ndash;4 weeks of consistent implementation.||Do you offer refunds?|All sales are final. These are digital products delivered instantly, so we cannot offer refunds. However, if you have questions about which guide is right for you before purchasing, feel free to reach out via the contact form.||I already bought one guide. Can I upgrade to the bundle?|Yes! Email us at Hello@ThatGLP1Girl.com with your purchase receipt and we&rsquo;ll send you a discount code for the difference so you can grab the bundle.||Will these guides work if I&rsquo;m also working with a doctor or nutritionist?|Yes. These guides complement medical advice&mdash;they don&rsquo;t replace it. Always follow your doctor&rsquo;s recommendations, especially regarding medication dosing and medical conditions. Think of these guides as additional tools in your toolkit.||What if I have a question after I buy?|Each guide is comprehensive and designed to be self-sufficient, but if you have questions, you can reach out through the contact form on this site.||Do these guides include meal plans?|The Beginner Kit includes sample meals and nutrition strategy. The Food &amp; Grocery Guide has 2 full days of meal plans plus the bloat-free plate formula. The 7-Day Meal Template gives you a full week of done-for-you meals. If you want comprehensive meal planning, grab the bundle&mdash;it has everything.||Are the workouts suitable for beginners?|Yes! The Workout Starter Pack includes 3 complete paths: At-Home Beginner (no gym, minimal equipment), Hybrid Intermediate (some gym access), and Gym-Based Advanced. Pick the one that matches your current fitness level.||How quickly will I receive the guides after purchase?|Instantly. You&rsquo;ll get an email with download links within minutes of purchase. Check your spam folder if you don&rsquo;t see it right away.||Can I access these on my phone?|Yes. All guides are PDFs that work on any device&mdash;phone, tablet, computer. Save them to your Files app, Google Drive, or read them in any PDF reader.||I&rsquo;m overwhelmed. Where should I start?|If you&rsquo;re NEW to GLP-1s &rarr; Start with the Beginner Kit. If you&rsquo;re STRUGGLING with food choices &rarr; Grab the Food &amp; Grocery Guide. If you need MOVEMENT structure &rarr; Get the Workout Starter Pack. If you want EVERYTHING &rarr; The Ultimate Bundle saves you $58 and covers your entire journey.||Is there a community or support group?|Not yet, but it&rsquo;s coming soon! For now, follow @jessicarockowitz on Instagram for daily tips, support, and updates." | split: "||" -%}
       {%- for pair in faqs -%}

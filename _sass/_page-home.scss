@@ -1,13 +1,5 @@
-// ----- Shared section helpers -----
-
-%home-section {
-  padding: $space-9 $space-5;
-}
-
-%home-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+// Home page bands. Spacing comes from the section shell (_layout.scss); the
+// services cards are the shared section-services include.
 
 // Hero base (.page-hero) lives in _layout.scss - every page shares it.
 
@@ -21,7 +13,6 @@
   position: relative;
   overflow-x: clip; // the spinning star's corners can poke past the right edge
   background: $color-peach;
-  padding: $space-9 $space-5 calc(#{$space-9} + 40px);
   text-align: center;
 }
 
@@ -58,8 +49,6 @@
 }
 
 .home-stat__inner {
-  @extend %home-inner;
-  max-width: 880px;
   position: relative;
 }
 
@@ -70,7 +59,7 @@
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: $color-ink;
-  margin: 0 auto $space-5;
+  margin-inline: auto;
   max-width: 20ch;
 }
 
@@ -87,7 +76,7 @@
   display: block;
   color: $color-bg;
   width: 40px;
-  margin: $space-7 auto 0;
+  margin: $grid-6 auto 0;
 }
 
 @media (max-width: $bp-lg) {
@@ -101,15 +90,13 @@
 
 .home-about {
   background: $color-blush;
-  padding: $space-9 $space-5;
   position: relative;
 }
 
 .home-about__inner {
-  @extend %home-inner;
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  gap: $space-8;
+  gap: var(--stack-gap);
   align-items: center;
 }
 
@@ -120,7 +107,7 @@
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: $color-ink;
-  margin: 0 0 $space-3;
+  margin: 0 0 $grid-2;
 }
 
 .home-about__heading em {
@@ -133,7 +120,7 @@
   width: 320px;
   max-width: 100%;
   color: $color-accent;
-  margin: 0 0 $space-5;
+  margin: 0 0 var(--title-gap); // the underline closes the title
 }
 
 .home-about .home-about__eyebrow {
@@ -144,7 +131,6 @@
   letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-ink;
-  margin: 0 0 $space-4;
 }
 
 .home-about p {
@@ -152,12 +138,11 @@
   font-size: $fs-md;
   line-height: $lh-body;
   color: $color-ink;
-  margin: 0 0 $space-4;
   max-width: 52ch;
 }
 
-// Scoped under .home-about so it beats the `.home-about p` margin.
-.home-about .home-about__cta { margin-top: $space-7; }
+// Paragraphs stack 16px apart; the CTA (last) brings its own --cta-gap.
+.home-about__copy > p:not(:last-child) { margin-bottom: $grid-2; }
 
 .home-about__media img {
   width: 100%;
@@ -173,8 +158,8 @@
 }
 
 @media (max-width: $bp-md) {
-  .home-about__inner { grid-template-columns: 1fr; gap: $space-6; }
-  .home-about__media { max-width: 360px; margin: 0 auto; order: -1; }
+  .home-about__inner { grid-template-columns: 1fr; }
+  .home-about__media { max-width: 360px; margin: 0 auto; order: -1; } // geometry: photo column
   .home-about__heading { font-size: 30px; }
 }
 
@@ -184,16 +169,14 @@
   position: relative;
   background: $color-accent;
   color: $color-bg;
-  padding: calc(#{$space-9} + 40px) $space-5;
 }
 
 .home-bundle__inner {
-  @extend %home-inner;
   position: relative;
   z-index: 2;
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
-  gap: $space-8;
+  gap: var(--stack-gap);
   align-items: center;
 }
 
@@ -204,7 +187,6 @@
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: $color-bg;
-  margin: 0 0 $space-4;
 }
 
 .home-bundle__price { color: $color-bg; }
@@ -212,14 +194,13 @@
 .home-bundle__lede {
   font-family: $font-body;
   font-size: $fs-md;
-  margin: 0 0 $space-6;
   color: rgba($color-bg, 0.95);
 }
 
 .home-bundle__mockup {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: $space-3;
+  gap: $grid-2;
   transform: rotate(-3deg);
 
   img {
@@ -235,73 +216,12 @@
 
 @media (max-width: $bp-lg) {
   .home-bundle__heading { font-size: 38px; }
-  .home-bundle__inner { gap: $space-6; }
 }
 
 @media (max-width: $bp-md) {
   .home-bundle__inner { grid-template-columns: 1fr; }
   .home-bundle__heading { font-size: 30px; }
   .home-bundle__mockup { transform: none; }
-}
-
-// ===== Services =====
-
-.home-services {
-  background: $color-blush;
-  padding: $space-9 $space-5;
-}
-
-.home-services__inner {
-  @extend %home-inner;
-}
-
-.home-services__grid {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: $space-7;
-}
-
-.home-service {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: $space-3;
-}
-
-.home-service__icon {
-  display: block;
-  width: 64px;
-  margin-bottom: $space-5;
-}
-
-.home-service__heading {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-sm;
-  line-height: $lh-snug;
-  letter-spacing: calc(0.1em + 1px);
-  text-transform: uppercase;
-  color: $color-ink;
-  margin: 0 0 $space-3;
-}
-
-.home-service p {
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
-  color: $color-ink;
-  margin: 0;
-  max-width: 38ch;
-}
-
-.home-service__cta { margin-top: $space-6; }
-
-@media (max-width: $bp-lg) {
-  .home-services__grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
 }
 
 // Testimonials moved to _sass/_sections.scss and

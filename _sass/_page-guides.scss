@@ -1,14 +1,7 @@
 // Guides page — shares the .page-hero hot-pink pattern via a joint class
-// on .guides-hero. Rest is guides-specific.
-//
-// Geometry and type below are taken from the live page's 1200px Showit
-// canvas (scratchpad/live-guides.html), so the px values here are canvas
-// units: at the 1200px max-width they land 1:1.
-
-%guides-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+// on .guides-hero. Every band (bundle, included, each guide row, the mini
+// pair, FAQ) sits on the section shell (_layout.scss); the px left here are
+// artwork and column geometry, marked as such.
 
 // Live sets every eyebrow / small label on this page in the label face at 600 18/1.8
 // uppercase with 0.1em tracking (st-d-subheading).
@@ -32,10 +25,8 @@
 }
 
 // ===== Hero-specific overrides =====
-// Live's guides hero runs bigger than home's: 77px title (home is 63px) over
-// a 596px band, with the cover fan hanging off the bottom edge.
-
-.guides-hero .page-hero__inner { max-width: 1088px; }
+// The guides hero title runs bigger than home's, so it takes the full content
+// width (guides.html drops the --narrow modifier).
 
 .guides-hero .page-hero__title {
   font-size: 77px;
@@ -49,7 +40,7 @@
   @extend %guides-label;
   line-height: 1.3;
   color: $color-bg;
-  margin: 0 auto 7px;
+  margin: 0 auto $grid-1;
 }
 
 @media (max-width: $bp-lg) {
@@ -62,10 +53,13 @@
 
 // ===== Bundle (fanned covers up top + copy w/ price badge) =====
 
+// The cover fan hangs from the band's top edge, so the band's top padding is
+// the fan's height plus the usual --section-pad below it.
 .guides-bundle {
+  --fan-height: 320px; // geometry: bottom of the cover fan
+  padding-top: calc(var(--fan-height) + var(--section-pad));
   position: relative;
   background: $color-blush;
-  padding: 0 $space-5 $space-8;
   // Clip only sideways: the fan's outer cover pokes past the edge on phones,
   // but the covers still need to rise into the hero above.
   overflow-x: clip;
@@ -81,19 +75,17 @@
   right: 0;
   z-index: 4; // over the wave
 
-  img { width: 239px; margin-left: -92px; aspect-ratio: 239 / 342; object-fit: cover; }
+  img { width: 239px; margin-left: -92px; aspect-ratio: 239 / 342; object-fit: cover; } // geometry: fan card size and overlap
   img:first-child { margin-left: 0; }
 }
 
 .guides-bundle__inner {
-  @extend %guides-inner;
   position: relative;
-  padding-top: 396px;
 }
 
 .guides-bundle__copy {
-  max-width: 914px;
-  padding-left: 134px;
+  max-width: $content-narrow;
+  padding-left: $grid-16; // geometry: copy set in from the fan's left edge
 }
 
 .guides-bundle__heading {
@@ -108,21 +100,20 @@
 .guides-bundle__squiggle {
   width: 391px;
   color: $color-peach;
-  margin: 28px 0 35px;
+  margin: $grid-3 0 var(--title-gap); // closes the title
 }
 
 .guides-bundle__eyebrow {
   @extend %guides-label;
   color: $color-ink;
-  margin: 0 0 $space-5;
+  margin: 0 0 $grid-3;
   max-width: 604px;
 }
 
 .guides-bundle__cols {
   display: grid;
   grid-template-columns: 467px 419px;
-  gap: 28px;
-  margin: 0;
+  gap: $grid-4;
 
   p {
     font-family: $font-body;
@@ -134,7 +125,6 @@
 }
 
 .guides-bundle__cta {
-  margin: 47px 0 0;
   text-align: center;
 
   .btn { min-width: 506px; }
@@ -143,7 +133,7 @@
 // The white "M" squiggle sits behind the badge, half off the copy column.
 .guides-bundle__squiggle-white {
   position: absolute;
-  top: 361px;
+  top: -35px;
   right: 85px;
   width: 210px;
   color: $color-bg;
@@ -154,7 +144,7 @@
 // the right-hand edge of the copy block, overlapping the white squiggle.
 .guides-bundle__price {
   position: absolute;
-  top: 384px;
+  top: -12px;
   right: 243px;
   width: 205px;
 }
@@ -173,28 +163,27 @@
 }
 
 @media (max-width: $bp-lg) {
-  .guides-bundle__mockup  { top: -16px; img { width: 150px; margin-left: -58px; } }
-  .guides-bundle__inner   { padding-top: 300px; }
-  .guides-bundle__copy    { max-width: none; padding-left: 0; padding-right: 200px; }
+  .guides-bundle          { --fan-height: 200px; } // geometry: bottom of the cover fan
+  .guides-bundle__mockup  { top: -16px; img { width: 150px; margin-left: -58px; } } // geometry: fan card size and overlap
+  .guides-bundle__copy    { max-width: none; padding-left: 0; padding-right: 200px; } // geometry: room for the badge
   .guides-bundle__heading { font-size: 32px; }
   .guides-bundle__cols    { grid-template-columns: 1fr 1fr; }
-  .guides-bundle__squiggle-white { width: 150px; right: 0; top: 268px; }
-  .guides-bundle__price   { width: 150px; right: 110px; top: 288px; }
+  .guides-bundle__squiggle-white { width: 150px; right: 0; top: -32px; }
+  .guides-bundle__price   { width: 150px; right: 110px; top: -12px; }
   .guides-bundle__price .price-bubble__text { font-size: 28px; small { font-size: $fs-xs; } }
 }
 @media (max-width: $bp-md) {
-  .guides-bundle          { padding-bottom: $space-5; }
-  .guides-bundle__mockup  { top: -10px; img { width: 93px; margin-left: -36px; } }
-  .guides-bundle__inner   { padding-top: 130px; }
+  .guides-bundle          { --fan-height: 128px; } // geometry: bottom of the cover fan
+  .guides-bundle__mockup  { top: -10px; img { width: 93px; margin-left: -36px; } } // geometry: fan card size and overlap
   .guides-bundle__copy    { padding-right: 0; }
   .guides-bundle__heading { font-size: 20px; }
   // leaves room for the badge, which live drops into its own band here
-  .guides-bundle__squiggle { width: 225px; margin: 122px 0 20px; }
-  .guides-bundle__eyebrow { font-size: 12px; margin-bottom: $space-4; }
-  .guides-bundle__cols    { grid-template-columns: 1fr; gap: $space-4; p { font-size: $fs-xs; } }
-  .guides-bundle__cta     { margin-top: 32px; .btn { min-width: 0; width: 100%; font-size: 12px; } }
-  .guides-bundle__squiggle-white { top: 190px; right: auto; left: 26px; width: 105px; }
-  .guides-bundle__price   { top: 179px; right: 8px; width: 130px; }
+  .guides-bundle__squiggle { width: 225px; margin: $grid-16 0 $grid-3; } // geometry: room for the badge
+  .guides-bundle__eyebrow { font-size: 12px; margin-bottom: $grid-2; }
+  .guides-bundle__cols    { grid-template-columns: 1fr; gap: $grid-2; p { font-size: $fs-xs; } }
+  .guides-bundle__cta     { .btn { min-width: 0; width: 100%; font-size: 12px; } }
+  .guides-bundle__squiggle-white { top: 60px; right: auto; left: 26px; width: 105px; }
+  .guides-bundle__price   { top: 49px; right: 8px; width: 130px; }
   .guides-bundle__price .price-bubble__text { font-size: 20px; small { font-size: 11px; } }
 }
 
@@ -202,18 +191,15 @@
 
 .guides-included {
   background: $color-bg;
-  padding: 109px 0 33px;
   overflow-x: clip;
 }
 
 .guides-included__inner {
-  @extend %guides-inner;
   display: grid;
   grid-template-columns: 464px 464px;
   justify-content: center;
-  gap: 32px;
+  gap: var(--stack-gap);
   align-items: start;
-  padding: 0 $space-5;
 }
 
 // Live sets both column headers (and "Plus, Two Free Bonuses:") as small
@@ -221,15 +207,15 @@
 .guides-included__heading {
   @extend %guides-label;
   color: $color-ink;
-  margin: 0 0 10px;
+  margin: 0 0 $grid-1;
 }
 
 .guides-included__list {
   list-style: disc;
-  padding-left: $space-5;
-  margin: 0 0 $space-5;
+  padding-left: $grid-3;
+  margin: 0 0 $grid-3;
   display: grid;
-  gap: $space-3;
+  gap: $grid-2;
 
   li {
     font-family: $font-body;
@@ -244,7 +230,7 @@
 .guides-included__bonus-label {
   @extend %guides-label;
   color: $color-ink;
-  margin: 0 0 10px;
+  margin: 0 0 $grid-1;
 }
 
 // Isolated so the photo and its star stack only against each other; the
@@ -271,6 +257,10 @@
 
 // Live crops the portrait screenshot into a 522x398 landscape frame anchored
 // to its bottom-right and lets it run past the column's right edge.
+// rhythm-exception: its negative bottom margin reaches through the band's
+// bottom padding so half the next band's wave paints over it. The first guide
+// row's wave is nested in the list, so this band always assumes a ripple
+// follows; keep that row a ripple.
 .guides-included__photo {
   position: relative;
   z-index: 2;
@@ -281,18 +271,16 @@
   height: auto;
   object-fit: cover;
   object-position: 100% 100%;
-  margin: 18px 0 -64px 58px;
+  margin: $grid-2 0 calc(-1 * var(--section-pad) - var(--wave-below) / 2) $grid-8;
   border-radius: 10px;
 }
 
 @media (max-width: $bp-lg) {
-  .guides-included { padding-top: 72px; }
-  .guides-included__inner { grid-template-columns: 1fr; gap: $space-7; }
-  .guides-included__photo { width: 100%; margin: 18px 0 0; }
+  .guides-included__inner { grid-template-columns: 1fr; }
+  .guides-included__photo { width: 100%; margin: $grid-2 0 0; }
   .guides-included__decor { left: -24px; bottom: -24px; width: 150px; }
 }
 @media (max-width: $bp-md) {
-  .guides-included { padding-top: 48px; }
   .guides-included__heading,
   .guides-included__bonus-label { font-size: 12px; }
   .guides-included__list li { font-size: $fs-xs; }
@@ -303,8 +291,14 @@
 // Live gives every product its own section: mist band with the cover on the
 // right, then a white band with the cover on the left, alternating.
 
+// Guide rows and the mini pair sit in from the content edges on desktop.
 .guides-list {
+  --row-inset: #{$grid-16};
   background: $color-bg;
+}
+
+@media (max-width: $bp-lg) {
+  .guides-list { --row-inset: 0; }
 }
 
 .guides-list__rows {
@@ -323,7 +317,6 @@
 }
 
 .guide-row__inner {
-  @extend %guides-inner;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 295px;
   // Empty rows above and below center the copy against the cover.
@@ -333,9 +326,9 @@
     "body    media"
     "actions media"
     ".       media";
-  gap: 0 $space-7;
+  gap: 0 var(--stack-gap);
   align-items: start;
-  padding: 61px 150px 26px;
+  padding-inline: var(--row-inset);
 }
 
 .guide-row__body    { grid-area: body; }
@@ -386,7 +379,7 @@
 .guide-row__name {
   @extend %guides-heading;
   color: $color-ink;
-  margin: 0 0 $space-2;
+  margin: 0 0 $grid-1;
 }
 
 .guide-row__lede {
@@ -394,7 +387,6 @@
   font-size: $fs-md;
   line-height: $lh-snug;
   color: $color-ink;
-  margin: 0 0 $space-4;
   max-width: 460px;
 }
 
@@ -403,8 +395,7 @@
 .guide-row__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: $space-3;
-  margin: 0;
+  gap: $grid-2;
 
   .btn--white {
     background: transparent;
@@ -415,8 +406,7 @@
 // Bonus minis stack two full-width CTAs.
 .guide-mini__actions {
   display: grid;
-  gap: 11px;
-  margin: 0;
+  gap: $grid-2;
   max-width: 492px;
 
   .btn {
@@ -430,8 +420,6 @@
   .guide-row__inner,
   .guide-row--reverse .guide-row__inner {
     grid-template-columns: minmax(0, 1fr) 220px;
-    gap: 0 $space-6;
-    padding: 48px $space-5;
   }
   .guide-row--reverse .guide-row__inner { grid-template-columns: 220px minmax(0, 1fr); }
   .guide-row__name { font-size: 28px; }
@@ -450,8 +438,7 @@
     grid-template-areas:
       "body    media"
       "actions actions";
-    gap: 0 $space-4;
-    padding: 43px $space-4 48px;
+    gap: 0 $grid-2;
   }
   .guide-row--reverse .guide-row__inner {
     grid-template-columns: 120px minmax(0, 1fr);
@@ -460,9 +447,9 @@
       "actions actions";
   }
   .guide-row__name { font-size: 20px; }
-  .guide-row__lede { font-size: $fs-sm; margin-bottom: 0; }
+  .guide-row__lede { font-size: $fs-sm; }
   .guide-row__actions,
-  .guide-mini__actions { max-width: none; margin-top: $space-5; }
+  .guide-mini__actions { max-width: none; }
   .guide-row__actions .btn,
   .guide-mini__actions .btn { font-size: 12px; }
   .guide-row__actions .btn  { flex: 1 1 auto; text-align: center; }
@@ -479,18 +466,17 @@
 }
 
 .guide-mini-pair__inner {
-  @extend %guides-inner;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 45px;
-  padding: 50px 130px 64px;
+  gap: var(--stack-gap);
+  padding-inline: var(--row-inset);
   text-align: center;
 }
 
 .guide-mini__media {
   position: relative;
   width: 230px;
-  margin: 0 auto 33px;
+  margin: 0 auto $grid-4;
 }
 
 .guide-mini__img {
@@ -506,23 +492,21 @@
 .guide-mini__name {
   @extend %guides-heading;
   color: $color-ink;
-  margin: 0 0 $space-5;
 }
 
 .guide-mini__actions {
   justify-items: center;
   max-width: 402px;
-  margin: 0 auto;
+  margin-inline: auto;
 }
 
 @media (max-width: $bp-lg) {
-  .guide-mini-pair__inner { padding: 48px $space-5; gap: $space-6; }
   .guide-mini__media { width: 180px; }
   .guide-mini__name { font-size: 28px; }
 }
 @media (max-width: $bp-md) {
-  .guide-mini-pair__inner { grid-template-columns: 1fr; gap: 48px; padding: 31px $space-4 48px; }
-  .guide-mini__media { width: 91px; margin-bottom: 24px; }
+  .guide-mini-pair__inner { grid-template-columns: 1fr; }
+  .guide-mini__media { width: 91px; margin-bottom: $grid-3; }
   .guide-mini__name { font-size: 20px; }
 }
 
@@ -530,11 +514,6 @@
 
 .guides-faq {
   background: $color-blush;
-  padding: 120px 0 82px;
-}
-
-.guides-faq__inner {
-  @extend %guides-inner;
 }
 
 .guides-faq__heading {
@@ -544,12 +523,11 @@
   line-height: 1.1;
   letter-spacing: 0;
   color: $color-accent;
-  margin: 0 0 52px;
   text-align: center;
 }
 
-// Live renders each Q/A as its own white block: question left at 53px, a
-// dark +/x toggle pinned at 1144px, answer indented to match.
+// Each Q/A: question inset from the left, a +/x toggle pinned right, answer
+// indented to match the question.
 .guides-faq details {
   border: 0;
   padding: 0;
@@ -562,7 +540,7 @@
   list-style: none;
   cursor: pointer;
   color: $color-ink;
-  padding: 21px 80px 18px 53px;
+  padding: $grid-3 $grid-10 $grid-2 $grid-6; // right side clears the toggle
 }
 
 .guides-faq summary::-webkit-details-marker { display: none; }
@@ -570,8 +548,8 @@
 .guides-faq summary::after {
   content: "+";
   position: absolute;
-  right: 27px;
-  top: 21px;
+  right: $grid-3;
+  top: $grid-3;
   width: 29px;
   height: 31px;
   font-family: $font-body;
@@ -590,25 +568,17 @@
   line-height: $lh-body;
   color: $color-ink;
   max-width: 642px;
-  margin: 0;
-  padding: 0 $space-5 22px 55px;
-  color: $color-ink;
-}
-
-@media (max-width: 1248px) {
-  .guides-faq__inner { padding: 0 $space-5; }
+  padding: 0 $grid-3 $grid-3 $grid-6;
 }
 
 @media (max-width: $bp-lg) {
-  .guides-faq { padding: 80px $space-5 56px; }
-  .guides-faq__heading { font-size: 46px; margin-bottom: 40px; }
-  .guides-faq summary { font-size: 26px; padding: 20px 70px 20px $space-5; }
-  .guides-faq details > p { padding-left: $space-5; }
+  .guides-faq__heading { font-size: 46px; }
+  .guides-faq summary { font-size: 26px; padding: $grid-2 $grid-8 $grid-2 $grid-3; }
+  .guides-faq details > p { padding-left: $grid-3; }
 }
 @media (max-width: $bp-md) {
-  .guides-faq { padding: 43px $space-4; }
-  .guides-faq__heading { font-size: 36px; margin-bottom: 24px; }
-  .guides-faq summary { font-size: 20px; padding: 16px 44px 16px 14px; }
-  .guides-faq summary::after { right: 0; top: 16px; width: 24px; height: 24px; font-size: 28px; line-height: 24px; }
-  .guides-faq details > p { font-size: $fs-xs; padding: 0 0 12px 16px; }
+  .guides-faq__heading { font-size: 36px; }
+  .guides-faq summary { font-size: 20px; padding: $grid-2 $grid-5 $grid-2 $grid-2; }
+  .guides-faq summary::after { right: 0; top: $grid-2; width: 24px; height: 24px; font-size: 28px; line-height: 24px; }
+  .guides-faq details > p { font-size: $fs-xs; padding: 0 0 $grid-2 $grid-2; }
 }
