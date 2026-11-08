@@ -16,13 +16,15 @@ permalink: /guides/
     <div class="home-hero__inner">
       <p class="guides-hero__eyebrow">Your Complete GLP-1 Toolbox</p>
       <h1 class="home-hero__title">Build your foundation. Save your muscle. Learn to eat again.</h1>
-      <p class="home-hero__cta">
-        <a class="btn btn--white" href="https://thatglp1girl.gumroad.com/l/bundle" target="_blank" rel="noopener">Buy the ultimate guide bundle</a>
-      </p>
     </div>
   </section>
 
   <section class="guides-bundle">
+    <div class="guides-bundle__seam" aria-hidden="true">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 60 L0 30 C 240 0, 480 0, 720 25 C 960 50, 1200 50, 1440 15 L1440 60 Z" fill="currentColor"/>
+      </svg>
+    </div>
     <div class="guides-bundle__mockup cover-fan" aria-hidden="true">
       {%- assign bundle_covers = "supplement_guide_cover.png|meal_template_cover.png|travel_survival_kit_cover.png|wean_off_glp-1_cover.png|workout_starter_cover.png|grocery_guide_cover.png|beginner_kit_cover.png" | split: "|" -%}
       {%- for cover in bundle_covers -%}
@@ -46,7 +48,7 @@ permalink: /guides/
       <span class="decor decor--squiggle guides-bundle__squiggle-white" aria-hidden="true">
         {% include decor/squiggle.svg %}
       </span>
-      {% include price-bubble.html price="$35" sub="$45+ value" size="lg" class="guides-bundle__price" %}
+      {% include price-bubble.html price="$35" sub="$45+<br>value" size="lg" class="guides-bundle__price" %}
     </div>
 
     <p class="guides-bundle__cta">
@@ -91,8 +93,6 @@ permalink: /guides/
       </div>
     </div>
   </section>
-
-  {% include section-bundle-cta.html %}
 
   <section class="guides-list">
     <ul class="guides-list__rows">
@@ -150,8 +150,6 @@ permalink: /guides/
     </ul>
   </section>
 
-  {% include section-bundle-cta.html %}
-
   <section class="guides-faq">
     <div class="guides-faq__inner">
       <h2 class="guides-faq__heading">Frequently Asked Questions</h2>
@@ -167,9 +165,8 @@ permalink: /guides/
     </div>
   </section>
 
-  {% include section-guides-banner.html %}
   {% include section-journal-banner.html %}
-  {% include section-connect.html %}
+  {% include section-newsletter.html %}
 
 </main>
 

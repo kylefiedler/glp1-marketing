@@ -15,9 +15,6 @@ permalink: /coaching/
     <span class="decor decor--asterisk-8pt home-hero__decor home-hero__decor--asterisk" aria-hidden="true">
       {% include decor/asterisk-8pt.svg %}
     </span>
-    <span class="decor decor--squiggle home-hero__decor home-hero__decor--squiggle" aria-hidden="true">
-      {% include decor/squiggle.svg %}
-    </span>
 
     <div class="home-hero__inner">
       <p class="home-hero__eyebrow coaching-hero__eyebrow">1:1 GLP-1 Coaching with Jessica</p>
@@ -28,7 +25,12 @@ permalink: /coaching/
     </div>
 
     <div class="coaching-hero__media" aria-hidden="true">
-      <img class="coaching-hero__photo coaching-hero__photo--left" src="{{ '/assets/images/coaching/pexels-anna-shvets-6593598.jpg' | relative_url }}" alt="" width="378" height="386" loading="lazy">
+      <div class="coaching-hero__left">
+        <span class="decor decor--squiggle coaching-hero__squiggle">
+          {% include decor/squiggle.svg %}
+        </span>
+        <img class="coaching-hero__photo coaching-hero__photo--left" src="{{ '/assets/images/coaching/pexels-anna-shvets-6593598.jpg' | relative_url }}" alt="" width="378" height="386" loading="lazy">
+      </div>
       <img class="coaching-hero__photo coaching-hero__photo--right" src="{{ '/assets/images/coaching/screenshot_2026-01-04_at_7_04_57_pm.png' | relative_url }}" alt="" width="590" height="597" loading="lazy">
     </div>
 
@@ -38,14 +40,15 @@ permalink: /coaching/
   </section>
 
   <section class="coaching-truth">
-    <div class="coaching-seam" aria-hidden="true">{% include decor/wave-med.svg %}</div>
 
     <div class="coaching-truth__inner">
-      <div class="coaching-truth__copy">
+      <header class="coaching-truth__header">
         <h2 class="coaching-truth__heading">Here&rsquo;s the truth about GLP-1s that nobody&rsquo;s talking about:</h2>
         <span class="decor decor--wave-thin coaching-truth__rule" aria-hidden="true">
           {% include decor/wave-thin.svg %}
         </span>
+      </header>
+      <div class="coaching-truth__copy">
         <p>The medication works. But what happens when your appetite comes back? When you taper off? When you&rsquo;re 6 months in and the scale isn&rsquo;t moving like it used to?</p>
         <p class="coaching-truth__punch">Most people don&rsquo;t have a plan for that.</p>
         <p>They&rsquo;re eating whatever fits their tiny appetite. They&rsquo;re not tracking protein. They&rsquo;re losing muscle along with fat. And they&rsquo;re terrified of what happens when the medication stops working.</p>
@@ -146,7 +149,6 @@ permalink: /coaching/
   </section>
 
   <section class="coaching-fit">
-    <div class="coaching-seam" aria-hidden="true">{% include decor/wave-med.svg %}</div>
     <span class="decor decor--asterisk-8pt coaching-fit__asterisk" aria-hidden="true">
       {% include decor/asterisk-8pt.svg %}
     </span>
@@ -222,7 +224,6 @@ permalink: /coaching/
   </section>
 
   <section class="coaching-program">
-    <div class="coaching-seam" aria-hidden="true">{% include decor/wave-med.svg %}</div>
     <span class="decor decor--asterisk-8pt coaching-program__asterisk" aria-hidden="true">
       {% include decor/asterisk-8pt.svg %}
     </span>
@@ -286,7 +287,6 @@ permalink: /coaching/
       <p class="coaching-investment__note">This includes everything listed above: weekly sessions, unlimited messaging, custom plans, and ongoing adjustments.</p>
     </div>
 
-    <div class="coaching-investment__wave" aria-hidden="true">{% include decor/wave-wide.svg %}</div>
   </section>
 
   <section class="coaching-be-real">
@@ -371,7 +371,7 @@ permalink: /coaching/
 
   {% include section-guides-banner.html %}
   {% include section-journal-banner.html %}
-  {% include section-connect.html %}
+  {% include section-newsletter.html %}
 
 </main>
 

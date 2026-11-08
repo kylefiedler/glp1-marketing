@@ -178,12 +178,12 @@ body:has(.home-hero) .site-header__logo--light { display: block; }
   }
 
   a {
-    font-family: $font-heading;
+    font-family: $font-label;
     font-weight: 600;
     font-size: $fs-sm;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba($color-ink, 0.7);
+    color: $color-muted;
     text-decoration: none;
     transition: color 120ms ease;
   }

@@ -1,10 +1,11 @@
 // Blog index — reuses the hot-pink .home-hero pattern for the header.
 
 .blog-index__eyebrow {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
+  font-size: $fs-xs;
+  line-height: $lh-snug;
+  letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-bg;
   margin: 0 auto $space-4;
@@ -82,18 +83,18 @@
 }
 
 .blog-card__meta {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-xs;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba($color-ink, 0.6);
+  color: $color-muted;
   margin: 0;
 }
 
 .blog-card__title {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 24px;
   line-height: 1.2;
   color: $color-ink;
@@ -140,19 +141,20 @@
   display: block;
 }
 
-.blog-index__sidebar-eyebrow {
-  font-family: $font-heading;
+.blog-index__sidebar .blog-index__sidebar-eyebrow {
+  font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
+  font-size: $fs-xs;
+  line-height: $lh-snug;
+  letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-accent;
-  margin: 0 0 $space-2;
+  margin: 0 0 $space-4;
 }
 
 .blog-index__sidebar-heading {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 26px;
   line-height: 1.15;
   color: $color-ink;

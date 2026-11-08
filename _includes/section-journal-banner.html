@@ -4,19 +4,29 @@
   and every guide page.
 {%- endcomment -%}
 
+{%- assign app_store_url = site.journal_app_store_url | default: "" | strip -%}
 <section class="banner banner--journal">
   <div class="banner__inner">
-    <span class="decor decor--starburst banner__decor banner__decor--star" aria-hidden="true">
-      {% include decor/starburst.svg %}
-    </span>
     <div class="banner__copy">
       <h2 class="banner__heading">GLP-1 Journal for iPhone</h2>
       <p>Daily prompts and weekly check-ins for your GLP-1 journey, private on your phone.</p>
+      {%- if app_store_url != "" %}
       <p>{% include app-store-cta.html %}</p>
       <p><a class="banner__link" href="{{ '/journal' | relative_url }}">See what&rsquo;s inside</a></p>
+      {%- else %}
+      <p>
+        <a class="btn btn--white" href="{{ '/journal' | relative_url }}">See what&rsquo;s inside</a>
+        <span class="app-store-cta__note">Coming soon to the App Store.</span>
+      </p>
+      {%- endif %}
     </div>
-    <div class="banner__media banner__media--journal">
-      <img src="{{ '/assets/images/journal/app-home.png' | relative_url }}" alt="The GLP-1 Journal home screen, showing recent entries and this week's theme" loading="lazy" width="720" height="1290" class="banner__phone">
-    </div>
+  </div>
+  <div class="banner__screens" aria-hidden="true">
+    <img src="{{ '/assets/images/journal/app-progress.webp' | relative_url }}" alt="" loading="lazy" width="920" height="2000" class="banner__screen banner__screen--left">
+    <img src="{{ '/assets/images/journal/app-today.webp' | relative_url }}" alt="" loading="lazy" width="920" height="2000" class="banner__screen banner__screen--mid">
+    <img src="{{ '/assets/images/journal/app-question.webp' | relative_url }}" alt="" loading="lazy" width="920" height="2000" class="banner__screen banner__screen--right">
+  </div>
+  <div class="banner__scallop" aria-hidden="true">
+    {% include decor/wave-med.svg %}
   </div>
 </section>

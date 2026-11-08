@@ -6,10 +6,11 @@
 }
 
 .journal-hero__eyebrow {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
+  font-size: $fs-xs;
+  line-height: $lh-snug;
+  letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-bg;
   margin: 0 auto $space-4;
@@ -50,11 +51,12 @@
   align-items: center;
 }
 
-.journal-product__eyebrow {
-  font-family: $font-heading;
+.journal-product__copy .journal-product__eyebrow {
+  font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
+  font-size: $fs-xs;
+  line-height: $lh-snug;
+  letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-ink;
   margin: 0 0 $space-4;
@@ -115,10 +117,11 @@
 }
 
 .journal-inside__label {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-md;
-  letter-spacing: 0.1em;
+  font-size: $fs-sm;
+  line-height: $lh-snug;
+  letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   color: $color-ink;
   margin: 0 0 $space-5;
@@ -185,7 +188,7 @@
 
 .journal-cta__heading {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 40px;
   line-height: 1.15;
   letter-spacing: -0.01em;
@@ -194,10 +197,11 @@
 }
 
 .journal-cta__subheading {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-md;
-  letter-spacing: 0.1em;
+  font-size: $fs-sm;
+  line-height: $lh-snug;
+  letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   color: $color-bg;
   margin: 0 0 $space-6;
@@ -223,7 +227,7 @@
 
 .journal-faq__heading {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 44px;
   line-height: 1.1;
   letter-spacing: -0.01em;
@@ -235,7 +239,7 @@
 .journal-faq__legal {
   font-family: $font-body;
   font-size: $fs-sm;
-  color: rgba($color-ink, 0.75);
+  color: $color-muted;
   text-align: center;
   margin: $space-7 0 0;
 

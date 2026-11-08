@@ -1,20 +1,24 @@
-// Design tokens for thatglp1girl.com
-// Extracted from the live Showit site - single source of truth for all downstream styles.
+// Design tokens for thatglp1girl.com - single source of truth for all downstream styles.
+// Colors and type follow the GLP-1 Journal app (glp1Journal repo: Theme/Colors.swift,
+// Theme/Typography.swift) so the site and the app read as one brand.
 
 // Colors
-$color-ink:    #414546; // primary text
+$color-ink:    #2A2D2E; // primary text (app: brandText)
 $color-bg:     #FFFFFF;
-$color-accent: #EF2475; // primary brand pink - links, CTAs
+$color-accent: #EE2273; // primary brand pink - links, CTAs (app: brandTint)
 $color-peach:  #FEBBB4; // mid pink banner
-$color-blush:  #FDEADE; // pale peach section bg
+$color-blush:  #FDEADD; // pale peach section bg (app: brandBlush)
 $color-rose:   #F8A8A1; // soft coral (decorative wordmark)
 $color-mist:   #F2EFEE; // warm off-white row stripe (guide list alternation)
+$color-sand:   #F5F1EE; // warm app background (app: brandBackground)
+$color-muted:  #736768; // secondary text: dates, captions, hints (app: brandMuted)
 $color-black:  #000000;
 
 // Type families
 $font-display: "Unbounded", system-ui, sans-serif;     // hero / h1
-$font-heading: "Comfortaa", system-ui, sans-serif;     // h2-h4
-$font-body:    "Lato", system-ui, sans-serif;          // paragraphs
+$font-heading: "Unbounded", system-ui, sans-serif;     // h2-h4, buttons
+$font-body:    "DM Sans", system-ui, sans-serif;          // paragraphs
+$font-label:   $font-body;                              // small uppercase labels and eyebrows (app: system caption)
 
 // Type scale (px)
 $fs-xs:   14px;

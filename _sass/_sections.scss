@@ -21,6 +21,67 @@
   &--journal { background: $color-accent; color: $color-bg; }
 }
 
+// Journal banner: wavy top rising over the section above, peach scallops
+// along the bottom (into the peach newsletter band), and three app screens
+// rising behind them.
+.banner--journal {
+  z-index: 3;
+  padding: 150px 0;
+  overflow: visible;
+  overflow-x: clip;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(100% - 1px);
+    height: 40px;
+    background: no-repeat center / 100% 100%
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40 L0 16 C 200 0, 360 0, 560 18 C 760 36, 920 34, 1120 14 C 1260 2, 1360 4, 1440 12 L1440 40 Z' fill='%23EE2273'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+}
+
+// Three app screens rising from the bottom edge, cropped by the scallops.
+.banner__screens {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  // Kept to the right half so it never runs under the copy column.
+  right: 4%;
+  width: min(44%, 700px);
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.banner__screen {
+  position: absolute;
+  width: 35%;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 12px 32px rgba($color-black, 0.22);
+}
+// Slight overlap, with the middle screen on top.
+.banner__screen--left  { left: 0;     top: 34%; }
+.banner__screen--mid   { left: 32.5%; top: 12%; z-index: 1; }
+.banner__screen--right { left: 65%;   top: 30%; }
+
+.banner__scallop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  color: $color-peach;
+  transform: rotate(180deg);
+  line-height: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  svg { width: 100%; height: auto; display: block; }
+}
+
 .banner__inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -35,7 +96,7 @@
 
 .banner__heading {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 44px;
   line-height: 1.1;
   letter-spacing: -0.01em;
@@ -66,32 +127,11 @@
 .banner__cover--back  { position: absolute; top: 0;    left: 5%;  transform: rotate(-8deg); }
 .banner__cover--front { position: absolute; top: 30px; left: 30%; transform: rotate(5deg); }
 
-.banner__media--journal { display: flex; justify-content: center; }
-
-.banner__phone {
-  width: 46%;
-  max-width: 280px;
-  height: auto;
-  border-radius: 28px;
-  box-shadow: 0 16px 36px rgba($color-black, 0.25);
-  transform: rotate(6deg);
-}
-
 .banner__link {
   color: $color-bg;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-
-.banner__decor {
-  position: absolute;
-  z-index: 3;
-  pointer-events: none;
-}
-.banner__decor--squiggle { width: 160px; right: 8%; bottom: 8%; opacity: 0.85; }
-.banner__decor--star     { width: 96px;  left: -2%; top: -8%; }
-
-.banner--journal .banner__copy { padding-left: 110px; }
 
 @media (max-width: $bp-lg) {
   .banner__heading { font-size: 32px; }
@@ -102,114 +142,80 @@
   .banner__media { min-height: 280px; }
   .banner__cover--back  { left: 15%; }
   .banner__cover--front { left: 35%; }
-  .banner__phone { width: 52%; }
-  .banner__decor { display: none; }
-  .banner--journal .banner__copy { padding-left: 0; }
+  .banner--journal { padding-bottom: 0; }
+  .banner__screens {
+    position: relative;
+    right: auto;
+    width: calc(100% - #{$space-4 * 2});
+    max-width: 420px;
+    height: 300px;
+    margin: $space-7 auto 0;
+  }
+  .banner__screen { border-radius: 18px; }
+  .banner__screen--left  { top: 20%; }
+  .banner__screen--mid   { top: 0; }
+  .banner__screen--right { top: 18%; }
 }
 
-// ----- Connect (social + contact form) -----
+// ----- Newsletter band (above the footer) -----
 
-.connect {
-  background: $color-peach;
-  padding: $space-9 $space-5;
+.nl-band {
   position: relative;
+  background: $color-peach;
+  padding: $space-8 $space-5 calc(#{$space-8} + 40px);
 }
 
-.connect__inner {
+.nl-band__inner {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: $space-8;
-  align-items: start;
+  align-items: center;
 }
 
-.connect__side {
-  min-width: 0;
-}
-
-.connect__heading {
+.nl-band__heading {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 36px;
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: $color-ink;
-  margin: 0 0 $space-5;
+  margin: 0 0 $space-3;
 }
 
-.connect__social {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: $space-4;
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: $color-accent;
-    color: $color-bg;
-    transition: filter 120ms ease;
-  }
-  a:hover { filter: brightness(0.92); }
-
-  svg { width: 20px; height: 20px; }
-}
-
-.connect__form {
-  display: grid;
-  gap: $space-3;
-}
-
-.connect__field input,
-.connect__field textarea {
-  width: 100%;
-  padding: $space-3 $space-4;
-  font-family: $font-heading;
-  font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
-  color: $color-ink;
-  background: $color-bg;
-  border: 0;
-  border-radius: 999px;
-  resize: none;
-
-  &::placeholder {
-    color: rgba($color-ink, 0.6);
-    text-transform: uppercase;
-  }
-
-  &:focus {
-    outline: 2px solid $color-accent;
-    outline-offset: 1px;
-  }
-}
-
-.connect__field textarea {
-  border-radius: 24px;
-  min-height: 120px;
+.nl-band__sub {
   font-family: $font-body;
-  font-weight: 400;
-  letter-spacing: 0;
+  font-size: $fs-md;
+  line-height: $lh-snug;
+  color: $color-ink;
+  margin: 0;
+  max-width: 46ch;
+
+  em { font-style: italic; }
 }
 
-.connect__submit {
-  justify-self: end;
-  margin-top: $space-3;
-  min-width: 200px;
-  border: 0;
+.nl-band__form { min-width: 0; }
+
+// Blush scallops rising from the footer into the band.
+.nl-band__scallop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  color: $color-blush;
+  transform: rotate(180deg);
+  line-height: 0;
+  pointer-events: none;
+
+  svg { width: 100%; height: auto; display: block; }
 }
 
 @media (max-width: $bp-md) {
-  .connect__inner { grid-template-columns: 1fr; gap: $space-6; }
-  .connect__heading { font-size: 28px; }
-  .connect__submit { justify-self: stretch; }
+  .nl-band { padding: $space-7 $space-4 calc(#{$space-7} + 24px); }
+  .nl-band__inner { grid-template-columns: 1fr; gap: $space-5; text-align: center; }
+  .nl-band__heading { font-size: 28px; }
+  .nl-band__sub { margin-inline: auto; font-size: $fs-sm; }
 }
 
 // ----- Cover fan (product covers cascading like a hand of cards) -----
@@ -280,7 +286,7 @@
   line-height: 1.15;
 
   small {
-    font-family: $font-heading;
+    font-family: $font-label;
     font-weight: 600;
     font-size: $fs-xs;
     letter-spacing: 0.02em;
@@ -387,7 +393,7 @@
 
 .bundle-cta__heading {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 38px;
   line-height: 1.2;
   letter-spacing: 0;
@@ -468,11 +474,26 @@
 // through a two-up slider; we lay all four out as a 2x2 grid over the
 // oversized peach "Client Reviews" wordmark.
 
+// Wavy top edge, laid over the bottom of whichever section comes before.
+.testimonials-wave {
+  position: relative;
+  z-index: 3;
+  height: 60px;
+  margin: -60px 0 -1px;
+  line-height: 0;
+  color: $color-sand;
+  pointer-events: none;
+
+  svg { width: 100%; height: 100%; display: block; }
+}
+
 .testimonials {
-  background: $color-blush;
-  padding: $space-9 $space-5 0;
+  background: $color-sand;
+  padding: $space-9 $space-5 $space-6;
   position: relative;
   overflow: hidden;
+  overflow: clip; // hidden still lets find-in-page scroll the wordmark under the wave
+
 }
 
 .testimonials__inner {
@@ -481,27 +502,70 @@
   position: relative;
 }
 
-.testimonials__grid {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 $space-7;
-  padding-left: 82px;          // live sets the first column 82px in
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 412px));
-  justify-content: start;
-  gap: $space-7 141px;         // second column lands at 635px
+// One scrolling row: two reviews per view on desktop, one plus a peek on
+// phones. Arrows (assets/js/testimonials.js) sit in the side gutters.
+.testimonials__carousel {
   position: relative;
   z-index: 2;
+  padding: 0 72px;
+  margin: 0 0 $space-7;
+}
+
+.testimonials__track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: $space-8;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+  &:focus-visible { outline: 2px solid $color-accent; outline-offset: 8px; }
+}
+
+.testimonials__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 2px solid $color-accent;
+  border-radius: 50%;
+  background: transparent;
+  color: $color-accent;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, opacity 120ms ease;
+
+  svg { width: 22px; height: 22px; }
+
+  &:hover:not(:disabled) { background: $color-accent; color: $color-bg; }
+  &:disabled { opacity: 0.3; cursor: default; }
+}
+.testimonials__nav--prev { left: 0; }
+.testimonials__nav--next { right: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials__track { scroll-behavior: auto; }
 }
 
 .testimonial {
+  flex: 0 0 calc((100% - #{$space-8}) / 2);
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   gap: $space-3;
 }
 
 .testimonial__attr {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
   font-size: $fs-md;
   line-height: 1.8;
@@ -517,6 +581,22 @@
   line-height: $lh-body;
   color: $color-ink;
   margin: 0;
+}
+
+// Wavy bottom edge in the peach of the guides banner that follows the
+// reviews on every page, so the wordmark rises out of the same band.
+.testimonials__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 2;
+  height: 60px;
+  line-height: 0;
+  color: $color-peach;
+  pointer-events: none;
+
+  svg { width: 100%; height: 100%; display: block; }
 }
 
 .testimonials__wordmark {
@@ -535,20 +615,12 @@
   white-space: nowrap;
 }
 
-@media (max-width: $bp-lg) {
-  .testimonials__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding-left: 0;
-    column-gap: $space-7;
-  }
-}
-
 @media (max-width: $bp-md) {
-  .testimonials__grid {
-    grid-template-columns: 1fr;
-    padding-left: 0;
-    gap: $space-6;
-  }
+  .testimonials__carousel { padding: 0; }
+  .testimonials__track    { gap: $space-5; }
+  .testimonial            { flex-basis: 85%; }
+  .testimonials__nav      { display: none; }
+
   // Live wraps the wordmark onto two lines on mobile rather than cropping it.
   .testimonials__wordmark {
     line-height: 0.9;
@@ -558,7 +630,7 @@
 
 // ----- Services (product/offer cards) -----
 // Markup via _includes/section-services.html. Live runs the same card —
-// pink flower icon with a white centre dot, Unbounded name, Lato pitch,
+// pink flower icon (its centre dot is in flower.svg), Unbounded name, DM Sans pitch,
 // "learn more" — three-up on home and two-up on coaching under a title.
 // The grid auto-fits, so the caller only supplies items.
 
@@ -574,7 +646,7 @@
 
 .services__heading {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 54px;
   line-height: 1.1;
   letter-spacing: 0;
@@ -606,29 +678,19 @@
   position: relative;
   width: 78px;
   color: $color-accent;
-  margin-bottom: $space-2;
-
-  // The live icon is a pink flower with a white dot punched out of the middle.
-  &::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 20px;
-    height: 19px;
-    transform: translate(-50%, -50%);
-    background: $color-bg;
-    border-radius: 50%;
-  }
+  margin-bottom: $space-5;
 }
 
+// Small uppercase label, not a display heading.
 .service__heading {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: 38px;
-  line-height: 1.2;
+  font-family: $font-label;
+  font-weight: 600;
+  font-size: $fs-sm;
+  line-height: $lh-snug;
+  letter-spacing: calc(0.1em + 1px);
+  text-transform: uppercase;
   color: $color-ink;
-  margin: 0;
+  margin: 0 0 $space-3;
 }
 
 .service__copy {
@@ -640,17 +702,15 @@
   max-width: 40ch;
 }
 
-.service__cta { margin-top: $space-4; }
+.service__cta { margin-top: $space-6; }
 
 @media (max-width: $bp-lg) {
   .services__heading { font-size: 38px; }
-  .service__heading  { font-size: 30px; }
 }
 
 @media (max-width: $bp-md) {
   .services__grid    { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
   .services__heading { font-size: 36px; text-align: center; }
-  .service__heading  { font-size: 20px; }
   .service__copy     { font-size: $fs-xs; }
   .services--left .service { align-items: center; text-align: center; }
 }

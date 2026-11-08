@@ -28,7 +28,7 @@
 
 .home-hero__title {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 56px;
   line-height: 1.1;
   letter-spacing: -0.01em;
@@ -38,10 +38,11 @@
 }
 
 .home-hero__eyebrow {
-  font-family: $font-heading;
+  font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
+  font-size: $fs-xs;
+  line-height: $lh-snug;
+  letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-bg;
   margin: 0 auto $space-6;
@@ -61,27 +62,20 @@
   left: 8%;
   top: 48%;
   width: 200px;
-  animation: decor-spin 28s linear infinite;
-}
-
-// The squiggle straddles the seam between the pink hero and peach stat section.
-.home-hero__decor--squiggle {
-  right: 18%;
-  bottom: -95px;
-  width: 280px;
-  z-index: 4;
+  animation: decor-spin 56s linear infinite;
 }
 
 @media (max-width: $bp-lg) {
   .home-hero__title { font-size: 44px; }
   .home-hero__decor--asterisk { width: 140px; left: 3%; }
-  .home-hero__decor--squiggle { width: 200px; right: 12%; bottom: -65px; }
 }
 
 @media (max-width: $bp-md) {
   .home-hero__title { font-size: 32px; }
+  // Stack each credential on its own line rather than wrapping at a divider.
+  .home-hero__eyebrow span:not(.home-hero__sep) { display: block; }
+  .home-hero__sep, .home-hero__eyebrow br { display: none; }
   .home-hero__decor--asterisk { width: 90px; opacity: 0.8; top: 8%; }
-  .home-hero__decor--squiggle { display: none; }
 }
 
 @keyframes decor-spin {
@@ -98,6 +92,7 @@
 
 .home-stat {
   position: relative;
+  overflow-x: clip; // the spinning star's corners can poke past the right edge
   background: $color-peach;
   padding: $space-9 $space-5 calc(#{$space-9} + 40px);
   text-align: center;
@@ -109,20 +104,30 @@
   pointer-events: none;
 }
 
-// Starburst straddles hero/stat seam on the right, overlapping the squiggle.
+// Squiggle and starburst sit together bottom right, straddling the wave into
+// the About section, clear of the heading.
+.home-stat__decor--squiggle {
+  right: 18%;
+  bottom: -110px;
+  width: 280px;
+}
+
 .home-stat__decor--star {
   right: 10%;
-  top: -80px;
+  bottom: -150px;
   width: 220px;
-  animation: decor-spin 24s linear infinite reverse;
+  z-index: 5; // above the squiggle
+  animation: decor-spin 48s linear infinite reverse;
 }
 
 @media (max-width: $bp-lg) {
-  .home-stat__decor--star { width: 160px; right: 6%; top: -55px; }
+  .home-stat__decor--squiggle { width: 200px; right: 12%; bottom: -80px; }
+  .home-stat__decor--star     { width: 160px; right: 6%; bottom: -110px; }
 }
 
 @media (max-width: $bp-md) {
-  .home-stat__decor--star { width: 100px; right: 3%; top: -35px; }
+  .home-stat__decor--squiggle { display: none; }
+  .home-stat__decor--star     { width: 100px; right: 3%; bottom: -60px; }
 }
 
 .home-stat__inner {
@@ -133,7 +138,7 @@
 
 .home-stat__heading {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 56px;
   line-height: 1.1;
   letter-spacing: -0.01em;
@@ -153,6 +158,7 @@
 
 .home-stat__arrow {
   display: block;
+  color: $color-bg;
   width: 40px;
   margin: $space-7 auto 0;
 }
@@ -162,7 +168,7 @@
   left: 0;
   right: 0;
   bottom: -1px;
-  height: 80px;
+  height: 44px;
   line-height: 0;
   z-index: 1;
   pointer-events: none;
@@ -198,7 +204,7 @@
 
 .home-about__heading {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 56px;
   line-height: 1.1;
   letter-spacing: -0.01em;
@@ -213,18 +219,21 @@
 
 .home-about__underline {
   display: block;
-  width: 280px;
+  width: 320px;
+  max-width: 100%;
+  color: $color-accent;
   margin: 0 0 $space-5;
 }
 
-.home-about__eyebrow {
-  font-family: $font-heading;
+.home-about .home-about__eyebrow {
+  font-family: $font-label;
   font-weight: 600;
-  font-size: $fs-sm;
-  letter-spacing: 0.06em;
+  font-size: $fs-xs;
+  line-height: $lh-snug;
+  letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-ink;
-  margin: 0 0 $space-5;
+  margin: 0 0 $space-4;
 }
 
 .home-about p {
@@ -236,7 +245,8 @@
   max-width: 52ch;
 }
 
-.home-about__cta { margin-top: $space-6; }
+// Scoped under .home-about so it beats the `.home-about p` margin.
+.home-about .home-about__cta { margin-top: $space-7; }
 
 .home-about__media img {
   width: 100%;
@@ -291,7 +301,7 @@
 
 .home-bundle__heading {
   font-family: $font-display;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 52px;
   line-height: 1.1;
   letter-spacing: -0.01em;
@@ -300,14 +310,6 @@
 }
 
 .home-bundle__price { color: $color-bg; }
-
-.home-bundle__strike {
-  font-family: $font-body;
-  font-size: $fs-md;
-  color: rgba($color-bg, 0.85);
-  text-decoration: line-through;
-  margin: 0 0 $space-3;
-}
 
 .home-bundle__lede {
   font-family: $font-body;
@@ -375,17 +377,18 @@
 .home-service__icon {
   display: block;
   width: 64px;
-  margin-bottom: $space-3;
+  margin-bottom: $space-5;
 }
 
 .home-service__heading {
-  font-family: $font-display;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 1.1;
+  font-family: $font-label;
+  font-weight: 600;
+  font-size: $fs-sm;
+  line-height: $lh-snug;
+  letter-spacing: calc(0.1em + 1px);
+  text-transform: uppercase;
   color: $color-ink;
-  margin: 0;
-  max-width: 12ch;
+  margin: 0 0 $space-3;
 }
 
 .home-service p {
@@ -397,7 +400,7 @@
   max-width: 38ch;
 }
 
-.home-service__cta { margin-top: $space-4; }
+.home-service__cta { margin-top: $space-6; }
 
 @media (max-width: $bp-lg) {
   .home-services__grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
