@@ -23,18 +23,14 @@
 // Journal banner: taller, with three app screens rising behind the
 // newsletter band's wave.
 // rhythm-exception: the band is taller than the shell so the rising screens
-// have room. It raises its own --section-pad one step above the role at each
+// have room. It raises its own --section-pad above the role at each
 // breakpoint, so wave compensation still holds.
 .banner--journal {
-  --section-pad: #{$grid-16};
-}
-
-@media (max-width: $bp-lg) {
-  .banner--journal { --section-pad: #{$grid-12}; }
+  --section-pad: #{$grid-12};
 }
 
 @media (max-width: $bp-md) {
-  .banner--journal { --section-pad: #{$grid-10}; }
+  .banner--journal { --section-pad: #{$grid-8}; }
 }
 
 // Three app screens rising from the bottom edge, cropped by the next wave.

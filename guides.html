@@ -109,7 +109,7 @@ permalink: /guides/
         {%- assign row_price = p[2] -%}
         {%- if forloop.index0 < 5 -%}
           {%- assign is_reversed = forloop.index0 | modulo: 2 -%}
-          <li class="section guide-row{% if is_reversed == 1 %} guide-row--reverse{% endif %}">
+          <li class="section section--compact guide-row{% if is_reversed == 1 %} guide-row--reverse{% endif %}">
             {%- if is_reversed == 1 %}
             {% include wave.html shape="swell" fill="white" %}
             {%- else %}
@@ -131,7 +131,7 @@ permalink: /guides/
             </div>
           </li>
         {%- else -%}
-          {%- if forloop.index0 == 5 -%}<li class="section guide-mini-pair">{% include wave.html shape="swell" fill="white" %}<div class="section__inner guide-mini-pair__inner">{%- endif -%}
+          {%- if forloop.index0 == 5 -%}<li class="section section--compact guide-mini-pair">{% include wave.html shape="swell" fill="white" %}<div class="section__inner guide-mini-pair__inner">{%- endif -%}
             <div class="guide-mini">
               <div class="guide-mini__media">
                 <img class="guide-mini__img" src="{{ '/assets/images/home/' | append: p[0] | relative_url }}" alt="" width="400" height="520" loading="lazy">
