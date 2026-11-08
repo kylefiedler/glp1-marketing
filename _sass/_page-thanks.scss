@@ -24,6 +24,7 @@
 }
 
 .thanks-hero__eyebrow {
+  @include type-eyebrow;
   display: inline-flex;
   align-items: center;
   gap: $grid-1;
@@ -32,11 +33,6 @@
   border-radius: 999px;
   background: $color-blush;
   color: $color-accent;
-  font-family: $font-label;
-  font-weight: 700;
-  font-size: $fs-xs;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 
   &::before {
     content: "";
@@ -48,19 +44,13 @@
 }
 
 .thanks-hero__title {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 52px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  @include type-hero;
   color: $color-ink;
   max-width: 16ch;
 }
 
 .thanks-hero__lede {
-  font-family: $font-body;
-  font-size: $fs-md;
-  line-height: $lh-body;
+  @include type-lead;
   color: $color-ink;
   margin: 0;
   max-width: 52ch;
@@ -92,9 +82,9 @@
     border-radius: 50%;
     background: $color-peach;
     color: $color-ink;
-    font-family: $font-display;
-    font-weight: 500;
-    font-size: $fs-md;
+    font-family: $font-display; // type-exception: step numeral ornament, not a text role
+    font-weight: 500; // type-exception: step numeral ornament, not a text role
+    font-size: $fs-md; // type-exception: step numeral ornament, not a text role
   }
 
   // Dotted connector between step badges.
@@ -109,18 +99,13 @@
 }
 
 .thanks-steps__title {
-  font-family: $font-heading;
-  font-weight: 700;
-  font-size: $fs-lg;
-  line-height: $lh-snug;
+  @include type-title;
   color: $color-ink;
   margin: $grid-1 0 $grid-half;
 }
 
 .thanks-steps__copy {
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  @include type-body;
   color: $color-ink;
   margin: 0;
 }
@@ -133,14 +118,10 @@
 }
 
 .thanks-hero__follow {
+  @include type-eyebrow;
   display: flex;
   align-items: center;
   gap: $grid-2;
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-xs;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: $color-ink;
 }
 
@@ -180,24 +161,19 @@
   margin: 0;
   transform: rotate(-12deg);
   text-align: center;
-  font-family: $font-heading;
-  font-weight: 700;
-  font-size: $fs-md;
-  line-height: 1.2;
+  font-family: $font-heading; // type-exception: sign-off badge ornament, not a text role
+  font-weight: 700; // type-exception: sign-off badge ornament, not a text role
+  font-size: $fs-md; // type-exception: sign-off badge ornament, not a text role
+  line-height: 1.2; // type-exception: sign-off badge ornament, not a text role
   color: $color-bg;
 
-  span { font-weight: 400; font-size: $fs-xs; }
-}
-
-@media (max-width: $bp-lg) {
-  .thanks-hero__title { font-size: 42px; }
+  span { font-weight: 400; font-size: $fs-xs; } // type-exception: sign-off badge ornament, not a text role
 }
 
 @media (max-width: $bp-md) {
   .thanks-hero__inner { grid-template-columns: 1fr; }
-  .thanks-hero__title { font-size: 34px; }
   .thanks-hero__media { max-width: 320px; } // geometry: product image size
   .thanks-hero__burst,
   .thanks-hero__signoff { left: -24px; width: 120px; bottom: 16px; }
-  .thanks-hero__signoff { font-size: $fs-sm; }
+  .thanks-hero__signoff { font-size: $fs-sm; } // type-exception: sign-off badge ornament, not a text role
 }

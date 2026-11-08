@@ -19,22 +19,13 @@
 }
 
 .guide-hero__eyebrow {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-xs;
-  line-height: $lh-snug;
-  letter-spacing: calc(0.1em + 1px);
-  text-transform: uppercase;
+  @include type-eyebrow;
   margin: 0 0 $grid-2;
   opacity: 0.9;
 }
 
 .guide-hero__title {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 60px;
-  line-height: 1.1;
-  text-transform: uppercase;
+  @include type-hero;
   color: $color-bg;
 }
 
@@ -42,16 +33,9 @@
 .guide-hero__nowrap { white-space: nowrap; }
 
 .guide-hero__for {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-xs;
-  line-height: $lh-snug;
-  letter-spacing: calc(0.06em + 1px);
-  text-transform: uppercase;
+  @include type-eyebrow;
   margin: 0;
   max-width: 48ch;
-
-  strong { font-weight: 700; }
 }
 
 .guide-hero__media {
@@ -79,14 +63,8 @@
   width: 150px;
 }
 
-@media (max-width: $bp-lg) {
-  .guide-hero__title { font-size: 44px; }
-}
-
 @media (max-width: $bp-md) {
   .guide-hero__inner { grid-template-columns: 1fr; }
-  .guide-hero__title { font-size: 32px; }
-  .guide-hero__for { font-size: $fs-xs; }
   .guide-hero__media { max-width: 220px; } // geometry: cover size
   .guide-hero__decor { width: 100px; top: -32px; left: -40px; }
 }
@@ -109,17 +87,12 @@
 .guide-detail__intro { grid-column: 1 / 2; }
 
 .guide-detail__headline {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 1.25;
+  @include type-title;
   color: $color-ink;
 }
 
 .guide-detail__body p {
-  font-family: $font-body;
-  font-size: $fs-sm;
-  line-height: $lh-body;
+  @include type-body;
   color: $color-ink;
   margin: 0;
 }
@@ -131,26 +104,19 @@
 }
 
 .guide-detail__label {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-sm;
-  line-height: $lh-snug;
-  letter-spacing: calc(0.1em + 1px);
-  text-transform: uppercase;
+  @include type-label;
   color: $color-ink;
   margin: 0 0 $grid-2;
 }
 
 .guide-detail__list {
+  @include list-bullet;
   margin: 0;
-  padding-left: 1.2em;
   display: grid;
   gap: $grid-1;
 
   li {
-    font-family: $font-body;
-    font-size: $fs-sm;
-    line-height: $lh-body;
+    @include type-body;
     color: $color-ink;
   }
 }
@@ -159,13 +125,8 @@
   .btn { width: 100%; }
 }
 
-@media (max-width: $bp-lg) {
-  .guide-detail__headline { font-size: 26px; }
-}
-
 @media (max-width: $bp-md) {
   .guide-detail__inner { grid-template-columns: 1fr; }
   .guide-detail__intro,
   .guide-detail__price { grid-column: auto; }
-  .guide-detail__headline { font-size: 22px; }
 }

@@ -14,7 +14,8 @@
 //   type-lead     intro paragraph under a heading; long-form post body
 //   type-small    fine print: notes, disclaimers, copyright
 //
-// Lists: list-bullet (disc) and list-flower (inline .decor--flower marker).
+// Lists: list-bullet (disc), list-number (decimal) and list-flower (inline
+// .decor--flower marker).
 //
 // Ornament and UI type that is deliberately not a role (nav overlay links,
 // testimonials wordmark, price-bubble numerals, buttons, form fields and
@@ -122,9 +123,16 @@
 
 // ----- Lists -----
 
+$list-indent: $grid-3;
+
 @mixin list-bullet {
   list-style: disc;
-  padding-left: $grid-3;
+  padding-left: $list-indent;
+}
+
+@mixin list-number {
+  list-style: decimal;
+  padding-left: $list-indent;
 }
 
 // Markup: <li><span class="decor decor--flower ..." aria-hidden="true">…</span>text</li>
