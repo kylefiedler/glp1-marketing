@@ -7,7 +7,7 @@
   max-width: $content-width;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto auto 1fr;
   gap: $grid-6;
   align-items: start;
 }
@@ -48,7 +48,9 @@
 }
 
 .site-footer__contact {
-  max-width: 560px; // geometry: contact form column
+  justify-self: end;
+  width: 100%;
+  max-width: 440px; // geometry: contact form column
 }
 
 // Small all-caps secondary title.
@@ -88,7 +90,7 @@
 
 .site-footer__field textarea {
   border-radius: 20px;
-  min-height: 104px;
+  min-height: 80px;
 }
 
 .site-footer__submit {
@@ -96,6 +98,15 @@
   justify-self: start;
   min-width: 160px;
   border: 0;
+}
+
+// Splits nav from the contact form once the footer stacks.
+.site-footer__divider {
+  display: none;
+  grid-area: divider;
+  justify-self: start;
+  max-width: 360px; // geometry: divider length
+  color: $color-peach;
 }
 
 .site-footer__brand img {
@@ -142,22 +153,44 @@
 }
 
 @media (max-width: $bp-lg) {
+  // One row: logo, nav, social links. Wave divider, then the form.
   .site-footer__inner {
-    grid-template-columns: 1fr;
-    gap: $grid-4;
-    text-align: center;
+    grid-template-columns: auto auto auto;
+    justify-content: start;
+    grid-template-areas:
+      "brand links social"
+      "divider divider divider"
+      "contact contact contact";
+    gap: $grid-3 $grid-6;
+    align-items: center;
   }
-  .site-footer__links {
-    justify-content: center;
-    gap: $grid-4;
+  .site-footer__side { display: contents; }
+  .site-footer__brand { grid-area: brand; }
+  .site-footer__social { grid-area: social; align-self: start; }
+  .site-footer__links { grid-area: links; gap: $grid-4; }
+  .site-footer__divider { display: block; }
+  .site-footer__contact {
+    grid-area: contact;
+    justify-self: start;
+    max-width: 560px; // geometry: contact form column
   }
-  .site-footer__contact { width: 100%; margin: 0 auto; text-align: left; }
-  .site-footer__brand img { margin: 0 auto; }
-  .site-footer__side { align-items: center; }
   .site-footer__meta { justify-content: center; }
 }
 
 @media (max-width: $bp-md) {
+  // Logo on the left; nav beside it with social links under the nav.
+  .site-footer__inner {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "brand links"
+      "brand social"
+      "divider divider"
+      "contact contact";
+    gap: $grid-3 $grid-4;
+    align-items: start;
+  }
+  .site-footer__social { gap: $grid-1; }
+  .site-footer__links { gap: $grid-3; }
   .site-footer__form { grid-template-columns: 1fr; }
   .site-footer__submit { justify-self: stretch; }
 }
