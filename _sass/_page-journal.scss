@@ -1,10 +1,5 @@
 // Journal page — shares the .page-hero hot-pink pattern.
 
-%journal-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
 .journal-hero__eyebrow {
   font-family: $font-label;
   font-weight: 600;
@@ -13,7 +8,7 @@
   letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-bg;
-  margin: 0 auto $space-4;
+  margin: 0 auto var(--title-gap);
   opacity: 0.9;
 }
 
@@ -22,16 +17,14 @@
 .journal-product {
   position: relative;
   background: $color-blush;
-  padding: $space-9 $space-5;
 }
 
 .journal-product__inner {
-  @extend %journal-inner;
   position: relative;
   z-index: 2;
   display: grid;
   grid-template-columns: 0.8fr 1fr;
-  gap: $space-8;
+  gap: var(--stack-gap);
   align-items: center;
 }
 
@@ -43,7 +36,6 @@
   letter-spacing: calc(0.06em + 1px);
   text-transform: uppercase;
   color: $color-ink;
-  margin: 0 0 $space-4;
 }
 
 .journal-product__copy p {
@@ -51,7 +43,6 @@
   font-size: $fs-md;
   line-height: $lh-body;
   color: $color-ink;
-  margin: 0 0 $space-4;
 }
 
 .journal-product__media {
@@ -81,7 +72,7 @@
 .journal-product__decor--orange { color: #FFA12F; transform: rotate(285deg); left: 6%; top: -30px; }
 
 @media (max-width: $bp-lg) {
-  .journal-product__inner   { grid-template-columns: 1fr; gap: $space-6; }
+  .journal-product__inner   { grid-template-columns: 1fr; }
   .journal-product__decor   { width: 90px; top: -24px; }
 }
 
@@ -89,14 +80,12 @@
 
 .journal-inside {
   background: $color-bg;
-  padding: $space-9 $space-5;
 }
 
 .journal-inside__inner {
-  @extend %journal-inner;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: $space-8;
+  gap: var(--stack-gap);
   align-items: start;
 }
 
@@ -108,7 +97,7 @@
   letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   color: $color-ink;
-  margin: 0 0 $space-5;
+  margin: 0 0 $grid-3;
 }
 
 .journal-inside__list {
@@ -116,7 +105,7 @@
   padding: 0;
   margin: 0;
   display: grid;
-  gap: $space-4;
+  gap: $grid-2;
 
   li {
     font-family: $font-body;
@@ -133,11 +122,10 @@
   font-size: $fs-md;
   line-height: $lh-body;
   color: $color-ink;
-  margin: 0 0 $space-4;
 }
 
 @media (max-width: $bp-lg) {
-  .journal-inside__inner { grid-template-columns: 1fr; gap: $space-7; }
+  .journal-inside__inner { grid-template-columns: 1fr; }
 }
 
 // ===== CTA (hot pink, centered) =====
@@ -145,7 +133,6 @@
 .journal-cta {
   position: relative;
   background: $color-accent;
-  padding: $space-9 $space-5;
   text-align: center;
   @include clip-below-wave;
 }
@@ -164,10 +151,8 @@
 }
 
 .journal-cta__inner {
-  @extend %journal-inner;
   position: relative;
   z-index: 2;
-  max-width: 780px;
 }
 
 .journal-cta__heading {
@@ -177,7 +162,6 @@
   line-height: 1.15;
   letter-spacing: -0.01em;
   color: $color-bg;
-  margin: 0 0 $space-5;
 }
 
 .journal-cta__subheading {
@@ -188,7 +172,7 @@
   letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   color: $color-bg;
-  margin: 0 0 $space-6;
+  margin: 0;
 }
 
 @media (max-width: $bp-lg) { .journal-cta__heading { font-size: 32px; } }
@@ -201,12 +185,6 @@
 
 .journal-faq {
   background: $color-blush;
-  padding: $space-9 $space-5;
-}
-
-.journal-faq__inner {
-  @extend %journal-inner;
-  max-width: 780px;
 }
 
 .journal-faq__heading {
@@ -216,7 +194,6 @@
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: $color-peach;
-  margin: 0 0 $space-6;
   text-align: center;
 }
 
@@ -225,7 +202,7 @@
   font-size: $fs-sm;
   color: $color-muted;
   text-align: center;
-  margin: $space-7 0 0;
+  margin: var(--stack-gap) 0 0;
 
   a {
     color: $color-accent;
