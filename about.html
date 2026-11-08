@@ -13,12 +13,12 @@ permalink: /about/
 
   <section class="section about-hero page-hero">
     <div class="section__inner about-hero__inner">
-      <div class="about-hero__media">
-        <img src="{{ '/assets/images/about/fh3a7942.jpg' | relative_url }}" alt="Jess, That GLP-1 Girl" width="800" height="1200" loading="eager">
-      </div>
-      <div class="about-hero__card">
+      <div class="about-hero__copy">
         <h1 class="about-hero__title">Meet Jess,<br>That GLP-1 Girl</h1>
         <p class="about-hero__lede">Hi, new friend. I&rsquo;m an Ivy League educated registered nurse, certified personal trainer, and weight loss specialist who lost 155 lbs and stayed lean &mdash; even after GLP-1s. I&rsquo;m also in the midst of earning my Obesity Medicine certification from the OMA Academy because I&rsquo;m a nerd at heart and always want to make sure I&rsquo;m doing my best. I created That GLP1 Girl to help others feel confident, strong, and in control of their results, no matter where they are in their journey.</p>
+      </div>
+      <div class="about-hero__media">
+        <img src="{{ '/assets/images/about/fh3a7942.jpg' | relative_url }}" alt="Jess, That GLP-1 Girl" width="800" height="1200" loading="eager">
       </div>
     </div>
   </section>
@@ -41,14 +41,16 @@ permalink: /about/
   <section class="section about-story">
     {% include wave.html shape="swell" fill="blush" %}
     <div class="section__inner about-story__inner">
-      <h2 class="about-story__heading section__title">My Story: From Diet Hopping to Food Freedom</h2>
+      <div class="about-story__header">
+        <h2 class="about-story__heading">My Story: From Diet Hopping to Food Freedom</h2>
+        <span class="decor decor--wave-thin about-story__squiggle" aria-hidden="true">
+          {% include decor/wave-thin.svg %}
+        </span>
+      </div>
 
-      <div class="about-story__row">
+      <div class="about-story__text">
         <div class="section__copy about-story__copy">
-          <span class="decor decor--wave-thin about-story__squiggle" aria-hidden="true">
-            {% include decor/wave-thin.svg %}
-          </span>
-          <p class="about-story__pullquote">I don&rsquo;t remember a time when I wasn&rsquo;t thinking about my weight.</p>
+          <h3 class="about-story__chapter">I don&rsquo;t remember a time when I wasn&rsquo;t thinking about my weight.</h3>
 
           <p>I was the kid who got put on diets in elementary school. I learned early on that my body wasn&rsquo;t quite right, that it needed fixing, that I needed to be smaller to be acceptable. By sixth grade, I&rsquo;d figured out that starving myself was the fastest way to get there; that&rsquo;s when the yo-yo&rsquo;ing really began.</p>
 
@@ -58,39 +60,23 @@ permalink: /about/
 
           <p>I didn&rsquo;t even realize that it had also become my prison.</p>
         </div>
-        <figure class="about-story__figure">
-          <img src="{{ '/assets/images/about/screenshot_2025-12-28_at_6_32_08_pm.png' | relative_url }}" alt="" width="800" height="846" loading="lazy">
-        </figure>
-      </div>
 
-      <div class="about-story__row about-story__row--text">
         <div class="section__copy about-story__copy">
-          <p>I remember the moment everything shifted. I had been avoiding doctor&rsquo;s visits because I was so afraid to be weighed. During a routine physical, my blood pressure was extremely high. My labs came back in a way that made it impossible to ignore: if I didn&rsquo;t change something, I was going to lose my life.</p>
+          <h3 class="about-story__chapter">I remember the moment everything shifted.</h3>
+
+          <p>I had been avoiding doctor&rsquo;s visits because I was so afraid to be weighed. During a routine physical, my blood pressure was extremely high. My labs came back in a way that made it impossible to ignore: if I didn&rsquo;t change something, I was going to lose my life.</p>
 
           <p>I kept thinking about that phrase we throw around as parents: &ldquo;I&rsquo;d die for my kids.&rdquo; But would I <em>live</em> for them? Would I actually do the hard, uncomfortable, unglamorous work of staying here?</p>
 
           <p>So I decided that yes; yes I would.</p>
-        </div>
-        <div class="section__copy about-story__copy">
-          <span class="decor decor--wave-thin about-story__squiggle" aria-hidden="true">
-            {% include decor/wave-thin.svg %}
-          </span>
 
           <p>But here&rsquo;s the thing&mdash;I felt like I&rsquo;d already tried every diet in the book, all with the same outcome. I&rsquo;d white knuckle my way through a calorie deficit, feel like I was starving, and inevitably binge. My body and my brain were working against me, and I was so tired of failing.</p>
 
           <p>I&rsquo;d heard information about GLP-1s, but when I broached the topic with my PCP, she shut me down hard and made me feel like I was looking for the easy way out. Instead of wallowing, I found another provider who actually took me seriously and understood that this was about so much more than simple willpower.</p>
         </div>
-      </div>
 
-      <div class="about-story__row about-story__row--reverse">
-        <figure class="about-story__figure">
-          <img src="{{ '/assets/images/about/screenshot_2025-12-28_at_6_31_58_pm.png' | relative_url }}" alt="" width="800" height="807" loading="lazy">
-        </figure>
         <div class="section__copy about-story__copy">
-          <span class="decor decor--wave-thin about-story__squiggle" aria-hidden="true">
-            {% include decor/wave-thin.svg %}
-          </span>
-          <p class="about-story__pullquote">I began my GLP-1 journey in April of 2023.</p>
+          <h3 class="about-story__chapter">I began my GLP-1 journey in April of 2023.</h3>
 
           <p>For the first time in my life, the food noise quieted. My appetite normalized. I could track my food without feeling like I was in a constant battle with my own body. I told myself that I&rsquo;d initially just focus on eating in a calorie deficit without the overwhelming urge to overeat.</p>
 
@@ -101,11 +87,7 @@ permalink: /about/
           <p>Then I learned about protein. Fiber. Progressive overload. Strength training. I fell in love with what my body could do instead of obsessing over what it looked like.</p>
 
           <p>And here&rsquo;s what nobody tells you about losing 155 pounds: the hardest part isn&rsquo;t losing. It&rsquo;s keeping it off. It&rsquo;s transitioning off the medication. It&rsquo;s learning to trust yourself, which is terrifying because I&rsquo;d never done it before.</p>
-        </div>
-      </div>
 
-      <div class="about-story__row">
-        <div class="section__copy about-story__copy">
           <p>In January of 2025, I earned my personal training certification and my nutrition coaching certification. I&rsquo;m currently completing my Obesity Medicine certification with the Obesity Medicine Association. I&rsquo;m also in the midst of obtaining my DNP as a Psychiatric Nurse Practitioner because I think there is so much psych behind the struggles of food addiction, binging, and obesity.</p>
 
           <p>I&rsquo;ve now maintained my weight loss and 14% body fat for over a year. I&rsquo;m stronger than I&rsquo;ve ever been and in better shape than I was before kids. I mentor others through this exact journey, and I created these guides because I don&rsquo;t want anyone else to spend years in the trial-and-error trenches like I did. I now realize what actually works: the protein targets, the training splits, transitioning without panicking, and how to eat at maintenance. These are all the things that no one tells you at the start.</p>
@@ -114,11 +96,21 @@ permalink: /about/
 
           <p class="about-story__signoff">&mdash; Jess</p>
         </div>
+      </div>
+
+      <div class="about-story__photos">
+        <figure class="about-story__figure">
+          <img src="{{ '/assets/images/about/screenshot_2025-12-28_at_6_32_08_pm.png' | relative_url }}" alt="" width="800" height="846" loading="lazy">
+        </figure>
+        <figure class="about-story__figure">
+          <img src="{{ '/assets/images/about/screenshot_2025-12-28_at_6_31_58_pm.png' | relative_url }}" alt="" width="800" height="807" loading="lazy">
+        </figure>
         <figure class="about-story__figure">
           <img src="{{ '/assets/images/about/screenshot_2025-12-28_at_6_31_41_pm.png' | relative_url }}" alt="" width="800" height="947" loading="lazy">
         </figure>
       </div>
     </div>
+    {% include wave.html fill="blush" hang=true %}
   </section>
 
   {% include section-bundle-cta.html %}
