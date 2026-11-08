@@ -5,9 +5,10 @@
 // The hero keeps the .page-hero class purely so _nav.scss's body:has() rule
 // still overlays the header in light-on-color; everything else is overridden.
 
-// ===== Hero (peach band: photo right, white card overlapping it) =====
+// ===== Hero (peach band: copy left on the peach, photo right) =====
 
-// rhythm-exception: photo-and-card composition fills the band edge to edge.
+// rhythm-exception: the photo fills the band edge to edge, so the inner column
+// carries the padding and the band has none of its own.
 .about-hero {
   background: $color-peach;
   padding: 0;
@@ -17,11 +18,14 @@
 
 .about-hero__inner {
   position: relative;
-  min-height: 750px;
-  padding-top: 311px; // geometry: the card's top on the live canvas
+  display: flex;
+  align-items: center;
+  min-height: 750px; // geometry: the band's height on the live canvas
+  padding: calc(var(--section-pad) + var(--hero-offset)) var(--gutter) calc(var(--section-pad) + var(--wave-below));
 }
 
 // Photo runs the full height of the band, flush right, one rounded corner.
+// The next band's wave paints over its bottom edge.
 .about-hero__media {
   position: absolute;
   left: 51.17%;   // 614/1200
@@ -40,53 +44,49 @@
   }
 }
 
-// In flow so long copy grows the band; the band clips the card's last 16px.
-.about-hero__card {
-  position: relative;
-  margin: 0 0 (-$grid-2) 13.33%; // geometry: 160/1200 in
-  width: 46.92%;  // 563/1200
-  min-height: 455px;
-  z-index: 2;
-  background: $color-bg;
-  border-radius: 39px;
-  padding: $grid-8 $grid-5 $grid-6 $grid-5;
-  text-align: right;
+// Copy column sits on the peach, left of the photo.
+.about-hero__copy {
+  width: 44%;
 }
 
 .about-hero__title {
   @include type-hero;
   color: $color-accent;
-  margin: 0 0 $grid-3;
+  margin: 0 0 var(--title-gap);
 }
 
 .about-hero__lede {
   @include type-lead;
   color: $color-ink;
-  margin: 0 0 0 auto;
-  max-width: 435px; // geometry: copy column against artwork
+  margin: 0;
 }
 
+// Stacked: copy on top, photo underneath running into the next band's wave.
 @media (max-width: $bp-lg) {
-  .about-hero__inner { min-height: 0; padding-top: 0; }
+  .about-hero__inner {
+    display: block;
+    min-height: 0;
+    padding: calc(var(--section-pad) + var(--hero-offset)) 0 0;
+  }
+  .about-hero__copy {
+    width: auto;
+    padding: 0 var(--gutter);
+    margin-bottom: var(--stack-gap);
+  }
   .about-hero__media {
     position: relative;
     left: auto;
-    width: 67%;
-    height: 400px;
-    margin-left: auto;
-    border-radius: 0 0 0 11px;
-  }
-  .about-hero__card {
     width: auto;
-    min-height: 0;
-    margin: -52px $grid-2 $grid-6; // geometry: card overlaps the photo above it
-    border-radius: 16px;
-    padding: $grid-4 $grid-3;
+    height: 520px;
+    margin-left: var(--gutter);
+    border-radius: 16px 0 0 0;
+
+    img { object-position: 60% 25%; }
   }
 }
 
 @media (max-width: $bp-md) {
-  .about-hero__media { height: 300px; }
+  .about-hero__media { height: 420px; }
 }
 
 // ===== Statement (hot-pink band, squiggle up top, two photos cropped
@@ -195,36 +195,37 @@
   }
 }
 
-// ===== Story (blush, two-column zig-zag of copy, photos and squiggles) =====
+// ===== Story (blush: the whole story on the left, photo pairs on the right) =====
 
 .about-story {
   background: $color-blush;
 }
 
 .about-story__inner {
-  // Live hand-places the story columns 90px in from the canvas's left edge
-  // and 24px in from its right.
-  padding: 0 24px 0 90px; // geometry: text offset against the artwork
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  column-gap: var(--stack-gap);
+  align-items: start;
 }
+
+// Title and squiggle sit above the left column only, so the photos start
+// level with the first chapter.
+.about-story__header { grid-column: 1; }
+.about-story__text   { grid-column: 1; }
+.about-story__photos { grid-column: 2; grid-row: 2; }
 
 .about-story__heading {
   @include type-section;
   color: $color-ink;
-  margin-left: 87px; // geometry: heading sits 177px into the 1200 canvas
-  max-width: 776px; // geometry: reading measure
+  margin: 0;
 }
 
-.about-story__row {
-  display: grid;
-  // minmax(0, 1fr) so the wider-than-column photos overhang instead of
-  // pushing the second column off live's 657px gridline.
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: $grid-6; // geometry: second column stays on live's 657px gridline
-  row-gap: var(--stack-gap);
-  align-items: start;
-  margin-bottom: var(--stack-gap);
-
-  &:last-child { margin-bottom: 0; }
+// One pink wave-thin rule, closing the title.
+.about-story__squiggle {
+  width: 391px;
+  max-width: 100%;
+  color: $color-peach;
+  margin: $grid-3 0 var(--title-gap);
 }
 
 .about-story__copy {
@@ -232,83 +233,49 @@
   color: $color-ink;
 }
 
-.about-story__copy p {
-}
+.about-story__copy + .about-story__copy { margin-top: var(--cta-gap); }
 
-// Pink wave-thin rule that opens most of the copy columns.
-.about-story__squiggle {
-  width: 391px;
-  max-width: 100%;
-  color: $color-peach;
-  margin: 0 0 var(--title-gap);
-}
-
-.about-story__pullquote {
+.about-story__chapter {
   @include type-label;
   color: $color-ink;
+  margin: 0 0 var(--copy-gap);
 }
+
+// The first paragraph of each chapter leads in a size up.
+.about-story__chapter + p { @include type-lead; }
 
 .about-story__signoff {
   @include type-body;
 }
 
+// Photo pairs stacked down the right column, each tilted a little and
+// overlapping the one above, like the guide covers.
 .about-story__figure {
   margin: 0;
+  position: relative;
+
+  & + & { margin-top: -$grid-5; }
 
   img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 80px;
-    object-fit: cover;
+    border-radius: 16px; // the pairs come framed in white, so just round the frame
+    box-shadow: 0 12px 28px rgba($color-black, 0.16);
   }
-}
 
-// Live hand-places each photo: its own crop ratio, width and inset from the
-// column it shares. Offsets below are live canvas px.
-.about-story__row:nth-of-type(1) {
-  .about-story__figure {
-    width: 481px;
-    justify-self: end;
-    margin-top: -37px; // geometry: photo rides up against the copy
-    img { aspect-ratio: 481 / 509; }
-  }
-  .about-story__squiggle { margin-left: 155px; } // geometry: live puts it at 245px
-}
-
-.about-story__row:nth-of-type(2) .about-story__squiggle {
-  margin-left: -25px; // geometry: live nudges it left of the column at 632px
-}
-
-.about-story__row:nth-of-type(3) .about-story__figure {
-  width: 574px;
-  justify-self: start;
-  margin-left: -37px; // geometry: live runs it out to 53px, left of the copy column
-  img { aspect-ratio: 574 / 579; }
-}
-
-.about-story__row:nth-of-type(4) .about-story__figure {
-  width: 521px;
-  justify-self: start;
-  margin: -64px 0 0 -30px; // geometry: photo overhangs its column
-  img { aspect-ratio: 521 / 617; }
-}
-
-@media (max-width: $bp-lg) {
-  .about-story__heading { margin-left: 0; }
-  .about-story__inner { padding: 0; }
-  .about-story__row { column-gap: $grid-4; }
-  // :nth-of-type(n) keeps specificity level with the per-row rules above.
-  .about-story__row:nth-of-type(n) {
-    .about-story__figure { width: auto; margin: 0; }
-    .about-story__squiggle { margin-left: 0; }
-  }
-  .about-story__figure img { border-radius: 40px; }
+  &:nth-child(1) { transform: rotate(3deg); }
+  &:nth-child(2) { transform: rotate(-4deg); margin-left: -$grid-3; }
+  &:nth-child(3) { transform: rotate(2deg); }
 }
 
 @media (max-width: $bp-md) {
-  .about-story__row { grid-template-columns: 1fr; }
-  .about-story__row--reverse .about-story__figure { order: 2; }
-  .about-story__figure img { border-radius: 20px; }
+  .about-story__inner { grid-template-columns: minmax(0, 1fr); }
+  .about-story__photos { grid-column: 1; grid-row: auto; }
+  .about-story__photos {
+    width: 85%;
+    margin: var(--stack-gap) auto 0;
+  }
+  .about-story__figure:nth-child(2) { margin-left: 0; }
   .about-story__squiggle { width: 225px; }
 }
