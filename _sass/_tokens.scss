@@ -35,7 +35,22 @@ $lh-tight: 1.15;
 $lh-snug:  1.35;
 $lh-body:  1.6;
 
-// Spacing scale (px)
+// Spacing scale - 8-point grid. Each name says how many 8px steps it is.
+// Use these for any spacing a rhythm role (below) doesn't cover.
+$grid-half: 4px;  // hairline / inline gaps only
+$grid-1:    8px;
+$grid-2:    16px;
+$grid-3:    24px;
+$grid-4:    32px;
+$grid-5:    40px;
+$grid-6:    48px;
+$grid-8:    64px;
+$grid-10:   80px;
+$grid-12:   96px;
+$grid-16:   128px;
+
+// Legacy 4px-based scale - being retired page by page (KYL-111..115). New
+// code uses $grid-* and the rhythm roles.
 $space-1: 4px;
 $space-2: 8px;
 $space-3: 12px;
@@ -50,3 +65,41 @@ $space-9: 96px;
 $bp-md: 768px;
 $bp-lg: 1024px;
 $bp-xl: 1440px;
+
+// Layout
+$content-width:  1200px;
+$content-narrow: 880px;
+
+// Rhythm roles - the one place section-level spacing is decided. Sections
+// reference these instead of raw values; each steps down at $bp-lg / $bp-md.
+//   --section-pad  vertical padding inside a wave-divided band
+//   --hero-offset  extra top padding a page hero needs to clear the header
+//   --title-gap    a section's main title -> its content
+//   --cta-gap      copy -> the call-to-action under it
+//   --stack-gap    between sibling items (cards, grid cells, columns)
+//   --gutter       side padding
+:root {
+  --section-pad: #{$grid-12};
+  --hero-offset: #{$grid-6};
+  --title-gap:   #{$grid-3};
+  --cta-gap:     #{$grid-4};
+  --stack-gap:   #{$grid-8};
+  --gutter:      #{$grid-3};
+}
+
+@media (max-width: $bp-lg) {
+  :root {
+    --section-pad: #{$grid-10};
+    --stack-gap:   #{$grid-6};
+  }
+}
+
+@media (max-width: $bp-md) {
+  :root {
+    --section-pad: #{$grid-8};
+    --title-gap:   #{$grid-2};
+    --cta-gap:     #{$grid-3};
+    --stack-gap:   #{$grid-4};
+    --gutter:      #{$grid-2};
+  }
+}

@@ -14,7 +14,6 @@
 
 .banner {
   position: relative;
-  padding: $space-9 0;
   @include clip-below-wave; // crops the covers and screens, keeps the top wave
 
   &--guides  { background: $color-peach; }
@@ -23,8 +22,19 @@
 
 // Journal banner: taller, with three app screens rising behind the
 // newsletter band's wave.
+// rhythm-exception: the band is taller than the shell so the rising screens
+// have room. It raises its own --section-pad one step above the role at each
+// breakpoint, so wave compensation still holds.
 .banner--journal {
-  padding: 150px 0;
+  --section-pad: #{$grid-16};
+}
+
+@media (max-width: $bp-lg) {
+  .banner--journal { --section-pad: #{$grid-12}; }
+}
+
+@media (max-width: $bp-md) {
+  .banner--journal { --section-pad: #{$grid-10}; }
 }
 
 // Three app screens rising from the bottom edge, cropped by the next wave.
@@ -53,15 +63,12 @@
 .banner__screen--right { left: 65%;   top: 30%; }
 
 .banner__inner {
-  max-width: 1200px;
-  margin: 0 auto;
   position: relative;
   z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: $space-8;
+  gap: var(--stack-gap);
   align-items: center;
-  padding: 0 $space-5;
 }
 
 .banner__heading {
@@ -70,7 +77,6 @@
   font-size: 44px;
   line-height: 1.1;
   letter-spacing: -0.01em;
-  margin: 0 0 $space-3;
 }
 
 .banner--journal .banner__heading { color: $color-bg; }
@@ -79,8 +85,9 @@
   font-family: $font-body;
   font-size: $fs-md;
   line-height: $lh-snug;
-  margin: 0 0 $space-5;
 }
+
+.banner__aside { margin-top: $grid-2; }
 
 .banner__media {
   position: relative;
@@ -95,7 +102,7 @@
 }
 
 .banner__cover--back  { position: absolute; top: 0;    left: 5%;  transform: rotate(-8deg); }
-.banner__cover--front { position: absolute; top: 30px; left: 30%; transform: rotate(5deg); }
+.banner__cover--front { position: absolute; top: 30px; left: 30%; transform: rotate(5deg); } // geometry:
 
 .banner__link {
   color: $color-bg;
@@ -109,17 +116,18 @@
 
 @media (max-width: $bp-md) {
   .banner__inner { grid-template-columns: 1fr; text-align: center; }
-  .banner__media { min-height: 280px; }
+  .banner__media { min-height: 360px; } // geometry: tall enough to hold both rotated covers
   .banner__cover--back  { left: 15%; }
   .banner__cover--front { left: 35%; }
+  // rhythm-exception: on phones the screens rise from the band's bottom edge.
   .banner--journal { padding-bottom: 0; }
   .banner__screens {
     position: relative;
     right: auto;
-    width: calc(100% - #{$space-4 * 2});
+    width: 100%;
     max-width: 420px;
     height: 300px;
-    margin: $space-7 auto 0;
+    margin: $grid-6 auto 0;
   }
   .banner__screen { border-radius: 18px; }
   .banner__screen--left  { top: 20%; }
@@ -132,15 +140,12 @@
 .nl-band {
   position: relative;
   background: $color-peach;
-  padding: $space-8 $space-5;
 }
 
 .nl-band__inner {
-  max-width: 1200px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: $space-8;
+  gap: var(--stack-gap);
   align-items: center;
 }
 
@@ -151,7 +156,6 @@
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: $color-ink;
-  margin: 0 0 $space-3;
 }
 
 .nl-band__sub {
@@ -159,7 +163,6 @@
   font-size: $fs-md;
   line-height: $lh-snug;
   color: $color-ink;
-  margin: 0;
   max-width: 46ch;
 
   em { font-style: italic; }
@@ -168,8 +171,7 @@
 .nl-band__form { min-width: 0; }
 
 @media (max-width: $bp-md) {
-  .nl-band { padding: $space-7 $space-4; }
-  .nl-band__inner { grid-template-columns: 1fr; gap: $space-5; text-align: center; }
+  .nl-band__inner { grid-template-columns: 1fr; text-align: center; }
   .nl-band__heading { font-size: 28px; }
   .nl-band__sub { margin-inline: auto; font-size: $fs-sm; }
 }
@@ -187,7 +189,7 @@
     flex: 0 0 auto;
     width: 170px;
     height: auto;
-    margin-left: -68px;
+    margin-left: -68px; // geometry: card overlap
     border-radius: 6px;
     box-shadow: 0 10px 24px rgba($color-black, 0.18);
     background: $color-bg;
@@ -206,14 +208,14 @@
   img:nth-child(8) { transform: rotate(5deg); }
 }
 
-.cover-fan--compact img { width: 90px; margin-left: -28px; }
+.cover-fan--compact img { width: 90px; margin-left: -28px; } // geometry:
 
 @media (max-width: $bp-lg) {
-  .cover-fan img { width: 130px; margin-left: -52px; }
-  .cover-fan--compact img { width: 76px; margin-left: -22px; }
+  .cover-fan img { width: 130px; margin-left: -52px; } // geometry:
+  .cover-fan--compact img { width: 76px; margin-left: -22px; } // geometry:
 }
 @media (max-width: $bp-md) {
-  .cover-fan img { width: 60px; margin-left: -24px; }
+  .cover-fan img { width: 60px; margin-left: -24px; } // geometry:
 }
 
 // ----- Price bubble (starburst badge with a floating price) -----
@@ -309,14 +311,18 @@
   position: relative;
   background: $color-accent;
   color: $color-bg;
-  padding: 0;
   @include clip-below-wave;
 }
 
+// rhythm-exception: on desktop the covers bleed off the band's edges, so the
+// band drops its padding and the copy centres in the stage height. Phones fall
+// back to the shell.
+@media (min-width: $bp-md + 1) {
+  .bundle-cta { padding: 0; }
+}
+
 .bundle-cta__inner {
-  max-width: 1200px;
-  min-height: 487px;
-  margin: 0 auto;
+  min-height: 487px; // geometry: the cover stage's height
   position: relative;
   display: flex;
   align-items: center;
@@ -344,7 +350,7 @@
   position: relative;
   z-index: 2;
   width: 50%;
-  padding: $space-5 $space-5 $space-5 78px;  // live sets the copy 78px in
+  padding: var(--gutter) var(--gutter) var(--gutter) $grid-10;
 }
 
 .bundle-cta__heading {
@@ -354,7 +360,6 @@
   line-height: 1.2;
   letter-spacing: 0;
   color: $color-bg;
-  margin: 0 0 $space-4;
 }
 
 .bundle-cta__price { color: $color-bg; }
@@ -366,19 +371,16 @@
   font-size: $fs-sm;
   line-height: $lh-body;
   color: $color-peach;
-  margin: 0 0 $space-6;
   max-width: 451px;
 }
 
 .bundle-cta__cta {
-  margin: 0;
-
-  // Live's is a fixed 506x52 box, not a text-hugging pill.
+  // A full-width bar, not a text-hugging pill.
   .btn {
     display: block;
     width: 100%;
     max-width: 506px;
-    padding: 10px $space-4;
+    padding: $grid-1 $grid-2;
     text-align: center;
   }
 }
@@ -400,16 +402,15 @@
   .bundle-cta__inner {
     display: block;
     min-height: 0;
-    padding-bottom: $space-7;
   }
-  .bundle-cta__copy { width: auto; padding: $space-7 $space-5 0; }
+  .bundle-cta__copy { width: auto; padding: 0; }
   .bundle-cta__heading { font-size: 27px; }
   .bundle-cta__squiggle { display: none; }
   .bundle-cta__mockup {
     position: relative;
     left: auto;
     width: auto;
-    margin: $space-6 $space-5 0;
+    margin: $grid-4 0 0;
   }
   .cover-scatter {
     height: 300px;
@@ -430,17 +431,17 @@
 // through a two-up slider; we lay all four out as a 2x2 grid over the
 // oversized peach "Client Reviews" wordmark.
 
+// rhythm-exception: the oversized wordmark sits on the band's bottom edge and
+// tucks under the next wave, so the band has no bottom padding.
 .testimonials {
   background: $color-sand;
-  padding: $space-9 $space-5 $space-6;
   position: relative;
+  padding-bottom: 0;
   // Clip sideways only, so the wave rising from the top edge stays visible.
   overflow-x: clip;
 }
 
 .testimonials__inner {
-  max-width: 1200px;
-  margin: 0 auto;
   position: relative;
 }
 
@@ -449,8 +450,8 @@
 .testimonials__carousel {
   position: relative;
   z-index: 2;
-  padding: 0 72px;
-  margin: 0 0 $space-7;
+  padding: 0 72px; // geometry: side gutters hold the 48px arrows
+  margin: 0 0 $grid-6;
 }
 
 .testimonials__track {
@@ -459,7 +460,7 @@
   padding: 0;
   display: flex;
   align-items: flex-start;
-  gap: $space-8;
+  gap: var(--stack-gap);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -499,11 +500,11 @@
 }
 
 .testimonial {
-  flex: 0 0 calc((100% - #{$space-8}) / 2);
+  flex: 0 0 calc((100% - var(--stack-gap)) / 2);
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  gap: $space-3;
+  gap: $grid-2;
 }
 
 .testimonial__attr {
@@ -543,7 +544,6 @@
 
 @media (max-width: $bp-md) {
   .testimonials__carousel { padding: 0; }
-  .testimonials__track    { gap: $space-5; }
   .testimonial            { flex-basis: 85%; }
   .testimonials__nav      { display: none; }
 
@@ -562,12 +562,6 @@
 
 .services {
   background: $color-blush;
-  padding: $space-9 $space-5;
-}
-
-.services__inner {
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .services__heading {
@@ -577,16 +571,14 @@
   line-height: 1.1;
   letter-spacing: 0;
   color: $color-ink;
-  margin: 0 0 $space-8;
 }
 
 .services__grid {
   list-style: none;
   padding: 0;
-  margin: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: $space-8;
+  gap: var(--stack-gap);
 }
 
 .service {
@@ -594,7 +586,6 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: $space-3;
 }
 
 // Coaching aligns the cards (and title) left; home centres them.
@@ -604,7 +595,7 @@
   position: relative;
   width: 78px;
   color: $color-accent;
-  margin-bottom: $space-5;
+  margin-bottom: $grid-3;
 }
 
 // Small uppercase label, not a display heading.
@@ -616,7 +607,7 @@
   letter-spacing: calc(0.1em + 1px);
   text-transform: uppercase;
   color: $color-ink;
-  margin: 0 0 $space-3;
+  margin-bottom: $grid-2;
 }
 
 .service__copy {
@@ -624,18 +615,15 @@
   font-size: $fs-sm;
   line-height: $lh-body;
   color: $color-ink;
-  margin: 0;
   max-width: 40ch;
 }
-
-.service__cta { margin-top: $space-6; }
 
 @media (max-width: $bp-lg) {
   .services__heading { font-size: 38px; }
 }
 
 @media (max-width: $bp-md) {
-  .services__grid    { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
+  .services__grid    { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; } // geometry: card column
   .services__heading { font-size: 36px; text-align: center; }
   .service__copy     { font-size: $fs-xs; }
   .services--left .service { align-items: center; text-align: center; }

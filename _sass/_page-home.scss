@@ -9,82 +9,9 @@
   margin: 0 auto;
 }
 
-// ===== Hero =====
-
-.home-hero {
-  position: relative;
-  background: $color-accent;
-  color: $color-bg;
-  padding: calc(#{$space-9} + 48px) $space-5 calc(#{$space-9} + 40px);
-  text-align: center;
-}
-
-.home-hero__inner {
-  @extend %home-inner;
-  max-width: 880px;
-  position: relative;
-  z-index: 2;
-}
-
-.home-hero__title {
-  font-family: $font-display;
-  font-weight: 700;
-  font-size: 56px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  color: $color-bg;
-  margin: 0 auto $space-5;
-  max-width: 22ch;
-}
-
-.home-hero__eyebrow {
-  font-family: $font-label;
-  font-weight: 600;
-  font-size: $fs-xs;
-  line-height: $lh-snug;
-  letter-spacing: calc(0.06em + 1px);
-  text-transform: uppercase;
-  color: $color-bg;
-  margin: 0 auto $space-6;
-  max-width: 60ch;
-}
-
-.home-hero__cta { margin: 0; }
-
-// Decorative shapes
-.home-hero__decor {
-  position: absolute;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.home-hero__decor--asterisk {
-  left: 8%;
-  top: 48%;
-  width: 200px;
-  animation: decor-spin 56s linear infinite;
-}
-
-@media (max-width: $bp-lg) {
-  .home-hero__title { font-size: 44px; }
-  .home-hero__decor--asterisk { width: 140px; left: 3%; }
-}
-
-@media (max-width: $bp-md) {
-  .home-hero__title { font-size: 32px; }
-  // Stack each credential on its own line rather than wrapping at a divider.
-  .home-hero__eyebrow span:not(.home-hero__sep) { display: block; }
-  .home-hero__sep, .home-hero__eyebrow br { display: none; }
-  .home-hero__decor--asterisk { width: 90px; opacity: 0.8; top: 8%; }
-}
-
-@keyframes decor-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
+// Hero base (.page-hero) lives in _layout.scss - every page shares it.
 
 @media (prefers-reduced-motion: reduce) {
-  .home-hero__decor--asterisk,
   .home-stat__decor--star { animation: none; }
 }
 

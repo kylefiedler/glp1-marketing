@@ -2,7 +2,7 @@
 // wide desktop / 320px mobile), so desktop offsets below are live px mapped
 // 1:1 inside a 1200px stage, and horizontal ones are expressed as % of it.
 //
-// The hero keeps the .home-hero class purely so _nav.scss's body:has() rule
+// The hero keeps the .page-hero class purely so _nav.scss's body:has() rule
 // still overlays the header in light-on-color; everything else is overridden.
 
 %about-stage {
@@ -13,6 +13,7 @@
 
 // ===== Hero (peach band: photo right, white card overlapping it) =====
 
+// rhythm-exception: photo-and-card composition fills the band edge to edge.
 .about-hero {
   background: $color-peach;
   padding: 0;

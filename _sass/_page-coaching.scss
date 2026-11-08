@@ -39,11 +39,12 @@
   > svg { width: 100%; height: auto; }
 }
 
-// ===== Hero (extends the hot-pink home-hero pattern) =====
-// coaching.html applies both `.coaching-hero` and `.home-hero` so the header
-// overlay + hot-pink hero styles from _page-home.scss apply. This block only
+// ===== Hero (extends the hot-pink page-hero pattern) =====
+// coaching.html applies both `.coaching-hero` and `.page-hero` so the header
+// overlay + hot-pink hero styles from _layout.scss apply. This block only
 // holds coaching-specific overrides.
 
+// rhythm-exception: the photos sit on the hero's bottom edge.
 .coaching-hero {
   padding-bottom: 0;
 }
@@ -125,7 +126,7 @@
 
   // The coaching hero leads with the small eyebrow, so pull the shared hero
   // asterisk up and in so it stops crossing that line.
-  .coaching-hero .home-hero__decor--asterisk { width: 72px; top: 24px; left: -4%; }
+  .coaching-hero .page-hero__decor--asterisk { width: 72px; top: 24px; left: -4%; }
   .coaching-hero__media   { flex-direction: column; align-items: center; gap: $space-4; }
   .coaching-hero__left,
   .coaching-hero__photo--right { width: 78%; margin-bottom: 0; }
