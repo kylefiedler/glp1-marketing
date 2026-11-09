@@ -15,9 +15,6 @@ permalink: /journal/
     <span class="decor decor--asterisk-8pt page-hero__decor page-hero__decor--asterisk" aria-hidden="true">
       {% include decor/asterisk-8pt.svg %}
     </span>
-    <span class="decor decor--squiggle page-hero__decor page-hero__decor--squiggle" aria-hidden="true">
-      {% include decor/squiggle.svg %}
-    </span>
 
     <div class="section__inner section__inner--narrow page-hero__inner">
       <p class="journal-hero__eyebrow">GLP-1 Journal for iPhone</p>
@@ -30,16 +27,11 @@ permalink: /journal/
     {% include wave.html fill="blush" %}
     <div class="section__inner section__inner--narrow journal-product__inner">
       <div class="journal-product__media">
-        <span class="decor decor--asterisk-8pt journal-product__decor journal-product__decor--peach" aria-hidden="true">
-          {% include decor/asterisk-8pt.svg %}
-        </span>
-        <span class="decor decor--asterisk-8pt journal-product__decor journal-product__decor--orange" aria-hidden="true">
-          {% include decor/asterisk-8pt.svg %}
-        </span>
-        <img src="{{ '/assets/images/journal/app-entry.png' | relative_url }}" alt="A day's entry in GLP-1 Journal, with prompts like &ldquo;Today I feel&rdquo; and &ldquo;Good enough today looked like&rdquo;" width="720" height="1290" loading="eager">
+        <img class="journal-product__screen journal-product__screen--back" src="{{ '/assets/images/journal/app-today.webp' | relative_url }}" alt="The GLP-1 Journal home screen, with this week&rsquo;s theme, an affirmation, and recent entries" width="920" height="2000" loading="eager">
+        <img class="journal-product__screen journal-product__screen--front" src="{{ '/assets/images/journal/app-entry.webp' | relative_url }}" alt="A day&rsquo;s entry in GLP-1 Journal, with answers to prompts like &ldquo;Today I feel&rdquo;" width="920" height="2000" loading="eager">
       </div>
       <div class="section__copy journal-product__copy">
-        <p class="journal-product__eyebrow">Whether you&rsquo;re just starting, adjusting to a new dose, or weaning off, GLP-1 Journal helps you build the habits and identity that make your results last.</p>
+        <h2 class="journal-product__title section__title">Whether you&rsquo;re just starting, adjusting to a new dose, or weaning off, GLP-1 Journal helps you build the habits and identity that make your results last.</h2>
         <p>If you&rsquo;ve ever started a program strong, only to lose focus a few weeks in, this journal is your antidote. Designed for GLP-1 users, it gives you a few minutes of prompts each day and a new theme each week, so you stay consistent, connected, and in control through your first year.</p>
       </div>
     </div>
@@ -65,6 +57,12 @@ permalink: /journal/
         <p>It keeps your habits front and center, your mindset sharp, and your journey personal. Skip the overwhelm and the mental chaos, this is a place where you can show up daily and stay grounded in the person you&rsquo;re becoming.</p>
         <p>And it&rsquo;s yours alone. There&rsquo;s no account, no ads, and no tracking. Your entries stay on your iPhone and in your own iCloud.</p>
       </div>
+    </div>
+    <div class="journal-inside__screens" aria-hidden="true">
+      <img src="{{ '/assets/images/journal/app-theme.webp' | relative_url }}" alt="" width="920" height="2000" loading="lazy">
+      <img src="{{ '/assets/images/journal/app-prompt.webp' | relative_url }}" alt="" width="920" height="2000" loading="lazy">
+      <img src="{{ '/assets/images/journal/app-slideshow.webp' | relative_url }}" alt="" width="920" height="2000" loading="lazy">
+      <img src="{{ '/assets/images/journal/app-question.webp' | relative_url }}" alt="" width="920" height="2000" loading="lazy">
     </div>
   </section>
 
