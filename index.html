@@ -11,7 +11,7 @@ permalink: /
 
 <main class="home">
 
-  <section class="section page-hero">
+  <section class="section page-hero home-hero">
     <span class="decor decor--asterisk-8pt page-hero__decor page-hero__decor--asterisk" aria-hidden="true">
       {% include decor/asterisk-8pt.svg %}
     </span>
@@ -23,7 +23,15 @@ permalink: /
         <a class="btn btn--white" href="{{ '/guides' | relative_url }}">Shop the guides</a>
       </p>
     </div>
+
     <div data-freebie-trigger aria-hidden="true"></div>
+
+    <div class="home-hero__media" aria-hidden="true">
+      <img class="home-hero__shot home-hero__shot--cover home-hero__shot--cover-left" src="{{ '/assets/images/home/protien-cover.png' | relative_url }}" alt="" width="400" height="518">
+      <img class="home-hero__shot home-hero__shot--phone home-hero__shot--left" src="{{ '/assets/images/journal/app-today.webp' | relative_url }}" alt="" width="920" height="2000">
+      <img class="home-hero__shot home-hero__shot--phone home-hero__shot--right" src="{{ '/assets/images/journal/app-progress.webp' | relative_url }}" alt="" width="920" height="2000">
+      <img class="home-hero__shot home-hero__shot--cover home-hero__shot--cover-right" src="{{ '/assets/images/home/grocery_guide_cover.png' | relative_url }}" alt="" width="400" height="518">
+    </div>
   </section>
 
   <section class="section home-stat">

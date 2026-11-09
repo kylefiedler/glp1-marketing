@@ -7,6 +7,78 @@
   .home-stat__decor--star { animation: none; }
 }
 
+// ===== Hero media =====
+// Like the coaching hero, the images rise from the band's bottom edge and the
+// stat band's wave rises over them. Two app screens overlap in the middle; a
+// guide cover leans out from behind each one. Everything runs past the band's
+// bottom and is cropped there, so no bottom corners show.
+
+// rhythm-exception: the images sit on the hero's bottom edge.
+.home-hero {
+  padding-bottom: 0;
+}
+
+// The media makes the hero taller, so pin the asterisk beside the copy
+// instead of halfway down, clear of the left cover.
+.home-hero .page-hero__decor--asterisk { top: 300px; } // geometry:
+
+@media (max-width: $bp-md) {
+  .home-hero .page-hero__decor--asterisk { top: 8%; } // geometry:
+}
+
+.home-hero__media {
+  position: relative;
+  z-index: 2;
+  max-width: 960px; // geometry: the stack's overall width
+  margin: $grid-6 auto 0;
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  clip-path: inset(-#{$grid-16} -#{$grid-16} 0); // crops everything at the band's bottom edge
+}
+
+.home-hero__shot {
+  display: block;
+  position: relative;
+  min-width: 0;
+  height: auto;
+  box-shadow: 0 12px 32px rgba($color-black, 0.22);
+}
+
+.home-hero__shot--phone {
+  z-index: 1;
+  width: 26%;
+  aspect-ratio: 920 / 2000;
+  border-radius: 24px;
+  margin-bottom: -10%; // geometry: runs past the band edge to be cropped
+}
+
+// The right screen tucks a little under the left one and sits a touch lower.
+.home-hero__shot--right {
+  z-index: 0;
+  margin-left: -4%;
+  margin-bottom: -14%; // geometry:
+}
+
+// Covers sit behind the screens and lean outward from their bottom corner.
+.home-hero__shot--cover {
+  z-index: -1;
+  width: 32%;
+  aspect-ratio: 400 / 518;
+  border-radius: 8px;
+  margin-bottom: -4%; // geometry: runs past the band edge to be cropped
+}
+
+.home-hero__shot--cover-left  { margin-right: -12%; transform-origin: 100% 100%; transform: rotate(-10deg); }
+.home-hero__shot--cover-right { margin-left: -12%;  transform-origin: 0 100%;    transform: rotate(10deg); }
+
+@media (max-width: $bp-md) {
+  .home-hero__media { margin-top: $grid-4; }
+  .home-hero__shot--phone { border-radius: 14px; width: 30%; }
+  .home-hero__shot--cover { width: 32%; }
+}
+
 // ===== 155 lb stat banner =====
 
 .home-stat {
@@ -159,7 +231,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: $grid-2;
-  transform: rotate(-3deg);
+ 
 
   img {
     width: 100%;
